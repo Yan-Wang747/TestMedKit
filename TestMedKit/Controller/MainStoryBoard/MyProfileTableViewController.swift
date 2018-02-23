@@ -254,6 +254,8 @@ class MyProfileTableViewController: UITableViewController, ORKTaskViewController
         if indexPath.section == 1 {
             performTask(forRow: indexPath.row)
         }
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     /*
     // Override to support conditional editing of the table view.
