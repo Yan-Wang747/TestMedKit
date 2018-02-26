@@ -19,6 +19,7 @@
 		3F620E702037562E00655AA4 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F620E682037550900655AA4 /* ResearchKit.framework */; };
 		3F620E712037562E00655AA4 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F620E682037550900655AA4 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F834DD6203F4BEE00981D8A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F834DD5203F4BEE00981D8A /* Global.swift */; };
+		3F8E73112044A67800D25081 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E73102044A67800D25081 /* Task.swift */; };
 		3F95CE18203DF9EC0096A896 /* DetaiProfilelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */; };
 		3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */; };
 		3FDFF8E1203CBC64008ED2A2 /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */; };
@@ -76,6 +77,7 @@
 		3F620E5B203754F000655AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F620E612037550900655AA4 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ../ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		3F834DD5203F4BEE00981D8A /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		3F8E73102044A67800D25081 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiProfilelTableViewController.swift; sourceTree = "<group>"; };
 		3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPickerViewController.swift; sourceTree = "<group>"; };
 		3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				3F834DD5203F4BEE00981D8A /* Global.swift */,
 				3F538042203F2A750045A492 /* Patient.swift */,
+				3F8E73102044A67800D25081 /* Task.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				3F620E55203754F000655AA4 /* TestMedKit.xcdatamodeld in Sources */,
 				3F53804A203F467D0045A492 /* GenderPickerViewController.swift in Sources */,
 				3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */,
+				3F8E73112044A67800D25081 /* Task.swift in Sources */,
 				3F538043203F2A750045A492 /* Patient.swift in Sources */,
 				3F834DD6203F4BEE00981D8A /* Global.swift in Sources */,
 				3F538047203F2EF10045A492 /* EditViewController.swift in Sources */,
