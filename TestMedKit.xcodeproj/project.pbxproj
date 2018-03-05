@@ -41,8 +41,6 @@
 		3F620E55203754F000655AA4 /* TestMedKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F620E53203754F000655AA4 /* TestMedKit.xcdatamodeld */; };
 		3F620E57203754F000655AA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E56203754F000655AA4 /* Assets.xcassets */; };
 		3F620E5A203754F000655AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E58203754F000655AA4 /* LaunchScreen.storyboard */; };
-		3F620E702037562E00655AA4 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F620E682037550900655AA4 /* ResearchKit.framework */; };
-		3F620E712037562E00655AA4 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F620E682037550900655AA4 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F627076207E5755004E35AF /* FamilyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627075207E5755004E35AF /* FamilyInfo.swift */; };
 		3F627078207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627077207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift */; };
 		3F719ECB207BC1D40070A986 /* AlcoholTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719ECA207BC1D40070A986 /* AlcoholTaskResultProcessor.swift */; };
@@ -61,29 +59,24 @@
 		3FDFF8E1203CBC64008ED2A2 /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */; };
 		3FF9CFFC20936FDB000370FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9CFFB20936FDB000370FA /* LoginViewController.swift */; };
 		3FF9CFFE20938762000370FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9CFFD20938762000370FA /* TabBarController.swift */; };
+		569BBB4B20993A29008A4A99 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 569BBB47209939C0008A4A99 /* ResearchKit.framework */; };
+		56C1B69B20996F6F004F54F1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1B69A20996F6F004F54F1 /* WelcomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3F620E672037550900655AA4 /* PBXContainerItemProxy */ = {
+		569BBB46209939C0008A4A99 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3F620E612037550900655AA4 /* ResearchKit.xcodeproj */;
+			containerPortal = 569BBB40209939BF008A4A99 /* ResearchKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B183A5951A8535D100C76870;
 			remoteInfo = ResearchKit;
 		};
-		3F620E692037550900655AA4 /* PBXContainerItemProxy */ = {
+		569BBB48209939C0008A4A99 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3F620E612037550900655AA4 /* ResearchKit.xcodeproj */;
+			containerPortal = 569BBB40209939BF008A4A99 /* ResearchKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
 			remoteInfo = ResearchKitTests;
-		};
-		3F620E722037562E00655AA4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3F620E612037550900655AA4 /* ResearchKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B183A4731A8535D100C76870;
-			remoteInfo = ResearchKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -94,7 +87,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3F620E712037562E00655AA4 /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +130,6 @@
 		3F620E56203754F000655AA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F620E59203754F000655AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F620E5B203754F000655AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F620E612037550900655AA4 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ../ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		3F627075207E5755004E35AF /* FamilyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyInfo.swift; sourceTree = "<group>"; };
 		3F627077207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryTaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F719ECA207BC1D40070A986 /* AlcoholTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholTaskResultProcessor.swift; sourceTree = "<group>"; };
@@ -157,6 +148,8 @@
 		3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
 		3FF9CFFB20936FDB000370FA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3FF9CFFD20938762000370FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		569BBB40209939BF008A4A99 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
+		56C1B69A20996F6F004F54F1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F620E702037562E00655AA4 /* ResearchKit.framework in Frameworks */,
+				569BBB4B20993A29008A4A99 /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +185,7 @@
 				3FF9CFFD20938762000370FA /* TabBarController.swift */,
 				3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */,
 				3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */,
+				56C1B69A20996F6F004F54F1 /* WelcomeViewController.swift */,
 			);
 			path = MainStoryBoard;
 			sourceTree = "<group>";
@@ -246,9 +240,10 @@
 		3F620E40203754F000655AA4 = {
 			isa = PBXGroup;
 			children = (
-				3F620E612037550900655AA4 /* ResearchKit.xcodeproj */,
+				569BBB40209939BF008A4A99 /* ResearchKit.xcodeproj */,
 				3F620E4B203754F000655AA4 /* TestMedKit */,
 				3F620E4A203754F000655AA4 /* Products */,
+				569BBB4A20993A29008A4A99 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,15 +267,6 @@
 				3F620E53203754F000655AA4 /* TestMedKit.xcdatamodeld */,
 			);
 			path = TestMedKit;
-			sourceTree = "<group>";
-		};
-		3F620E622037550900655AA4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3F620E682037550900655AA4 /* ResearchKit.framework */,
-				3F620E6A2037550900655AA4 /* ResearchKitTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		3F95CE1E203E158A0096A896 /* Modal */ = {
@@ -321,6 +307,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		569BBB41209939BF008A4A99 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				569BBB47209939C0008A4A99 /* ResearchKit.framework */,
+				569BBB49209939C0008A4A99 /* ResearchKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		569BBB4A20993A29008A4A99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -336,7 +338,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3F620E732037562E00655AA4 /* PBXTargetDependency */,
 			);
 			name = TestMedKit;
 			productName = TestMedKit;
@@ -372,8 +373,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 3F620E622037550900655AA4 /* Products */;
-					ProjectRef = 3F620E612037550900655AA4 /* ResearchKit.xcodeproj */;
+					ProductGroup = 569BBB41209939BF008A4A99 /* Products */;
+					ProjectRef = 569BBB40209939BF008A4A99 /* ResearchKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -384,18 +385,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		3F620E682037550900655AA4 /* ResearchKit.framework */ = {
+		569BBB47209939C0008A4A99 /* ResearchKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ResearchKit.framework;
-			remoteRef = 3F620E672037550900655AA4 /* PBXContainerItemProxy */;
+			remoteRef = 569BBB46209939C0008A4A99 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3F620E6A2037550900655AA4 /* ResearchKitTests.xctest */ = {
+		569BBB49209939C0008A4A99 /* ResearchKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ResearchKitTests.xctest;
-			remoteRef = 3F620E692037550900655AA4 /* PBXContainerItemProxy */;
+			remoteRef = 569BBB48209939C0008A4A99 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -449,6 +450,7 @@
 				3F719ECB207BC1D40070A986 /* AlcoholTaskResultProcessor.swift in Sources */,
 				3F538043203F2A750045A492 /* Patient.swift in Sources */,
 				3F55CD7F2045B33100668C7A /* AlcoholTask.swift in Sources */,
+				56C1B69B20996F6F004F54F1 /* WelcomeViewController.swift in Sources */,
 				3F5931CE20879FA4007A3829 /* SurgicalTaskResultProcessor.swift in Sources */,
 				3F55CD7D2045AA7200668C7A /* TobaccoTask.swift in Sources */,
 				3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */,
@@ -471,14 +473,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3F620E732037562E00655AA4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ResearchKit;
-			targetProxy = 3F620E722037562E00655AA4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3F620E50203754F000655AA4 /* Main.storyboard */ = {

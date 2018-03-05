@@ -10,9 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var IDLabel: UITextField!
-    @IBOutlet weak var pswdLabel: UITextField!
-    let serverIP = "172.20.10.8"
+    @IBOutlet weak var IDText: UITextField!
+    @IBOutlet weak var pswdText: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    
+    @IBOutlet weak var serverIPText: UITextField!
+    
+    var serverIP = "localhost"
     
     var loginURL: URL!
     var basicInfoURL: URL!
@@ -23,6 +27,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         conf.allowsCellularAccess = true
         conf.waitsForConnectivity = true
+        signInButton.layer.cornerRadius = 8
+        if let serverIP = serverIPText.text {
+            self.serverIP = serverIP
+        }
         
         session = URLSession(configuration: conf)
         loginURL = URL(string: "http://\(serverIP):8084/MyCCMB/AppLogin")!
@@ -48,7 +56,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginAction(_ sender: Any) {
-        guard let ID = IDLabel.text, let pswd = pswdLabel.text else {
+        guard let ID = IDText.text, let pswd = pswdText.text else {
             return
         }
         
