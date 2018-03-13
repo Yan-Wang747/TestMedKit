@@ -61,11 +61,13 @@ class MyProfileTableViewController: UITableViewController{
     func performTask(forRow row: Int){
         switch row{
         case 0:
-            task = Task.createTobaccoTask(self)
+            task = TobaccoTask(self)
         case 1:
-            task = Task.createAlcoholTask(self)
+            task = AlcoholTask(self)
         case 2:
-            task = Task.createPersonalTask(self)
+            task = PersonalTask(self)
+        case 3:
+            task = FamilyHistoryTask(self)
         default:
             task = nil
         }
