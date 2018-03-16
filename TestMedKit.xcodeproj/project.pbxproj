@@ -111,13 +111,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F12EED2203DE4F200AF1210 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		3F49128C2040638700E21D9E /* StroyBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,13 +155,6 @@
 			path = Task;
 			sourceTree = "<group>";
 		};
-		3F58EA96205AF602002A83D0 /* AllergyTask */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AllergyTask;
-			sourceTree = "<group>";
-		};
 		3F58EA9B205B08AA002A83D0 /* ORKTask */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,7 +186,6 @@
 				3F49128C2040638700E21D9E /* StroyBoard */,
 				3F53803A203F29420045A492 /* Enumeration */,
 				3F95CE1E203E158A0096A896 /* Modal */,
-				3F12EED2203DE4F200AF1210 /* View */,
 				3FDFF8DD203CBC1B008ED2A2 /* Controller */,
 				3F620E56203754F000655AA4 /* Assets.xcassets */,
 				3F620E5B203754F000655AA4 /* Info.plist */,
@@ -233,7 +218,6 @@
 		3FDFF8DD203CBC1B008ED2A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3F58EA96205AF602002A83D0 /* AllergyTask */,
 				3F538048203F461B0045A492 /* MainStoryBoard */,
 			);
 			path = Controller;
