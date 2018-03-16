@@ -305,7 +305,7 @@ class FamilyHistoryTask: Task {
         let predicateNoForDidMotherPassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didMotherPassAwayResult, expectedAnswer: false)
         
         let predicateNoForDidMotherPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidMotherPassAwayStep, "motherCurrentAgeStep")])
-        familyHistoryTask.setNavigationRule(predicateNoForDidFatherPassAwayStepRule, forTriggerStepIdentifier: "didMotherPassAwayStep")
+        familyHistoryTask.setNavigationRule(predicateNoForDidMotherPassAwayStepRule, forTriggerStepIdentifier: "didMotherPassAwayStep")
         
         familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesBrotherHaveCancerStep"), forTriggerStepIdentifier: "motherDeathAgeStep")
         
@@ -321,8 +321,8 @@ class FamilyHistoryTask: Task {
         
         let predicateNoForDidBrotherPassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didBrotherPassAwayResult, expectedAnswer: false)
         
-        let predicateNoForDidBrotherPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidMotherPassAwayStep, "brotherCurrentAgeStep")])
-        familyHistoryTask.setNavigationRule(predicateNoForDidFatherPassAwayStepRule, forTriggerStepIdentifier: "didBrotherPassAwayStep")
+        let predicateNoForDidBrotherPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidBrotherPassAwayStep, "brotherCurrentAgeStep")])
+        familyHistoryTask.setNavigationRule(predicateNoForDidBrotherPassAwayStepRule, forTriggerStepIdentifier: "didBrotherPassAwayStep")
         
         familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesSisterHaveCancerStep"), forTriggerStepIdentifier: "brotherDeathAgeStep")
         
@@ -339,7 +339,7 @@ class FamilyHistoryTask: Task {
         let predicateNoForDidSisterPassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didSisterPassAwayResult, expectedAnswer: false)
         
         let predicateNoForDidSisterPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidSisterPassAwayStep, "sisterCurrentAgeStep")])
-        familyHistoryTask.setNavigationRule(predicateNoForDidFatherPassAwayStepRule, forTriggerStepIdentifier: "didSisterPassAwayStep")
+        familyHistoryTask.setNavigationRule(predicateNoForDidSisterPassAwayStepRule, forTriggerStepIdentifier: "didSisterPassAwayStep")
         familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesSonHaveCancerStep"), forTriggerStepIdentifier: "sisterDeathAgeStep")
         
         //=========================
@@ -355,7 +355,7 @@ class FamilyHistoryTask: Task {
         let predicateNoForDidSonPassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didSonPassAwayResult, expectedAnswer: false)
         
         let predicateNoForDidSonPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidSonPassAwayStep, "sonCurrentAgeStep")])
-        familyHistoryTask.setNavigationRule(predicateNoForDidFatherPassAwayStepRule, forTriggerStepIdentifier: "didSonPassAwayStep")
+        familyHistoryTask.setNavigationRule(predicateNoForDidSonPassAwayStepRule, forTriggerStepIdentifier: "didSonPassAwayStep")
         
         familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesDaughterHaveCancerStep"), forTriggerStepIdentifier: "motherDeathAgeStep")
         
@@ -411,12 +411,13 @@ class FamilyHistoryTask: Task {
         familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesMaternalAuntHaveCancerStep"), forTriggerStepIdentifier: "maternalGrandfatherDeathAgeStep")
         
         //=========================
-        let doesMaternalAuntHaveCancerResult = ORKResultSelector(resultIdentifier: "doesMaternalAuntHaveCancerStep")
+        let maternalAuntHaveCancerResult = ORKResultSelector(resultIdentifier: "doesMaternalAuntHaveCancerStep")
         
-        let predicateNoForDoesMaternalAuntHaveCancerStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: doesMaternalAuntHaveCancerResult, expectedAnswer: false)
+        let noForDoesMaternalAuntHaveCancerStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: maternalAuntHaveCancerResult, expectedAnswer: false)
         
-        let predicateNoForDoesMaternalAuntHaveCancerStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDoesMaternalAuntHaveCancerStep, "doesMaternalUncleHaveCancerStep")])
-        familyHistoryTask.setNavigationRule(predicateNoForDoesMaternalAuntHaveCancerStepRule, forTriggerStepIdentifier: "doesMaternalAuntHaveCancerStep")
+        let noForDoesMaternalAuntHaveCancerStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(noForDoesMaternalAuntHaveCancerStep, "doesMaternalUncleHaveCancerStep")])
+        familyHistoryTask.setNavigationRule(noForDoesMaternalAuntHaveCancerStepRule, forTriggerStepIdentifier: "doesMaternalAunHaveCancerStep")
+        
         
         let didMaternalAuntPassAwayResult = ORKResultSelector(resultIdentifier: "didMaternalAuntPassAwayStep")
         
@@ -439,7 +440,7 @@ class FamilyHistoryTask: Task {
         
         let predicateNoForDidMaternalUnclePassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didMaternalUnclePassAwayResult, expectedAnswer: false)
         
-        let predicateNoForDidMaternalUnclePassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidMotherPassAwayStep, "maternalUncleCurrentAgeStep")])
+        let predicateNoForDidMaternalUnclePassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidMaternalUnclePassAwayStep, "maternalUncleCurrentAgeStep")])
         familyHistoryTask.setNavigationRule(predicateNoForDidMaternalUnclePassAwayStepRule, forTriggerStepIdentifier: "didMaternalUnclePassAwayStep")
         
         familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesdoesPaternalAuntHaveCancerStepHaveCancerStep"), forTriggerStepIdentifier: "maternalUncleDeathAgeStep")
@@ -457,7 +458,7 @@ class FamilyHistoryTask: Task {
         let predicateNoForDidPaternalAuntPassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didPaternalAuntPassAwayResult, expectedAnswer: false)
         
         let predicateNoForDidPaternalAuntPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidPaternalAuntPassAwayStep, "paternalAuntCurrentAgeStep")])
-        familyHistoryTask.setNavigationRule(predicateNoForDidFatherPassAwayStepRule, forTriggerStepIdentifier: "didPaternalAuntPassAwayStep")
+        familyHistoryTask.setNavigationRule(predicateNoForDidPaternalAuntPassAwayStepRule, forTriggerStepIdentifier: "didPaternalAuntPassAwayStep")
         
         familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesPaternalUncleHaveCancerStep"), forTriggerStepIdentifier: "paternalAuntDeathAgeStep")
         
@@ -469,14 +470,14 @@ class FamilyHistoryTask: Task {
         let predicateNoForDoesPaternalUncleHaveCancerStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDoesPaternalUncleHaveCancerStep, "doesHalfBrotherHaveCancerStep")])
         familyHistoryTask.setNavigationRule(predicateNoForDoesPaternalUncleHaveCancerStepRule, forTriggerStepIdentifier: "doesPaternalUncleHaveCancerStep")
         
-        let didMotherPassAwayResult = ORKResultSelector(resultIdentifier: "didMotherPassAwayStep")
+        let didPaternalUnclePassAwayResult = ORKResultSelector(resultIdentifier: "didPaternalUnclePassAwayStep")
         
-        let predicateNoForDidMotherPassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didMotherPassAwayResult, expectedAnswer: false)
+        let predicateNoForDidPaternalUnclePassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didPaternalUnclePassAwayResult, expectedAnswer: false)
         
-        let predicateNoForDidMotherPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidMotherPassAwayStep, "motherCurrentAgeStep")])
-        familyHistoryTask.setNavigationRule(predicateNoForDidFatherPassAwayStepRule, forTriggerStepIdentifier: "didMotherPassAwayStep")
+        let predicateNoForDidPaternalUnclePassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidPaternalUnclePassAwayStep, "paternalUncleCurrentAgeStep")])
+        familyHistoryTask.setNavigationRule(predicateNoForDidPaternalUnclePassAwayStepRule, forTriggerStepIdentifier: "didPaternalUnclePassAwayStep")
         
-        familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesBrotherHaveCancerStep"), forTriggerStepIdentifier: "motherDeathAgeStep")
+        familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesHalfBrotherHaveCancerStep"), forTriggerStepIdentifier: "paternalUncleDeathAgeStep")
         
         //=========================
         let doesHalfBrotherHaveCancerResult = ORKResultSelector(resultIdentifier: "doesHalfBrotherHaveCancerStep")
@@ -486,6 +487,15 @@ class FamilyHistoryTask: Task {
         let predicateNoForDoesHalfBrotherHaveCancerStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDoesHalfBrotherHaveCancerStep, "doesHalfSisterHaveCancerStep")])
         familyHistoryTask.setNavigationRule(predicateNoForDoesHalfBrotherHaveCancerStepRule, forTriggerStepIdentifier: "doesHalfBrotherHaveCancerStep")
         
+        let didHalfBrotherPassAwayResult = ORKResultSelector(resultIdentifier: "didHalfBrotherPassAwayStep")
+        
+        let predicateNoForDidHalfBrotherPassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didHalfBrotherPassAwayResult, expectedAnswer: false)
+        
+        let predicateNoForDidHalfBrotherPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidHalfBrotherPassAwayStep, "halfBrotherCurrentAgeStep")])
+        familyHistoryTask.setNavigationRule(predicateNoForDidHalfBrotherPassAwayStepRule, forTriggerStepIdentifier: "didHalfBrotherPassAwayStep")
+        
+        familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesHalfSisterHaveCancerStep"), forTriggerStepIdentifier: "halfBrotherDeathAgeStep")
+        
         //=========================
         let doesHalfSisterHaveCancerResult = ORKResultSelector(resultIdentifier: "doesHalfSisterHaveCancerStep")
         
@@ -493,6 +503,15 @@ class FamilyHistoryTask: Task {
         
         let predicateNoForDoesHalfSisterHaveCancerStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDoesHalfSisterHaveCancerStep, "doesCousinHaveCancerStep")])
         familyHistoryTask.setNavigationRule(predicateNoForDoesHalfSisterHaveCancerStepRule, forTriggerStepIdentifier: "doesHalfSisterHaveCancerStep")
+        
+        let didHalfSisterPassAwayResult = ORKResultSelector(resultIdentifier: "didHalfSisterPassAwayStep")
+        
+        let predicateNoForDidHalfSisterPassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didHalfSisterPassAwayResult, expectedAnswer: false)
+        
+        let predicateNoForDidHalfSisterPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidHalfSisterPassAwayStep, "halfSisterCurrentAgeStep")])
+        familyHistoryTask.setNavigationRule(predicateNoForDidHalfSisterPassAwayStepRule, forTriggerStepIdentifier: "didHalfSisterPassAwayStep")
+        
+        familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "doesCousinHaveCancerStep"), forTriggerStepIdentifier: "halfSisterDeathAgeStep")
         
         //=========================
         let doesCousinHaveCancerResult = ORKResultSelector(resultIdentifier: "doesCousinHaveCancerStep")
@@ -502,5 +521,14 @@ class FamilyHistoryTask: Task {
         let predicateNoForDoesCousinHaveCancerStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDoesCousinHaveCancerStep, "reviewStep")])
         
         familyHistoryTask.setNavigationRule(predicateNoForDoesCousinHaveCancerStepRule, forTriggerStepIdentifier: "doesCousinHaveCancerStep")
+        
+        let didCousinPassAwayResult = ORKResultSelector(resultIdentifier: "didCousinPassAwayStep")
+        
+        let predicateNoForDidCousinPassAwayStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: didCousinPassAwayResult, expectedAnswer: false)
+        
+        let predicateNoForDidCousinPassAwayStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForDidCousinPassAwayStep, "cousinCurrentAgeStep")])
+        familyHistoryTask.setNavigationRule(predicateNoForDidCousinPassAwayStepRule, forTriggerStepIdentifier: "didCousinPassAwayStep")
+        
+        familyHistoryTask.setNavigationRule(ORKDirectStepNavigationRule(destinationStepIdentifier: "reviewStep"), forTriggerStepIdentifier: "cousinDeathAgeStep")
     }
 }

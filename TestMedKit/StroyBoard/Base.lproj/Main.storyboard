@@ -643,6 +643,72 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xkc-In-9NH">
+                                        <rect key="frame" x="0.0" y="246" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xkc-In-9NH" id="rfJ-Ny-cTh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="J83-VN-9a2">
+                                                    <rect key="frame" x="20" y="6" width="335" height="30"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="survey icon" translatesAutoresizingMaskIntoConstraints="NO" id="etv-By-trd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="eCn-Ff-cjk"/>
+                                                                <constraint firstAttribute="height" constant="30" id="vPE-f7-IA1"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allergy History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uce-fJ-dRh" userLabel="Allergy History">
+                                                            <rect key="frame" x="40" y="0.0" width="295" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="J83-VN-9a2" firstAttribute="centerY" secondItem="rfJ-Ny-cTh" secondAttribute="centerY" id="1Ha-lU-yyi"/>
+                                                <constraint firstItem="J83-VN-9a2" firstAttribute="leading" secondItem="rfJ-Ny-cTh" secondAttribute="leading" constant="20" id="FQ4-Rh-KzJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="J83-VN-9a2" secondAttribute="trailing" constant="20" id="LXr-Nn-8e7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wrU-KW-HcB">
+                                        <rect key="frame" x="0.0" y="290" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wrU-KW-HcB" id="Akj-38-Xoo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ua9-zn-t7I">
+                                                    <rect key="frame" x="20" y="6" width="335" height="30"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="survey icon" translatesAutoresizingMaskIntoConstraints="NO" id="vkv-Mj-OJS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="3O8-GN-1hW"/>
+                                                                <constraint firstAttribute="width" constant="30" id="Mc6-vI-3IU"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGn-Pi-CUw" userLabel="Allergy History">
+                                                            <rect key="frame" x="40" y="0.0" width="295" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ua9-zn-t7I" secondAttribute="trailing" constant="20" id="Fvo-BD-4xH"/>
+                                                <constraint firstItem="ua9-zn-t7I" firstAttribute="leading" secondItem="Akj-38-Xoo" secondAttribute="leading" constant="20" id="QCH-Pb-JZD"/>
+                                                <constraint firstItem="ua9-zn-t7I" firstAttribute="centerY" secondItem="Akj-38-Xoo" secondAttribute="centerY" id="gbw-y7-Emy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
