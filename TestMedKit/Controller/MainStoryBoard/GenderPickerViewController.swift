@@ -12,7 +12,7 @@ class GenderPickerViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var genderPicker: UIPickerView!
     
     var patient: Patient!
-    var genderSelected: String = GENDERS[0]
+    var genderSelected: String = genders.first!
 
     
     override func viewDidLoad() {
@@ -35,19 +35,19 @@ class GenderPickerViewController: UIViewController, UIPickerViewDataSource, UIPi
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return GENDERS.count
+        return genders.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-        return GENDERS[row]
+        return genders[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        genderSelected = GENDERS[row]
+        genderSelected = genders[row]
     }
     
     @objc func doneButtonAction(_ sender: UIBarButtonItem){
-        patient.gender = genderSelected
+        patient.basicInfo.gender = genderSelected
         self.navigationController?.popViewController(animated: true)
     }
 

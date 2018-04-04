@@ -12,12 +12,11 @@ class DetailProfileTableViewController: UITableViewController {
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var birthdayLabel: UILabel!
-    
+    @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
-    
     @IBOutlet weak var emailLabel: UILabel!
+    
     var patient: Patient!
     
     override func viewDidLoad() {
@@ -34,12 +33,16 @@ class DetailProfileTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        firstNameLabel.text = patient.firstName
-        lastNameLabel.text = patient.lastName
-        genderLabel.text = patient.gender
-        birthdayLabel.text = patient.dateOfBirth
-        phoneLabel.text = patient.phoneNumber
-        emailLabel.text = patient.email
+        firstNameLabel.text = patient.basicInfo.firstName
+        lastNameLabel.text = patient.basicInfo.lastName
+        genderLabel.text = patient.basicInfo.gender
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "mm-dd-yyyy"
+        
+        birthdayLabel.text = dateFormatter.string(from: patient.basicInfo.dateOfBirth)
+        ageLabel.text = "\(patient.basicInfo.age)"
+        phoneLabel.text = patient.basicInfo.phone
+        emailLabel.text = patient.basicInfo.email
     }
 
     override func didReceiveMemoryWarning() {

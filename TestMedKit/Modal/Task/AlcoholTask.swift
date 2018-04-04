@@ -17,7 +17,7 @@ class AlcoholTask: Task {
         
         let alcoholTask = ORKNavigableOrderedTask(identifier: "alcoholTask", steps: steps)
         
-        AlcoholTask.createAlcoholNavigationRule(for: alcoholTask)
+        AlcoholTask.createNavigationRule(for: alcoholTask)
         super.init(alcoholTask, viewController)
     }
     
@@ -62,7 +62,7 @@ class AlcoholTask: Task {
         return steps
     }
     
-    private static func createAlcoholNavigationRule(for alcoholTask: ORKNavigableOrderedTask){
+    private static func createNavigationRule(for alcoholTask: ORKNavigableOrderedTask){
         let alcoholUseStepResult = ORKResultSelector(resultIdentifier: "alcoholUseStep")
         let predicateNoForAlcoholUseStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: alcoholUseStepResult, expectedAnswer: false)
         let predicateNoForAlcoholUseStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForAlcoholUseStep, "hazardExposureStep")])

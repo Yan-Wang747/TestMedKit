@@ -8,4 +8,4 @@
 
 import Foundation
 
-let GENDERS = ["Male", "Female", "Unspecified"]
+let genders = ["Male", "Female", "Unspecified"]

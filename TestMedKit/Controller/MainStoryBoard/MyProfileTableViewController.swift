@@ -13,7 +13,8 @@ class MyProfileTableViewController: UITableViewController{
     var task: Task?
     
     @IBOutlet weak var nameLabel: UILabel!
-    var patient: Patient = Patient(firstName: "Jong-un", lastName: "Kim", gender: "Male", dateOfBirth: "January 8, 1984", phoneNumber: "001-204-123-4567", email: "imyoursun@KWP.nkr")
+    
+    var patient: Patient!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +28,20 @@ class MyProfileTableViewController: UITableViewController{
         let footerView = UIView()
         self.tableView.tableFooterView = footerView
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "mm-dd-yyyy"
+        let dateOfBirth = dateFormatter.date(from: "01-08-1984")!
+        let gender = genders.first
+        
+        let testBasicInfo = BasicInfo(firstName: "Jong-un", lastName: "Kim", gender: gender!, dateOfBirth: dateOfBirth, phone: "001-204-123-4567", email: "imyoursun@KWP.nkr")
+        
+        patient = Patient(basicInfo: testBasicInfo)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        nameLabel.text = patient.firstName + " " + patient.lastName
+        nameLabel.text = patient.basicInfo.fullName
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,7 +82,13 @@ class MyProfileTableViewController: UITableViewController{
         case 4:
             task = AllergyTask(self)
         case 5:
-            task = TestTask(self)
+            task = MedicationTask(self)
+        case 6:
+            task = MedicalConditionTask(self)
+        case 7:
+            task = SurgicalTask(self)
+        case 8:
+            task = GynecologyTask(self)
         default:
             task = nil
         }

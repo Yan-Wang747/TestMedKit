@@ -23,13 +23,13 @@ class BirthdayPickerViewController: UIViewController {
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .none
-        let birthday = dateFormatter.date(from: patient.dateOfBirth)
+        let birthday = patient.basicInfo.dateOfBirth
         
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = doneBarButton
         
         birthdayPicker.datePickerMode = .date
-        birthdayPicker.date = birthday!
+        birthdayPicker.date = birthday
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,8 +38,7 @@ class BirthdayPickerViewController: UIViewController {
     }
     
     @objc func doneButtonAction(_ sender: UIBarButtonItem){
-        let newBirthday = birthdayPicker.date
-        patient.dateOfBirth = dateFormatter.string(from: newBirthday)
+        patient.basicInfo.dateOfBirth = birthdayPicker.date
         self.navigationController?.popViewController(animated: true)
     }
 

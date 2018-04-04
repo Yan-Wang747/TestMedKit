@@ -14,8 +14,11 @@ class MedicationTask: Task {
         let steps = MedicationTask.createSteps()
         
         let medicationTask = ORKNavigableOrderedTask(identifier: "medicationTask", steps: steps)
+        MedicationTask.createNavigationRule(for: medicationTask)
         super.init(medicationTask, viewController)
     }
+    
+    static let medTypes = ["Prescription", "Over-the-Counter", "Herbal"]
     
     private static func createSteps() -> [ORKStep] {
         var steps: [ORKStep] = []
@@ -25,39 +28,43 @@ class MedicationTask: Task {
         instructionStep.detailText = "This survey helps us understand your medication history"
         steps.append(instructionStep)
         
+        let createTakeAnyFunctions = [createTakeAnyPrescriptionMedicationStep, createTakeAnyOverTheCounterMedicationStep, createTakeHerbalProductsStep]
         
-        
-        steps.append(createTakeAnyMedicationStep())
-        steps.append(createMedicationNameStep())
-        steps.append(createMedicationDoseUnitStep())
-        steps.append(createMedicationDoseAmountStep())
-        steps.append(createMedicationFrequencyStep())
-        steps.append(createMedicationTakenWay())
-        steps.append(createmedicationStartDateStep())
-        
+        var i = 0
+        for medType in medTypes {
+            steps.append(createTakeAnyFunctions[i]())
+            i += 1
+            steps.append(createMedicationNameStep(medType: medType))
+            steps.append(createMedicationDoseUnitStep(medType: medType))
+            steps.append(createMedicationDoseAmountStep(medType: medType))
+            steps.append(createMedicationFrequencyStep(medType: medType))
+            steps.append(createMedicationTakenWayStep(medType: medType))
+            steps.append(createmedicationStartDateStep(medType: medType))
+        }
+
         self.appendReviewStep(steps: &steps)
         
         return steps
     }
     
-    private static func createTakeAnyMedicationStep() -> ORKStep {
+    private static func createTakeAnyPrescriptionMedicationStep() -> ORKStep {
         let booleanAnswer = ORKBooleanAnswerFormat(yesString: "Yes", noString: "No")
         
-        let takeAnyMedicationStep = ORKQuestionStep(identifier: "takeAnyMedicationStep", title: "Do you currently take any Prescription medications?", answer: booleanAnswer)
+        let takeAnyPrescriptionMedicationStep = ORKQuestionStep(identifier: "takeAnyPrescriptionMedicationStep", title: "Do you currently take any Prescription medications?", answer: booleanAnswer)
         
-        return takeAnyMedicationStep
+        return takeAnyPrescriptionMedicationStep
     }
     
-    private static func createMedicationNameStep() -> ORKStep {
+    private static func createMedicationNameStep(medType: String) -> ORKStep {
         let textAnswerFormat = ORKTextAnswerFormat(maximumLength: 99)
         
-        let medicationNameStep = ORKQuestionStep(identifier: "medicationNameStep", title: "Using the information supplied on the pharmacy label, what is the name of the medication.", answer: textAnswerFormat)
+        let nameStep = ORKQuestionStep(identifier: medType.lowercased() + "_" + "NameStep", title: "Using the information supplied on the pharmacy label please complete the following, what is the name of the medication.", answer: textAnswerFormat)
         
-        return medicationNameStep
+        return nameStep
     }
     
-    private static func createMedicationDoseUnitStep() -> ORKStep {
-        let medicationDoseUnitAnswerFormat = ORKTextChoiceAnswerFormat(style: .singleChoice, textChoices:
+    private static func createMedicationDoseUnitStep(medType: String) -> ORKStep {
+        let doseUnitAnswerFormat = ORKTextChoiceAnswerFormat(style: .singleChoice, textChoices:
             [ORKTextChoice(text: "mg", value: "mg" as NSString),
              ORKTextChoice(text: "Mcg", value: "Mcg" as NSString),
              ORKTextChoice(text: "G", value: "G" as NSString),
@@ -71,21 +78,21 @@ class MedicationTask: Task {
             ])
 
         
-        let medicationDoseUnitStep = ORKQuestionStep(identifier: "medicationDoseUnitStep", title: "What is the dose unit", answer: medicationDoseUnitAnswerFormat)
+        let doseUnitStep = ORKQuestionStep(identifier: medType.lowercased() + "_" + "DoseUnitStep", title: "What is the dose unit", answer: doseUnitAnswerFormat)
         
-        return medicationDoseUnitStep
+        return doseUnitStep
     }
     
-    private static func createMedicationDoseAmountStep() -> ORKStep {
+    private static func createMedicationDoseAmountStep(medType: String) -> ORKStep {
         let numberAnswerFormat = ORKNumericAnswerFormat(style: .decimal)
         
-        let medicationDoseAmountStep = ORKQuestionStep(identifier: "medicationDoseAmountStep", title: "What is the dose", answer: numberAnswerFormat)
+        let doseAmountStep = ORKQuestionStep(identifier: medType.lowercased() + "_" + "DoseAmountStep", title: "What is the dose", answer: numberAnswerFormat)
         
-        return medicationDoseAmountStep
+        return doseAmountStep
     }
     
-    private static func createMedicationFrequencyStep() -> ORKStep {
-        let medicationFrequencyAnswerFormat = ORKTextChoiceAnswerFormat(style: .singleChoice, textChoices:
+    private static func createMedicationFrequencyStep(medType: String) -> ORKStep {
+        let frequencyAnswerFormat = ORKTextChoiceAnswerFormat(style: .singleChoice, textChoices:
             [ORKTextChoice(text: "Once daily", value: "Once daily" as NSString),
              ORKTextChoice(text: "Twice daily", value: "Twice daily" as NSString),
              ORKTextChoice(text: "Three times daily", value: "Three times daily" as NSString),
@@ -97,13 +104,13 @@ class MedicationTask: Task {
              ORKTextChoice(text: "As required", value: "As required" as NSString)
             ])
         
-        let medicationFrequencyStep = ORKQuestionStep(identifier: "medicationFrequencyStep", title: "How often do you take it", answer: medicationFrequencyAnswerFormat)
+        let frequencyStep = ORKQuestionStep(identifier: medType.lowercased() + "_" + "FrequencyStep", title: "How often do you take it", answer: frequencyAnswerFormat)
         
-        return medicationFrequencyStep
+        return frequencyStep
     }
     
-    private static func createMedicationTakenWay() -> ORKStep {
-        let medicationTakenWayAnswerFormat = ORKTextChoiceAnswerFormat(style: .singleChoice, textChoices:
+    private static func createMedicationTakenWayStep(medType: String) -> ORKStep {
+        let takenWayAnswerFormat = ORKTextChoiceAnswerFormat(style: .singleChoice, textChoices:
             [ORKTextChoice(text: "Orally", value: "Orally" as NSString),
              ORKTextChoice(text: "Injection", value: "Injection" as NSString),
              ORKTextChoice(text: "Rectally", value: "Rectally" as NSString),
@@ -115,16 +122,52 @@ class MedicationTask: Task {
              ORKTextChoice(text: "vaginally", value: "vaginally" as NSString)
             ])
         
-        let medicationTakenWayStep = ORKQuestionStep(identifier: "medicationTakenWayStep", title: "How is it taken", answer: medicationTakenWayAnswerFormat)
+        let takenWayStep = ORKQuestionStep(identifier: medType.lowercased() + "_" + "TakenWayStep", title: "How is it taken", answer: takenWayAnswerFormat)
         
-        return medicationTakenWayStep
+        return takenWayStep
     }
     
-    private static func createmedicationStartDateStep () -> ORKStep {
+    private static func createmedicationStartDateStep (medType: String) -> ORKStep {
         let dateAnswerFormat = ORKDateAnswerFormat(style: .date)
         
-        let medicationStartDateStep = ORKQuestionStep(identifier: "medicationStartDateStep", title: "When did you start?", answer: dateAnswerFormat)
+        let startDateStep = ORKQuestionStep(identifier: medType.lowercased() + "_" + "StartDateStep", title: "When did you start?", answer: dateAnswerFormat)
         
-        return medicationStartDateStep
+        return startDateStep
+    }
+    
+    private static func createTakeAnyOverTheCounterMedicationStep() -> ORKStep {
+        let booleanAnswer = ORKBooleanAnswerFormat(yesString: "Yes", noString: "No")
+        
+        let takeAnyOverTheCounterMedicationStep = ORKQuestionStep(identifier: "takeAnyOverTheCounterMedicationStep", title: "Do you currently take any over the counter medications?", answer: booleanAnswer)
+        
+        return takeAnyOverTheCounterMedicationStep
+    }
+    
+    private static func createTakeHerbalProductsStep() -> ORKStep {
+        let booleanAnswer = ORKBooleanAnswerFormat(yesString: "Yes", noString: "No")
+        
+        let takeAnyHerbalProductsStep = ORKQuestionStep(identifier: "takeAnyHerbalProductsStep", title: "Do you currently take any Herbal or Holistic products?", answer: booleanAnswer)
+        
+        return takeAnyHerbalProductsStep
+    }
+    
+    private static func createNavigationRule(for task: ORKNavigableOrderedTask) {
+        let takeAnyPrescriptionMedicationResult = ORKResultSelector(resultIdentifier: "takeAnyPrescriptionMedicationStep")
+        
+        let predicateNoForTakeAnyPrescriptionMedication = ORKResultPredicate.predicateForBooleanQuestionResult(with: takeAnyPrescriptionMedicationResult, expectedAnswer: false)
+        
+        let predicateNoForTakeAnyPrescriptionMedicationRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForTakeAnyPrescriptionMedication, "takeAnyOverTheCounterMedicationStep")])
+        
+        task.setNavigationRule(predicateNoForTakeAnyPrescriptionMedicationRule, forTriggerStepIdentifier: "takeAnyPrescriptionMedicationStep")
+        
+        let takeAnyOverTheCounterMedicationResult = ORKResultSelector(resultIdentifier: "takeAnyOverTheCounterMedicationStep")
+        let predicateNoForTakeAnyOverTheCounterMedication = ORKResultPredicate.predicateForBooleanQuestionResult(with: takeAnyOverTheCounterMedicationResult, expectedAnswer: false)
+        let predicateNoForTakeAnyOverTheCounterMedicationRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForTakeAnyOverTheCounterMedication, "takeAnyHerbalProductsStep")])
+        task.setNavigationRule(predicateNoForTakeAnyOverTheCounterMedicationRule, forTriggerStepIdentifier: "takeAnyOverTheCounterMedicationStep")
+        
+        let takeAnyHerbalProductsResult = ORKResultSelector(resultIdentifier: "takeAnyHerbalProductsStep")
+        let predicateNoForTakeAnyHerbalProducts = ORKResultPredicate.predicateForBooleanQuestionResult(with: takeAnyHerbalProductsResult, expectedAnswer: false)
+        let predicateNoForTakeAnyHerbalProductsRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForTakeAnyHerbalProducts, "reviewStep")])
+        task.setNavigationRule(predicateNoForTakeAnyHerbalProductsRule, forTriggerStepIdentifier: "takeAnyHerbalProductsStep")
     }
 }

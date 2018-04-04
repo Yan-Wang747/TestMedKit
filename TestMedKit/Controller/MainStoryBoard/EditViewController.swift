@@ -29,13 +29,13 @@ class EditViewController: UIViewController {
         promptMessageLabel.text = defaultPromptMessage + which.rawValue
         switch which{
         case .FirstName:
-            nameTextField.text = patient.firstName
+            nameTextField.text = patient.basicInfo.firstName
         case .LastName:
-            nameTextField.text = patient.lastName
+            nameTextField.text = patient.basicInfo.lastName
         case .Phone:
-            nameTextField.text = patient.phoneNumber
+            nameTextField.text = patient.basicInfo.phone
         case .Email:
-            nameTextField.text = patient.email
+            nameTextField.text = patient.basicInfo.email
         default:
             fatalError()
         }
@@ -46,13 +46,13 @@ class EditViewController: UIViewController {
         if let newValue = nameTextField.text{
             switch which{
             case .FirstName:
-                patient.firstName = newValue
+                patient.basicInfo.firstName = newValue
             case .LastName:
-                patient.lastName = newValue
+                patient.basicInfo.lastName = newValue
             case .Phone:
-                patient.phoneNumber = newValue
+                patient.basicInfo.phone = newValue
             case .Email:
-                patient.email = newValue
+                patient.basicInfo.email = newValue
             default:
                 fatalError()
             }
