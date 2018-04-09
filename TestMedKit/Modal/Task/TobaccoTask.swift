@@ -13,27 +13,15 @@ import UIKit
 class TobaccoTask: Task {
     static let tobaccoProducts = ["Cigarette", "Cigar", "Pipe"]
     
-    init(_ viewController: UIViewController) {
+    init(_ viewController: UIViewController, patient: Patient) {
         let steps = TobaccoTask.createTobaccoSteps()
         
-        let tobaccoTask = ORKNavigableOrderedTask(identifier: "tobaccoTask", steps: steps)
+        let tobaccoTask = ORKTobaccoTask(identifier: "tobaccoTask", steps: steps)
         
+        tobaccoTask.tobaccoProducts = TobaccoTask.tobaccoProducts
         TobaccoTask.createTobaccoNavigationRule(for: tobaccoTask)
         
-        super.init(tobaccoTask, viewController)
-    }
-    
-    override func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
-        switch  reason {
-        case .completed:
-            processResult(result: taskViewController.result)
-        default:
-            <#code#>
-        }
-    }
-    
-    func processResult(result: ORKTaskResult) {
-        
+        super.init(task: tobaccoTask, viewController: viewController, delegate: TobaccoTaskResultProcessor(patient: patient))
     }
     
     private static func createTobaccoSteps() -> [ORKStep]{
@@ -52,7 +40,7 @@ class TobaccoTask: Task {
             steps.append(createAmountStep(for: tobaccoProduct, nth: 1))
         }
         
-        steps.append(createEverSmokeStep())
+        steps.append(createEverUsedTobaccoStep())
         steps.append(createTobaccoSelectionStep(nth: 2))
         for tobaccoProduct in tobaccoProducts {
             steps.append(createStartDateStep(for: tobaccoProduct, nth: 2))
@@ -70,10 +58,10 @@ class TobaccoTask: Task {
         return ORKQuestionStep(identifier: "tobaccoUseStep", title: "Do you use tobacco products? This includes cigarettes, pipe, cigars, cigarrillos", answer: booleanAnswer)
     }
     
-    private static func createEverSmokeStep() -> ORKStep {
+    private static func createEverUsedTobaccoStep() -> ORKStep {
         let booleanAnswer = ORKBooleanAnswerFormat(yesString: "Yes", noString: "No")
     
-        return ORKQuestionStep(identifier: "tobaccoEverUseStep", title: "Have you ever smoked?", answer: booleanAnswer)
+        return ORKQuestionStep(identifier: "everUsedTobaccoStep", title: "Have you ever smoked?", answer: booleanAnswer)
     }
     
     private static func createTobaccoSelectionStep(nth: Int) -> ORKStep {
@@ -102,33 +90,15 @@ class TobaccoTask: Task {
     
     private static func createTobaccoNavigationRule(for tobaccoTask: ORKNavigableOrderedTask){
         //========================
-        let tobaccoUseStepResult = ORKResultSelector(resultIdentifier: "tobaccoUseStep")
-        let predicateYesForTobaccoUseStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: tobaccoUseStepResult, expectedAnswer: true)
-        let predicateYesForTobaccoUseStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateYesForTobaccoUseStep, "useCigaretteStep")])
-        tobaccoTask.setNavigationRule(predicateYesForTobaccoUseStepRule, forTriggerStepIdentifier: "tobaccoUseStep")
+        let tobaccoUseResult = ORKResultSelector(resultIdentifier: "tobaccoUseStep")
+        let predicateNoForTobaccoUseStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: tobaccoUseResult, expectedAnswer: false)
+        let predicateNoForTobaccoUseStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForTobaccoUseStep, "everUsedTobaccoStep")])
+        tobaccoTask.setNavigationRule(predicateNoForTobaccoUseStepRule, forTriggerStepIdentifier: "tobaccoUseStep")
         
         //=======================
-        let everSmokeStepResult = ORKResultSelector(resultIdentifier: "everSmokeStep")
-        let predicateNoForEverSmokeStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: everSmokeStepResult, expectedAnswer: false)
+        let everUsedTobaccoResult = ORKResultSelector(resultIdentifier: "everUsedTobaccoStep")
+        let predicateNoForEverSmokeStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: everUsedTobaccoResult, expectedAnswer: false)
         let predicateNoForEverSmokeStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForEverSmokeStep, "reviewStep")])
-        tobaccoTask.setNavigationRule(predicateNoForEverSmokeStepRule, forTriggerStepIdentifier: "everSmokeStep")
-        
-        //======================
-        let useCigaretteStepResult = ORKResultSelector(resultIdentifier: "useCigaretteStep")
-        let predicateNoForUseCigaretteStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: useCigaretteStepResult, expectedAnswer: false)
-        let predicateNoForUseCigaretteStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForUseCigaretteStep, "useCigarStep")])
-        tobaccoTask.setNavigationRule(predicateNoForUseCigaretteStepRule, forTriggerStepIdentifier: "useCigaretteStep")
-        
-        //=======================
-        let useCigarStepResult = ORKResultSelector(resultIdentifier: "useCigarStep")
-        let predicateNoForUseCigarStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: useCigarStepResult, expectedAnswer: false)
-        let predicateNoForUseCigarStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForUseCigarStep, "usePipeStep")])
-        tobaccoTask.setNavigationRule(predicateNoForUseCigarStepRule, forTriggerStepIdentifier: "useCigarStep")
-        
-        //===========================
-        let usePipeStepResult = ORKResultSelector(resultIdentifier: "usePipeStep")
-        let predicateNoForUsePipeStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: usePipeStepResult, expectedAnswer: false)
-        let predicateNoForUsePipeStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForUsePipeStep, "reviewStep")])
-        tobaccoTask.setNavigationRule(predicateNoForUsePipeStepRule, forTriggerStepIdentifier: "usePipeStep")
+        tobaccoTask.setNavigationRule(predicateNoForEverSmokeStepRule, forTriggerStepIdentifier: "everUsedTobaccoStep")
     }
 }

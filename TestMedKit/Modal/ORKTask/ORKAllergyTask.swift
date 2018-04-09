@@ -16,22 +16,20 @@ class ORKAllergyTask : ORKNavigableOrderedTask {
     override func step(after step: ORKStep?, with result: ORKTaskResult) -> ORKStep? {
         guard let thisStep = step else { return super.step(after: step, with: result) }
         
-        var nextStep = super.step(after: thisStep, with: result)
-        
         let id = thisStep.identifier
         if id == "allergyTypeSelectionStep"{
-            nextStep = allergyTypeSelectionStepRule(step: thisStep, with: result)
+            return allergyTypeSelectionStepRule(step: thisStep, with: result)
         }else if id.contains("AllergyReactionStep") {
-            nextStep = allergyReactionStepRule(step: thisStep, with: result)
+            return allergyReactionStepRule(step: thisStep, with: result)
         }else if id.contains("DateOfOccurrenceStep") {
-            nextStep = dateOfOccurrenceStepRule(step: thisStep, with: result)
+            return dateOfOccurrenceStepRule(step: thisStep, with: result)
         }
         
-        return nextStep
+        return super.step(after: thisStep, with: result)
     }
     
-    private func allergyTypeSelectionStepRule(step: ORKStep?, with result: ORKTaskResult) -> ORKStep? {
-       guard let selectedAllergies = ((result.result(forIdentifier: "allergyTypeSelectionStep") as? ORKStepResult)?.result(forIdentifier: "allergyTypeSelectionStep") as? ORKChoiceQuestionResult)?.choiceAnswers as? [String], selectedAllergies.count > 0 else {
+    private func allergyTypeSelectionStepRule(step: ORKStep, with result: ORKTaskResult) -> ORKStep? {
+        guard let selectedAllergies = ((result.result(forIdentifier: (step.identifier)) as? ORKStepResult)?.result(forIdentifier: step.identifier) as? ORKChoiceQuestionResult)?.choiceAnswers as? [String], selectedAllergies.count > 0 else {
         
             return super.step(after: step, with: result)}
         

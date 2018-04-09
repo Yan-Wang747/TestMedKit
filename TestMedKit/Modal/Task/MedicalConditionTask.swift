@@ -12,14 +12,14 @@ import ResearchKit
 class MedicalConditionTask: Task {
      static let medicalConditions = ["Cancer", "Asthma", "Bleeding Problems", "Blood Clots", "Blood Disorders", "Cardiovascular Disease", "Diabetes", "Emphysema", "Heart Attack", "Heart Disease", "Hypertension", "Kidney Stones", "Liver Problems", "Osteoarthritis", "Pneumonia", "Seizure", "Stroke", "Thyroid Problems", "Other"]
     
-    init(_ viewController: UIViewController) {
+    init(_ viewController: UIViewController, patient: Patient) {
         let steps = MedicalConditionTask.createSteps()
         
         let medicalConditionTask = ORKMedicalConditionTask(identifier: "medicalConditionTask", steps: steps)
         medicalConditionTask.medicalConditions = MedicalConditionTask.medicalConditions
         
         MedicalConditionTask.createNavigationRule(for: medicalConditionTask)
-        super.init(medicalConditionTask, viewController)
+        super.init(task: medicalConditionTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
     }
     
     private static func createSteps() -> [ORKStep] {

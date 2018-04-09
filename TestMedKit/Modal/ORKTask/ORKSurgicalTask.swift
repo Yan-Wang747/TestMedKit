@@ -16,15 +16,13 @@ class ORKSurgicalTask: ORKNavigableOrderedTask {
         
         guard let thisStep = step else { return super.step(after: step, with: result)}
         
-        var nextStep = super.step(after: step, with: result)
-        
         if thisStep.identifier == "surgerySelectionStep" {
-            nextStep = surgerySelectionStepRule(step: thisStep, with: result)
+            return surgerySelectionStepRule(step: thisStep, with: result)
         }else if thisStep.identifier.contains("OnsetDateStep"){
-            nextStep = onsetDateStepRule(step: thisStep, with: result)
+            return onsetDateStepRule(step: thisStep, with: result)
         }
         
-        return nextStep
+        return super.step(after: step, with: result)
     }
     
     private func onsetDateStepRule(step: ORKStep, with result: ORKTaskResult) -> ORKStep? {
@@ -52,7 +50,7 @@ class ORKSurgicalTask: ORKNavigableOrderedTask {
     
     private func surgerySelectionStepRule(step: ORKStep, with result: ORKTaskResult) -> ORKStep? {
 
-        guard let selectedSurgeries = ((result.result(forIdentifier: "surgerySelectionStep") as? ORKStepResult)?.result(forIdentifier: "surgerySelectionStep") as? ORKChoiceQuestionResult)?.choiceAnswers as? [String], selectedSurgeries.count > 0 else { return super.step(after: step, with: result)}
+        guard let selectedSurgeries = ((result.result(forIdentifier: step.identifier) as? ORKStepResult)?.result(forIdentifier: step.identifier) as? ORKChoiceQuestionResult)?.choiceAnswers as? [String], selectedSurgeries.count > 0 else { return super.step(after: step, with: result)}
         
         for surgery in surgeryTypes {
             if selectedSurgeries.contains(surgery) {

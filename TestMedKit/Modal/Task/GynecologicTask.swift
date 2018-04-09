@@ -13,7 +13,7 @@ class GynecologyTask: Task {
     static let hormoneTypeStrings = ["Contraceptive", "Post Menopause Use", "Other Hormone Use"]
     static let menopauseStatuses = ["Premenopausal", "Perimenopause", "Postmenopausal", "Unknown"]
     
-    init(_ viewController: UIViewController) {
+    init(_ viewController: UIViewController, patient: Patient) {
         let steps = GynecologyTask.createSteps()
         
         let gynecologyTask = ORKGynecologyTask(identifier: "gynecologyTask", steps: steps)
@@ -21,7 +21,7 @@ class GynecologyTask: Task {
         
         GynecologyTask.createNavigationRule(for: gynecologyTask)
         
-        super.init(gynecologyTask, viewController)
+        super.init(task: gynecologyTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
     }
     
     private static func createSteps() -> [ORKStep] {

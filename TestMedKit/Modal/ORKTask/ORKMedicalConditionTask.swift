@@ -16,21 +16,19 @@ class ORKMedicalConditionTask: ORKNavigableOrderedTask {
         
         guard let thisStep = step else { return super.step(after: step, with: result) }
         
-        var nextStep = super.step(after: step, with: result)
-        
         if thisStep.identifier == "medicalConditionSelectionStep" {
-            nextStep = medicalConditionSelectionStepRule(step: thisStep, with: result)
+            return medicalConditionSelectionStepRule(step: thisStep, with: result)
         }else if thisStep.identifier.contains("IsTreatedStep") {
-            nextStep = isTreatedStepRule(step: thisStep, with: result)
+            return isTreatedStepRule(step: thisStep, with: result)
         }else if thisStep.identifier.contains("HowIsTreatedStep") {
-            nextStep = howIsTreatedStepRule(step: thisStep, with: result)
+            return howIsTreatedStepRule(step: thisStep, with: result)
         }
         
-        return nextStep
+        return super.step(after: step, with: result)
     }
     
     private func medicalConditionSelectionStepRule(step: ORKStep, with result: ORKTaskResult) -> ORKStep? {
-        guard let selectedSurgeries = ((result.result(forIdentifier: "medicalConditionSelectionStep") as? ORKStepResult)?.result(forIdentifier: "medicalConditionSelectionStep") as? ORKChoiceQuestionResult)?.choiceAnswers as? [String], selectedSurgeries.count > 0 else { return super.step(after: step, with: result)}
+        guard let selectedSurgeries = ((result.result(forIdentifier: step.identifier) as? ORKStepResult)?.result(forIdentifier: step.identifier) as? ORKChoiceQuestionResult)?.choiceAnswers as? [String], selectedSurgeries.count > 0 else { return super.step(after: step, with: result)}
         
         for medicalCondition in medicalConditions {
             if selectedSurgeries.contains(medicalCondition){

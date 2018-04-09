@@ -15,19 +15,17 @@ class ORKFamilyHistoryTask: ORKNavigableOrderedTask {
     override func step(after step: ORKStep?, with result: ORKTaskResult) -> ORKStep? {
         guard let thisStep = step else { return super.step(after: step, with: result)}
         
-        var nextStep = super.step(after: step, with: result)
-        
         if thisStep.identifier == "familiyMemberSelectionStep" {
-            nextStep = familiyMemberSelectionStepRule(step: thisStep, result: result)
+            return familiyMemberSelectionStepRule(step: thisStep, result: result)
         } else if thisStep.identifier.contains("PassAwayAgeStep") || thisStep.identifier.contains("CurrentAgeStep") {
-            nextStep = nextFamilyMember(step: thisStep, result: result)
+            return nextFamilyMember(step: thisStep, result: result)
         }
         
-        return nextStep
+        return super.step(after: step, with: result)
     }
     
     private func familiyMemberSelectionStepRule(step: ORKStep, result: ORKTaskResult) -> ORKStep? {
-        guard let selectedFamilyMembers = ((result.result(forIdentifier: "familiyMemberSelectionStep") as? ORKStepResult)?.result(forIdentifier: "familiyMemberSelectionStep") as? ORKChoiceQuestionResult)?.choiceAnswers as? [String], selectedFamilyMembers.count > 0 else { return super.step(after: step, with: result)}
+        guard let selectedFamilyMembers = ((result.result(forIdentifier: step.identifier) as? ORKStepResult)?.result(forIdentifier: step.identifier) as? ORKChoiceQuestionResult)?.choiceAnswers as? [String], selectedFamilyMembers.count > 0 else { return super.step(after: step, with: result)}
         
         for familyMember in familyMembers {
             if selectedFamilyMembers.contains(familyMember){

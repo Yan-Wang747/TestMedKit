@@ -11,13 +11,13 @@ import UIKit
 import ResearchKit
 
 class PersonalTask: Task {
-    init(_ viewController: UIViewController) {
+    init(_ viewController: UIViewController, patient: Patient) {
         let steps = PersonalTask.createPersonalSteps()
         
         let personalTask = ORKNavigableOrderedTask(identifier: "personalTask", steps: steps)
         
         PersonalTask.createPersonalNavigationRule(for: personalTask)
-        super.init(personalTask, viewController)
+        super.init(task: personalTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
     }
 
     private static func createPersonalSteps() -> [ORKStep]{

@@ -10,14 +10,14 @@ import Foundation
 import ResearchKit
 
 class AllergyTask: Task {
-    init(_ viewController: UIViewController) {
+    init(_ viewController: UIViewController, patient: Patient) {
         let steps = AllergyTask.createSteps()
         
         let allergyTask = ORKAllergyTask(identifier: "allergyTask", steps: steps)
         allergyTask.allergyTypes = AllergyTask.allergyTypes
         allergyTask.allergyReactions = AllergyTask.allergyReactions
         
-        super.init(allergyTask, viewController)
+        super.init(task: allergyTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
     }
     
     static let allergyTypes = ["Drug", "Drugclass", "Food", "Other", "Unknown"]

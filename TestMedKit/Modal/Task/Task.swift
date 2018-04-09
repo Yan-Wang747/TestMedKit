@@ -10,13 +10,15 @@ import Foundation
 import ResearchKit
 import UIKit
 
-class Task: NSObject, ORKTaskViewControllerDelegate{
+class Task {
     let viewController: UIViewController
     let task: ORKNavigableOrderedTask
+    let delegate: ORKTaskViewControllerDelegate
     
-    init(_ task: ORKNavigableOrderedTask, _ viewController: UIViewController){
+    init(task: ORKNavigableOrderedTask, viewController: UIViewController, delegate: ORKTaskViewControllerDelegate){
         self.viewController = viewController
         self.task = task
+        self.delegate = delegate
     }
     
     static func appendReviewStep(steps: inout [ORKStep]) {
@@ -31,12 +33,8 @@ class Task: NSObject, ORKTaskViewControllerDelegate{
     
     func performTask(){
         let taskViewController = ORKTaskViewController(task: task, taskRun: nil)
-        taskViewController.delegate = self
+        taskViewController.delegate = delegate
         taskViewController.navigationBar.tintColor = UIColor.darkText
         viewController.present(taskViewController, animated: true, completion: nil)
-    }
-    
-    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
-        taskViewController.dismiss(animated: true, completion: nil)
     }
 }

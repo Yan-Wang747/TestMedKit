@@ -10,6 +10,8 @@ import Foundation
 
 class Patient{
     var basicInfo: BasicInfo
+    var tobaccoInfo: TobaccoInfo?
+    var alcoholInfo: AlcoholInfo?
     
     init(basicInfo: BasicInfo) {
         self.basicInfo = basicInfo

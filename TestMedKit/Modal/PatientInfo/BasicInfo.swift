@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BasicInfo {
+class BasicInfo: TaskInfo {
     var firstName: String
     var lastName: String
     var gender: String

@@ -42,6 +42,29 @@ class MyProfileTableViewController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         nameLabel.text = patient.basicInfo.fullName
+        
+        checkTobaccoStatus()
+        checkAlcoholStatus()
+    }
+    
+    func checkTobaccoStatus() {
+        if let isCompleted = patient.tobaccoInfo?.isCompleted{
+            if isCompleted {
+                if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)){
+                    cell.accessoryType = .checkmark
+                }
+            }
+        }
+    }
+    
+    func checkAlcoholStatus() {
+        if let isCompleted = patient.alcoholInfo?.isCompleted{
+            if isCompleted {
+                if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)){
+                    cell.accessoryType = .checkmark
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,23 +95,23 @@ class MyProfileTableViewController: UITableViewController{
     func performTask(forRow row: Int){
         switch row{
         case 0:
-            task = TobaccoTask(self)
+            task = TobaccoTask(self, patient: patient)
         case 1:
-            task = AlcoholTask(self)
+            task = AlcoholTask(self, patient: patient)
         case 2:
-            task = PersonalTask(self)
+            task = PersonalTask(self, patient: patient)
         case 3:
-            task = FamilyHistoryTask(self)
+            task = FamilyHistoryTask(self, patient: patient)
         case 4:
-            task = AllergyTask(self)
+            task = AllergyTask(self, patient: patient)
         case 5:
-            task = MedicationTask(self)
+            task = MedicationTask(self, patient: patient)
         case 6:
-            task = MedicalConditionTask(self)
+            task = MedicalConditionTask(self, patient: patient)
         case 7:
-            task = SurgicalTask(self)
+            task = SurgicalTask(self, patient: patient)
         case 8:
-            task = GynecologyTask(self)
+            task = GynecologyTask(self, patient: patient)
         default:
             task = nil
         }

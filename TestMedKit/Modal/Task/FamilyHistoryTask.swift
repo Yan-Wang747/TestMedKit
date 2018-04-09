@@ -13,14 +13,14 @@ class FamilyHistoryTask: Task {
     
     static let familyMembers = ["Father", "Mother", "Brother", "Sister", "Son", "Daughter", "Maternal Grandmother", "Maternal Grandfather", "Maternal Aunt", "Maternal Uncle", "Paternal Aunt", "Paternal Uncle", "Half Brother", "Half Sister", "Cousin"]
     
-    init(_ viewController: UIViewController) {
+    init(_ viewController: UIViewController, patient: Patient) {
         let steps = FamilyHistoryTask.createSteps()
         
         let familyHistoryTask = ORKFamilyHistoryTask(identifier: "familyHistoryTask", steps: steps)
         familyHistoryTask.familyMembers = FamilyHistoryTask.familyMembers
         
         FamilyHistoryTask.createNavigationRule(for: familyHistoryTask)
-        super.init(familyHistoryTask, viewController)
+        super.init(task: familyHistoryTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
     }
     
     private static func createSteps() -> [ORKStep]{

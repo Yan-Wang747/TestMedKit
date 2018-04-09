@@ -12,14 +12,15 @@ import ResearchKit
 class SurgicalTask: Task {
     private static let surgeryTypes = ["Amputation", "Appendectomy", "Biopsy", "Bone Marrow Biopsy", "Bone Marrow Transplant", "Cholecystectomy", "Colon Resection", "Colposcopy", "Cystectomy", "Heart By‐pass", "Hernia Repair", "Hysterectomy", "Liver Biopsy", "Mastectomy", "Melanoma Removal", "Ovarian Tumor Removal", "Plastic Surgery", "Prostate Gland Removal", "Tonsillectomy", "Tubal Ligation", "Vasectomy", "Breast Fine Needle Aspiration", "Breast Core Biopsy", "Breast Lumpectomy", "Breast Mastectomy", "Breast Sentinel Node Lymph Biopsy", "Breast Axillary Lymph Node Dissection", "Other"]
     
-    init(_ viewController: UIViewController) {
+    init(_ viewController: UIViewController, patient: Patient) {
         let steps = SurgicalTask.createSteps()
         
         let surgicalTask = ORKSurgicalTask(identifier: "surgicalTask", steps: steps)
         surgicalTask.surgeryTypes = SurgicalTask.surgeryTypes
         
         SurgicalTask.createNavigationRule(for: surgicalTask)
-        super.init(surgicalTask, viewController)
+        
+        super.init(task: surgicalTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
     }
     
     private static func createSteps() -> [ORKStep] {
