@@ -20,7 +20,7 @@ class FamilyHistoryTask: Task {
         familyHistoryTask.familyMembers = FamilyHistoryTask.familyMembers
         
         FamilyHistoryTask.createNavigationRule(for: familyHistoryTask)
-        super.init(task: familyHistoryTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
+        super.init(task: familyHistoryTask, viewController: viewController, delegate: FamilyHistoryTaskResultProcessor(patient: patient))
     }
     
     private static func createSteps() -> [ORKStep]{
@@ -31,7 +31,7 @@ class FamilyHistoryTask: Task {
         instructionStep.detailText = "This survey helps us understand your family history"
         steps.append(instructionStep)
         
-        steps.append(createAnyCancerStep())
+        steps.append(createHaveAnyCancerStep())
         steps.append(createFamiliyMemberSelectionStep())
         
         for familyMember in familyMembers {
@@ -46,10 +46,10 @@ class FamilyHistoryTask: Task {
         return steps
     }
     
-    private static func createAnyCancerStep() -> ORKStep {
+    private static func createHaveAnyCancerStep() -> ORKStep {
         let booleanAnswerFormat = ORKBooleanAnswerFormat()
         
-        return ORKQuestionStep(identifier: "anyCancerStep", title: "Is any of yor family members diagnosed with cancer?", answer: booleanAnswerFormat)
+        return ORKQuestionStep(identifier: "haveAnyCancerStep", title: "Is any of yor family members diagnosed with cancer?", answer: booleanAnswerFormat)
     }
     
     private static func createFamiliyMemberSelectionStep() -> ORKStep {
@@ -99,17 +99,25 @@ class FamilyHistoryTask: Task {
         return ORKQuestionStep(identifier: id, title: "What is your \(familyMember) current age?", answer: ageAnswerFormat)
     }
     
-    private static func createNavigationRule(for task: ORKNavigableOrderedTask) {
-        let anyCancerResult = ORKResultSelector(resultIdentifier: "anyCancerStep")
+    private static func createNavigationRule(for familyTask: ORKNavigableOrderedTask) {
+        
+        createHaveAnyCancerStepRule(for: familyTask)
+        createIsPassAwayStepRule(for: familyTask)
+    }
+    
+    private static func createHaveAnyCancerStepRule(for task: ORKNavigableOrderedTask) {
+        let anyCancerResult = ORKResultSelector(resultIdentifier: "haveAnyCancerStep")
         let predicateNoForAnyCancer = ORKResultPredicate.predicateForBooleanQuestionResult(with: anyCancerResult, expectedAnswer: false)
         let predicateNoForAnyCancerRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForAnyCancer, "reviewStep")])
-        task.setNavigationRule(predicateNoForAnyCancerRule, forTriggerStepIdentifier: "anyCancerStep")
-        
+        task.setNavigationRule(predicateNoForAnyCancerRule, forTriggerStepIdentifier: "haveAnyCancerStep")
+    }
+    
+    private static func createIsPassAwayStepRule(for task: ORKNavigableOrderedTask) {
         for familyMember in familyMembers {
             let isPassAwayResult = ORKResultSelector(resultIdentifier: familyMember.lowercased() + "_" + "IsPassAwayStep")
-            let predicateNoForiIsPassAway = ORKResultPredicate.predicateForBooleanQuestionResult(with: isPassAwayResult, expectedAnswer: false)
-            let predicateNoForiIsPassAwayRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForiIsPassAway, familyMember.lowercased() + "_" + "CurrentAgeStep")])
-            task.setNavigationRule(predicateNoForiIsPassAwayRule, forTriggerStepIdentifier: familyMember.lowercased() + "_" + "IsPassAwayStep")
+            let predicateNoForIsPassAway = ORKResultPredicate.predicateForBooleanQuestionResult(with: isPassAwayResult, expectedAnswer: false)
+            let predicateNoForIsPassAwayRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForIsPassAway, familyMember.lowercased() + "_" + "CurrentAgeStep")])
+            task.setNavigationRule(predicateNoForIsPassAwayRule, forTriggerStepIdentifier: familyMember.lowercased() + "_" + "IsPassAwayStep")
         }
     }
 }

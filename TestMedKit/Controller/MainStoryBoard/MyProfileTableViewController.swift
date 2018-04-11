@@ -45,10 +45,12 @@ class MyProfileTableViewController: UITableViewController{
         
         checkTobaccoStatus()
         checkAlcoholStatus()
+        checkPersonalStatus()
+        checkFamilyStatus()
     }
     
     func checkTobaccoStatus() {
-        if let isCompleted = patient.tobaccoInfo?.isCompleted{
+        if let isCompleted = patient.tobaccoInfo?.isCompleted {
             if isCompleted {
                 if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)){
                     cell.accessoryType = .checkmark
@@ -58,9 +60,29 @@ class MyProfileTableViewController: UITableViewController{
     }
     
     func checkAlcoholStatus() {
-        if let isCompleted = patient.alcoholInfo?.isCompleted{
+        if let isCompleted = patient.alcoholInfo?.isCompleted {
             if isCompleted {
                 if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)){
+                    cell.accessoryType = .checkmark
+                }
+            }
+        }
+    }
+    
+    func checkPersonalStatus() {
+        if let isCompleted = patient.personalInfo?.isCompleted {
+            if isCompleted {
+                if let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 1)){
+                    cell.accessoryType = .checkmark
+                }
+            }
+        }
+    }
+    
+    func checkFamilyStatus() {
+        if let isCompleted = patient.familyInfo?.isCompleted {
+            if isCompleted {
+                if let cell = tableView.cellForRow(at: IndexPath(row: 3, section: 1)){
                     cell.accessoryType = .checkmark
                 }
             }

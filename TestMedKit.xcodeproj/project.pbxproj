@@ -15,6 +15,8 @@
 		3F53804A203F467D0045A492 /* GenderPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538049203F467D0045A492 /* GenderPickerViewController.swift */; };
 		3F54C1A9206AD078002316FE /* ORKFamilyHistoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54C1A8206AD078002316FE /* ORKFamilyHistoryTask.swift */; };
 		3F55632E2062A2550010566C /* GynecologicTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55632D2062A2550010566C /* GynecologicTask.swift */; };
+		3F55935A207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F559359207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift */; };
+		3F55935E207D1BDD00A8C9DE /* PersonalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55935D207D1BDD00A8C9DE /* PersonalInfo.swift */; };
 		3F55CD7D2045AA7200668C7A /* TobaccoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CD7C2045AA7200668C7A /* TobaccoTask.swift */; };
 		3F55CD7F2045B33100668C7A /* AlcoholTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CD7E2045B33100668C7A /* AlcoholTask.swift */; };
 		3F55CD812045B45600668C7A /* PersonalTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CD802045B45600668C7A /* PersonalTask.swift */; };
@@ -33,6 +35,8 @@
 		3F620E5A203754F000655AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E58203754F000655AA4 /* LaunchScreen.storyboard */; };
 		3F620E702037562E00655AA4 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F620E682037550900655AA4 /* ResearchKit.framework */; };
 		3F620E712037562E00655AA4 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F620E682037550900655AA4 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3F627076207E5755004E35AF /* FamilyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627075207E5755004E35AF /* FamilyInfo.swift */; };
+		3F627078207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627077207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift */; };
 		3F719ECB207BC1D40070A986 /* AlcoholTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719ECA207BC1D40070A986 /* AlcoholTaskResultProcessor.swift */; };
 		3F719ED0207BC4430070A986 /* AlcoholInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719ECF207BC4430070A986 /* AlcoholInfo.swift */; };
 		3F719ED2207BCCDE0070A986 /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719ED1207BCCDE0070A986 /* TaskInfo.swift */; };
@@ -94,6 +98,8 @@
 		3F538049203F467D0045A492 /* GenderPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerViewController.swift; sourceTree = "<group>"; };
 		3F54C1A8206AD078002316FE /* ORKFamilyHistoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKFamilyHistoryTask.swift; sourceTree = "<group>"; };
 		3F55632D2062A2550010566C /* GynecologicTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologicTask.swift; sourceTree = "<group>"; };
+		3F559359207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTaskResultProcessor.swift; sourceTree = "<group>"; };
+		3F55935D207D1BDD00A8C9DE /* PersonalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfo.swift; sourceTree = "<group>"; };
 		3F55CD7C2045AA7200668C7A /* TobaccoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoTask.swift; sourceTree = "<group>"; };
 		3F55CD7E2045B33100668C7A /* AlcoholTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholTask.swift; sourceTree = "<group>"; };
 		3F55CD802045B45600668C7A /* PersonalTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTask.swift; sourceTree = "<group>"; };
@@ -113,6 +119,8 @@
 		3F620E59203754F000655AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F620E5B203754F000655AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F620E612037550900655AA4 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ../ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
+		3F627075207E5755004E35AF /* FamilyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyInfo.swift; sourceTree = "<group>"; };
+		3F627077207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryTaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F719ECA207BC1D40070A986 /* AlcoholTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholTaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F719ECF207BC4430070A986 /* AlcoholInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholInfo.swift; sourceTree = "<group>"; };
 		3F719ED1207BCCDE0070A986 /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
@@ -191,6 +199,8 @@
 				3F575CB6207668F4005F8D48 /* TaskResultProcessor.swift */,
 				3F575CB820766E39005F8D48 /* TobaccoTaskResultProcessor.swift */,
 				3F719ECA207BC1D40070A986 /* AlcoholTaskResultProcessor.swift */,
+				3F559359207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift */,
+				3F627077207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift */,
 			);
 			path = ResultProcessor;
 			sourceTree = "<group>";
@@ -198,12 +208,12 @@
 		3F58EA9B205B08AA002A83D0 /* ORKTask */ = {
 			isa = PBXGroup;
 			children = (
-				3F5161E720596601003C7E19 /* ORKAllergyTask.swift */,
+				3F73F6DB20740A6300E75498 /* ORKTobaccoTask.swift */,
 				3F54C1A8206AD078002316FE /* ORKFamilyHistoryTask.swift */,
 				3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */,
+				3F5161E720596601003C7E19 /* ORKAllergyTask.swift */,
 				3F568F05206595B2002255A6 /* ORKSurgicalTask.swift */,
 				3F568F0220658AC9002255A6 /* ORKGynecologyTask.swift */,
-				3F73F6DB20740A6300E75498 /* ORKTobaccoTask.swift */,
 			);
 			path = ORKTask;
 			sourceTree = "<group>";
@@ -265,10 +275,12 @@
 			children = (
 				3F834DD5203F4BEE00981D8A /* Global.swift */,
 				3F538042203F2A750045A492 /* Patient.swift */,
+				3F719ED1207BCCDE0070A986 /* TaskInfo.swift */,
 				3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */,
 				3F73F6D72073FC1900E75498 /* TobaccoInfo.swift */,
 				3F719ECF207BC4430070A986 /* AlcoholInfo.swift */,
-				3F719ED1207BCCDE0070A986 /* TaskInfo.swift */,
+				3F55935D207D1BDD00A8C9DE /* PersonalInfo.swift */,
+				3F627075207E5755004E35AF /* FamilyInfo.swift */,
 			);
 			path = PatientInfo;
 			sourceTree = "<group>";
@@ -378,8 +390,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F55935A207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift in Sources */,
+				3F627076207E5755004E35AF /* FamilyInfo.swift in Sources */,
 				3F538045203F2AA90045A492 /* EditiType.swift in Sources */,
 				3F719ED2207BCCDE0070A986 /* TaskInfo.swift in Sources */,
+				3F627078207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift in Sources */,
 				3F568F06206595B2002255A6 /* ORKSurgicalTask.swift in Sources */,
 				3F73F6D82073FC1900E75498 /* TobaccoInfo.swift in Sources */,
 				3F620E55203754F000655AA4 /* TestMedKit.xcdatamodeld in Sources */,
@@ -405,6 +420,7 @@
 				3F7A1E1F2056CA5200310D51 /* FamilyHistoryTask.swift in Sources */,
 				3F568F0320658AC9002255A6 /* ORKGynecologyTask.swift in Sources */,
 				3F538047203F2EF10045A492 /* EditViewController.swift in Sources */,
+				3F55935E207D1BDD00A8C9DE /* PersonalInfo.swift in Sources */,
 				3F719ED0207BC4430070A986 /* AlcoholInfo.swift in Sources */,
 				3F95CE18203DF9EC0096A896 /* DetaiProfilelTableViewController.swift in Sources */,
 				3F620E4D203754F000655AA4 /* AppDelegate.swift in Sources */,

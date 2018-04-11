@@ -92,12 +92,15 @@ class MedicalConditionTask: Task {
         return howIsTreatedStep
     }
     
-    private static func createNavigationRule(for task: ORKNavigableOrderedTask) {
+    private static func createNavigationRule(for medicalConditionTask: ORKNavigableOrderedTask) {
+        createHaveAnyMedicalConditionStepRule(for: medicalConditionTask )
+    }
+    
+    private static func createHaveAnyMedicalConditionStepRule(for task: ORKNavigableOrderedTask) {
         let haveAnyMedicalConditionResult = ORKResultSelector(resultIdentifier: "haveAnyMedicalConditionStep")
         let predicateNoForHaveAnyMedicalCondition = ORKResultPredicate.predicateForBooleanQuestionResult(with: haveAnyMedicalConditionResult, expectedAnswer: false)
         
         let predicateNoForHaveAnyMedicalConditionRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForHaveAnyMedicalCondition, "reviewStep")])
-        
         task.setNavigationRule(predicateNoForHaveAnyMedicalConditionRule, forTriggerStepIdentifier: "haveAnyMedicalConditionStep")
     }
 }

@@ -21,7 +21,7 @@ class TaskResultProcessor: NSObject, ORKTaskViewControllerDelegate {
         case .completed:
             startProcessResult(with: taskViewController.result)
         default:
-            return
+            break
         }
         
         taskViewController.dismiss(animated: true, completion: nil)

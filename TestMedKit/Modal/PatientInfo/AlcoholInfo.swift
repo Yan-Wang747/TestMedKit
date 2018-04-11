@@ -11,10 +11,10 @@ import ResearchKit
 
 class AlcoholInfo: TaskInfo{
     var drinkAlcohol: Bool = false
-    var amountOfCups: Int? = 0
+    var amountOfCups: Int? = nil
     var everDrinkAlcohol: Bool = false
-    var hasQuitDrinking: Bool? = false
-    var amountOfCupsForEverDrinking: Int? = 0
+    var hasQuitDrinking: Bool? = nil
+    var amountOfCupsForEverDrinking: Int? = nil
     var exposedToHazardousInstances: Bool = false
     var hazardousInstances: [String]? = nil
     var usedProducts: Bool = false
