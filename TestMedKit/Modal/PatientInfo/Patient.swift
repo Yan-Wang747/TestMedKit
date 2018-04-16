@@ -13,7 +13,9 @@ class Patient{
     var tobaccoInfo: TobaccoInfo?
     var alcoholInfo: AlcoholInfo?
     var personalInfo: PersonalInfo?
-    var familyInfo: FamilyInfo? 
+    var familyInfo: FamilyInfo?
+    var allergyInfo: AllergyInfo?
+    var medicationInfo: MedicationInfo?
     
     init(basicInfo: BasicInfo) {
         self.basicInfo = basicInfo

@@ -10,6 +10,7 @@ import Foundation
 import ResearchKit
 
 class FamilyHistoryTaskResultProcessor: TaskResultProcessor {
+    
     override init(patient: Patient) {
         super.init(patient: patient)
     }

@@ -10,18 +10,19 @@ import Foundation
 import ResearchKit
 
 class AllergyTask: Task {
+    static let allergyTypes = ["Drug", "Drugclass", "Food", "Other", "Unknown"]
+    static let allergyReactions = ["Skin Rashes/Hives", "Shock/Unconsciousness", "Asthma/Shortness of Breath", "Nausea/Vomiting/Diarrhea", "Anemia/Blood Disorders", "Photosensitivity", "Swollen‐lips", "Chest Pains/Irregular Heart Rate", "Other"]
+    
     init(_ viewController: UIViewController, patient: Patient) {
         let steps = AllergyTask.createSteps()
         
         let allergyTask = ORKAllergyTask(identifier: "allergyTask", steps: steps)
         allergyTask.allergyTypes = AllergyTask.allergyTypes
         allergyTask.allergyReactions = AllergyTask.allergyReactions
+        AllergyTask.createNavigationRule(for: allergyTask)
         
-        super.init(task: allergyTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
+        super.init(task: allergyTask, viewController: viewController, delegate: AllergyTaskResultProcessor(patient: patient))
     }
-    
-    static let allergyTypes = ["Drug", "Drugclass", "Food", "Other", "Unknown"]
-    static let allergyReactions = ["Skin Rashes/Hives", "Shock/Unconsciousness", "Asthma/Shortness of Breath", "Nausea/Vomiting/Diarrhea", "Anemia/Blood Disorders", "Photosensitivity", "Swollen‐lips", "Chest Pains/Irregular Heart Rate", "Other"]
     
     private static func createSteps() -> [ORKStep] {
         var steps: [ORKStep] = []
@@ -53,7 +54,7 @@ class AllergyTask: Task {
     private static func createHaveAnyAllergyStep() -> ORKStep{
         let booleanAnswer = ORKBooleanAnswerFormat(yesString: "Yes", noString: "No")
         
-        let haveAnyAllergyStep = ORKQuestionStep(identifier: "haveAnyllergyStep", title: "Do you have any allergy", answer: booleanAnswer)
+        let haveAnyAllergyStep = ORKQuestionStep(identifier: "haveAnyAllergyStep", title: "Do you have any allergy", answer: booleanAnswer)
         
         return haveAnyAllergyStep
     }
@@ -122,9 +123,13 @@ class AllergyTask: Task {
     }
     
     private static func createNavigationRule(for allergyTask: ORKNavigableOrderedTask) {
-        let haveAnyAllergyResult = ORKResultSelector(resultIdentifier: "haveAnyllergyStep")
-        let predicateNoForHaveAnyAllergyResult = ORKResultPredicate.predicateForBooleanQuestionResult(with: haveAnyAllergyResult, expectedAnswer: false)
-        let predicateNoForHaveAnyAllergyStepRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForHaveAnyAllergyResult, "reviewStep")])
-        allergyTask.setNavigationRule(predicateNoForHaveAnyAllergyStepRule, forTriggerStepIdentifier: "haveAnyllergyStep")
+        createHaveAnyAllergyStepRule(for: allergyTask)
+    }
+    
+    private static func createHaveAnyAllergyStepRule(for task: ORKNavigableOrderedTask) {
+        let haveAnyAllergyResult = ORKResultSelector(resultIdentifier: "haveAnyAllergyStep")
+        let predicateNoForHaveAnyAllergy = ORKResultPredicate.predicateForBooleanQuestionResult(with: haveAnyAllergyResult, expectedAnswer: false)
+        let predicateNoForHaveAnyAllergyRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForHaveAnyAllergy, "reviewStep")])
+        task.setNavigationRule(predicateNoForHaveAnyAllergyRule, forTriggerStepIdentifier: "haveAnyAllergyStep")
     }
 }
