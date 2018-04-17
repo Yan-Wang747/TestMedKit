@@ -19,7 +19,7 @@ class MedicalConditionTask: Task {
         medicalConditionTask.medicalConditions = MedicalConditionTask.medicalConditions
         
         MedicalConditionTask.createNavigationRule(for: medicalConditionTask)
-        super.init(task: medicalConditionTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
+        super.init(task: medicalConditionTask, viewController: viewController, delegate: MedicalConditionTaskResultProcessor(patient: patient))
     }
     
     private static func createSteps() -> [ORKStep] {

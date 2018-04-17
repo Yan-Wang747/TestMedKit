@@ -32,6 +32,8 @@
 		3F58EA9D205B094C002A83D0 /* AllergyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58EA9C205B094C002A83D0 /* AllergyTask.swift */; };
 		3F5BC04D20615CB5007FBE0A /* MedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BC04C20615CB5007FBE0A /* MedicalConditionTask.swift */; };
 		3F5BC04F206195CC007FBE0A /* SurgicalTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BC04E206195CC007FBE0A /* SurgicalTask.swift */; };
+		3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CF5BD2086378300478678 /* MedicalConditionInfo.swift */; };
+		3F5CF5C220864CCD00478678 /* MedicalConditionTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CF5C120864CCD00478678 /* MedicalConditionTaskResultProcessor.swift */; };
 		3F620E4D203754F000655AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F620E4C203754F000655AA4 /* AppDelegate.swift */; };
 		3F620E52203754F000655AA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E50203754F000655AA4 /* Main.storyboard */; };
 		3F620E55203754F000655AA4 /* TestMedKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F620E53203754F000655AA4 /* TestMedKit.xcdatamodeld */; };
@@ -119,6 +121,8 @@
 		3F58EA9C205B094C002A83D0 /* AllergyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyTask.swift; sourceTree = "<group>"; };
 		3F5BC04C20615CB5007FBE0A /* MedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionTask.swift; sourceTree = "<group>"; };
 		3F5BC04E206195CC007FBE0A /* SurgicalTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalTask.swift; sourceTree = "<group>"; };
+		3F5CF5BD2086378300478678 /* MedicalConditionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionInfo.swift; sourceTree = "<group>"; };
+		3F5CF5C120864CCD00478678 /* MedicalConditionTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionTaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F620E49203754F000655AA4 /* TestMedKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestMedKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F620E4C203754F000655AA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F620E51203754F000655AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				3F627077207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift */,
 				3F5795C5207FA8A500A2C3E7 /* AllergyTaskResultProcessor.swift */,
 				3F5795C9207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift */,
+				3F5CF5C120864CCD00478678 /* MedicalConditionTaskResultProcessor.swift */,
 			);
 			path = ResultProcessor;
 			sourceTree = "<group>";
@@ -220,8 +225,8 @@
 			children = (
 				3F73F6DB20740A6300E75498 /* ORKTobaccoTask.swift */,
 				3F54C1A8206AD078002316FE /* ORKFamilyHistoryTask.swift */,
-				3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */,
 				3F5161E720596601003C7E19 /* ORKAllergyTask.swift */,
+				3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */,
 				3F568F05206595B2002255A6 /* ORKSurgicalTask.swift */,
 				3F568F0220658AC9002255A6 /* ORKGynecologyTask.swift */,
 			);
@@ -293,6 +298,7 @@
 				3F627075207E5755004E35AF /* FamilyInfo.swift */,
 				3F5795C1207FA24B00A2C3E7 /* AllergyInfo.swift */,
 				3F5795C7207FE57600A2C3E7 /* MedicationInfo.swift */,
+				3F5CF5BD2086378300478678 /* MedicalConditionInfo.swift */,
 			);
 			path = PatientInfo;
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 				3F538043203F2A750045A492 /* Patient.swift in Sources */,
 				3F55CD7F2045B33100668C7A /* AlcoholTask.swift in Sources */,
 				3F55CD7D2045AA7200668C7A /* TobaccoTask.swift in Sources */,
+				3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */,
 				3F575CB7207668F4005F8D48 /* TaskResultProcessor.swift in Sources */,
 				3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */,
 				3F834DD6203F4BEE00981D8A /* Global.swift in Sources */,
@@ -438,6 +445,7 @@
 				3F538047203F2EF10045A492 /* EditViewController.swift in Sources */,
 				3F55935E207D1BDD00A8C9DE /* PersonalInfo.swift in Sources */,
 				3F719ED0207BC4430070A986 /* AlcoholInfo.swift in Sources */,
+				3F5CF5C220864CCD00478678 /* MedicalConditionTaskResultProcessor.swift in Sources */,
 				3F95CE18203DF9EC0096A896 /* DetaiProfilelTableViewController.swift in Sources */,
 				3F620E4D203754F000655AA4 /* AppDelegate.swift in Sources */,
 				3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */,

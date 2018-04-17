@@ -49,6 +49,7 @@ class MyProfileTableViewController: UITableViewController{
         checkFamilyStatus()
         checkAllergyStatus()
         checkMedicationStatus()
+        checkMedicalConditionStatus()
     }
     
     func checkTobaccoStatus() {
@@ -105,6 +106,16 @@ class MyProfileTableViewController: UITableViewController{
         if let isCompleted = patient.medicationInfo?.isCompleted {
             if isCompleted {
                 if let cell = tableView.cellForRow(at: IndexPath(row: 5, section: 1)){
+                    cell.accessoryType = .checkmark
+                }
+            }
+        }
+    }
+    
+    func checkMedicalConditionStatus() {
+        if let isCompleted = patient.medicalConditionInfo?.isCompleted {
+            if isCompleted {
+                if let cell = tableView.cellForRow(at: IndexPath(row: 6, section: 1)){
                     cell.accessoryType = .checkmark
                 }
             }

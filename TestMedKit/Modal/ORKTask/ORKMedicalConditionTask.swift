@@ -18,10 +18,10 @@ class ORKMedicalConditionTask: ORKNavigableOrderedTask {
         
         if thisStep.identifier == "medicalConditionSelectionStep" {
             return medicalConditionSelectionStepRule(step: thisStep, with: result)
-        }else if thisStep.identifier.contains("IsTreatedStep") {
-            return isTreatedStepRule(step: thisStep, with: result)
         }else if thisStep.identifier.contains("HowIsTreatedStep") {
             return howIsTreatedStepRule(step: thisStep, with: result)
+        }else if thisStep.identifier.contains("IsTreatedStep") {
+            return isTreatedStepRule(step: thisStep, with: result)
         }
         
         return super.step(after: step, with: result)
@@ -63,12 +63,13 @@ class ORKMedicalConditionTask: ORKNavigableOrderedTask {
     }
     
     private func nextConditionOnsetDate(currentCondition: String, selectedConditions: [String]) -> ORKStep? {
-        for i in medicalConditions.index(of: currentCondition)! + 1..<medicalConditions.count {
-            if selectedConditions.contains(medicalConditions[i]){
-                return self.step(withIdentifier: medicalConditions[i].lowercased() + "_" + "OnsetDateStep")
-            }
+        let nextI = selectedConditions.index(of: currentCondition)! + 1
+        if nextI == selectedConditions.count {
+            return self.step(withIdentifier: "reviewStep")
+        } else {
+            let id = selectedConditions[nextI].lowercased() + "_" + "OnsetDateStep"
+            
+            return self.step(withIdentifier: id)
         }
-        
-        return self.step(withIdentifier: "reviewStep")
     }
 }

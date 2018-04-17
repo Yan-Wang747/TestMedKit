@@ -16,6 +16,7 @@ class Patient{
     var familyInfo: FamilyInfo?
     var allergyInfo: AllergyInfo?
     var medicationInfo: MedicationInfo?
+    var medicalConditionInfo: MedicalConditionInfo?
     
     init(basicInfo: BasicInfo) {
         self.basicInfo = basicInfo
