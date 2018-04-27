@@ -59,6 +59,8 @@
 		3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */; };
 		3FC0F73B2088F2240007FEBD /* GynecologyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */; };
 		3FDFF8E1203CBC64008ED2A2 /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */; };
+		3FF9CFFC20936FDB000370FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9CFFB20936FDB000370FA /* LoginViewController.swift */; };
+		3FF9CFFE20938762000370FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9CFFD20938762000370FA /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +155,8 @@
 		3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfo.swift; sourceTree = "<group>"; };
 		3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologyInfo.swift; sourceTree = "<group>"; };
 		3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
+		3FF9CFFB20936FDB000370FA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3FF9CFFD20938762000370FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,8 @@
 				3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */,
 				3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */,
 				3F538049203F467D0045A492 /* GenderPickerViewController.swift */,
+				3FF9CFFB20936FDB000370FA /* LoginViewController.swift */,
+				3FF9CFFD20938762000370FA /* TabBarController.swift */,
 			);
 			path = MainStoryBoard;
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 				3F627078207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift in Sources */,
 				3F568F06206595B2002255A6 /* ORKSurgicalTask.swift in Sources */,
 				3F73F6D82073FC1900E75498 /* TobaccoInfo.swift in Sources */,
+				3FF9CFFC20936FDB000370FA /* LoginViewController.swift in Sources */,
 				3F620E55203754F000655AA4 /* TestMedKit.xcdatamodeld in Sources */,
 				3F575CB920766E39005F8D48 /* TobaccoTaskResultProcessor.swift in Sources */,
 				3F53804A203F467D0045A492 /* GenderPickerViewController.swift in Sources */,
@@ -458,6 +465,7 @@
 				3F834DD6203F4BEE00981D8A /* Global.swift in Sources */,
 				3F7A1E1F2056CA5200310D51 /* FamilyHistoryTask.swift in Sources */,
 				3F568F0320658AC9002255A6 /* ORKGynecologyTask.swift in Sources */,
+				3FF9CFFE20938762000370FA /* TabBarController.swift in Sources */,
 				3F538047203F2EF10045A492 /* EditViewController.swift in Sources */,
 				3F55935E207D1BDD00A8C9DE /* PersonalInfo.swift in Sources */,
 				3F719ED0207BC4430070A986 /* AlcoholInfo.swift in Sources */,
