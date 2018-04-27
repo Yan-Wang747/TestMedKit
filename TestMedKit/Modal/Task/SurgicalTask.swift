@@ -20,7 +20,7 @@ class SurgicalTask: Task {
         
         SurgicalTask.createNavigationRule(for: surgicalTask)
         
-        super.init(task: surgicalTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
+        super.init(task: surgicalTask, viewController: viewController, delegate: SurgicalTaskResultProcessor(patient: patient))
     }
     
     private static func createSteps() -> [ORKStep] {

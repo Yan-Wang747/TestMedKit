@@ -30,6 +30,9 @@
 		3F5795CA207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5795C9207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift */; };
 		3F58EA8E205AB526002A83D0 /* MedicationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58EA8D205AB526002A83D0 /* MedicationTask.swift */; };
 		3F58EA9D205B094C002A83D0 /* AllergyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58EA9C205B094C002A83D0 /* AllergyTask.swift */; };
+		3F5931CA208799CC007A3829 /* SurgicalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931C9208799CC007A3829 /* SurgicalInfo.swift */; };
+		3F5931CE20879FA4007A3829 /* SurgicalTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931CD20879FA4007A3829 /* SurgicalTaskResultProcessor.swift */; };
+		3F5931D12087B4E8007A3829 /* GynecologicTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931D02087B4E8007A3829 /* GynecologicTaskResultProcessor.swift */; };
 		3F5BC04D20615CB5007FBE0A /* MedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BC04C20615CB5007FBE0A /* MedicalConditionTask.swift */; };
 		3F5BC04F206195CC007FBE0A /* SurgicalTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BC04E206195CC007FBE0A /* SurgicalTask.swift */; };
 		3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CF5BD2086378300478678 /* MedicalConditionInfo.swift */; };
@@ -54,6 +57,7 @@
 		3F95CE18203DF9EC0096A896 /* DetaiProfilelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */; };
 		3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */; };
 		3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */; };
+		3FC0F73B2088F2240007FEBD /* GynecologyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */; };
 		3FDFF8E1203CBC64008ED2A2 /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +123,9 @@
 		3F5795C9207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F58EA8D205AB526002A83D0 /* MedicationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTask.swift; sourceTree = "<group>"; };
 		3F58EA9C205B094C002A83D0 /* AllergyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyTask.swift; sourceTree = "<group>"; };
+		3F5931C9208799CC007A3829 /* SurgicalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalInfo.swift; sourceTree = "<group>"; };
+		3F5931CD20879FA4007A3829 /* SurgicalTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalTaskResultProcessor.swift; sourceTree = "<group>"; };
+		3F5931D02087B4E8007A3829 /* GynecologicTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologicTaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F5BC04C20615CB5007FBE0A /* MedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionTask.swift; sourceTree = "<group>"; };
 		3F5BC04E206195CC007FBE0A /* SurgicalTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalTask.swift; sourceTree = "<group>"; };
 		3F5CF5BD2086378300478678 /* MedicalConditionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionInfo.swift; sourceTree = "<group>"; };
@@ -144,6 +151,7 @@
 		3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiProfilelTableViewController.swift; sourceTree = "<group>"; };
 		3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPickerViewController.swift; sourceTree = "<group>"; };
 		3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfo.swift; sourceTree = "<group>"; };
+		3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologyInfo.swift; sourceTree = "<group>"; };
 		3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +224,8 @@
 				3F5795C5207FA8A500A2C3E7 /* AllergyTaskResultProcessor.swift */,
 				3F5795C9207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift */,
 				3F5CF5C120864CCD00478678 /* MedicalConditionTaskResultProcessor.swift */,
+				3F5931CD20879FA4007A3829 /* SurgicalTaskResultProcessor.swift */,
+				3F5931D02087B4E8007A3829 /* GynecologicTaskResultProcessor.swift */,
 			);
 			path = ResultProcessor;
 			sourceTree = "<group>";
@@ -299,6 +309,8 @@
 				3F5795C1207FA24B00A2C3E7 /* AllergyInfo.swift */,
 				3F5795C7207FE57600A2C3E7 /* MedicationInfo.swift */,
 				3F5CF5BD2086378300478678 /* MedicalConditionInfo.swift */,
+				3F5931C9208799CC007A3829 /* SurgicalInfo.swift */,
+				3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */,
 			);
 			path = PatientInfo;
 			sourceTree = "<group>";
@@ -410,11 +422,13 @@
 			files = (
 				3F5795C8207FE57600A2C3E7 /* MedicationInfo.swift in Sources */,
 				3F5795C6207FA8A500A2C3E7 /* AllergyTaskResultProcessor.swift in Sources */,
+				3FC0F73B2088F2240007FEBD /* GynecologyInfo.swift in Sources */,
 				3F55935A207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift in Sources */,
 				3F5795CA207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift in Sources */,
 				3F627076207E5755004E35AF /* FamilyInfo.swift in Sources */,
 				3F538045203F2AA90045A492 /* EditiType.swift in Sources */,
 				3F719ED2207BCCDE0070A986 /* TaskInfo.swift in Sources */,
+				3F5931CA208799CC007A3829 /* SurgicalInfo.swift in Sources */,
 				3F627078207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift in Sources */,
 				3F568F06206595B2002255A6 /* ORKSurgicalTask.swift in Sources */,
 				3F73F6D82073FC1900E75498 /* TobaccoInfo.swift in Sources */,
@@ -425,6 +439,7 @@
 				3F5BC04F206195CC007FBE0A /* SurgicalTask.swift in Sources */,
 				3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */,
 				3F5BC04D20615CB5007FBE0A /* MedicalConditionTask.swift in Sources */,
+				3F5931D12087B4E8007A3829 /* GynecologicTaskResultProcessor.swift in Sources */,
 				3F5795C2207FA24B00A2C3E7 /* AllergyInfo.swift in Sources */,
 				3F55CD812045B45600668C7A /* PersonalTask.swift in Sources */,
 				3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */,
@@ -435,6 +450,7 @@
 				3F719ECB207BC1D40070A986 /* AlcoholTaskResultProcessor.swift in Sources */,
 				3F538043203F2A750045A492 /* Patient.swift in Sources */,
 				3F55CD7F2045B33100668C7A /* AlcoholTask.swift in Sources */,
+				3F5931CE20879FA4007A3829 /* SurgicalTaskResultProcessor.swift in Sources */,
 				3F55CD7D2045AA7200668C7A /* TobaccoTask.swift in Sources */,
 				3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */,
 				3F575CB7207668F4005F8D48 /* TaskResultProcessor.swift in Sources */,

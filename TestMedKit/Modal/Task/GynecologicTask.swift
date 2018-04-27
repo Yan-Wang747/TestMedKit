@@ -21,11 +21,16 @@ class GynecologyTask: Task {
         
         GynecologyTask.createNavigationRule(for: gynecologyTask)
         
-        super.init(task: gynecologyTask, viewController: viewController, delegate: TaskResultProcessor(patient: patient))
+        super.init(task: gynecologyTask, viewController: viewController, delegate: GynecologicTaskResultProcessor(patient: patient))
     }
     
     private static func createSteps() -> [ORKStep] {
         var steps: [ORKStep] = []
+        
+        let instructionStep = ORKInstructionStep(identifier: "instructionStep")
+        instructionStep.title = "Gynecology History"
+        instructionStep.detailText = "This survey helps us understand your Gynecology history"
+        steps.append(instructionStep)
         
         steps.append(createHaveEverBeenPregnantStep())
         steps.append(createNumberOfFullTimePregnanciesStep())
@@ -35,21 +40,21 @@ class GynecologyTask: Task {
         steps.append(createNumberOfTerminatedPregnanciesStep())
         steps.append(createTerminatedPregnancyAgeStep())
         steps.append(createMenstrualCycleStep())
-        steps.append(createMenstruateStartAge())
+        steps.append(createMenstruateStartAgeStep())
         steps.append(createLastMenstrualPeriodStep())
         steps.append(createMenstrualCycleLengthStep())
-        steps.append(createIsMenopauseBegun())
+        steps.append(createIsMenopauseBegunStep())
         steps.append(createMenopauseStatusSelectionStep())
         steps.append(createPostmenopausalAgeStep())
         steps.append(createMenopauseReasonSelectionStep())
-        steps.append(createHaveEverUsedHormones())
+        steps.append(createHaveEverUsedHormonesStep())
         steps.append(createHormoneSelectionStep())
         
         for hormone in hormoneTypeStrings {
             steps.append(createHowManyYearsStep(for: hormone))
         }
         
-        steps.append(createLastPAPSmearDate())
+        steps.append(createLastPAPSmearDateStep())
         steps.append(createLastMammogramDateStep())
         
         self.appendReviewStep(steps: &steps)
@@ -121,7 +126,7 @@ class GynecologyTask: Task {
         return menstrualCycleStep
     }
     
-    private static func createMenstruateStartAge() -> ORKStep {
+    private static func createMenstruateStartAgeStep() -> ORKStep {
         let ageNumericalAnswerFormat = ORKNumericAnswerFormat(style: .integer, unit: nil, minimum: 1, maximum: 200)
         
         let menstruateStartAgeStep = ORKQuestionStep(identifier: "menstruateStartAgeStep", title: "What was your age?", answer: ageNumericalAnswerFormat)
@@ -145,7 +150,7 @@ class GynecologyTask: Task {
         return menstrualCycleLengthStep
     }
     
-    private static func createIsMenopauseBegun() -> ORKStep {
+    private static func createIsMenopauseBegunStep() -> ORKStep {
         let booleanAnswer = ORKBooleanAnswerFormat(yesString: "Yes", noString: "No")
         
         let isMenopauseBegunStep = ORKQuestionStep(identifier: "isMenopauseBegunStep", title: "Have you begun menopause?", answer: booleanAnswer)
@@ -193,7 +198,7 @@ class GynecologyTask: Task {
         return menopauseReasonSelectionStep
     }
     
-    private static func createHaveEverUsedHormones() -> ORKStep {
+    private static func createHaveEverUsedHormonesStep() -> ORKStep {
         let booleanAnswer = ORKBooleanAnswerFormat(yesString: "Yes", noString: "No")
         
         let haveEverUsedHormonesStep = ORKQuestionStep(identifier: "haveEverUsedHormonesStep", title: "Have you ever used any hormones?", answer: booleanAnswer)
@@ -225,7 +230,7 @@ class GynecologyTask: Task {
         return howManyYearsStep
     }
     
-    private static func createLastPAPSmearDate() -> ORKStep {
+    private static func createLastPAPSmearDateStep() -> ORKStep {
         let dateAnswerFormat = ORKDateAnswerFormat(style: .date)
         
         let lastPAPSmearDateStep = ORKQuestionStep(identifier: "lastPAPSmearDateStep", title: "What is the date of your last PAP Smear?", answer: dateAnswerFormat)
