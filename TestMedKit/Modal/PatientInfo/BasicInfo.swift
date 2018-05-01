@@ -12,17 +12,29 @@ class BasicInfo: TaskInfo {
     var firstName: String
     var lastName: String
     var gender: String
-    var dateOfBirth: Date
+    var dateOfBirth: String
     var phone: String?
-    var email: String?
+    var email: String
     
-    init(firstName: String, lastName: String, gender: String, dateOfBirth: Date,phone: String?, email: String?) {
+    private let dateFormatter = DateFormatter()
+    init(firstName: String, lastName: String, gender: String, dateOfBirth: String,phone: String?, email: String) {
         self.firstName = firstName
         self.lastName = lastName
         self.gender = gender
         self.dateOfBirth = dateOfBirth
         self.phone = phone
         self.email = email
+        dateFormatter.dateFormat = "mm-dd-yyyy"
+    }
+    
+    var dateOfBirthInDate: Date {
+        
+        get {
+            return dateFormatter.date(from: dateOfBirth)!
+        }
+        set {
+            dateOfBirth = dateFormatter.string(from: newValue)
+        }
     }
     
     var fullName: String {
@@ -34,7 +46,9 @@ class BasicInfo: TaskInfo {
     var age: Int {
         get {
             let currentDate = Date()
-            let timeInterval = currentDate.timeIntervalSince(dateOfBirth)
+            
+            let birthday = dateOfBirthInDate
+            let timeInterval = currentDate.timeIntervalSince(birthday)
             return Int(timeInterval / (3600*24*365))
         }
     }

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class GenderPickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class GenderPickerViewController: BasicInfoEditViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var genderPicker: UIPickerView!
+    private let genders = ["Male", "Female", "Unspecified"]
     
-    var patient: Patient!
-    var genderSelected: String = genders.first!
+    private var genderSelected: String!
 
     
     override func viewDidLoad() {
@@ -23,6 +23,7 @@ class GenderPickerViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = doneBarButton
+        genderSelected = genders.first!
     }
 
     override func didReceiveMemoryWarning() {

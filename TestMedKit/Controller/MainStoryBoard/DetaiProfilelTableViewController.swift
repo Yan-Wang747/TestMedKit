@@ -36,10 +36,7 @@ class DetailProfileTableViewController: UITableViewController {
         firstNameLabel.text = patient.basicInfo.firstName
         lastNameLabel.text = patient.basicInfo.lastName
         genderLabel.text = patient.basicInfo.gender
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "mm-dd-yyyy"
-        
-        birthdayLabel.text = dateFormatter.string(from: patient.basicInfo.dateOfBirth)
+        birthdayLabel.text = patient.basicInfo.dateOfBirth
         ageLabel.text = "\(patient.basicInfo.age)"
         phoneLabel.text = patient.basicInfo.phone
         emailLabel.text = patient.basicInfo.email
@@ -121,32 +118,11 @@ class DetailProfileTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if let segueID = segue.identifier{
-            switch segueID {
-            case "editFirstName":
-                let destination = segue.destination as! EditViewController
-                destination.which = EditType.FirstName
-                destination.patient = patient
-            case "editLastName":
-                let destination = segue.destination as! EditViewController
-                destination.which = EditType.LastName
-                destination.patient = patient
-            case "editBirthday":
-                let destination = segue.destination as! BirthdayPickerViewController
-                destination.patient = patient
-            case "editGender":
-                let destination = segue.destination as! GenderPickerViewController
-                destination.patient = patient
-            case "editPhoneNumber":
-                let destination = segue.destination as! EditViewController
-                destination.which = EditType.Phone
-                destination.patient = patient
-            case "editEmail":
-                let destination = segue.destination as! EditViewController
-                destination.which = EditType.Email
-                destination.patient = patient
-            default:
-                fatalError("what happened?")
+            guard let destination = segue.destination as? BasicInfoEditViewController else {
+                return
             }
+            destination.editingField = segueID
+            destination.patient = patient
         }
     }
 }

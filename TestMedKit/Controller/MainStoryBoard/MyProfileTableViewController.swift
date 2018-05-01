@@ -29,15 +29,7 @@ class MyProfileTableViewController: UITableViewController{
         self.tableView.tableFooterView = footerView
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
         
-        let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "mm-dd-yyyy"
-        let dateOfBirth = dateFormatter.date(from: "01-08-1984")!
-        let gender = genders.first
-        
-        let testBasicInfo = BasicInfo(firstName: "Jong-un", lastName: "Kim", gender: gender!, dateOfBirth: dateOfBirth, phone: "001-204-123-4567", email: "imyoursun@KWP.nkr")
-        
-        patient = Patient(basicInfo: testBasicInfo)
     }
     
     override func viewWillAppear(_ animated: Bool) {

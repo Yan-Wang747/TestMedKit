@@ -8,14 +8,13 @@
 
 import UIKit
 
-class EditViewController: UIViewController {
-    var which: EditType!
-    var patient: Patient!
+class EditViewController: BasicInfoEditViewController {
     
     @IBOutlet weak var promptMessageLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-
+    
     private let defaultPromptMessage = "Please enter your "
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +25,15 @@ class EditViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        promptMessageLabel.text = defaultPromptMessage + which.rawValue
-        switch which{
-        case .FirstName:
+        promptMessageLabel.text = defaultPromptMessage + editingField
+        switch editingField{
+        case "FirstName":
             nameTextField.text = patient.basicInfo.firstName
-        case .LastName:
+        case "LastName":
             nameTextField.text = patient.basicInfo.lastName
-        case .Phone:
+        case "Phone":
             nameTextField.text = patient.basicInfo.phone
-        case .Email:
+        case "Email":
             nameTextField.text = patient.basicInfo.email
         default:
             fatalError()
@@ -44,14 +43,14 @@ class EditViewController: UIViewController {
 
     @objc func doneButtonAction(_ sender: UIBarButtonItem){
         if let newValue = nameTextField.text{
-            switch which{
-            case .FirstName:
+            switch editingField{
+            case "FirstName":
                 patient.basicInfo.firstName = newValue
-            case .LastName:
+            case "LastName":
                 patient.basicInfo.lastName = newValue
-            case .Phone:
+            case "Phone":
                 patient.basicInfo.phone = newValue
-            case .Email:
+            case "Email":
                 patient.basicInfo.email = newValue
             default:
                 fatalError()

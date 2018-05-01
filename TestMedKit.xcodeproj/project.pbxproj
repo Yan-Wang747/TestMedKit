@@ -10,7 +10,6 @@
 		3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */; };
 		3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5161E720596601003C7E19 /* ORKAllergyTask.swift */; };
 		3F538043203F2A750045A492 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538042203F2A750045A492 /* Patient.swift */; };
-		3F538045203F2AA90045A492 /* EditiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538044203F2AA90045A492 /* EditiType.swift */; };
 		3F538047203F2EF10045A492 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538046203F2EF10045A492 /* EditViewController.swift */; };
 		3F53804A203F467D0045A492 /* GenderPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538049203F467D0045A492 /* GenderPickerViewController.swift */; };
 		3F54C1A9206AD078002316FE /* ORKFamilyHistoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54C1A8206AD078002316FE /* ORKFamilyHistoryTask.swift */; };
@@ -52,10 +51,11 @@
 		3F73F6D82073FC1900E75498 /* TobaccoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F73F6D72073FC1900E75498 /* TobaccoInfo.swift */; };
 		3F73F6DC20740A6300E75498 /* ORKTobaccoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F73F6DB20740A6300E75498 /* ORKTobaccoTask.swift */; };
 		3F7A1E1F2056CA5200310D51 /* FamilyHistoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7A1E1E2056CA5200310D51 /* FamilyHistoryTask.swift */; };
-		3F834DD6203F4BEE00981D8A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F834DD5203F4BEE00981D8A /* Global.swift */; };
 		3F8E73112044A67800D25081 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E73102044A67800D25081 /* Task.swift */; };
 		3F95CE18203DF9EC0096A896 /* DetaiProfilelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */; };
 		3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */; };
+		3F9CC1A120976B1D00B5883D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */; };
+		3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */; };
 		3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */; };
 		3FC0F73B2088F2240007FEBD /* GynecologyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */; };
 		3FDFF8E1203CBC64008ED2A2 /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */; };
@@ -105,7 +105,6 @@
 		3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKMedicalConditionTask.swift; sourceTree = "<group>"; };
 		3F5161E720596601003C7E19 /* ORKAllergyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKAllergyTask.swift; sourceTree = "<group>"; };
 		3F538042203F2A750045A492 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Patient.swift; path = TestMedKit/Modal/PatientInfo/Patient.swift; sourceTree = SOURCE_ROOT; };
-		3F538044203F2AA90045A492 /* EditiType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditiType.swift; sourceTree = "<group>"; };
 		3F538046203F2EF10045A492 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		3F538049203F467D0045A492 /* GenderPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerViewController.swift; sourceTree = "<group>"; };
 		3F54C1A8206AD078002316FE /* ORKFamilyHistoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKFamilyHistoryTask.swift; sourceTree = "<group>"; };
@@ -148,10 +147,11 @@
 		3F73F6D72073FC1900E75498 /* TobaccoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoInfo.swift; sourceTree = "<group>"; };
 		3F73F6DB20740A6300E75498 /* ORKTobaccoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKTobaccoTask.swift; sourceTree = "<group>"; };
 		3F7A1E1E2056CA5200310D51 /* FamilyHistoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryTask.swift; sourceTree = "<group>"; };
-		3F834DD5203F4BEE00981D8A /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		3F8E73102044A67800D25081 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiProfilelTableViewController.swift; sourceTree = "<group>"; };
 		3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPickerViewController.swift; sourceTree = "<group>"; };
+		3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoEditViewController.swift; sourceTree = "<group>"; };
 		3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfo.swift; sourceTree = "<group>"; };
 		3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologyInfo.swift; sourceTree = "<group>"; };
 		3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -180,14 +180,6 @@
 			path = StroyBoard;
 			sourceTree = "<group>";
 		};
-		3F53803A203F29420045A492 /* Enumeration */ = {
-			isa = PBXGroup;
-			children = (
-				3F538044203F2AA90045A492 /* EditiType.swift */,
-			);
-			path = Enumeration;
-			sourceTree = "<group>";
-		};
 		3F538048203F461B0045A492 /* MainStoryBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +190,8 @@
 				3F538049203F467D0045A492 /* GenderPickerViewController.swift */,
 				3FF9CFFB20936FDB000370FA /* LoginViewController.swift */,
 				3FF9CFFD20938762000370FA /* TabBarController.swift */,
+				3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */,
+				3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */,
 			);
 			path = MainStoryBoard;
 			sourceTree = "<group>";
@@ -270,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				3F49128C2040638700E21D9E /* StroyBoard */,
-				3F53803A203F29420045A492 /* Enumeration */,
 				3F95CE1E203E158A0096A896 /* Modal */,
 				3FDFF8DD203CBC1B008ED2A2 /* Controller */,
 				3F620E56203754F000655AA4 /* Assets.xcassets */,
@@ -304,7 +297,6 @@
 		3F9D09F72073C403004E19C8 /* PatientInfo */ = {
 			isa = PBXGroup;
 			children = (
-				3F834DD5203F4BEE00981D8A /* Global.swift */,
 				3F538042203F2A750045A492 /* Patient.swift */,
 				3F719ED1207BCCDE0070A986 /* TaskInfo.swift */,
 				3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */,
@@ -432,7 +424,6 @@
 				3F55935A207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift in Sources */,
 				3F5795CA207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift in Sources */,
 				3F627076207E5755004E35AF /* FamilyInfo.swift in Sources */,
-				3F538045203F2AA90045A492 /* EditiType.swift in Sources */,
 				3F719ED2207BCCDE0070A986 /* TaskInfo.swift in Sources */,
 				3F5931CA208799CC007A3829 /* SurgicalInfo.swift in Sources */,
 				3F627078207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift in Sources */,
@@ -454,6 +445,7 @@
 				3F54C1A9206AD078002316FE /* ORKFamilyHistoryTask.swift in Sources */,
 				3F8E73112044A67800D25081 /* Task.swift in Sources */,
 				3F58EA8E205AB526002A83D0 /* MedicationTask.swift in Sources */,
+				3F9CC1A120976B1D00B5883D /* NavigationViewController.swift in Sources */,
 				3F719ECB207BC1D40070A986 /* AlcoholTaskResultProcessor.swift in Sources */,
 				3F538043203F2A750045A492 /* Patient.swift in Sources */,
 				3F55CD7F2045B33100668C7A /* AlcoholTask.swift in Sources */,
@@ -462,7 +454,7 @@
 				3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */,
 				3F575CB7207668F4005F8D48 /* TaskResultProcessor.swift in Sources */,
 				3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */,
-				3F834DD6203F4BEE00981D8A /* Global.swift in Sources */,
+				3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */,
 				3F7A1E1F2056CA5200310D51 /* FamilyHistoryTask.swift in Sources */,
 				3F568F0320658AC9002255A6 /* ORKGynecologyTask.swift in Sources */,
 				3FF9CFFE20938762000370FA /* TabBarController.swift in Sources */,
@@ -621,6 +613,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 87U5XJJ2UX;
 				INFOPLIST_FILE = TestMedKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ff-20.TestMedKit";
@@ -636,6 +629,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 87U5XJJ2UX;
 				INFOPLIST_FILE = TestMedKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ff-20.TestMedKit";

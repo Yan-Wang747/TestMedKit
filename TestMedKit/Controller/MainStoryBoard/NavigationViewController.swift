@@ -1,27 +1,25 @@
 //
-//  BirthdayPickerViewController.swift
+//  NavigationViewController.swift
 //  TestMedKit
 //
-//  Created by Student on 2018-02-21.
+//  Created by Student on 2018-04-30.
 //  Copyright © 2018 Student. All rights reserved.
 //
 
 import UIKit
 
-class BirthdayPickerViewController: BasicInfoEditViewController {
-
-    @IBOutlet weak var birthdayPicker: UIDatePicker!
+class NavigationViewController: UINavigationController {
+    var patient: Patient!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
+        guard let myProfileTableViewController = self.topViewController as? MyProfileTableViewController else {
+            return
+        }
         
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneButtonAction(_:)))
-        self.navigationItem.rightBarButtonItem = doneBarButton
-        
-        birthdayPicker.datePickerMode = .date
-        birthdayPicker.date = patient.basicInfo.dateOfBirthInDate
+        myProfileTableViewController.patient = patient
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,10 +27,6 @@ class BirthdayPickerViewController: BasicInfoEditViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func doneButtonAction(_ sender: UIBarButtonItem){
-        patient.basicInfo.dateOfBirthInDate = birthdayPicker.date
-        self.navigationController?.popViewController(animated: true)
-    }
 
     /*
     // MARK: - Navigation

@@ -9,11 +9,19 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    var sessionID: String!
+    var patient: Patient!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let rootViewControllers = self.viewControllers {
+            for rootViewController in rootViewControllers {
+                if let navigationViewController = rootViewController as? NavigationViewController {
+                    navigationViewController.patient = patient
+                }
+            }
+        }    
     }
 
     override func didReceiveMemoryWarning() {
