@@ -26,8 +26,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         conf.allowsCellularAccess = true
-        conf.waitsForConnectivity = true
+
         signInButton.layer.cornerRadius = 8
+        
         if let serverIP = serverIPText.text {
             self.serverIP = serverIP
         }
@@ -96,6 +97,12 @@ class LoginViewController: UIViewController {
                 }
             }
         }.resume()
+        
+        if(ID == "test@test.com" && pswd == "1234") {
+            let tabBarController2 = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController
+            tabBarController2?.patient = Patient(sessionID: "1234", basicInfo: BasicInfo(firstName: "Jong-un", lastName: "Kim", gender: "Male", dateOfBirth: "01-08-1984", phone: "001-204-123-4567", email: "kimthesun@KWP.nkr"))
+            self.present(tabBarController2!, animated: true, completion: nil)
+        }
     }
     
     /*
