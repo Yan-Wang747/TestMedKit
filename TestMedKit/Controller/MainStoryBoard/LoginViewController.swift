@@ -18,8 +18,6 @@ class LoginViewController: UIViewController {
     
     var serverIP = "localhost"
     
-    var loginURL: URL!
-    var basicInfoURL: URL!
     let conf = URLSessionConfiguration.default
     var session: URLSession!
     
@@ -29,13 +27,8 @@ class LoginViewController: UIViewController {
 
         signInButton.layer.cornerRadius = 8
         
-        if let serverIP = serverIPText.text {
-            self.serverIP = serverIP
-        }
-        
         session = URLSession(configuration: conf)
-        loginURL = URL(string: "http://\(serverIP):8084/MyCCMB/AppLogin")!
-        basicInfoURL = URL(string: "http://\(serverIP):8084/MyCCMB/GetBasicInfo")!
+        
         // Do any additional setup after loading the view.
     }
 
@@ -44,7 +37,7 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func requestBasicInfo(sessionID: String) -> BasicInfo {
+    func requestBasicInfo(sessionID: String, basicInfoURL: URL) -> BasicInfo {
         var basicInfoRequest = URLRequest(url: basicInfoURL)
         basicInfoRequest.httpMethod = "GET"
         basicInfoRequest.addValue("Bear \(sessionID)", forHTTPHeaderField: "Authorization")
@@ -60,6 +53,13 @@ class LoginViewController: UIViewController {
         guard let ID = IDText.text, let pswd = pswdText.text else {
             return
         }
+        
+        if let serverIP = serverIPText.text {
+            self.serverIP = serverIP
+        }
+        
+        let loginURL = URL(string: "http://\(serverIP):8084/MyCCMB/AppLogin")!
+        let basicInfoURL = URL(string: "http://\(serverIP):8084/MyCCMB/GetBasicInfo")!
         
         let loginString = "\(ID):\(pswd)"
         let loginBase64 = loginString.data(using: .utf8)!.base64EncodedString()
@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            guard let cookies = HTTPCookieStorage.shared.cookies(for: self.loginURL) else {
+            guard let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
                 return
             }
             
@@ -87,7 +87,7 @@ class LoginViewController: UIViewController {
                         return
                     }
                     
-                    let testBasicInfo = self.requestBasicInfo(sessionID: cookie.value)
+                    let testBasicInfo = self.requestBasicInfo(sessionID: cookie.value, basicInfoURL: basicInfoURL)
                         
                     tabBarController.patient = Patient(sessionID: cookie.value, basicInfo: testBasicInfo)
                     
@@ -97,12 +97,6 @@ class LoginViewController: UIViewController {
                 }
             }
         }.resume()
-        
-        if(ID == "test@test.com" && pswd == "1234") {
-            let tabBarController2 = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController
-            tabBarController2?.patient = Patient(sessionID: "1234", basicInfo: BasicInfo(firstName: "Jong-un", lastName: "Kim", gender: "Male", dateOfBirth: "01-08-1984", phone: "001-204-123-4567", email: "kimthesun@KWP.nkr"))
-            self.present(tabBarController2!, animated: true, completion: nil)
-        }
     }
     
     /*
