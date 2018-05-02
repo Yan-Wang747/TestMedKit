@@ -16,14 +16,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var serverIPText: UITextField!
     
-    var serverIP = "localhost"
-    
     let conf = URLSessionConfiguration.default
     var session: URLSession!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         conf.allowsCellularAccess = true
+        conf.waitsForConnectivity = true
 
         signInButton.layer.cornerRadius = 8
         
@@ -37,16 +36,23 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func requestBasicInfo(sessionID: String, basicInfoURL: URL) -> BasicInfo {
+    func requestBasicInfo(sessionID: String, basicInfoURL: URL) {
         var basicInfoRequest = URLRequest(url: basicInfoURL)
-        basicInfoRequest.httpMethod = "GET"
         basicInfoRequest.addValue("Bear \(sessionID)", forHTTPHeaderField: "Authorization")
         
         session.dataTask(with: basicInfoRequest) {_, response, _ in
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200, let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else {
+                return
+            }
             
+            let patient = Patient(sessionID: sessionID, basicInfo: BasicInfo(firstName: "Jong-un", lastName: "Kim", gender: "Male", dateOfBirth: "01-08-1984", phone: "001-204-123-4567", email: "kimthesun@KWP.nkr"))
+            
+            tabBarController.patient = patient
+            
+            DispatchQueue.main.async {
+                self.present(tabBarController, animated: true, completion: nil)
+            }
         }.resume()
-        
-        return BasicInfo(firstName: "Jong-un", lastName: "Kim", gender: "Male", dateOfBirth: "01-08-1984", phone: "001-204-123-4567", email: "kimthesun@KWP.nkr")
     }
     
     @IBAction func loginAction(_ sender: Any) {
@@ -54,46 +60,30 @@ class LoginViewController: UIViewController {
             return
         }
         
-        if let serverIP = serverIPText.text {
-            self.serverIP = serverIP
+        var serverIP = "localhost"
+        if serverIPText.text != "" {
+            serverIP = serverIPText.text!
         }
         
-        let loginURL = URL(string: "http://\(serverIP):8084/MyCCMB/AppLogin")!
-        let basicInfoURL = URL(string: "http://\(serverIP):8084/MyCCMB/GetBasicInfo")!
+        let baseURLString = "http://\(serverIP):8084/MyCCMB/"
+        let loginURL = URL(string: "\(baseURLString)AppLogin")!
+        let basicInfoURL = URL(string: "\(baseURLString)GetBasicInfo")!
         
         let loginString = "\(ID):\(pswd)"
         let loginBase64 = loginString.data(using: .utf8)!.base64EncodedString()
         
         var loginRequest = URLRequest(url: loginURL)
-        loginRequest.httpMethod = "GET"
         loginRequest.addValue("Basic \(loginBase64)", forHTTPHeaderField: "Authorization")
         
         session.dataTask(with: loginRequest) {_, response, _ in
-            guard let response = response as? HTTPURLResponse else {
-                return
-            }
-            
-            if response.statusCode != 200 {
-                return
-            }
-            
-            guard let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200,  let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
                 return
             }
             
             for cookie in cookies {
                 if cookie.name == "JSESSIONID" {
-                    guard let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else {
-                        return
-                    }
-                    
-                    let testBasicInfo = self.requestBasicInfo(sessionID: cookie.value, basicInfoURL: basicInfoURL)
-                        
-                    tabBarController.patient = Patient(sessionID: cookie.value, basicInfo: testBasicInfo)
-                    
-                    DispatchQueue.main.async {
-                        self.present(tabBarController, animated: true, completion: nil)
-                    }
+                    self.requestBasicInfo(sessionID: cookie.value, basicInfoURL: basicInfoURL)
+                    break
                 }
             }
         }.resume()
