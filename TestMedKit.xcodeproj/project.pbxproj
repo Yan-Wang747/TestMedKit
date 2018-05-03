@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */; };
+		3F4649B7209B603E00F640FD /* BasicInfoKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */; };
 		3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5161E720596601003C7E19 /* ORKAllergyTask.swift */; };
 		3F538043203F2A750045A492 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538042203F2A750045A492 /* Patient.swift */; };
 		3F538047203F2EF10045A492 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538046203F2EF10045A492 /* EditViewController.swift */; };
@@ -118,6 +119,7 @@
 
 /* Begin PBXFileReference section */
 		3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKMedicalConditionTask.swift; sourceTree = "<group>"; };
+		3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoKeys.swift; sourceTree = "<group>"; };
 		3F5161E720596601003C7E19 /* ORKAllergyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKAllergyTask.swift; sourceTree = "<group>"; };
 		3F538042203F2A750045A492 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Patient.swift; path = TestMedKit/Modal/PatientInfo/Patient.swift; sourceTree = SOURCE_ROOT; };
 		3F538046203F2EF10045A492 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F4649BB209B625A00F640FD /* keys */ = {
+			isa = PBXGroup;
+			children = (
+				3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */,
+			);
+			path = keys;
+			sourceTree = "<group>";
+		};
 		3F49128C2040638700E21D9E /* StroyBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +340,7 @@
 		3F9D09F72073C403004E19C8 /* PatientInfo */ = {
 			isa = PBXGroup;
 			children = (
+				3F4649BB209B625A00F640FD /* keys */,
 				3F538042203F2A750045A492 /* Patient.swift */,
 				3F719ED1207BCCDE0070A986 /* TaskInfo.swift */,
 				3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */,
@@ -518,6 +529,7 @@
 				3F5931CE20879FA4007A3829 /* SurgicalTaskResultProcessor.swift in Sources */,
 				3F55CD7D2045AA7200668C7A /* TobaccoTask.swift in Sources */,
 				3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */,
+				3F4649B7209B603E00F640FD /* BasicInfoKeys.swift in Sources */,
 				3F575CB7207668F4005F8D48 /* TaskResultProcessor.swift in Sources */,
 				3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */,
 				3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */,

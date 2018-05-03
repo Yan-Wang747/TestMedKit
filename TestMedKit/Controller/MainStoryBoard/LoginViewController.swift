@@ -40,12 +40,15 @@ class LoginViewController: UIViewController {
         var basicInfoRequest = URLRequest(url: basicInfoURL)
         basicInfoRequest.addValue("Bear \(sessionID)", forHTTPHeaderField: "Authorization")
         
-        session.dataTask(with: basicInfoRequest) {_, response, _ in
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200, let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else {
+        session.dataTask(with: basicInfoRequest) {data, response, _ in
+            guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200, let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else {
                 return
             }
             
-            let patient = Patient(sessionID: sessionID, basicInfo: BasicInfo(firstName: "Jong-un", lastName: "Kim", gender: "Male", dateOfBirth: "01-08-1984", phone: "001-204-123-4567", email: "kimthesun@KWP.nkr"))
+            
+            let jsonDecoder = JSONDecoder()
+            let basicInfo = try! jsonDecoder.decode(BasicInfo.self, from: data)
+            let patient = Patient(sessionID: sessionID, basicInfo: basicInfo)
             
             tabBarController.patient = patient
             
@@ -68,6 +71,8 @@ class LoginViewController: UIViewController {
         let baseURLString = "http://\(serverIP):8084/MyCCMB/"
         let loginURL = URL(string: "\(baseURLString)AppLogin")!
         let basicInfoURL = URL(string: "\(baseURLString)GetBasicInfo")!
+        
+        //let basicInfoURL = URL(string: "http://localhost:3000/posts")!
         
         let loginString = "\(ID):\(pswd)"
         let loginBase64 = loginString.data(using: .utf8)!.base64EncodedString()

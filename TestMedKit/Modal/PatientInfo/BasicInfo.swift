@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BasicInfo: TaskInfo {
+class BasicInfo: Decodable {
     var firstName: String
     var lastName: String
     var gender: String
@@ -24,6 +24,18 @@ class BasicInfo: TaskInfo {
         self.dateOfBirth = dateOfBirth
         self.phone = phone
         self.email = email
+        dateFormatter.dateFormat = "mm-dd-yyyy"
+    }
+    
+    required init(from: Decoder) throws {
+        let container = try from.container(keyedBy: BasicInfoKeys.self)
+        firstName = try container.decode(String.self, forKey: .firstName)
+        lastName = try container.decode(String.self, forKey: .lastName)
+        gender = try container.decode(String.self, forKey: .gender)
+        dateOfBirth = try container.decode(String.self, forKey: .dateOfBirth)
+        phone = try container.decode(String.self, forKey: .phone)
+        email = try container.decode(String.self, forKey: .email)
+        
         dateFormatter.dateFormat = "mm-dd-yyyy"
     }
     
