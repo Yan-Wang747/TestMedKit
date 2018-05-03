@@ -10,6 +10,7 @@ import Foundation
 
 class BasicInfo: Decodable {
     var firstName: String
+    
     var lastName: String
     var gender: String
     var dateOfBirth: String

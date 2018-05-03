@@ -11,10 +11,10 @@ import ResearchKit
 
 class MyProfileTableViewController: UITableViewController{
     var task: Task?
+    var patient: Patient!
+    var server: Server!
     
     @IBOutlet weak var nameLabel: UILabel!
-    
-    var patient: Patient!
     
     override func viewDidLoad() {
         super.viewDidLoad()

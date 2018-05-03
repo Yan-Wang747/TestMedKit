@@ -16,17 +16,12 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var serverIPText: UITextField!
     
-    let conf = URLSessionConfiguration.default
-    var session: URLSession!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        conf.allowsCellularAccess = true
-        conf.waitsForConnectivity = true
 
         signInButton.layer.cornerRadius = 8
         
-        session = URLSession(configuration: conf)
+        
         
         // Do any additional setup after loading the view.
     }
@@ -34,28 +29,6 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func requestBasicInfo(sessionID: String, basicInfoURL: URL) {
-        var basicInfoRequest = URLRequest(url: basicInfoURL)
-        basicInfoRequest.addValue("Bear \(sessionID)", forHTTPHeaderField: "Authorization")
-        
-        session.dataTask(with: basicInfoRequest) {data, response, _ in
-            guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200, let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else {
-                return
-            }
-            
-            
-            let jsonDecoder = JSONDecoder()
-            let basicInfo = try! jsonDecoder.decode(BasicInfo.self, from: data)
-            let patient = Patient(sessionID: sessionID, basicInfo: basicInfo)
-            
-            tabBarController.patient = patient
-            
-            DispatchQueue.main.async {
-                self.present(tabBarController, animated: true, completion: nil)
-            }
-        }.resume()
     }
     
     @IBAction func loginAction(_ sender: Any) {
@@ -68,31 +41,41 @@ class LoginViewController: UIViewController {
             serverIP = serverIPText.text!
         }
         
-        let baseURLString = "http://\(serverIP):8084/MyCCMB/"
-        let loginURL = URL(string: "\(baseURLString)AppLogin")!
-        let basicInfoURL = URL(string: "\(baseURLString)GetBasicInfo")!
+        let server = Server(serverIP: serverIP, serverPort: 8084)
         
-        //let basicInfoURL = URL(string: "http://localhost:3000/posts")!
-        
-        let loginString = "\(ID):\(pswd)"
-        let loginBase64 = loginString.data(using: .utf8)!.base64EncodedString()
-        
-        var loginRequest = URLRequest(url: loginURL)
-        loginRequest.addValue("Basic \(loginBase64)", forHTTPHeaderField: "Authorization")
-        
-        session.dataTask(with: loginRequest) {_, response, _ in
+        server.authenticate(userID: ID, password: pswd) {_, response, _ in
+            let loginURL = server.loginURL
             guard let response = response as? HTTPURLResponse, response.statusCode == 200,  let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
+                
                 return
             }
             
             for cookie in cookies {
                 if cookie.name == "JSESSIONID" {
-                    self.requestBasicInfo(sessionID: cookie.value, basicInfoURL: basicInfoURL)
+                    server.sessionID = cookie.value
+                    //closure
+                    server.getBasicInfo() {data, response, _ in
+                        guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200, let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else {
+                            return
+                        }
+                        
+                        let jsonDecoder = JSONDecoder()
+                        let basicInfo = try! jsonDecoder.decode(BasicInfo.self, from: data)
+                        let patient = Patient(basicInfo: basicInfo)
+                        
+                        tabBarController.patient = patient
+                        tabBarController.server = server
+                        
+                        DispatchQueue.main.async {
+                            self.present(tabBarController, animated: true, completion: nil)
+                        }
+                    } //end of closure
+                    
                     break
-                }
-            }
-        }.resume()
-    }
+                } // end of if
+            } // end of for
+        } // end of auth closure
+    } // end of func
     
     /*
     // MARK: - Navigation

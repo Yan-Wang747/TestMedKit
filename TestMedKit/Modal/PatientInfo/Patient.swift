@@ -9,7 +9,6 @@
 import Foundation
 
 class Patient{
-    var sessionID: String
     var basicInfo: BasicInfo
     var tobaccoInfo: TobaccoInfo?
     var alcoholInfo: AlcoholInfo?
@@ -21,8 +20,7 @@ class Patient{
     var surgicalInfo: SurgicalInfo?
     var gynecologyInfo: GynecologyInfo?
     
-    init(sessionID: String, basicInfo: BasicInfo) {
-        self.sessionID = sessionID
+    init(basicInfo: BasicInfo) {
         self.basicInfo = basicInfo
     }
 }

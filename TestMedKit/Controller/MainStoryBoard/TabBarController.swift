@@ -10,6 +10,7 @@ import UIKit
 
 class TabBarController: UITabBarController {
     var patient: Patient!
+    var server: Server!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,7 @@ class TabBarController: UITabBarController {
             for rootViewController in rootViewControllers {
                 if let navigationViewController = rootViewController as? NavigationViewController {
                     navigationViewController.patient = patient
+                    navigationViewController.server = server
                 }
             }
         }    

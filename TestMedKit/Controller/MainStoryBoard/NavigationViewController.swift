@@ -10,6 +10,7 @@ import UIKit
 
 class NavigationViewController: UINavigationController {
     var patient: Patient!
+    var server: Server!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class NavigationViewController: UINavigationController {
         }
         
         myProfileTableViewController.patient = patient
+        myProfileTableViewController.server = server
     }
 
     override func didReceiveMemoryWarning() {

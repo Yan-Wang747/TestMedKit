@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F12D067209B8E7F008DF849 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D066209B8E7F008DF849 /* Server.swift */; };
+		3F12D071209BA477008DF849 /* Server+getBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D070209BA477008DF849 /* Server+getBasicInfo.swift */; };
 		3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */; };
 		3F4649B7209B603E00F640FD /* BasicInfoKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */; };
 		3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5161E720596601003C7E19 /* ORKAllergyTask.swift */; };
@@ -118,6 +120,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F12D066209B8E7F008DF849 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		3F12D070209BA477008DF849 /* Server+getBasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+getBasicInfo.swift"; sourceTree = "<group>"; };
 		3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKMedicalConditionTask.swift; sourceTree = "<group>"; };
 		3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoKeys.swift; sourceTree = "<group>"; };
 		3F5161E720596601003C7E19 /* ORKAllergyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKAllergyTask.swift; sourceTree = "<group>"; };
@@ -191,6 +195,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F12D06B209B8E8C008DF849 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				3F12D072209BA61C008DF849 /* Extensions */,
+				3F12D066209B8E7F008DF849 /* Server.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		3F12D072209BA61C008DF849 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3F12D070209BA477008DF849 /* Server+getBasicInfo.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3F4649BB209B625A00F640FD /* keys */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +350,7 @@
 		3F95CE1E203E158A0096A896 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				3F12D06B209B8E8C008DF849 /* Server */,
 				3F575CB3207668C9005F8D48 /* ResultProcessor */,
 				3F9D09F72073C403004E19C8 /* PatientInfo */,
 				3F58EA9B205B08AA002A83D0 /* ORKTask */,
@@ -537,6 +559,7 @@
 				3F568F0320658AC9002255A6 /* ORKGynecologyTask.swift in Sources */,
 				3FF9CFFE20938762000370FA /* TabBarController.swift in Sources */,
 				3F538047203F2EF10045A492 /* EditViewController.swift in Sources */,
+				3F12D071209BA477008DF849 /* Server+getBasicInfo.swift in Sources */,
 				3F55935E207D1BDD00A8C9DE /* PersonalInfo.swift in Sources */,
 				3F719ED0207BC4430070A986 /* AlcoholInfo.swift in Sources */,
 				3F5CF5C220864CCD00478678 /* MedicalConditionTaskResultProcessor.swift in Sources */,
@@ -544,6 +567,7 @@
 				3F620E4D203754F000655AA4 /* AppDelegate.swift in Sources */,
 				3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */,
 				3F58EA9D205B094C002A83D0 /* AllergyTask.swift in Sources */,
+				3F12D067209B8E7F008DF849 /* Server.swift in Sources */,
 				3FDFF8E1203CBC64008ED2A2 /* MyProfileTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,6 +717,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87U5XJJ2UX;
 				INFOPLIST_FILE = TestMedKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ff-20.TestMedKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -709,6 +734,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87U5XJJ2UX;
 				INFOPLIST_FILE = TestMedKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ff-20.TestMedKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -15,7 +15,6 @@ class EditViewController: BasicInfoEditViewController {
     
     private let defaultPromptMessage = "Please enter your "
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -58,6 +57,10 @@ class EditViewController: BasicInfoEditViewController {
         }
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func updateDataBase(column: String, newValue: String, completion: ()) {
+        
     }
     
     override func didReceiveMemoryWarning() {
