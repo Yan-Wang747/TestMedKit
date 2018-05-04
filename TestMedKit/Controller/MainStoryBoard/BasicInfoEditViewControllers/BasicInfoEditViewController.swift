@@ -10,6 +10,7 @@ import UIKit
 
 class BasicInfoEditViewController: UIViewController {
     var patient: Patient!
+    var server: Server!
     var editingField: String!
     
     override func viewDidLoad() {

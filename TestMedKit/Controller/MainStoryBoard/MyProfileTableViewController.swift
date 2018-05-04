@@ -243,6 +243,7 @@ class MyProfileTableViewController: UITableViewController{
             case "showDetailInfo":
                 let destination = segue.destination as! DetailProfileTableViewController
                 destination.patient = self.patient
+                destination.server = server
             default:
                 fatalError("what happened?")
             }

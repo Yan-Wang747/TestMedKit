@@ -20,9 +20,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         signInButton.layer.cornerRadius = 8
-        
-        
-        
+
         // Do any additional setup after loading the view.
     }
 
@@ -43,7 +41,7 @@ class LoginViewController: UIViewController {
         
         let server = Server(serverIP: serverIP, serverPort: 8084)
         
-        server.authenticate(userID: ID, password: pswd) {_, response, _ in
+        server.asyncAuthenticate(userID: ID, password: pswd) {_, response, _ in
             let loginURL = server.loginURL
             guard let response = response as? HTTPURLResponse, response.statusCode == 200,  let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
                 
@@ -54,7 +52,7 @@ class LoginViewController: UIViewController {
                 if cookie.name == "JSESSIONID" {
                     server.sessionID = cookie.value
                     //closure
-                    server.getBasicInfo() {data, response, _ in
+                    server.asyncGetBasicInfo() {data, response, _ in
                         guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200, let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else {
                             return
                         }
@@ -72,10 +70,10 @@ class LoginViewController: UIViewController {
                     } //end of closure
                     
                     break
-                } // end of if
-            } // end of for
-        } // end of auth closure
-    } // end of func
+                } //if
+            } //for
+        } //auth closure
+    } //loginAction
     
     /*
     // MARK: - Navigation
@@ -86,5 +84,4 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

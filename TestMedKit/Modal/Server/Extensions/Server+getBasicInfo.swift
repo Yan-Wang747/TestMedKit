@@ -10,7 +10,7 @@ import Foundation
 
 extension Server {
     
-    func getBasicInfo(responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func asyncGetBasicInfo(responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
 
         let getBasicInfoEndPoint = "GetBasicInfo"
         let getBasicInfoURL = URL(string: "\(baseURL)/\(getBasicInfoEndPoint)")!

@@ -8,10 +8,10 @@
 
 import UIKit
 
-class EditViewController: BasicInfoEditViewController {
+class TextFieldEditViewController: BasicInfoEditViewController {
     
     @IBOutlet weak var promptMessageLabel: UILabel!
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var newValueTextField: UITextField!
     
     private let defaultPromptMessage = "Please enter your "
     
@@ -20,47 +20,32 @@ class EditViewController: BasicInfoEditViewController {
         // Do any additional setup after loading the view.
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = doneBarButton
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         promptMessageLabel.text = defaultPromptMessage + editingField
+        
         switch editingField{
         case "FirstName":
-            nameTextField.text = patient.basicInfo.firstName
+            newValueTextField.text = patient.basicInfo.firstName
         case "LastName":
-            nameTextField.text = patient.basicInfo.lastName
+            newValueTextField.text = patient.basicInfo.lastName
         case "Phone":
-            nameTextField.text = patient.basicInfo.phone
+            newValueTextField.text = patient.basicInfo.phone
         case "Email":
-            nameTextField.text = patient.basicInfo.email
+            newValueTextField.text = patient.basicInfo.email
         default:
             fatalError()
         }
-        nameTextField.becomeFirstResponder()
+        
+        newValueTextField.becomeFirstResponder()
     }
 
     @objc func doneButtonAction(_ sender: UIBarButtonItem){
-        if let newValue = nameTextField.text{
-            switch editingField{
-            case "FirstName":
-                patient.basicInfo.firstName = newValue
-            case "LastName":
-                patient.basicInfo.lastName = newValue
-            case "Phone":
-                patient.basicInfo.phone = newValue
-            case "Email":
-                patient.basicInfo.email = newValue
-            default:
-                fatalError()
-            }
+        if let newValue = newValueTextField.text{
+            updateField(field: editingField, newValue: newValue)
+
         }
-        
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func updateDataBase(column: String, newValue: String, completion: ()) {
-        
     }
     
     override func didReceiveMemoryWarning() {

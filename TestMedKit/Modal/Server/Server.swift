@@ -38,7 +38,7 @@ class Server {
         }
     }
     
-    func authenticate(userID: String, password: String, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func asyncAuthenticate(userID: String, password: String, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         
         let loginString = "\(userID):\(password)"
         let loginBase64 = loginString.data(using: .utf8)!.base64EncodedString()

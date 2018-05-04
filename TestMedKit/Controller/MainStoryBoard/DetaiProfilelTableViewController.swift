@@ -18,6 +18,7 @@ class DetailProfileTableViewController: UITableViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
     var patient: Patient!
+    var server: Server!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +49,11 @@ class DetailProfileTableViewController: UITableViewController {
     }
     
     // MARK: - Table view delegate
-    /*
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
     }
- */
+
     // MARK: - Table view data source
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -123,6 +124,7 @@ class DetailProfileTableViewController: UITableViewController {
             }
             destination.editingField = segueID
             destination.patient = patient
+            destination.server = server
         }
     }
 }
