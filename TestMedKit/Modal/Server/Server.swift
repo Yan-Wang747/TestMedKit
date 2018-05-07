@@ -49,4 +49,3 @@ class Server {
         session.dataTask(with: loginRequest, completionHandler: responseHandler).resume()
     }
 }
-

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0AF0B620A0B1CB00DCD18A /* MyTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AF0B520A0B1CB00DCD18A /* MyTestView.swift */; };
 		3F12D067209B8E7F008DF849 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D066209B8E7F008DF849 /* Server.swift */; };
 		3F12D071209BA477008DF849 /* Server+getBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D070209BA477008DF849 /* Server+getBasicInfo.swift */; };
 		3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */; };
@@ -59,7 +60,7 @@
 		3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */; };
 		3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateFirstName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateFirstName.swift */; };
 		3F985AE3209CAECE007C290C /* Server+updateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE2209CAECE007C290C /* Server+updateField.swift */; };
-		3F985AE5209CBA3A007C290C /* UpdateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE4209CBA3A007C290C /* UpdateField.swift */; };
+		3F985AE5209CBA3A007C290C /* UpdateBasicInfoField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE4209CBA3A007C290C /* UpdateBasicInfoField.swift */; };
 		3F9CC1A120976B1D00B5883D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */; };
 		3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */; };
 		3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */; };
@@ -123,6 +124,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F0AF0B520A0B1CB00DCD18A /* MyTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTestView.swift; sourceTree = "<group>"; };
 		3F12D066209B8E7F008DF849 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		3F12D070209BA477008DF849 /* Server+getBasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+getBasicInfo.swift"; sourceTree = "<group>"; };
 		3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKMedicalConditionTask.swift; sourceTree = "<group>"; };
@@ -178,7 +180,7 @@
 		3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPickerViewController.swift; sourceTree = "<group>"; };
 		3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateFirstName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldEditViewController+updateFirstName.swift"; sourceTree = "<group>"; };
 		3F985AE2209CAECE007C290C /* Server+updateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+updateField.swift"; sourceTree = "<group>"; };
-		3F985AE4209CBA3A007C290C /* UpdateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateField.swift; sourceTree = "<group>"; };
+		3F985AE4209CBA3A007C290C /* UpdateBasicInfoField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBasicInfoField.swift; sourceTree = "<group>"; };
 		3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoEditViewController.swift; sourceTree = "<group>"; };
 		3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfo.swift; sourceTree = "<group>"; };
@@ -201,11 +203,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F0AF0B420A0B1A800DCD18A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				3F0AF0B520A0B1CB00DCD18A /* MyTestView.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		3F12D06B209B8E8C008DF849 /* Server */ = {
 			isa = PBXGroup;
 			children = (
 				3F12D066209B8E7F008DF849 /* Server.swift */,
-				3F985AE4209CBA3A007C290C /* UpdateField.swift */,
+				3F985AE4209CBA3A007C290C /* UpdateBasicInfoField.swift */,
 				3F12D072209BA61C008DF849 /* Extensions */,
 			);
 			path = Server;
@@ -318,6 +328,7 @@
 		3F620E4B203754F000655AA4 /* TestMedKit */ = {
 			isa = PBXGroup;
 			children = (
+				3F0AF0B420A0B1A800DCD18A /* New Group */,
 				3F49128C2040638700E21D9E /* StroyBoard */,
 				3F95CE1E203E158A0096A896 /* Modal */,
 				3FDFF8DD203CBC1B008ED2A2 /* Controller */,
@@ -584,6 +595,7 @@
 				3F5931CE20879FA4007A3829 /* SurgicalTaskResultProcessor.swift in Sources */,
 				3F55CD7D2045AA7200668C7A /* TobaccoTask.swift in Sources */,
 				3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */,
+				3F0AF0B620A0B1CB00DCD18A /* MyTestView.swift in Sources */,
 				3F4649B7209B603E00F640FD /* BasicInfoKeys.swift in Sources */,
 				3F575CB7207668F4005F8D48 /* TaskResultProcessor.swift in Sources */,
 				3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */,
@@ -592,7 +604,7 @@
 				3F568F0320658AC9002255A6 /* ORKGynecologyTask.swift in Sources */,
 				3F985AE3209CAECE007C290C /* Server+updateField.swift in Sources */,
 				3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateFirstName.swift in Sources */,
-				3F985AE5209CBA3A007C290C /* UpdateField.swift in Sources */,
+				3F985AE5209CBA3A007C290C /* UpdateBasicInfoField.swift in Sources */,
 				3FF9CFFE20938762000370FA /* TabBarController.swift in Sources */,
 				3F538047203F2EF10045A492 /* TextFieldEditViewController.swift in Sources */,
 				3F12D071209BA477008DF849 /* Server+getBasicInfo.swift in Sources */,

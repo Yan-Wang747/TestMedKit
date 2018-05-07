@@ -8,11 +8,11 @@
 
 import Foundation
 
-class UpdateField<T: Codable>: Codable {
+class UpdateBasicInfoField: Encodable {
     let field: String
-    let newValue: T
+    let newValue: String
     
-    init(field: String, newValue: T) {
+    init(field: String, newValue: String) {
         self.field = field
         self.newValue = newValue
     }

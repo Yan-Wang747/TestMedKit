@@ -18,7 +18,7 @@ extension Server {
         updateBasicInfoRequest.httpMethod = "PUT"
         updateBasicInfoRequest.addValue("Bear \(sessionID)", forHTTPHeaderField: "Authorization")
         
-        let update = UpdateField(field: field, newValue: newValue)
+        let update = UpdateBasicInfoField(field: field, newValue: newValue)
         let encoder = JSONEncoder()
         let bodyData = try! encoder.encode(update)
         

@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
         signInButton.layer.cornerRadius = 8
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +31,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginAction(_ sender: Any) {
+        
+        
         guard let ID = IDText.text, let pswd = pswdText.text else {
             return
         }
@@ -42,6 +45,7 @@ class LoginViewController: UIViewController {
         let server = Server(serverIP: serverIP, serverPort: 8084)
         
         server.asyncAuthenticate(userID: ID, password: pswd) {_, response, _ in
+            
             let loginURL = server.loginURL
             guard let response = response as? HTTPURLResponse, response.statusCode == 200,  let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
                 
