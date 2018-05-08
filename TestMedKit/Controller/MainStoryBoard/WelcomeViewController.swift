@@ -23,9 +23,9 @@ class WelcomeViewController: UIViewController {
         
         signInButton.layer.cornerRadius = 8
         
-        let myView = MyTestView(frame: CGRect(x: 0, y: 0, width: 160, height: 300))
-        myView.backgroundColor = .white
-        view.addSubview(myView)
+//        let myView = MyTestView(frame: CGRect(x: 0, y: 0, width: 160, height: 300))
+//        myView.backgroundColor = .white
+//        view.addSubview(myView)
     }
 
     override func didReceiveMemoryWarning() {

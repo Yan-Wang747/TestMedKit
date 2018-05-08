@@ -58,7 +58,7 @@
 		3F8E73112044A67800D25081 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E73102044A67800D25081 /* Task.swift */; };
 		3F95CE18203DF9EC0096A896 /* DetaiProfilelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */; };
 		3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */; };
-		3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateFirstName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateFirstName.swift */; };
+		3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateField.swift */; };
 		3F985AE3209CAECE007C290C /* Server+updateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE2209CAECE007C290C /* Server+updateField.swift */; };
 		3F985AE5209CBA3A007C290C /* UpdateBasicInfoField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE4209CBA3A007C290C /* UpdateBasicInfoField.swift */; };
 		3F9CC1A120976B1D00B5883D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */; };
@@ -178,7 +178,7 @@
 		3F8E73102044A67800D25081 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiProfilelTableViewController.swift; sourceTree = "<group>"; };
 		3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPickerViewController.swift; sourceTree = "<group>"; };
-		3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateFirstName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldEditViewController+updateFirstName.swift"; sourceTree = "<group>"; };
+		3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldEditViewController+updateField.swift"; sourceTree = "<group>"; };
 		3F985AE2209CAECE007C290C /* Server+updateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+updateField.swift"; sourceTree = "<group>"; };
 		3F985AE4209CBA3A007C290C /* UpdateBasicInfoField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBasicInfoField.swift; sourceTree = "<group>"; };
 		3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
@@ -398,7 +398,7 @@
 		3F985ADF209CAC02007C290C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateFirstName.swift */,
+				3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -603,7 +603,7 @@
 				3F7A1E1F2056CA5200310D51 /* FamilyHistoryTask.swift in Sources */,
 				3F568F0320658AC9002255A6 /* ORKGynecologyTask.swift in Sources */,
 				3F985AE3209CAECE007C290C /* Server+updateField.swift in Sources */,
-				3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateFirstName.swift in Sources */,
+				3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateField.swift in Sources */,
 				3F985AE5209CBA3A007C290C /* UpdateBasicInfoField.swift in Sources */,
 				3FF9CFFE20938762000370FA /* TabBarController.swift in Sources */,
 				3F538047203F2EF10045A492 /* TextFieldEditViewController.swift in Sources */,
