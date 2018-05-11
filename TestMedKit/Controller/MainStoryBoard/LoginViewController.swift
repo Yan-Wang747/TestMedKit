@@ -30,9 +30,14 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+    @IBAction func swipeRightBack(_ sender: UISwipeGestureRecognizer) {
+        if sender.state == .ended {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     @IBAction func loginAction(_ sender: Any) {
-        
-        
         guard let ID = IDText.text, let pswd = pswdText.text else {
             return
         }
@@ -44,19 +49,18 @@ class LoginViewController: UIViewController {
         
         let server = Server(serverIP: serverIP, serverPort: 8084)
         
-        server.asyncAuthenticate(userID: ID, password: pswd) {_, response, _ in
+        server.asyncAuthenticate(endpoint: Endpoints.appLogin.rawValue, userID: ID, password: pswd) {_, response, _ in
             
-            let loginURL = server.loginURL
+            let loginURL = URL(string: "\(server.base)/\(Endpoints.appLogin)")!
             guard let response = response as? HTTPURLResponse, response.statusCode == 200,  let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
-                
-                return
+                fatalError()
             }
             
             for cookie in cookies {
                 if cookie.name == "JSESSIONID" {
                     server.sessionID = cookie.value
                     //closure
-                    server.asyncGetBasicInfo() {data, response, _ in
+                    server.asyncGetJsonData(endpoint: Endpoints.getBasicInfo.rawValue) {data, response, _ in
                         guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200, let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else {
                             return
                         }

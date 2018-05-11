@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PersonalInfo: TaskInfo{
+class PersonalResult: SurveyResult{
     var isMarried: Bool = false
     var livingWith: [String]? = nil
     var supportFamilies: [String]? = nil

@@ -25,23 +25,17 @@ class Server {
         session = URLSession(configuration: conf)
     }
     
-    var baseURL: String {
+    var base: String {
         get {
             return "\(httpProtocol)://\(serverIP):\(serverPort)/\(rootURL)"
         }
     }
     
-    let loginEndPoint = "AppLogin"
-    var loginURL: URL {
-        get {
-            return URL(string: "\(baseURL)/\(loginEndPoint)")!
-        }
-    }
-    
-    func asyncAuthenticate(userID: String, password: String, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func asyncAuthenticate(endpoint: String, userID: String, password: String, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         
         let loginString = "\(userID):\(password)"
         let loginBase64 = loginString.data(using: .utf8)!.base64EncodedString()
+        let loginURL = URL(string: "\(base)/\(endpoint)")!
         
         var loginRequest = URLRequest(url: loginURL)
         loginRequest.addValue("Basic \(loginBase64)", forHTTPHeaderField: "Authorization")

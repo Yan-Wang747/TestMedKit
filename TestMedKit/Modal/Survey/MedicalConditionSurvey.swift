@@ -9,17 +9,17 @@
 import Foundation
 import ResearchKit
 
-class MedicalConditionTask: Task {
+class MedicalConditionSurvey: PatientSurvey {
      static let medicalConditions = ["Cancer", "Asthma", "Bleeding Problems", "Blood Clots", "Blood Disorders", "Cardiovascular Disease", "Diabetes", "Emphysema", "Heart Attack", "Heart Disease", "Hypertension", "Kidney Stones", "Liver Problems", "Osteoarthritis", "Pneumonia", "Seizure", "Stroke", "Thyroid Problems", "Other"]
     
-    init(_ viewController: UIViewController, patient: Patient) {
-        let steps = MedicalConditionTask.createSteps()
+    init(viewController: UIViewController, patient: Patient, server: Server) {
+        let steps = MedicalConditionSurvey.createSteps()
         
         let medicalConditionTask = ORKMedicalConditionTask(identifier: "medicalConditionTask", steps: steps)
-        medicalConditionTask.medicalConditions = MedicalConditionTask.medicalConditions
+        medicalConditionTask.medicalConditions = MedicalConditionSurvey.medicalConditions
         
-        MedicalConditionTask.createNavigationRule(for: medicalConditionTask)
-        super.init(task: medicalConditionTask, viewController: viewController, delegate: MedicalConditionTaskResultProcessor(patient: patient))
+        MedicalConditionSurvey.createNavigationRule(for: medicalConditionTask)
+        super.init(task: medicalConditionTask, viewController: viewController, delegate: MedicalConditionTaskResultProcessor(patient: patient, server: server))
     }
     
     private static func createSteps() -> [ORKStep] {

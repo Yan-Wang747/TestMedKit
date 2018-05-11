@@ -12,22 +12,15 @@ import ResearchKit
 class MedicationTaskResultProcessor: TaskResultProcessor {
     var medTypes: [String]!
     
-    override init(patient: Patient) {
-        super.init(patient: patient)
+    override func startProcessResult(with result: ORKTaskResult) -> SurveyResult? {
+        return processTakeAnyMedicationResult(with: result, for: medTypes.first!)
     }
     
-    override func startProcessResult(with result: ORKTaskResult) {
-        let medicationInfo = processTakeAnyMedicationResult(with: result, for: medTypes.first!)
-        medicationInfo?.isCompleted = true
-        
-        patient.medicationInfo = medicationInfo
-    }
-    
-    func processTakeAnyMedicationResult(with result: ORKTaskResult, for medType: String) -> MedicationInfo? {
+    func processTakeAnyMedicationResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {
         let id = medType.lowercased() + "_" + "TakeAnyMedicationStep"
         guard let takeAnyMedicationResult = ((result.result(forIdentifier: id) as? ORKStepResult)?.result(forIdentifier: id) as? ORKBooleanQuestionResult)?.booleanAnswer else { return nil }
         
-        var medicationInfo: MedicationInfo?
+        var medicationInfo: MedicationResult?
         if takeAnyMedicationResult == 1 {
             medicationInfo = processNameResult(with: result, for: medType)
             let index = medTypes.index(of: medType)!
@@ -35,7 +28,7 @@ class MedicationTaskResultProcessor: TaskResultProcessor {
         } else {
             let index = medTypes.index(of: medType)!
             if index == medTypes.count - 1 {
-                medicationInfo = MedicationInfo()
+                medicationInfo = MedicationResult()
             } else {
                 let nextMedType = medTypes[index + 1]
                 medicationInfo = processTakeAnyMedicationResult(with: result, for: nextMedType)
@@ -45,7 +38,7 @@ class MedicationTaskResultProcessor: TaskResultProcessor {
         return medicationInfo
     }
     
-    func processNameResult(with result: ORKTaskResult, for medType: String) -> MedicationInfo? {
+    func processNameResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {
         let id = medType.lowercased() + "_" + "NameStep"
         guard let name = ((result.result(forIdentifier: id) as? ORKStepResult)?.result(forIdentifier: id) as? ORKTextQuestionResult)?.textAnswer else { return nil }
         
@@ -56,7 +49,7 @@ class MedicationTaskResultProcessor: TaskResultProcessor {
         return medicationInfo
     }
     
-    func processDoseUnitResult(with result: ORKTaskResult, for medType: String) -> MedicationInfo? {
+    func processDoseUnitResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {
         let id = medType.lowercased() + "_" + "DoseUnitStep"
         
         guard let doseUnit = ((result.result(forIdentifier: id) as? ORKStepResult)?.result(forIdentifier: id) as? ORKChoiceQuestionResult)?.choiceAnswers as? [String] else { return nil }
@@ -68,7 +61,7 @@ class MedicationTaskResultProcessor: TaskResultProcessor {
         return medicationInfo
     }
     
-    func processDoseResult(with result: ORKTaskResult, for medType: String) -> MedicationInfo? {
+    func processDoseResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {
         let id = medType.lowercased() + "_" + "DoseAmountStep"
         guard let dose = ((result.result(forIdentifier: id) as? ORKStepResult)?.result(forIdentifier: id) as? ORKNumericQuestionResult)?.numericAnswer as? Int else { return nil }
         
@@ -79,7 +72,7 @@ class MedicationTaskResultProcessor: TaskResultProcessor {
     }
     
     
-    func processFrequencyResult(with result: ORKTaskResult, for medType: String) -> MedicationInfo? {
+    func processFrequencyResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {
         let id = medType.lowercased() + "_" + "FrequencyStep"
         guard let frequency = ((result.result(forIdentifier: id) as? ORKStepResult)?.result(forIdentifier: id) as? ORKChoiceQuestionResult)?.choiceAnswers as? [String] else { return nil }
         
@@ -89,7 +82,7 @@ class MedicationTaskResultProcessor: TaskResultProcessor {
         return medicationInfo
     }
     
-    func processIntakeWayResult(with result: ORKTaskResult, for medType: String) -> MedicationInfo? {
+    func processIntakeWayResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {
         let id = medType.lowercased() + "_" + "FrequencyStep"
         guard let intakeWay = ((result.result(forIdentifier: id) as? ORKStepResult)?.result(forIdentifier: id) as? ORKChoiceQuestionResult)?.choiceAnswers as? [String] else { return nil }
         
@@ -99,14 +92,14 @@ class MedicationTaskResultProcessor: TaskResultProcessor {
         return medicationInfo
     }
     
-    func processStartDateResult(with result: ORKTaskResult, for medType: String) -> MedicationInfo? {
+    func processStartDateResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {
         let id = medType.lowercased() + "_" + "StartDateStep"
         guard let startDate = ((result.result(forIdentifier: id) as? ORKStepResult)?.result(forIdentifier: id) as? ORKDateQuestionResult)?.dateAnswer else { return nil }
         
-        var medicationInfo: MedicationInfo?
+        var medicationInfo: MedicationResult?
         let index = medTypes.index(of: medType)!
         if index == medTypes.count - 1 {
-            medicationInfo = MedicationInfo()
+            medicationInfo = MedicationResult()
             medicationInfo?.startDates.append(startDate)
         } else {
             let nextMedType = medTypes[index + 1]

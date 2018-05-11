@@ -9,7 +9,7 @@
 import Foundation
 import ResearchKit
 
-class TobaccoInfo: TaskInfo{
+class TobaccoResult: SurveyResult{
     var useTobacco: Bool = false
     var everUseTobacco: Bool = false
     var selectedTobaccoProducts: [String]? = nil

@@ -64,7 +64,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YuL-QK-AIn">
-                                                    <rect key="frame" x="10" y="11.66666666666667" width="355" height="20.333333333333329"/>
+                                                    <rect key="frame" x="10" y="11.666666666666671" width="355" height="20.333333333333329"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoz-p0-UMN">
                                                             <rect key="frame" x="0.0" y="0.0" width="270.33333333333331" height="20.333333333333332"/>
@@ -935,12 +935,16 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="xb5-pY-Etp" firstAttribute="trailing" secondItem="hJu-xQ-TdS" secondAttribute="trailing" constant="20" id="6OR-0k-dKZ"/>
                             <constraint firstItem="hJu-xQ-TdS" firstAttribute="leading" secondItem="xb5-pY-Etp" secondAttribute="leading" constant="20" id="WRv-fw-Qkx"/>
                             <constraint firstItem="hJu-xQ-TdS" firstAttribute="top" secondItem="xb5-pY-Etp" secondAttribute="top" constant="50" id="bNg-hI-w73"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xb5-pY-Etp"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="uQB-dp-TAx" appends="YES" id="z58-6j-xWe"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Ad9-oi-j6W"/>
                     <connections>
@@ -951,6 +955,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDl-N1-JAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="uQB-dp-TAx">
+                    <connections>
+                        <action selector="swipeRightBack:" destination="VN0-HM-PYX" id="h6d-Ch-GI2"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-591.20000000000005" y="54.679802955665025"/>
         </scene>

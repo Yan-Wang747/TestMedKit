@@ -9,19 +9,19 @@
 import Foundation
 import ResearchKit
 
-class AllergyTask: Task {
+class AllergySurvey: PatientSurvey {
     static let allergyTypes = ["Drug", "Drugclass", "Food", "Other", "Unknown"]
     static let allergyReactions = ["Skin Rashes/Hives", "Shock/Unconsciousness", "Asthma/Shortness of Breath", "Nausea/Vomiting/Diarrhea", "Anemia/Blood Disorders", "Photosensitivity", "Swollen‐lips", "Chest Pains/Irregular Heart Rate", "Other"]
     
-    init(_ viewController: UIViewController, patient: Patient) {
-        let steps = AllergyTask.createSteps()
+    init(viewController: UIViewController, patient: Patient, server: Server) {
+        let steps = AllergySurvey.createSteps()
         
         let allergyTask = ORKAllergyTask(identifier: "allergyTask", steps: steps)
-        allergyTask.allergyTypes = AllergyTask.allergyTypes
-        allergyTask.allergyReactions = AllergyTask.allergyReactions
-        AllergyTask.createNavigationRule(for: allergyTask)
+        allergyTask.allergyTypes = AllergySurvey.allergyTypes
+        allergyTask.allergyReactions = AllergySurvey.allergyReactions
+        AllergySurvey.createNavigationRule(for: allergyTask)
         
-        super.init(task: allergyTask, viewController: viewController, delegate: AllergyTaskResultProcessor(patient: patient))
+        super.init(task: allergyTask, viewController: viewController, delegate: AllergyTaskResultProcessor(patient: patient, server: server))
     }
     
     private static func createSteps() -> [ORKStep] {

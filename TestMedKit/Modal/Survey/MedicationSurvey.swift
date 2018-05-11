@@ -9,17 +9,17 @@
 import Foundation
 import ResearchKit
 
-class MedicationTask: Task {
+class MedicationSurvey: PatientSurvey {
     static let medTypes = ["Prescription", "Over-the-Counter", "Herbal"]
     
-    init(_ viewController: UIViewController, patient: Patient) {
-        let steps = MedicationTask.createSteps()
+    init(viewController: UIViewController, patient: Patient, server: Server) {
+        let steps = MedicationSurvey.createSteps()
         
         let medicationTask = ORKNavigableOrderedTask(identifier: "medicationTask", steps: steps)
-        MedicationTask.createNavigationRule(for: medicationTask)
+        MedicationSurvey.createNavigationRule(for: medicationTask)
         
-        let delegate = MedicationTaskResultProcessor(patient: patient)
-        delegate.medTypes = MedicationTask.medTypes
+        let delegate = MedicationTaskResultProcessor(patient: patient, server: server)
+        delegate.medTypes = MedicationSurvey.medTypes
         super.init(task: medicationTask, viewController: viewController, delegate: delegate)
     }
     

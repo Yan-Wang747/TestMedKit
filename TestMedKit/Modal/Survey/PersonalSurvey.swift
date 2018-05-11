@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 import ResearchKit
 
-class PersonalTask: Task {
-    init(_ viewController: UIViewController, patient: Patient) {
-        let steps = PersonalTask.createPersonalSteps()
+class PersonalSurvey: PatientSurvey {
+    init(viewController: UIViewController, patient: Patient, server: Server) {
+        let steps = PersonalSurvey.createPersonalSteps()
         
         let personalTask = ORKNavigableOrderedTask(identifier: "personalTask", steps: steps)
         
-        PersonalTask.createPersonalNavigationRule(for: personalTask)
-        super.init(task: personalTask, viewController: viewController, delegate: PersonalTaskResultProcessor(patient: patient))
+        PersonalSurvey.createPersonalNavigationRule(for: personalTask)
+        super.init(task: personalTask, viewController: viewController, delegate: PersonalTaskResultProcessor(patient: patient, server: server))
     }
 
     private static func createPersonalSteps() -> [ORKStep]{
@@ -40,7 +40,7 @@ class PersonalTask: Task {
         steps.append(createNutritionSupplementsStep())
         steps.append(createLiquidDietStep())
         
-        Task.appendReviewStep(steps: &steps)
+        PatientSurvey.appendReviewStep(steps: &steps)
         
         return steps
     }

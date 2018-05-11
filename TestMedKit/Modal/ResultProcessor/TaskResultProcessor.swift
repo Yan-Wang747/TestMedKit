@@ -11,23 +11,44 @@ import ResearchKit
 
 class TaskResultProcessor: NSObject, ORKTaskViewControllerDelegate {
     let patient: Patient
+    let server: Server
+    let updateEndpoint: String
     
-    init(patient: Patient) {
+    init(patient: Patient, server: Server, updateEndpoint: String) {
         self.patient = patient
+        self.server = server
+        self.updateEndpoint = updateEndpoint
     }
     
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         switch reason {
         case .completed:
-            startProcessResult(with: taskViewController.result)
+            if let result = startProcessResult(with: taskViewController.result) {
+                do {
+                    let encoder = JSONEncoder()
+                    let jsonData = try encoder.encode(result)
+                    
+                    server.asyncSendJsonData(endpoint: updateEndpoint, jsonData: jsonData) { _, response, _ in
+                        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
+                        
+                        result.isCompleted = true
+                        self.patient.surveyResults.append(result)
+                        
+                        DispatchQueue.main.async {
+                            taskViewController.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                    
+                } catch {
+                    fatalError()
+                }
+            }
         default:
             break
         }
-        
-        taskViewController.dismiss(animated: true, completion: nil)
     }
     
-    func startProcessResult(with result: ORKTaskResult) {
-        
+    func startProcessResult(with result: ORKTaskResult) -> SurveyResult? {
+        return nil
     }
 }

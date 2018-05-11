@@ -10,32 +10,26 @@ import Foundation
 import ResearchKit
 
 class MedicalConditionTaskResultProcessor: TaskResultProcessor {
-    override init(patient: Patient) {
-        super.init(patient: patient)
-    }
     
     override func startProcessResult(with result: ORKTaskResult) {
-        let medicalConditionInfo = processHaveAnyMedicalConditionResult(with: result)
-        medicalConditionInfo?.isCompleted = true
-        
-        patient.medicalConditionInfo = medicalConditionInfo
+        return processHaveAnyMedicalConditionResult(with: result)
     }
     
-    func processHaveAnyMedicalConditionResult(with result: ORKTaskResult) -> MedicalConditionInfo? {
+    func processHaveAnyMedicalConditionResult(with result: ORKTaskResult) -> MedicalConditionResult? {
         guard let haveAnyMedicalConditionResult = ((result.result(forIdentifier: "haveAnyMedicalConditionStep") as? ORKStepResult)?.result(forIdentifier: "haveAnyMedicalConditionStep") as? ORKBooleanQuestionResult)?.booleanAnswer else { return nil }
         
-        var medicalConditionInfo: MedicalConditionInfo?
+        var medicalConditionInfo: MedicalConditionResult?
         if haveAnyMedicalConditionResult == 1 {
             medicalConditionInfo = processMedicalConditionSelectionResult(with: result)
             medicalConditionInfo?.haveAnyMedicalCondition = true
         } else {
-            medicalConditionInfo = MedicalConditionInfo()
+            medicalConditionInfo = MedicalConditionResult()
         }
         
         return medicalConditionInfo
     }
     
-    func processMedicalConditionSelectionResult(with result: ORKTaskResult) -> MedicalConditionInfo? {
+    func processMedicalConditionSelectionResult(with result: ORKTaskResult) -> MedicalConditionResult? {
         guard let selectedConditions = ((result.result(forIdentifier: "medicalConditionSelectionStep") as? ORKStepResult)?.result(forIdentifier: "medicalConditionSelectionStep") as? ORKChoiceQuestionResult)?.choiceAnswers as? [String] else { return nil }
         
         let medicalConditionInfo = processOnsetDateResult(with: result, selectedConditions: selectedConditions)
@@ -44,7 +38,7 @@ class MedicalConditionTaskResultProcessor: TaskResultProcessor {
         return medicalConditionInfo
     }
     
-    func processOnsetDateResult(with result: ORKTaskResult, selectedConditions: [String]) -> MedicalConditionInfo? {
+    func processOnsetDateResult(with result: ORKTaskResult, selectedConditions: [String]) -> MedicalConditionResult? {
         
         var onsetDates: [Date] = []
         for selectedCondition in selectedConditions {
@@ -61,7 +55,7 @@ class MedicalConditionTaskResultProcessor: TaskResultProcessor {
         return medicalConditionInfo
     }
     
-    func processIsTreatedResult(with result: ORKTaskResult, selectedConditions: [String]) -> MedicalConditionInfo? {
+    func processIsTreatedResult(with result: ORKTaskResult, selectedConditions: [String]) -> MedicalConditionResult? {
         
         var isTreated: [Bool] = []
         for selectedCondition in selectedConditions {
@@ -76,7 +70,7 @@ class MedicalConditionTaskResultProcessor: TaskResultProcessor {
         return medicalConditionInfo
     }
     
-    func processHowIsTreatedResult(with result: ORKTaskResult, selectedConditions: [String], isTreated: [Bool]) -> MedicalConditionInfo? {
+    func processHowIsTreatedResult(with result: ORKTaskResult, selectedConditions: [String], isTreated: [Bool]) -> MedicalConditionResult? {
         
         var howIsTreated: [String] = []
         for i in 0..<selectedConditions.count {
@@ -88,7 +82,7 @@ class MedicalConditionTaskResultProcessor: TaskResultProcessor {
             }
         }
         
-        let medicalConditionInfo = MedicalConditionInfo()
+        let medicalConditionInfo = MedicalConditionResult()
         medicalConditionInfo.howIsTreated = howIsTreated
         
         return medicalConditionInfo

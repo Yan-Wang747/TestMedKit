@@ -9,19 +9,19 @@
 import Foundation
 import ResearchKit
 
-class GynecologyTask: Task {
+class GynecologySurvey: PatientSurvey {
     static let hormoneTypeStrings = ["Contraceptive", "Post Menopause Use", "Other Hormone Use"]
     static let menopauseStatuses = ["Premenopausal", "Perimenopause", "Postmenopausal", "Unknown"]
     
-    init(_ viewController: UIViewController, patient: Patient) {
-        let steps = GynecologyTask.createSteps()
+    init(viewController: UIViewController, patient: Patient, server: Server) {
+        let steps = GynecologySurvey.createSteps()
         
         let gynecologyTask = ORKGynecologyTask(identifier: "gynecologyTask", steps: steps)
-        gynecologyTask.hormoneTypeStrings = GynecologyTask.hormoneTypeStrings
+        gynecologyTask.hormoneTypeStrings = GynecologySurvey.hormoneTypeStrings
         
-        GynecologyTask.createNavigationRule(for: gynecologyTask)
+        GynecologySurvey.createNavigationRule(for: gynecologyTask)
         
-        super.init(task: gynecologyTask, viewController: viewController, delegate: GynecologicTaskResultProcessor(patient: patient))
+        super.init(task: gynecologyTask, viewController: viewController, delegate: GynecologicTaskResultProcessor(patient: patient, server: server))
     }
     
     private static func createSteps() -> [ORKStep] {

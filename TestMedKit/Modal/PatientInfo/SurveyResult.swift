@@ -1,13 +1,13 @@
 //
-//  TaskInfo.swift
+//  SurveyResult.swift
 //  TestMedKit
 //
-//  Created by Student on 2018-04-09.
+//  Created by Student on 2018-05-10.
 //  Copyright © 2018 Student. All rights reserved.
 //
 
 import Foundation
 
 class SurveyResult: Codable {
-    var isCompleted: Bool = false
+    var isCompleted = false
 }

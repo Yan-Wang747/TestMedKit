@@ -9,7 +9,7 @@
 import Foundation
 import ResearchKit
 
-class SurgicalInfo: TaskInfo {
+class SurgicalResult: SurveyResult {
     var takeSurgical: Bool = false
     var surgeries: [String]? = nil
     var dates: [Date]? = nil

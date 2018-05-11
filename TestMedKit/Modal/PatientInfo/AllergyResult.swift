@@ -9,7 +9,7 @@
 import Foundation
 import ResearchKit
 
-class AllergyInfo: TaskInfo {
+class AllergyResult: SurveyResult {
     var haveAnyAllergy: Bool = false
     var allergyTypes: [String]? = nil
     var allergyNames: [String]? = nil

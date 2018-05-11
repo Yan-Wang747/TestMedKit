@@ -9,7 +9,7 @@
 import Foundation
 import ResearchKit
 
-class GynecologyInfo: TaskInfo {
+class GynecologyResult: SurveyResult {
     var haveEverBeenPregnant = false
     var numberOfFullTimePregnancies: Int? = nil
     var fullTimePregnancyAge: Int? = nil

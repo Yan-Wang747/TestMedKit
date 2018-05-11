@@ -11,31 +11,25 @@ import ResearchKit
 
 class FamilyHistoryTaskResultProcessor: TaskResultProcessor {
     
-    override init(patient: Patient) {
-        super.init(patient: patient)
+    override func startProcessResult(with result: ORKTaskResult) -> SurveyResult? {
+        return processHaveAnyCancerResult(with: result)
     }
     
-    override func startProcessResult(with result: ORKTaskResult) {
-        let familyInfo = processHaveAnyCancerResult(with: result)
-        familyInfo?.isCompleted = true
-        patient.familyInfo = familyInfo
-    }
-    
-    func processHaveAnyCancerResult(with result: ORKTaskResult) -> FamilyInfo? {
+    func processHaveAnyCancerResult(with result: ORKTaskResult) -> FamilyResult? {
         guard let haveCancerAnswer = ((result.result(forIdentifier: "haveAnyCancerStep") as? ORKStepResult)?.result(forIdentifier: "haveAnyCancerStep") as? ORKBooleanQuestionResult)?.booleanAnswer else { return nil }
         
-        var familyInfo: FamilyInfo?
+        var familyInfo: FamilyResult?
         if haveCancerAnswer == 1 {
             familyInfo = processFamiliyMemberSelectionResult(with: result)
             
         } else {
-            familyInfo = FamilyInfo()
+            familyInfo = FamilyResult()
         }
         
         return familyInfo
     }
     
-    func processFamiliyMemberSelectionResult(with result: ORKTaskResult) -> FamilyInfo? {
+    func processFamiliyMemberSelectionResult(with result: ORKTaskResult) -> FamilyResult? {
         guard let selectedFamilies = ((result.result(forIdentifier: "familiyMemberSelectionStep") as? ORKStepResult)?.result(forIdentifier: "familiyMemberSelectionStep") as? ORKChoiceQuestionResult)?.choiceAnswers as? [String] else { return nil }
         
         let familyInfo = processDiagnosisResult(with: result, selectedFamilies: selectedFamilies)
@@ -44,7 +38,7 @@ class FamilyHistoryTaskResultProcessor: TaskResultProcessor {
         return familyInfo
     }
     
-    func processDiagnosisResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyInfo? {
+    func processDiagnosisResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyResult? {
         
         var diagnosedCancers: [String] = []
         for familyMember in selectedFamilies {
@@ -60,7 +54,7 @@ class FamilyHistoryTaskResultProcessor: TaskResultProcessor {
         return familyInfo
     }
     
-    func processDiagnosisAgeResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyInfo? {
+    func processDiagnosisAgeResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyResult? {
         
         var diagnosisAges: [Int] = []
         for familyMember in selectedFamilies {
@@ -76,7 +70,7 @@ class FamilyHistoryTaskResultProcessor: TaskResultProcessor {
         return familyInfo
     }
     
-    func processIsPassAwayResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyInfo? {
+    func processIsPassAwayResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyResult? {
         
         var isPassedAway: [Bool] = []
         for familyMember in selectedFamilies {
@@ -92,7 +86,7 @@ class FamilyHistoryTaskResultProcessor: TaskResultProcessor {
         return familyInfo
     }
     
-    func processPassAwayAgeResult(with result: ORKTaskResult, selectedFamilies: [String], isPassedAway: [Bool]) -> FamilyInfo? {
+    func processPassAwayAgeResult(with result: ORKTaskResult, selectedFamilies: [String], isPassedAway: [Bool]) -> FamilyResult? {
         
         var passAwayAges: [Int] = []
         for i in 0..<selectedFamilies.count {
@@ -110,7 +104,7 @@ class FamilyHistoryTaskResultProcessor: TaskResultProcessor {
         return familyInfo
     }
     
-    func processCurrentAgeResult(with result: ORKTaskResult, selectedFamilies: [String], isPassedAway: [Bool]) -> FamilyInfo? {
+    func processCurrentAgeResult(with result: ORKTaskResult, selectedFamilies: [String], isPassedAway: [Bool]) -> FamilyResult? {
         
         var currentAges: [Int] = []
         for i in 0..<selectedFamilies.count {
@@ -122,7 +116,7 @@ class FamilyHistoryTaskResultProcessor: TaskResultProcessor {
             }
         }
         
-        let familyInfo = FamilyInfo()
+        let familyInfo = FamilyResult()
         familyInfo.currentAges = currentAges
         
         return familyInfo

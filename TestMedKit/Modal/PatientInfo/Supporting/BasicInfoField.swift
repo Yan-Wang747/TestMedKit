@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UpdateBasicInfoField: Encodable {
+class BasicInfoField: Encodable {
     let field: String
     let newValue: String
     

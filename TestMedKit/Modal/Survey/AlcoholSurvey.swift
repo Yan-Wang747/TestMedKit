@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 import ResearchKit
 
-class AlcoholTask: Task {
+class AlcoholSurvey: PatientSurvey {
     static let hazardousInstances = ["Asbestors", "Benzene", "Lead", "Mercury", "Radiation", "Other Petroleum Products"]
     static let products = ["Cigarettes", "Cigars", "Chewing Tobacco", "Snuff", "Recreational Drug Use", "Illicit Drug Use"]
     
-    init(_ viewController: UIViewController, patient: Patient){
+    init(viewController: UIViewController, patient: Patient, server: Server){
 
-        let steps = AlcoholTask.createAlcoholSteps()
+        let steps = AlcoholSurvey.createAlcoholSteps()
         
         let alcoholTask = ORKNavigableOrderedTask(identifier: "alcoholTask", steps: steps)
 
-        AlcoholTask.createNavigationRule(for: alcoholTask)
-        super.init(task: alcoholTask, viewController: viewController, delegate: AlcoholTaskResultProcessor(patient: patient))
+        AlcoholSurvey.createNavigationRule(for: alcoholTask)
+        super.init(task: alcoholTask, viewController: viewController, delegate: AlcoholTaskResultProcessor(patient: patient, server: server))
     }
     
     private static func createAlcoholSteps() -> [ORKStep]{
@@ -42,7 +42,7 @@ class AlcoholTask: Task {
         steps.append(createUsedProductsStep())
         steps.append(createUsedProductsSelectionStep())
         
-        Task.appendReviewStep(steps: &steps)
+        PatientSurvey.appendReviewStep(steps: &steps)
         
         return steps
     }

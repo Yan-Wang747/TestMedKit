@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FamilyInfo: TaskInfo {
+class FamilyResult: SurveyResult {
     var haveAnyCancer: Bool = false
     var familiesWithCancer: [String]? = nil
     var diagnosedCancers: [String]? = nil

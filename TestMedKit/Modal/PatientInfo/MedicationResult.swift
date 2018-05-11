@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MedicationInfo: TaskInfo {
+class MedicationResult: SurveyResult {
     var takeMedication = [false, false, false]
     var names: [String] = []
     var units: [String] = []

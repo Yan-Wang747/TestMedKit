@@ -10,15 +10,8 @@ import Foundation
 
 class Patient{
     var basicInfo: BasicInfo
-    var tobaccoInfo: TobaccoInfo?
-    var alcoholInfo: AlcoholInfo?
-    var personalInfo: PersonalInfo?
-    var familyInfo: FamilyInfo?
-    var allergyInfo: AllergyInfo?
-    var medicationInfo: MedicationInfo?
-    var medicalConditionInfo: MedicalConditionInfo?
-    var surgicalInfo: SurgicalInfo?
-    var gynecologyInfo: GynecologyInfo?
+    
+    var surveyResults: [SurveyResult] = []
     
     init(basicInfo: BasicInfo) {
         self.basicInfo = basicInfo

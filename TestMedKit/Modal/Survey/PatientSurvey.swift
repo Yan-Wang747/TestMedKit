@@ -10,7 +10,7 @@ import Foundation
 import ResearchKit
 import UIKit
 
-class Task {
+class PatientSurvey {
     let viewController: UIViewController
     let task: ORKNavigableOrderedTask
     let delegate: ORKTaskViewControllerDelegate

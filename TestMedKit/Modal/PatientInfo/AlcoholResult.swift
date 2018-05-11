@@ -9,7 +9,7 @@
 import Foundation
 import ResearchKit
 
-class AlcoholInfo: TaskInfo{
+class AlcoholResult: SurveyResult{
     var drinkAlcohol: Bool = false
     var amountOfCups: Int? = nil
     var everDrinkAlcohol: Bool = false

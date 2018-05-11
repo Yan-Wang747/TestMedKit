@@ -9,18 +9,18 @@
 import Foundation
 import ResearchKit
 
-class FamilyHistoryTask: Task {
+class FamilyHistorySurvey: PatientSurvey {
     
     static let familyMembers = ["Father", "Mother", "Brother", "Sister", "Son", "Daughter", "Maternal Grandmother", "Maternal Grandfather", "Maternal Aunt", "Maternal Uncle", "Paternal Aunt", "Paternal Uncle", "Half Brother", "Half Sister", "Cousin"]
     
-    init(_ viewController: UIViewController, patient: Patient) {
-        let steps = FamilyHistoryTask.createSteps()
+    init(viewController: UIViewController, patient: Patient, server: Server) {
+        let steps = FamilyHistorySurvey.createSteps()
         
         let familyHistoryTask = ORKFamilyHistoryTask(identifier: "familyHistoryTask", steps: steps)
-        familyHistoryTask.familyMembers = FamilyHistoryTask.familyMembers
+        familyHistoryTask.familyMembers = FamilyHistorySurvey.familyMembers
         
-        FamilyHistoryTask.createNavigationRule(for: familyHistoryTask)
-        super.init(task: familyHistoryTask, viewController: viewController, delegate: FamilyHistoryTaskResultProcessor(patient: patient))
+        FamilyHistorySurvey.createNavigationRule(for: familyHistoryTask)
+        super.init(task: familyHistoryTask, viewController: viewController, delegate: FamilyHistoryTaskResultProcessor(patient: patient, server: server))
     }
     
     private static func createSteps() -> [ORKStep]{
@@ -42,7 +42,7 @@ class FamilyHistoryTask: Task {
             steps.append(createCurrentAgeStep(for: familyMember))
         }
  
-        Task.appendReviewStep(steps: &steps)
+        PatientSurvey.appendReviewStep(steps: &steps)
         return steps
     }
     

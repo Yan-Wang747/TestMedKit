@@ -11,30 +11,24 @@ import ResearchKit
 
 class AllergyTaskResultProcessor: TaskResultProcessor {
     
-    override init(patient: Patient) {
-        super.init(patient: patient)
+    override func startProcessResult(with result: ORKTaskResult) -> SurveyResult? {
+        return processHaveAnyAllergyResult(with: result)
     }
     
-    override func startProcessResult(with result: ORKTaskResult) {
-        let allergyInfo = processHaveAnyAllergyResult(with: result)
-        allergyInfo?.isCompleted = true
-        patient.allergyInfo = allergyInfo
-    }
-    
-    func processHaveAnyAllergyResult(with result: ORKTaskResult) -> AllergyInfo? {
+    func processHaveAnyAllergyResult(with result: ORKTaskResult) -> AllergyResult? {
         guard let haveAllergyResult = ((result.result(forIdentifier: "haveAnyAllergyStep") as? ORKStepResult)?.result(forIdentifier: "haveAnyAllergyStep") as? ORKBooleanQuestionResult)?.booleanAnswer else { return nil }
         
-        var allergyInfo: AllergyInfo?
+        var allergyInfo: AllergyResult?
         if haveAllergyResult == 1 {
             allergyInfo = processAllergyTypeSelectionResult(with: result)
         } else {
-            allergyInfo = AllergyInfo()
+            allergyInfo = AllergyResult()
         }
         
         return allergyInfo
     }
     
-    func processAllergyTypeSelectionResult(with result: ORKTaskResult) -> AllergyInfo? {
+    func processAllergyTypeSelectionResult(with result: ORKTaskResult) -> AllergyResult? {
         guard let allergyTypeSelected = ((result.result(forIdentifier: "allergyTypeSelectionStep") as? ORKStepResult)?.result(forIdentifier: "allergyTypeSelectionStep") as? ORKChoiceQuestionResult)?.choiceAnswers as? [String] else { return nil }
         
         let allergyInfo = processAllergyNameResult(with: result, selectedAllergyTypes: allergyTypeSelected)
@@ -43,7 +37,7 @@ class AllergyTaskResultProcessor: TaskResultProcessor {
         return allergyInfo
     }
     
-    func processAllergyNameResult(with result: ORKTaskResult, selectedAllergyTypes: [String]) -> AllergyInfo? {
+    func processAllergyNameResult(with result: ORKTaskResult, selectedAllergyTypes: [String]) -> AllergyResult? {
         
         var allergyNames: [String] = []
         for allergyType in selectedAllergyTypes {
@@ -60,7 +54,7 @@ class AllergyTaskResultProcessor: TaskResultProcessor {
         return allergyInfo
     }
     
-    func processReactionSelectionResult(with result: ORKTaskResult, allergyTypes: [String]) -> AllergyInfo? {
+    func processReactionSelectionResult(with result: ORKTaskResult, allergyTypes: [String]) -> AllergyResult? {
         
         var reactions: [[String]] = []
         for allergyType in allergyTypes {
@@ -78,7 +72,7 @@ class AllergyTaskResultProcessor: TaskResultProcessor {
         return allergyInfo
     }
     
-    func processSeverityResult(with result: ORKTaskResult, allergyTypes: [String], reactions: [[String]]) -> AllergyInfo? {
+    func processSeverityResult(with result: ORKTaskResult, allergyTypes: [String], reactions: [[String]]) -> AllergyResult? {
         
         var severities: [[String]] = []
         for i in 0..<allergyTypes.count {
@@ -100,7 +94,7 @@ class AllergyTaskResultProcessor: TaskResultProcessor {
         return allergyInfo
     }
     
-    func processDateOfOccurrenceResult(with result: ORKTaskResult, allergyTypes: [String], reactions: [[String]]) -> AllergyInfo? {
+    func processDateOfOccurrenceResult(with result: ORKTaskResult, allergyTypes: [String], reactions: [[String]]) -> AllergyResult? {
         
         var datesOfOccurence: [[Date]] = []
         for i in 0..<allergyTypes.count {
@@ -117,7 +111,7 @@ class AllergyTaskResultProcessor: TaskResultProcessor {
             datesOfOccurence.append(dates)
         }
         
-        let allergyInfo = AllergyInfo()
+        let allergyInfo = AllergyResult()
         allergyInfo.datesOfOccurrence = datesOfOccurence
         
         return allergyInfo

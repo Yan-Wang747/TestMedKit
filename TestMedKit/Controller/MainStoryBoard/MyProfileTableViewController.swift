@@ -10,9 +10,10 @@ import UIKit
 import ResearchKit
 
 class MyProfileTableViewController: UITableViewController{
-    var task: Task?
+    var task: PatientSurvey?
     var patient: Patient!
     var server: Server!
+    var surveyToRowNum: [String : Int] = [:]
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -28,112 +29,16 @@ class MyProfileTableViewController: UITableViewController{
         let footerView = UIView()
         self.tableView.tableFooterView = footerView
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         nameLabel.text = patient.basicInfo.fullName
         
-        checkTobaccoStatus()
-        checkAlcoholStatus()
-        checkPersonalStatus()
-        checkFamilyStatus()
-        checkAllergyStatus()
-        checkMedicationStatus()
-        checkMedicalConditionStatus()
-        checkSurgicalStatus()
-        checkGynecologyStatus()
+        checkStatus()
     }
     
-    func checkTobaccoStatus() {
-        if let isCompleted = patient.tobaccoInfo?.isCompleted {
-            if isCompleted {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)){
-                    cell.accessoryType = .checkmark
-                }
-            }
-        }
-    }
-    
-    func checkAlcoholStatus() {
-        if let isCompleted = patient.alcoholInfo?.isCompleted {
-            if isCompleted {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)){
-                    cell.accessoryType = .checkmark
-                }
-            }
-        }
-    }
-    
-    func checkPersonalStatus() {
-        if let isCompleted = patient.personalInfo?.isCompleted {
-            if isCompleted {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 1)){
-                    cell.accessoryType = .checkmark
-                }
-            }
-        }
-    }
-    
-    func checkFamilyStatus() {
-        if let isCompleted = patient.familyInfo?.isCompleted {
-            if isCompleted {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 3, section: 1)){
-                    cell.accessoryType = .checkmark
-                }
-            }
-        }
-    }
-    
-    func checkAllergyStatus() {
-        if let isCompleted = patient.allergyInfo?.isCompleted {
-            if isCompleted {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 4, section: 1)){
-                    cell.accessoryType = .checkmark
-                }
-            }
-        }
-    }
-    
-    func checkMedicationStatus() {
-        if let isCompleted = patient.medicationInfo?.isCompleted {
-            if isCompleted {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 5, section: 1)){
-                    cell.accessoryType = .checkmark
-                }
-            }
-        }
-    }
-    
-    func checkMedicalConditionStatus() {
-        if let isCompleted = patient.medicalConditionInfo?.isCompleted {
-            if isCompleted {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 6, section: 1)){
-                    cell.accessoryType = .checkmark
-                }
-            }
-        }
-    }
-    
-    func checkSurgicalStatus() {
-        if let isCompleted = patient.surgicalInfo?.isCompleted {
-            if isCompleted {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 7, section: 1)){
-                    cell.accessoryType = .checkmark
-                }
-            }
-        }
-    }
-    
-    func checkGynecologyStatus() {
-        if let isCompleted = patient.gynecologyInfo?.isCompleted {
-            if isCompleted {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 8, section: 1)){
-                    cell.accessoryType = .checkmark
-                }
-            }
-        }
+    func checkStatus() {
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -162,25 +67,26 @@ class MyProfileTableViewController: UITableViewController{
     }
  */
     func performTask(forRow row: Int){
+        
         switch row{
         case 0:
-            task = TobaccoTask(self, patient: patient)
+            task = TobaccoSurvey(viewController: self, patient: patient, server: server)
         case 1:
-            task = AlcoholTask(self, patient: patient)
+            task = AlcoholSurvey(viewController: self, patient: patient, server: server)
         case 2:
-            task = PersonalTask(self, patient: patient)
+            task = PersonalSurvey(viewController: self, patient: patient, server: server)
         case 3:
-            task = FamilyHistoryTask(self, patient: patient)
+            task = FamilyHistorySurvey(viewController: self, patient: patient, server: server)
         case 4:
-            task = AllergyTask(self, patient: patient)
+            task = AllergySurvey(viewController: self, patient: patient, server: server)
         case 5:
-            task = MedicationTask(self, patient: patient)
+            task = MedicationSurvey(viewController: self, patient: patient, server: server)
         case 6:
-            task = MedicalConditionTask(self, patient: patient)
+            task = MedicalConditionSurvey(viewController: self, patient: patient, server: server)
         case 7:
-            task = SurgicalTask(self, patient: patient)
+            task = SurgicalSurvey(viewController: self, patient: patient, server: server)
         case 8:
-            task = GynecologyTask(self, patient: patient)
+            task = GynecologySurvey(viewController: self, patient: patient, server: server)
         default:
             task = nil
         }

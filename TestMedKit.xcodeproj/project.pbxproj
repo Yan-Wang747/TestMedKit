@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F0AF0B620A0B1CB00DCD18A /* MyTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AF0B520A0B1CB00DCD18A /* MyTestView.swift */; };
 		3F12D067209B8E7F008DF849 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D066209B8E7F008DF849 /* Server.swift */; };
-		3F12D071209BA477008DF849 /* Server+getBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D070209BA477008DF849 /* Server+getBasicInfo.swift */; };
+		3F12D071209BA477008DF849 /* Server+getJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D070209BA477008DF849 /* Server+getJsonData.swift */; };
 		3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */; };
 		3F4649B7209B603E00F640FD /* BasicInfoKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */; };
 		3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5161E720596601003C7E19 /* ORKAllergyTask.swift */; };
@@ -19,50 +18,51 @@
 		3F54C1A9206AD078002316FE /* ORKFamilyHistoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54C1A8206AD078002316FE /* ORKFamilyHistoryTask.swift */; };
 		3F55632E2062A2550010566C /* GynecologicTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55632D2062A2550010566C /* GynecologicTask.swift */; };
 		3F55935A207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F559359207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift */; };
-		3F55935E207D1BDD00A8C9DE /* PersonalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55935D207D1BDD00A8C9DE /* PersonalInfo.swift */; };
-		3F55CD7D2045AA7200668C7A /* TobaccoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CD7C2045AA7200668C7A /* TobaccoTask.swift */; };
-		3F55CD7F2045B33100668C7A /* AlcoholTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CD7E2045B33100668C7A /* AlcoholTask.swift */; };
-		3F55CD812045B45600668C7A /* PersonalTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CD802045B45600668C7A /* PersonalTask.swift */; };
+		3F55935E207D1BDD00A8C9DE /* PersonalResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55935D207D1BDD00A8C9DE /* PersonalResult.swift */; };
+		3F55CD7D2045AA7200668C7A /* TobaccoSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CD7C2045AA7200668C7A /* TobaccoSurvey.swift */; };
+		3F55CD7F2045B33100668C7A /* AlcoholSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CD7E2045B33100668C7A /* AlcoholSurvey.swift */; };
+		3F55CD812045B45600668C7A /* PersonalSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CD802045B45600668C7A /* PersonalSurvey.swift */; };
 		3F568F0320658AC9002255A6 /* ORKGynecologyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F568F0220658AC9002255A6 /* ORKGynecologyTask.swift */; };
 		3F568F06206595B2002255A6 /* ORKSurgicalTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F568F05206595B2002255A6 /* ORKSurgicalTask.swift */; };
 		3F575CB7207668F4005F8D48 /* TaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F575CB6207668F4005F8D48 /* TaskResultProcessor.swift */; };
 		3F575CB920766E39005F8D48 /* TobaccoTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F575CB820766E39005F8D48 /* TobaccoTaskResultProcessor.swift */; };
-		3F5795C2207FA24B00A2C3E7 /* AllergyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5795C1207FA24B00A2C3E7 /* AllergyInfo.swift */; };
+		3F5795C2207FA24B00A2C3E7 /* AllergyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5795C1207FA24B00A2C3E7 /* AllergyResult.swift */; };
 		3F5795C6207FA8A500A2C3E7 /* AllergyTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5795C5207FA8A500A2C3E7 /* AllergyTaskResultProcessor.swift */; };
-		3F5795C8207FE57600A2C3E7 /* MedicationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5795C7207FE57600A2C3E7 /* MedicationInfo.swift */; };
+		3F5795C8207FE57600A2C3E7 /* MedicationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5795C7207FE57600A2C3E7 /* MedicationResult.swift */; };
 		3F5795CA207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5795C9207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift */; };
-		3F58EA8E205AB526002A83D0 /* MedicationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58EA8D205AB526002A83D0 /* MedicationTask.swift */; };
-		3F58EA9D205B094C002A83D0 /* AllergyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58EA9C205B094C002A83D0 /* AllergyTask.swift */; };
-		3F5931CA208799CC007A3829 /* SurgicalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931C9208799CC007A3829 /* SurgicalInfo.swift */; };
+		3F58EA8E205AB526002A83D0 /* MedicationSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58EA8D205AB526002A83D0 /* MedicationSurvey.swift */; };
+		3F58EA9D205B094C002A83D0 /* AllergySurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58EA9C205B094C002A83D0 /* AllergySurvey.swift */; };
+		3F5931CA208799CC007A3829 /* SurgicalResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931C9208799CC007A3829 /* SurgicalResult.swift */; };
 		3F5931CE20879FA4007A3829 /* SurgicalTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931CD20879FA4007A3829 /* SurgicalTaskResultProcessor.swift */; };
 		3F5931D12087B4E8007A3829 /* GynecologicTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931D02087B4E8007A3829 /* GynecologicTaskResultProcessor.swift */; };
-		3F5BC04D20615CB5007FBE0A /* MedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BC04C20615CB5007FBE0A /* MedicalConditionTask.swift */; };
-		3F5BC04F206195CC007FBE0A /* SurgicalTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BC04E206195CC007FBE0A /* SurgicalTask.swift */; };
-		3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CF5BD2086378300478678 /* MedicalConditionInfo.swift */; };
+		3F5BC04D20615CB5007FBE0A /* MedicalConditionSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BC04C20615CB5007FBE0A /* MedicalConditionSurvey.swift */; };
+		3F5BC04F206195CC007FBE0A /* SurgicalSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BC04E206195CC007FBE0A /* SurgicalSurvey.swift */; };
+		3F5CF5BE2086378300478678 /* MedicalConditionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CF5BD2086378300478678 /* MedicalConditionResult.swift */; };
 		3F5CF5C220864CCD00478678 /* MedicalConditionTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CF5C120864CCD00478678 /* MedicalConditionTaskResultProcessor.swift */; };
 		3F620E4D203754F000655AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F620E4C203754F000655AA4 /* AppDelegate.swift */; };
 		3F620E52203754F000655AA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E50203754F000655AA4 /* Main.storyboard */; };
 		3F620E55203754F000655AA4 /* TestMedKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F620E53203754F000655AA4 /* TestMedKit.xcdatamodeld */; };
 		3F620E57203754F000655AA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E56203754F000655AA4 /* Assets.xcassets */; };
 		3F620E5A203754F000655AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E58203754F000655AA4 /* LaunchScreen.storyboard */; };
-		3F627076207E5755004E35AF /* FamilyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627075207E5755004E35AF /* FamilyInfo.swift */; };
+		3F627076207E5755004E35AF /* FamilyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627075207E5755004E35AF /* FamilyResult.swift */; };
 		3F627078207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627077207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift */; };
 		3F719ECB207BC1D40070A986 /* AlcoholTaskResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719ECA207BC1D40070A986 /* AlcoholTaskResultProcessor.swift */; };
-		3F719ED0207BC4430070A986 /* AlcoholInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719ECF207BC4430070A986 /* AlcoholInfo.swift */; };
-		3F719ED2207BCCDE0070A986 /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719ED1207BCCDE0070A986 /* TaskInfo.swift */; };
-		3F73F6D82073FC1900E75498 /* TobaccoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F73F6D72073FC1900E75498 /* TobaccoInfo.swift */; };
+		3F719ED0207BC4430070A986 /* AlcoholResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719ECF207BC4430070A986 /* AlcoholResult.swift */; };
+		3F73F6D82073FC1900E75498 /* TobaccoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F73F6D72073FC1900E75498 /* TobaccoResult.swift */; };
 		3F73F6DC20740A6300E75498 /* ORKTobaccoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F73F6DB20740A6300E75498 /* ORKTobaccoTask.swift */; };
-		3F7A1E1F2056CA5200310D51 /* FamilyHistoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7A1E1E2056CA5200310D51 /* FamilyHistoryTask.swift */; };
-		3F8E73112044A67800D25081 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E73102044A67800D25081 /* Task.swift */; };
+		3F7A1E1F2056CA5200310D51 /* FamilyHistorySurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7A1E1E2056CA5200310D51 /* FamilyHistorySurvey.swift */; };
+		3F8E73112044A67800D25081 /* PatientSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E73102044A67800D25081 /* PatientSurvey.swift */; };
 		3F95CE18203DF9EC0096A896 /* DetaiProfilelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */; };
 		3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */; };
 		3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateField.swift */; };
-		3F985AE3209CAECE007C290C /* Server+updateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE2209CAECE007C290C /* Server+updateField.swift */; };
-		3F985AE5209CBA3A007C290C /* UpdateBasicInfoField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE4209CBA3A007C290C /* UpdateBasicInfoField.swift */; };
+		3F985AE5209CBA3A007C290C /* BasicInfoField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE4209CBA3A007C290C /* BasicInfoField.swift */; };
 		3F9CC1A120976B1D00B5883D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */; };
 		3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */; };
 		3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */; };
-		3FC0F73B2088F2240007FEBD /* GynecologyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */; };
+		3FBE995720A4B3140021D865 /* Server+sendJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE995620A4B3140021D865 /* Server+sendJsonData.swift */; };
+		3FBE995920A4C0C20021D865 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE995820A4C0C20021D865 /* Endpoints.swift */; };
+		3FBE995C20A4CFCA0021D865 /* SurveyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE995B20A4CFCA0021D865 /* SurveyResult.swift */; };
+		3FC0F73B2088F2240007FEBD /* GynecologyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0F73A2088F2240007FEBD /* GynecologyResult.swift */; };
 		3FDFF8E1203CBC64008ED2A2 /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */; };
 		3FF9CFFC20936FDB000370FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9CFFB20936FDB000370FA /* LoginViewController.swift */; };
 		3FF9CFFE20938762000370FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9CFFD20938762000370FA /* TabBarController.swift */; };
@@ -100,9 +100,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3F0AF0B520A0B1CB00DCD18A /* MyTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTestView.swift; sourceTree = "<group>"; };
 		3F12D066209B8E7F008DF849 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		3F12D070209BA477008DF849 /* Server+getBasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+getBasicInfo.swift"; sourceTree = "<group>"; };
+		3F12D070209BA477008DF849 /* Server+getJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+getJsonData.swift"; sourceTree = "<group>"; };
 		3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKMedicalConditionTask.swift; sourceTree = "<group>"; };
 		3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoKeys.swift; sourceTree = "<group>"; };
 		3F5161E720596601003C7E19 /* ORKAllergyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKAllergyTask.swift; sourceTree = "<group>"; };
@@ -112,26 +111,26 @@
 		3F54C1A8206AD078002316FE /* ORKFamilyHistoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKFamilyHistoryTask.swift; sourceTree = "<group>"; };
 		3F55632D2062A2550010566C /* GynecologicTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologicTask.swift; sourceTree = "<group>"; };
 		3F559359207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTaskResultProcessor.swift; sourceTree = "<group>"; };
-		3F55935D207D1BDD00A8C9DE /* PersonalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfo.swift; sourceTree = "<group>"; };
-		3F55CD7C2045AA7200668C7A /* TobaccoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoTask.swift; sourceTree = "<group>"; };
-		3F55CD7E2045B33100668C7A /* AlcoholTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholTask.swift; sourceTree = "<group>"; };
-		3F55CD802045B45600668C7A /* PersonalTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTask.swift; sourceTree = "<group>"; };
+		3F55935D207D1BDD00A8C9DE /* PersonalResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalResult.swift; sourceTree = "<group>"; };
+		3F55CD7C2045AA7200668C7A /* TobaccoSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoSurvey.swift; sourceTree = "<group>"; };
+		3F55CD7E2045B33100668C7A /* AlcoholSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholSurvey.swift; sourceTree = "<group>"; };
+		3F55CD802045B45600668C7A /* PersonalSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSurvey.swift; sourceTree = "<group>"; };
 		3F568F0220658AC9002255A6 /* ORKGynecologyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKGynecologyTask.swift; sourceTree = "<group>"; };
 		3F568F05206595B2002255A6 /* ORKSurgicalTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKSurgicalTask.swift; sourceTree = "<group>"; };
 		3F575CB6207668F4005F8D48 /* TaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F575CB820766E39005F8D48 /* TobaccoTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoTaskResultProcessor.swift; sourceTree = "<group>"; };
-		3F5795C1207FA24B00A2C3E7 /* AllergyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyInfo.swift; sourceTree = "<group>"; };
+		3F5795C1207FA24B00A2C3E7 /* AllergyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyResult.swift; sourceTree = "<group>"; };
 		3F5795C5207FA8A500A2C3E7 /* AllergyTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyTaskResultProcessor.swift; sourceTree = "<group>"; };
-		3F5795C7207FE57600A2C3E7 /* MedicationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationInfo.swift; sourceTree = "<group>"; };
+		3F5795C7207FE57600A2C3E7 /* MedicationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationResult.swift; sourceTree = "<group>"; };
 		3F5795C9207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTaskResultProcessor.swift; sourceTree = "<group>"; };
-		3F58EA8D205AB526002A83D0 /* MedicationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTask.swift; sourceTree = "<group>"; };
-		3F58EA9C205B094C002A83D0 /* AllergyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyTask.swift; sourceTree = "<group>"; };
-		3F5931C9208799CC007A3829 /* SurgicalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalInfo.swift; sourceTree = "<group>"; };
+		3F58EA8D205AB526002A83D0 /* MedicationSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationSurvey.swift; sourceTree = "<group>"; };
+		3F58EA9C205B094C002A83D0 /* AllergySurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergySurvey.swift; sourceTree = "<group>"; };
+		3F5931C9208799CC007A3829 /* SurgicalResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalResult.swift; sourceTree = "<group>"; };
 		3F5931CD20879FA4007A3829 /* SurgicalTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalTaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F5931D02087B4E8007A3829 /* GynecologicTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologicTaskResultProcessor.swift; sourceTree = "<group>"; };
-		3F5BC04C20615CB5007FBE0A /* MedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionTask.swift; sourceTree = "<group>"; };
-		3F5BC04E206195CC007FBE0A /* SurgicalTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalTask.swift; sourceTree = "<group>"; };
-		3F5CF5BD2086378300478678 /* MedicalConditionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionInfo.swift; sourceTree = "<group>"; };
+		3F5BC04C20615CB5007FBE0A /* MedicalConditionSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionSurvey.swift; sourceTree = "<group>"; };
+		3F5BC04E206195CC007FBE0A /* SurgicalSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalSurvey.swift; sourceTree = "<group>"; };
+		3F5CF5BD2086378300478678 /* MedicalConditionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionResult.swift; sourceTree = "<group>"; };
 		3F5CF5C120864CCD00478678 /* MedicalConditionTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalConditionTaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F620E49203754F000655AA4 /* TestMedKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestMedKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F620E4C203754F000655AA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,26 +139,27 @@
 		3F620E56203754F000655AA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F620E59203754F000655AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F620E5B203754F000655AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F627075207E5755004E35AF /* FamilyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyInfo.swift; sourceTree = "<group>"; };
+		3F627075207E5755004E35AF /* FamilyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyResult.swift; sourceTree = "<group>"; };
 		3F627077207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryTaskResultProcessor.swift; sourceTree = "<group>"; };
 		3F719ECA207BC1D40070A986 /* AlcoholTaskResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholTaskResultProcessor.swift; sourceTree = "<group>"; };
-		3F719ECF207BC4430070A986 /* AlcoholInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholInfo.swift; sourceTree = "<group>"; };
-		3F719ED1207BCCDE0070A986 /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
-		3F73F6D72073FC1900E75498 /* TobaccoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoInfo.swift; sourceTree = "<group>"; };
+		3F719ECF207BC4430070A986 /* AlcoholResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholResult.swift; sourceTree = "<group>"; };
+		3F73F6D72073FC1900E75498 /* TobaccoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoResult.swift; sourceTree = "<group>"; };
 		3F73F6DB20740A6300E75498 /* ORKTobaccoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKTobaccoTask.swift; sourceTree = "<group>"; };
 		3F789B942099F62F00B1B28E /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ../ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		3F789BA6209A0DC900B1B28E /* TestMedKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = TestMedKit.xcodeproj; sourceTree = "<group>"; };
-		3F7A1E1E2056CA5200310D51 /* FamilyHistoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryTask.swift; sourceTree = "<group>"; };
-		3F8E73102044A67800D25081 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		3F7A1E1E2056CA5200310D51 /* FamilyHistorySurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistorySurvey.swift; sourceTree = "<group>"; };
+		3F8E73102044A67800D25081 /* PatientSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSurvey.swift; sourceTree = "<group>"; };
 		3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiProfilelTableViewController.swift; sourceTree = "<group>"; };
 		3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPickerViewController.swift; sourceTree = "<group>"; };
 		3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldEditViewController+updateField.swift"; sourceTree = "<group>"; };
-		3F985AE2209CAECE007C290C /* Server+updateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+updateField.swift"; sourceTree = "<group>"; };
-		3F985AE4209CBA3A007C290C /* UpdateBasicInfoField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBasicInfoField.swift; sourceTree = "<group>"; };
+		3F985AE4209CBA3A007C290C /* BasicInfoField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoField.swift; sourceTree = "<group>"; };
 		3F9CC1A020976B1D00B5883D /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoEditViewController.swift; sourceTree = "<group>"; };
 		3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfo.swift; sourceTree = "<group>"; };
-		3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologyInfo.swift; sourceTree = "<group>"; };
+		3FBE995620A4B3140021D865 /* Server+sendJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+sendJsonData.swift"; sourceTree = "<group>"; };
+		3FBE995820A4C0C20021D865 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		3FBE995B20A4CFCA0021D865 /* SurveyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyResult.swift; sourceTree = "<group>"; };
+		3FC0F73A2088F2240007FEBD /* GynecologyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologyResult.swift; sourceTree = "<group>"; };
 		3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
 		3FF9CFFB20936FDB000370FA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3FF9CFFD20938762000370FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -177,19 +177,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F0AF0B420A0B1A800DCD18A /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				3F0AF0B520A0B1CB00DCD18A /* MyTestView.swift */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		3F12D06B209B8E8C008DF849 /* Server */ = {
 			isa = PBXGroup;
 			children = (
+				3FBE995820A4C0C20021D865 /* Endpoints.swift */,
 				3F12D066209B8E7F008DF849 /* Server.swift */,
-				3F985AE4209CBA3A007C290C /* UpdateBasicInfoField.swift */,
 				3F12D072209BA61C008DF849 /* Extensions */,
 			);
 			path = Server;
@@ -198,18 +190,19 @@
 		3F12D072209BA61C008DF849 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3F12D070209BA477008DF849 /* Server+getBasicInfo.swift */,
-				3F985AE2209CAECE007C290C /* Server+updateField.swift */,
+				3F12D070209BA477008DF849 /* Server+getJsonData.swift */,
+				3FBE995620A4B3140021D865 /* Server+sendJsonData.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3F4649BB209B625A00F640FD /* keys */ = {
+		3F4649BB209B625A00F640FD /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				3F985AE4209CBA3A007C290C /* BasicInfoField.swift */,
 				3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */,
 			);
-			path = keys;
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 		3F49128C2040638700E21D9E /* StroyBoard */ = {
@@ -235,21 +228,21 @@
 			path = MainStoryBoard;
 			sourceTree = "<group>";
 		};
-		3F55CD792045AA3F00668C7A /* Task */ = {
+		3F55CD792045AA3F00668C7A /* Survey */ = {
 			isa = PBXGroup;
 			children = (
-				3F8E73102044A67800D25081 /* Task.swift */,
-				3F55CD7C2045AA7200668C7A /* TobaccoTask.swift */,
-				3F55CD7E2045B33100668C7A /* AlcoholTask.swift */,
-				3F55CD802045B45600668C7A /* PersonalTask.swift */,
-				3F7A1E1E2056CA5200310D51 /* FamilyHistoryTask.swift */,
-				3F58EA9C205B094C002A83D0 /* AllergyTask.swift */,
-				3F58EA8D205AB526002A83D0 /* MedicationTask.swift */,
-				3F5BC04C20615CB5007FBE0A /* MedicalConditionTask.swift */,
-				3F5BC04E206195CC007FBE0A /* SurgicalTask.swift */,
+				3F8E73102044A67800D25081 /* PatientSurvey.swift */,
+				3F55CD7C2045AA7200668C7A /* TobaccoSurvey.swift */,
+				3F55CD7E2045B33100668C7A /* AlcoholSurvey.swift */,
+				3F55CD802045B45600668C7A /* PersonalSurvey.swift */,
+				3F7A1E1E2056CA5200310D51 /* FamilyHistorySurvey.swift */,
+				3F58EA9C205B094C002A83D0 /* AllergySurvey.swift */,
+				3F58EA8D205AB526002A83D0 /* MedicationSurvey.swift */,
+				3F5BC04C20615CB5007FBE0A /* MedicalConditionSurvey.swift */,
+				3F5BC04E206195CC007FBE0A /* SurgicalSurvey.swift */,
 				3F55632D2062A2550010566C /* GynecologicTask.swift */,
 			);
-			path = Task;
+			path = Survey;
 			sourceTree = "<group>";
 		};
 		3F575CB3207668C9005F8D48 /* ResultProcessor */ = {
@@ -302,7 +295,6 @@
 		3F620E4B203754F000655AA4 /* TestMedKit */ = {
 			isa = PBXGroup;
 			children = (
-				3F0AF0B420A0B1A800DCD18A /* New Group */,
 				3F49128C2040638700E21D9E /* StroyBoard */,
 				3F95CE1E203E158A0096A896 /* Modal */,
 				3FDFF8DD203CBC1B008ED2A2 /* Controller */,
@@ -335,7 +327,7 @@
 				3F575CB3207668C9005F8D48 /* ResultProcessor */,
 				3F9D09F72073C403004E19C8 /* PatientInfo */,
 				3F58EA9B205B08AA002A83D0 /* ORKTask */,
-				3F55CD792045AA3F00668C7A /* Task */,
+				3F55CD792045AA3F00668C7A /* Survey */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -371,19 +363,19 @@
 		3F9D09F72073C403004E19C8 /* PatientInfo */ = {
 			isa = PBXGroup;
 			children = (
-				3F4649BB209B625A00F640FD /* keys */,
+				3F4649BB209B625A00F640FD /* Supporting */,
 				3F538042203F2A750045A492 /* Patient.swift */,
-				3F719ED1207BCCDE0070A986 /* TaskInfo.swift */,
 				3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */,
-				3F73F6D72073FC1900E75498 /* TobaccoInfo.swift */,
-				3F719ECF207BC4430070A986 /* AlcoholInfo.swift */,
-				3F55935D207D1BDD00A8C9DE /* PersonalInfo.swift */,
-				3F627075207E5755004E35AF /* FamilyInfo.swift */,
-				3F5795C1207FA24B00A2C3E7 /* AllergyInfo.swift */,
-				3F5795C7207FE57600A2C3E7 /* MedicationInfo.swift */,
-				3F5CF5BD2086378300478678 /* MedicalConditionInfo.swift */,
-				3F5931C9208799CC007A3829 /* SurgicalInfo.swift */,
-				3FC0F73A2088F2240007FEBD /* GynecologyInfo.swift */,
+				3FBE995B20A4CFCA0021D865 /* SurveyResult.swift */,
+				3F73F6D72073FC1900E75498 /* TobaccoResult.swift */,
+				3F719ECF207BC4430070A986 /* AlcoholResult.swift */,
+				3F55935D207D1BDD00A8C9DE /* PersonalResult.swift */,
+				3F627075207E5755004E35AF /* FamilyResult.swift */,
+				3F5795C1207FA24B00A2C3E7 /* AllergyResult.swift */,
+				3F5795C7207FE57600A2C3E7 /* MedicationResult.swift */,
+				3F5CF5BD2086378300478678 /* MedicalConditionResult.swift */,
+				3F5931C9208799CC007A3829 /* SurgicalResult.swift */,
+				3FC0F73A2088F2240007FEBD /* GynecologyResult.swift */,
 			);
 			path = PatientInfo;
 			sourceTree = "<group>";
@@ -505,61 +497,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F5795C8207FE57600A2C3E7 /* MedicationInfo.swift in Sources */,
+				3FBE995920A4C0C20021D865 /* Endpoints.swift in Sources */,
+				3F5795C8207FE57600A2C3E7 /* MedicationResult.swift in Sources */,
 				3F5795C6207FA8A500A2C3E7 /* AllergyTaskResultProcessor.swift in Sources */,
-				3FC0F73B2088F2240007FEBD /* GynecologyInfo.swift in Sources */,
+				3FC0F73B2088F2240007FEBD /* GynecologyResult.swift in Sources */,
 				3F55935A207D1A9700A8C9DE /* PersonalTaskResultProcessor.swift in Sources */,
 				3F5795CA207FED3600A2C3E7 /* MedicationTaskResultProcessor.swift in Sources */,
-				3F627076207E5755004E35AF /* FamilyInfo.swift in Sources */,
-				3F719ED2207BCCDE0070A986 /* TaskInfo.swift in Sources */,
-				3F5931CA208799CC007A3829 /* SurgicalInfo.swift in Sources */,
+				3F627076207E5755004E35AF /* FamilyResult.swift in Sources */,
+				3F5931CA208799CC007A3829 /* SurgicalResult.swift in Sources */,
 				3F627078207E5CB4004E35AF /* FamilyHistoryTaskResultProcessor.swift in Sources */,
 				3F568F06206595B2002255A6 /* ORKSurgicalTask.swift in Sources */,
-				3F73F6D82073FC1900E75498 /* TobaccoInfo.swift in Sources */,
+				3F73F6D82073FC1900E75498 /* TobaccoResult.swift in Sources */,
 				3FF9CFFC20936FDB000370FA /* LoginViewController.swift in Sources */,
 				3F620E55203754F000655AA4 /* TestMedKit.xcdatamodeld in Sources */,
 				3F575CB920766E39005F8D48 /* TobaccoTaskResultProcessor.swift in Sources */,
 				3F53804A203F467D0045A492 /* GenderPickerViewController.swift in Sources */,
 				3F73F6DC20740A6300E75498 /* ORKTobaccoTask.swift in Sources */,
-				3F5BC04F206195CC007FBE0A /* SurgicalTask.swift in Sources */,
+				3F5BC04F206195CC007FBE0A /* SurgicalSurvey.swift in Sources */,
 				3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */,
-				3F5BC04D20615CB5007FBE0A /* MedicalConditionTask.swift in Sources */,
+				3F5BC04D20615CB5007FBE0A /* MedicalConditionSurvey.swift in Sources */,
 				3F5931D12087B4E8007A3829 /* GynecologicTaskResultProcessor.swift in Sources */,
-				3F5795C2207FA24B00A2C3E7 /* AllergyInfo.swift in Sources */,
-				3F55CD812045B45600668C7A /* PersonalTask.swift in Sources */,
+				3F5795C2207FA24B00A2C3E7 /* AllergyResult.swift in Sources */,
+				3F55CD812045B45600668C7A /* PersonalSurvey.swift in Sources */,
 				3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */,
+				3FBE995C20A4CFCA0021D865 /* SurveyResult.swift in Sources */,
 				3F55632E2062A2550010566C /* GynecologicTask.swift in Sources */,
 				3F54C1A9206AD078002316FE /* ORKFamilyHistoryTask.swift in Sources */,
-				3F8E73112044A67800D25081 /* Task.swift in Sources */,
-				3F58EA8E205AB526002A83D0 /* MedicationTask.swift in Sources */,
+				3F8E73112044A67800D25081 /* PatientSurvey.swift in Sources */,
+				3F58EA8E205AB526002A83D0 /* MedicationSurvey.swift in Sources */,
+				3FBE995720A4B3140021D865 /* Server+sendJsonData.swift in Sources */,
 				3F9CC1A120976B1D00B5883D /* NavigationViewController.swift in Sources */,
 				3F719ECB207BC1D40070A986 /* AlcoholTaskResultProcessor.swift in Sources */,
 				3F538043203F2A750045A492 /* Patient.swift in Sources */,
-				3F55CD7F2045B33100668C7A /* AlcoholTask.swift in Sources */,
+				3F55CD7F2045B33100668C7A /* AlcoholSurvey.swift in Sources */,
 				56C1B69B20996F6F004F54F1 /* WelcomeViewController.swift in Sources */,
 				3F5931CE20879FA4007A3829 /* SurgicalTaskResultProcessor.swift in Sources */,
-				3F55CD7D2045AA7200668C7A /* TobaccoTask.swift in Sources */,
-				3F5CF5BE2086378300478678 /* MedicalConditionInfo.swift in Sources */,
-				3F0AF0B620A0B1CB00DCD18A /* MyTestView.swift in Sources */,
+				3F55CD7D2045AA7200668C7A /* TobaccoSurvey.swift in Sources */,
+				3F5CF5BE2086378300478678 /* MedicalConditionResult.swift in Sources */,
 				3F4649B7209B603E00F640FD /* BasicInfoKeys.swift in Sources */,
 				3F575CB7207668F4005F8D48 /* TaskResultProcessor.swift in Sources */,
 				3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */,
 				3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */,
-				3F7A1E1F2056CA5200310D51 /* FamilyHistoryTask.swift in Sources */,
+				3F7A1E1F2056CA5200310D51 /* FamilyHistorySurvey.swift in Sources */,
 				3F568F0320658AC9002255A6 /* ORKGynecologyTask.swift in Sources */,
-				3F985AE3209CAECE007C290C /* Server+updateField.swift in Sources */,
 				3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateField.swift in Sources */,
-				3F985AE5209CBA3A007C290C /* UpdateBasicInfoField.swift in Sources */,
+				3F985AE5209CBA3A007C290C /* BasicInfoField.swift in Sources */,
 				3FF9CFFE20938762000370FA /* TabBarController.swift in Sources */,
 				3F538047203F2EF10045A492 /* TextFieldEditViewController.swift in Sources */,
-				3F12D071209BA477008DF849 /* Server+getBasicInfo.swift in Sources */,
-				3F55935E207D1BDD00A8C9DE /* PersonalInfo.swift in Sources */,
-				3F719ED0207BC4430070A986 /* AlcoholInfo.swift in Sources */,
+				3F12D071209BA477008DF849 /* Server+getJsonData.swift in Sources */,
+				3F55935E207D1BDD00A8C9DE /* PersonalResult.swift in Sources */,
+				3F719ED0207BC4430070A986 /* AlcoholResult.swift in Sources */,
 				3F5CF5C220864CCD00478678 /* MedicalConditionTaskResultProcessor.swift in Sources */,
 				3F95CE18203DF9EC0096A896 /* DetaiProfilelTableViewController.swift in Sources */,
 				3F620E4D203754F000655AA4 /* AppDelegate.swift in Sources */,
 				3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */,
-				3F58EA9D205B094C002A83D0 /* AllergyTask.swift in Sources */,
+				3F58EA9D205B094C002A83D0 /* AllergySurvey.swift in Sources */,
 				3F12D067209B8E7F008DF849 /* Server.swift in Sources */,
 				3FDFF8E1203CBC64008ED2A2 /* MyProfileTableViewController.swift in Sources */,
 			);

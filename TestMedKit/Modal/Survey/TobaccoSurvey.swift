@@ -10,18 +10,18 @@ import Foundation
 import ResearchKit
 import UIKit
 
-class TobaccoTask: Task {
+class TobaccoSurvey: PatientSurvey {
     static let tobaccoProducts = ["Cigarette", "Cigar", "Pipe"]
     
-    init(_ viewController: UIViewController, patient: Patient) {
-        let steps = TobaccoTask.createTobaccoSteps()
+    init(viewController: UIViewController, patient: Patient, server: Server) {
+        let steps = TobaccoSurvey.createTobaccoSteps()
         
         let tobaccoTask = ORKTobaccoTask(identifier: "tobaccoTask", steps: steps)
         
-        tobaccoTask.tobaccoProducts = TobaccoTask.tobaccoProducts
-        TobaccoTask.createTobaccoNavigationRule(for: tobaccoTask)
+        tobaccoTask.tobaccoProducts = TobaccoSurvey.tobaccoProducts
+        TobaccoSurvey.createTobaccoNavigationRule(for: tobaccoTask)
         
-        super.init(task: tobaccoTask, viewController: viewController, delegate: TobaccoTaskResultProcessor(patient: patient))
+        super.init(task: tobaccoTask, viewController: viewController, delegate: TobaccoTaskResultProcessor(patient: patient, server: server))
     }
     
     private static func createTobaccoSteps() -> [ORKStep]{
@@ -47,7 +47,7 @@ class TobaccoTask: Task {
             steps.append(createAmountStep(for: tobaccoProduct, nth: 2))
         }
         
-        Task.appendReviewStep(steps: &steps)
+        PatientSurvey.appendReviewStep(steps: &steps)
         
         return steps
     }
