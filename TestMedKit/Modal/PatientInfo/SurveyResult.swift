@@ -8,5 +8,6 @@
 
 import Foundation
 
-class SurveyResult: Codable {
+class SurveyResult: Encodable {
+    var isUploaded: Bool = false
 }

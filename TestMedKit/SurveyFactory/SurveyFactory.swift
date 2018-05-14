@@ -10,7 +10,7 @@ import Foundation
 import ResearchKit
 
 protocol SurveyFactory {
-    static func create(with identifier: String, delegate: ORKTaskViewControllerDelegate, uploadEndpoint: String) -> Survey
+    static func create(with identifier: String, delegate: ORKTaskViewControllerDelegate, uploadEndpoint: String) -> SurveyViewController
     static func createSteps() -> [ORKStep]
     static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask
     static func createNavigationRule(for orkTask: ORKNavigableOrderedTask)
@@ -19,7 +19,7 @@ protocol SurveyFactory {
 
 extension SurveyFactory {
     
-    static func create(with identifier: String, delegate: ORKTaskViewControllerDelegate, uploadEndpoint: String) -> Survey {
+    static func create(with identifier: String, delegate: ORKTaskViewControllerDelegate, uploadEndpoint: String) -> SurveyViewController {
         
         func appendReviewStep(steps: inout [ORKStep]) {
             let reviewStep = ORKReviewStep(identifier: "reviewStep")
@@ -32,11 +32,11 @@ extension SurveyFactory {
         appendReviewStep(steps: &steps)
         
         let orkTask = createORKTask(identifier: identifier, steps: steps)
-        let orkTaskViewController = ORKTaskViewController(task: orkTask, taskRun: nil)
-        orkTaskViewController.delegate = delegate
-        orkTaskViewController.navigationBar.tintColor = UIColor.darkText
+        let surveyViewController = SurveyViewController.createSurveyViewController(orkTask: orkTask, uploadEndpoint: uploadEndpoint, resultProcessor: createResultProcessor())
+        surveyViewController.delegate = delegate
+        surveyViewController.navigationBar.tintColor = UIColor.darkText
         
-        return Survey(identifier: identifier, orkTaskViewController: orkTaskViewController, uploadEndpoint: uploadEndpoint, resultProcessor: createResultProcessor())
+        return surveyViewController
     }
     
     static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask {

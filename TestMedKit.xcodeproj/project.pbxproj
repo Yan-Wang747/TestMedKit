@@ -12,7 +12,7 @@
 		3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */; };
 		3F4649B7209B603E00F640FD /* BasicInfoKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */; };
 		3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5161E720596601003C7E19 /* ORKAllergyTask.swift */; };
-		3F5321B920A9E95700DF8539 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5321B820A9E95700DF8539 /* Survey.swift */; };
+		3F5321B920A9E95700DF8539 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5321B820A9E95700DF8539 /* SurveyViewController.swift */; };
 		3F538043203F2A750045A492 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538042203F2A750045A492 /* Patient.swift */; };
 		3F538047203F2EF10045A492 /* TextFieldEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538046203F2EF10045A492 /* TextFieldEditViewController.swift */; };
 		3F53804A203F467D0045A492 /* GenderPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538049203F467D0045A492 /* GenderPickerViewController.swift */; };
@@ -144,7 +144,7 @@
 		3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKMedicalConditionTask.swift; sourceTree = "<group>"; };
 		3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoKeys.swift; sourceTree = "<group>"; };
 		3F5161E720596601003C7E19 /* ORKAllergyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKAllergyTask.swift; sourceTree = "<group>"; };
-		3F5321B820A9E95700DF8539 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		3F5321B820A9E95700DF8539 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		3F538042203F2A750045A492 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Patient.swift; path = TestMedKit/Modal/PatientInfo/Patient.swift; sourceTree = SOURCE_ROOT; };
 		3F538046203F2EF10045A492 /* TextFieldEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldEditViewController.swift; sourceTree = "<group>"; };
 		3F538049203F467D0045A492 /* GenderPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerViewController.swift; sourceTree = "<group>"; };
@@ -2969,7 +2969,7 @@
 		3F6DA3C620A5FE73009A8C29 /* SurveyFactory */ = {
 			isa = PBXGroup;
 			children = (
-				3F5321B820A9E95700DF8539 /* Survey.swift */,
+				3F5321B820A9E95700DF8539 /* SurveyViewController.swift */,
 				3F6DA3C920A5FE9F009A8C29 /* SurveyFactory.swift */,
 				3F55CD7C2045AA7200668C7A /* TobaccoFactory.swift */,
 				3F55CD7E2045B33100668C7A /* AlcoholFactory.swift */,
@@ -3317,7 +3317,7 @@
 				3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateField.swift in Sources */,
 				3F6DA3D120A62397009A8C29 /* MyProfileTableViewController+ORKTaskViewControllerDelegate.swift in Sources */,
 				3F985AE5209CBA3A007C290C /* BasicInfoField.swift in Sources */,
-				3F5321B920A9E95700DF8539 /* Survey.swift in Sources */,
+				3F5321B920A9E95700DF8539 /* SurveyViewController.swift in Sources */,
 				3F538047203F2EF10045A492 /* TextFieldEditViewController.swift in Sources */,
 				3F12D071209BA477008DF849 /* Server+getJsonData.swift in Sources */,
 				3F55935E207D1BDD00A8C9DE /* PersonalResult.swift in Sources */,

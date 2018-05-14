@@ -13,8 +13,6 @@ class MyProfileTableViewController: UITableViewController {
     var patient: Patient!
     var server: Server!
     var selectedSurveyIndex: Int? = nil
-    var uploadEndpoint: Endpoints? = nil
-    var resultProcessor: SurveyResultProcessor? = nil
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -65,58 +63,42 @@ class MyProfileTableViewController: UITableViewController {
  */
     func performSurvey(forRow row: Int){
         var id: String = ""
-        var orkTaskViewController: ORKTaskViewController? = nil
         
+        var surveyViewController: SurveyViewController?
         switch row{
         case 0:
             id = "TobaccoSurvey"
-            orkTaskViewController = TobaccoFactory.create(with: id, delegate: self, Endpoints.updateTobacco.rawValue)
+            surveyViewController = TobaccoFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateTobacco.rawValue)
         case 1:
             id = "AlcoholSurvey"
-            uploadEndpoint = Endpoints.updateAlcohol
-            resultProcessor = AlcoholResultProcessor()
-            orkTaskViewController = AlcoholFactory.create(with: id, delegate: self)
+            surveyViewController = AlcoholFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateAlcohol.rawValue)
         case 2:
             id = "PersonalSurvey"
-            uploadEndpoint = Endpoints.updatePersonal
-            resultProcessor = PersonalResultProcessor()
-            orkTaskViewController = PersonalFactory.create(with: id, delegate: self)
+            surveyViewController = PersonalFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updatePersonal.rawValue)
         case 3:
             id = "FamilyHistorySurvey"
-            uploadEndpoint = Endpoints.updateFamily
-            resultProcessor = FamilyHistoryResultProcessor()
-            orkTaskViewController = FamilyHistoryFactory.create(with: id, delegate: self)
+            surveyViewController = FamilyHistoryFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateFamily.rawValue)
         case 4:
             id = "AllergySurvey"
-            uploadEndpoint = Endpoints.updateAllergy
-            resultProcessor = AllergyResultProcessor()
-            orkTaskViewController = AllergyFactory.create(with: id, delegate: self)
+            surveyViewController = AllergyFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateAllergy.rawValue)
         case 5:
             id = "MedicationSurvey"
-            uploadEndpoint = Endpoints.updateMedication
-            resultProcessor = MedicationResultProcessor()
-            orkTaskViewController = MedicationFactory.create(with: id, delegate: self)
+            surveyViewController = MedicationFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateMedication.rawValue)
         case 6:
             id = "MedicalConditionSurvey"
-            uploadEndpoint = Endpoints.updateMedicationCondition
-            resultProcessor = MedicationConditionResultProcessor()
-            orkTaskViewController = MedicalConditionFactory.create(with: id, delegate: self)
+            surveyViewController = MedicalConditionFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateMedicationCondition.rawValue)
         case 7:
             id = "SurgerySurvey"
-            uploadEndpoint = Endpoints.updateSurgery
-            resultProcessor = SurgeryResultProcessor()
-            orkTaskViewController = SurgeryFactory.create(with: id, delegate: self)
+            surveyViewController = SurgeryFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateSurgery.rawValue)
         case 8:
             id = "GynecologySurvey"
-            uploadEndpoint = Endpoints.updateGynecology
-            resultProcessor = GynecologyResultProcessor()
-            orkTaskViewController = GynecologyFactory.create(with: id, delegate: self)
+            surveyViewController = GynecologyFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateGynecology.rawValue)
         default:
             fatalError()
         }
         
-        if let orkTaskViewController = orkTaskViewController {
-            present(orkTaskViewController, animated: true, completion: nil)
+        if surveyViewController != nil {
+            present(surveyViewController!, animated: true, completion: nil)
         }
     }
     
