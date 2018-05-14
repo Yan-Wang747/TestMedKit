@@ -12,7 +12,7 @@ extension Server {
     
     func asyncGetJsonData(endpoint: String, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
 
-        let endpointURL = URL(string: "\(base)/\(endpoint)")!
+        guard let endpointURL = URL(string: "\(base)/\(endpoint)") else { fatalError() }
         
         var request = URLRequest(url: endpointURL)
         request.addValue("Bear \(sessionID)", forHTTPHeaderField: "Authorization")

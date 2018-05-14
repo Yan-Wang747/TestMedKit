@@ -13,4 +13,12 @@ enum Endpoints: String {
     case getBasicInfo = "GetBasicInfo"
     case updateBasicInfo = "UpdateBasicInfo"
     case updateTobacco = "UpdateTobacco"
+    case updateAlcohol = "UpdateAlcohol"
+    case updatePersonal = "UpdatePersonal"
+    case updateFamily = "UpdateFamily"
+    case updateAllergy = "UpdateAllergy"
+    case updateMedication = "UpdateMedication"
+    case updateMedicationCondition = "UpdateMedicationCondition"
+    case updateSurgery = "UpdateSurgery"
+    case updateGynecology = "UpdateGynecology"
 }

@@ -9,21 +9,11 @@
 import Foundation
 import ResearchKit
 
-class SurgicalSurvey: PatientSurvey {
+class SurgeryFactory: SurveyFactory {
+    
     private static let surgeryTypes = ["Amputation", "Appendectomy", "Biopsy", "Bone Marrow Biopsy", "Bone Marrow Transplant", "Cholecystectomy", "Colon Resection", "Colposcopy", "Cystectomy", "Heart By‐pass", "Hernia Repair", "Hysterectomy", "Liver Biopsy", "Mastectomy", "Melanoma Removal", "Ovarian Tumor Removal", "Plastic Surgery", "Prostate Gland Removal", "Tonsillectomy", "Tubal Ligation", "Vasectomy", "Breast Fine Needle Aspiration", "Breast Core Biopsy", "Breast Lumpectomy", "Breast Mastectomy", "Breast Sentinel Node Lymph Biopsy", "Breast Axillary Lymph Node Dissection", "Other"]
     
-    init(viewController: UIViewController, patient: Patient, server: Server) {
-        let steps = SurgicalSurvey.createSteps()
-        
-        let surgicalTask = ORKSurgicalTask(identifier: "surgicalTask", steps: steps)
-        surgicalTask.surgeryTypes = SurgicalSurvey.surgeryTypes
-        
-        SurgicalSurvey.createNavigationRule(for: surgicalTask)
-        
-        super.init(task: surgicalTask, viewController: viewController, delegate: SurgicalTaskResultProcessor(patient: patient, server: server))
-    }
-    
-    private static func createSteps() -> [ORKStep] {
+    static func createSteps() -> [ORKStep] {
         var steps: [ORKStep] = []
         
         let instructionStep = ORKInstructionStep(identifier: "instructionStep")
@@ -38,8 +28,7 @@ class SurgicalSurvey: PatientSurvey {
             steps.append(createOnsetDateStep(surgeryType: surgeryType))
             steps.append(createIsTreatedStep(surgeryType: surgeryType))
         }
-        
-        self.appendReviewStep(steps: &steps)
+    
         return steps
     }
     
@@ -82,7 +71,14 @@ class SurgicalSurvey: PatientSurvey {
         return isTreatedStep
     }
     
-    private static func createNavigationRule(for surgicalTask: ORKNavigableOrderedTask) {
+    static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask {
+        let orkTask = ORKSurgeryTask(identifier: identifier, steps: steps)
+        createNavigationRule(for: orkTask)
+        
+        return orkTask
+    }
+    
+    static func createNavigationRule(for surgicalTask: ORKNavigableOrderedTask) {
     let haveAnySurgeryResultSelector = ORKResultSelector(resultIdentifier: "haveAnySurgeryStep")
         
         let predicateNoForHaveAnySurgery = ORKResultPredicate.predicateForBooleanQuestionResult(with: haveAnySurgeryResultSelector, expectedAnswer: false)
@@ -92,4 +88,7 @@ class SurgicalSurvey: PatientSurvey {
     surgicalTask.setNavigationRule(predicateNoForHaveAnySurgeryRule, forTriggerStepIdentifier: "haveAnySurgeryStep")
     }
     
+    static func createResultProcessor() -> SurveyResultProcessor {
+        return SurgeryResultProcessor()
+    }
 }

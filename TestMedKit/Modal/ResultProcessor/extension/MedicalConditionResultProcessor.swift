@@ -9,9 +9,9 @@
 import Foundation
 import ResearchKit
 
-class MedicalConditionTaskResultProcessor: TaskResultProcessor {
+class MedicationConditionResultProcessor: SurveyResultProcessor{
     
-    override func startProcessResult(with result: ORKTaskResult) {
+    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
         return processHaveAnyMedicalConditionResult(with: result)
     }
     

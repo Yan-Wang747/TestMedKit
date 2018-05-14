@@ -9,5 +9,4 @@
 import Foundation
 
 class SurveyResult: Codable {
-    var isCompleted = false
 }

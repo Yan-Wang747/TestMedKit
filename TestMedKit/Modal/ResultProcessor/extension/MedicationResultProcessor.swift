@@ -9,15 +9,16 @@
 import Foundation
 import ResearchKit
 
-class MedicationTaskResultProcessor: TaskResultProcessor {
+class MedicationResultProcessor: SurveyResultProcessor {
     var medTypes: [String]!
     
-    override func startProcessResult(with result: ORKTaskResult) -> SurveyResult? {
+    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
         return processTakeAnyMedicationResult(with: result, for: medTypes.first!)
     }
     
     func processTakeAnyMedicationResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {
         let id = medType.lowercased() + "_" + "TakeAnyMedicationStep"
+        
         guard let takeAnyMedicationResult = ((result.result(forIdentifier: id) as? ORKStepResult)?.result(forIdentifier: id) as? ORKBooleanQuestionResult)?.booleanAnswer else { return nil }
         
         var medicationInfo: MedicationResult?
@@ -70,7 +71,6 @@ class MedicationTaskResultProcessor: TaskResultProcessor {
         
         return medicationInfo
     }
-    
     
     func processFrequencyResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {
         let id = medType.lowercased() + "_" + "FrequencyStep"

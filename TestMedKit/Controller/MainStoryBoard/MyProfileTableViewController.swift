@@ -9,11 +9,12 @@
 import UIKit
 import ResearchKit
 
-class MyProfileTableViewController: UITableViewController{
-    var task: PatientSurvey?
+class MyProfileTableViewController: UITableViewController {
     var patient: Patient!
     var server: Server!
-    var surveyToRowNum: [String : Int] = [:]
+    var selectedSurveyIndex: Int? = nil
+    var uploadEndpoint: Endpoints? = nil
+    var resultProcessor: SurveyResultProcessor? = nil
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -32,13 +33,9 @@ class MyProfileTableViewController: UITableViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         nameLabel.text = patient.basicInfo.fullName
-        
-        checkStatus()
-    }
-    
-    func checkStatus() {
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,37 +63,66 @@ class MyProfileTableViewController: UITableViewController{
         
     }
  */
-    func performTask(forRow row: Int){
+    func performSurvey(forRow row: Int){
+        var id: String = ""
+        var orkTaskViewController: ORKTaskViewController? = nil
         
         switch row{
         case 0:
-            task = TobaccoSurvey(viewController: self, patient: patient, server: server)
+            id = "TobaccoSurvey"
+            orkTaskViewController = TobaccoFactory.create(with: id, delegate: self, Endpoints.updateTobacco.rawValue)
         case 1:
-            task = AlcoholSurvey(viewController: self, patient: patient, server: server)
+            id = "AlcoholSurvey"
+            uploadEndpoint = Endpoints.updateAlcohol
+            resultProcessor = AlcoholResultProcessor()
+            orkTaskViewController = AlcoholFactory.create(with: id, delegate: self)
         case 2:
-            task = PersonalSurvey(viewController: self, patient: patient, server: server)
+            id = "PersonalSurvey"
+            uploadEndpoint = Endpoints.updatePersonal
+            resultProcessor = PersonalResultProcessor()
+            orkTaskViewController = PersonalFactory.create(with: id, delegate: self)
         case 3:
-            task = FamilyHistorySurvey(viewController: self, patient: patient, server: server)
+            id = "FamilyHistorySurvey"
+            uploadEndpoint = Endpoints.updateFamily
+            resultProcessor = FamilyHistoryResultProcessor()
+            orkTaskViewController = FamilyHistoryFactory.create(with: id, delegate: self)
         case 4:
-            task = AllergySurvey(viewController: self, patient: patient, server: server)
+            id = "AllergySurvey"
+            uploadEndpoint = Endpoints.updateAllergy
+            resultProcessor = AllergyResultProcessor()
+            orkTaskViewController = AllergyFactory.create(with: id, delegate: self)
         case 5:
-            task = MedicationSurvey(viewController: self, patient: patient, server: server)
+            id = "MedicationSurvey"
+            uploadEndpoint = Endpoints.updateMedication
+            resultProcessor = MedicationResultProcessor()
+            orkTaskViewController = MedicationFactory.create(with: id, delegate: self)
         case 6:
-            task = MedicalConditionSurvey(viewController: self, patient: patient, server: server)
+            id = "MedicalConditionSurvey"
+            uploadEndpoint = Endpoints.updateMedicationCondition
+            resultProcessor = MedicationConditionResultProcessor()
+            orkTaskViewController = MedicalConditionFactory.create(with: id, delegate: self)
         case 7:
-            task = SurgicalSurvey(viewController: self, patient: patient, server: server)
+            id = "SurgerySurvey"
+            uploadEndpoint = Endpoints.updateSurgery
+            resultProcessor = SurgeryResultProcessor()
+            orkTaskViewController = SurgeryFactory.create(with: id, delegate: self)
         case 8:
-            task = GynecologySurvey(viewController: self, patient: patient, server: server)
+            id = "GynecologySurvey"
+            uploadEndpoint = Endpoints.updateGynecology
+            resultProcessor = GynecologyResultProcessor()
+            orkTaskViewController = GynecologyFactory.create(with: id, delegate: self)
         default:
-            task = nil
+            fatalError()
         }
         
-        task?.performTask()
+        if let orkTaskViewController = orkTaskViewController {
+            present(orkTaskViewController, animated: true, completion: nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            performTask(forRow: indexPath.row)
+            performSurvey(forRow: indexPath.row)
         }
 
         tableView.deselectRow(at: indexPath, animated: true)
@@ -144,15 +170,11 @@ class MyProfileTableViewController: UITableViewController{
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let segueID = segue.identifier{
-            switch segueID{
-            case "showDetailInfo":
-                let destination = segue.destination as! DetailProfileTableViewController
-                destination.patient = self.patient
-                destination.server = server
-            default:
-                fatalError("what happened?")
-            }
-        }
+        guard let segueID = segue.identifier, segueID == "showDetailInfo" else { fatalError() }
+        
+        guard let destination = segue.destination as? DetailProfileTableViewController else { fatalError() }
+        
+        destination.patient = self.patient
+        destination.server = server
     }
 }

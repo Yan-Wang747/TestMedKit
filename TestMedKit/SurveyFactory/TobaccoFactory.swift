@@ -10,21 +10,14 @@ import Foundation
 import ResearchKit
 import UIKit
 
-class TobaccoSurvey: PatientSurvey {
-    static let tobaccoProducts = ["Cigarette", "Cigar", "Pipe"]
-    
-    init(viewController: UIViewController, patient: Patient, server: Server) {
-        let steps = TobaccoSurvey.createTobaccoSteps()
-        
-        let tobaccoTask = ORKTobaccoTask(identifier: "tobaccoTask", steps: steps)
-        
-        tobaccoTask.tobaccoProducts = TobaccoSurvey.tobaccoProducts
-        TobaccoSurvey.createTobaccoNavigationRule(for: tobaccoTask)
-        
-        super.init(task: tobaccoTask, viewController: viewController, delegate: TobaccoTaskResultProcessor(patient: patient, server: server))
+class TobaccoFactory: SurveyFactory {
+    static func createResultProcessor() -> SurveyResultProcessor {
+        return TobaccoResultProcessor()
     }
     
-    private static func createTobaccoSteps() -> [ORKStep]{
+    static let tobaccoProducts = ["Cigarette", "Cigar", "Pipe"]
+    
+    static func createSteps() -> [ORKStep]{
         var steps: [ORKStep] = []
         
         let instructionStep = ORKInstructionStep(identifier: "instructionStep")
@@ -35,19 +28,18 @@ class TobaccoSurvey: PatientSurvey {
         steps.append(createTobaccoUseStep())
         steps.append(createTobaccoSelectionStep(nth: 1))
         
-        for tobaccoProduct in tobaccoProducts {
-            steps.append(createStartDateStep(for: tobaccoProduct, nth: 1))
-            steps.append(createAmountStep(for: tobaccoProduct, nth: 1))
+        tobaccoProducts.forEach() {
+            steps.append(createStartDateStep(for: $0, nth: 1))
+            steps.append(createAmountStep(for: $0, nth: 1))
         }
         
         steps.append(createEverUsedTobaccoStep())
         steps.append(createTobaccoSelectionStep(nth: 2))
-        for tobaccoProduct in tobaccoProducts {
-            steps.append(createStartDateStep(for: tobaccoProduct, nth: 2))
-            steps.append(createAmountStep(for: tobaccoProduct, nth: 2))
-        }
         
-        PatientSurvey.appendReviewStep(steps: &steps)
+        tobaccoProducts.forEach() {
+            steps.append(createStartDateStep(for: $0, nth: 2))
+            steps.append(createAmountStep(for: $0, nth: 2))
+        }
         
         return steps
     }
@@ -67,8 +59,8 @@ class TobaccoSurvey: PatientSurvey {
     private static func createTobaccoSelectionStep(nth: Int) -> ORKStep {
         var tobaccoSelections: [ORKTextChoice] = []
         
-        for tobaccoProduct in tobaccoProducts {
-            tobaccoSelections.append(ORKTextChoice(text: tobaccoProduct, value: tobaccoProduct as NSString))
+        tobaccoProducts.forEach() {
+            tobaccoSelections.append(ORKTextChoice(text: $0, value: $0 as NSString))
         }
         
         let tobaccoSelectionAnswerFormat = ORKTextChoiceAnswerFormat(style: .multipleChoice, textChoices: tobaccoSelections)
@@ -88,7 +80,14 @@ class TobaccoSurvey: PatientSurvey {
         return ORKQuestionStep(identifier: tobaccoProduct.lowercased() + "_" + "AmountStep\(nth)", title: "How many \(tobaccoProduct) per day did you smoke", answer: numericAnswer)
     }
     
-    private static func createTobaccoNavigationRule(for tobaccoTask: ORKNavigableOrderedTask){
+    static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask {
+        let orkTask = ORKTobaccoTask(identifier: identifier, steps: steps)
+        createNavigationRule(for: orkTask)
+        
+        return orkTask
+    }
+    
+    static func createNavigationRule(for tobaccoTask: ORKNavigableOrderedTask){
         //========================
         let tobaccoUseResult = ORKResultSelector(resultIdentifier: "tobaccoUseStep")
         let predicateNoForTobaccoUseStep = ORKResultPredicate.predicateForBooleanQuestionResult(with: tobaccoUseResult, expectedAnswer: false)

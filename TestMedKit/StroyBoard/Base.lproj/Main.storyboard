@@ -441,10 +441,10 @@
             </objects>
             <point key="canvasLocation" x="3678" y="797"/>
         </scene>
-        <!--Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="fEm-6h-24G">
             <objects>
-                <navigationController storyboardIdentifier="NavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="oo1-hp-FLd" customClass="NavigationViewController" customModule="TestMedKit" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="oo1-hp-FLd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="VDl-gg-bhy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="O0U-QT-WTc">
@@ -952,6 +952,7 @@
                         <outlet property="pswdText" destination="JuR-eN-4Xr" id="E4v-9l-HgF"/>
                         <outlet property="serverIPText" destination="Byf-k0-ou3" id="Au7-QY-Ig6"/>
                         <outlet property="signInButton" destination="K7W-6h-YXO" id="qeO-Xf-pPz"/>
+                        <segue destination="AO2-OX-DWh" kind="presentation" identifier="ShowMyProfile" id="L7k-7A-Jll"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDl-N1-JAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -966,7 +967,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="ouI-xH-L4m">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="AO2-OX-DWh" customClass="TabBarController" customModule="TestMedKit" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="AO2-OX-DWh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xN2-lR-tkv">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

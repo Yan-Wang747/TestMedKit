@@ -9,9 +9,9 @@
 import Foundation
 import ResearchKit
 
-class AlcoholTaskResultProcessor: TaskResultProcessor {
+class AlcoholResultProcessor: SurveyResultProcessor {
     
-    override func startProcessResult(with result: ORKTaskResult) -> SurveyResult? {
+    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
         return processDrinkAlcoholResult(with: result)
     }
     

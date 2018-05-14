@@ -9,20 +9,14 @@
 import Foundation
 import ResearchKit
 
-class MedicalConditionSurvey: PatientSurvey {
-     static let medicalConditions = ["Cancer", "Asthma", "Bleeding Problems", "Blood Clots", "Blood Disorders", "Cardiovascular Disease", "Diabetes", "Emphysema", "Heart Attack", "Heart Disease", "Hypertension", "Kidney Stones", "Liver Problems", "Osteoarthritis", "Pneumonia", "Seizure", "Stroke", "Thyroid Problems", "Other"]
-    
-    init(viewController: UIViewController, patient: Patient, server: Server) {
-        let steps = MedicalConditionSurvey.createSteps()
-        
-        let medicalConditionTask = ORKMedicalConditionTask(identifier: "medicalConditionTask", steps: steps)
-        medicalConditionTask.medicalConditions = MedicalConditionSurvey.medicalConditions
-        
-        MedicalConditionSurvey.createNavigationRule(for: medicalConditionTask)
-        super.init(task: medicalConditionTask, viewController: viewController, delegate: MedicalConditionTaskResultProcessor(patient: patient, server: server))
+class MedicalConditionFactory: SurveyFactory {
+    static func createResultProcessor() -> SurveyResultProcessor {
+        return MedicationResultProcessor()
     }
     
-    private static func createSteps() -> [ORKStep] {
+     static let medicalConditions = ["Cancer", "Asthma", "Bleeding Problems", "Blood Clots", "Blood Disorders", "Cardiovascular Disease", "Diabetes", "Emphysema", "Heart Attack", "Heart Disease", "Hypertension", "Kidney Stones", "Liver Problems", "Osteoarthritis", "Pneumonia", "Seizure", "Stroke", "Thyroid Problems", "Other"]
+    
+    static func createSteps() -> [ORKStep] {
         var steps: [ORKStep] = []
         
         let instructionStep = ORKInstructionStep(identifier: "instructionStep")
@@ -36,10 +30,8 @@ class MedicalConditionSurvey: PatientSurvey {
         for medicalCondition in medicalConditions {
             steps.append(createOnsetDateStep(medicalCondiction: medicalCondition))
             steps.append(createIsTreatedStep(medicalCondiction: medicalCondition))
-            steps.append(createHowIsTreated(medicalCondition: medicalCondition))
+            steps.append(createHowIsTreatedStep(medicalCondition: medicalCondition))
         }
-        
-        self.appendReviewStep(steps: &steps)
         
         return steps
     }
@@ -84,7 +76,7 @@ class MedicalConditionSurvey: PatientSurvey {
         return isTreatedStep
     }
     
-    private static func createHowIsTreated(medicalCondition: String) -> ORKStep {
+    private static func createHowIsTreatedStep(medicalCondition: String) -> ORKStep {
         let textAnswerFormat = ORKTextAnswerFormat(maximumLength: 99)
         
         let howIsTreatedStep = ORKQuestionStep(identifier: medicalCondition.lowercased() + "_" + "HowIsTreatedStep", title: "How is/was it treated?", answer: textAnswerFormat)
@@ -92,11 +84,14 @@ class MedicalConditionSurvey: PatientSurvey {
         return howIsTreatedStep
     }
     
-    private static func createNavigationRule(for medicalConditionTask: ORKNavigableOrderedTask) {
-        createHaveAnyMedicalConditionStepRule(for: medicalConditionTask )
+    static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask {
+        let orkTask = ORKMedicalConditionTask(identifier: identifier, steps: steps)
+        createNavigationRule(for: orkTask)
+        
+        return orkTask
     }
     
-    private static func createHaveAnyMedicalConditionStepRule(for task: ORKNavigableOrderedTask) {
+    static func createNavigationRule(for task: ORKNavigableOrderedTask) {
         let haveAnyMedicalConditionResult = ORKResultSelector(resultIdentifier: "haveAnyMedicalConditionStep")
         let predicateNoForHaveAnyMedicalCondition = ORKResultPredicate.predicateForBooleanQuestionResult(with: haveAnyMedicalConditionResult, expectedAnswer: false)
         

@@ -9,21 +9,15 @@
 import Foundation
 import ResearchKit
 
-class FamilyHistorySurvey: PatientSurvey {
+class FamilyHistoryFactory: SurveyFactory {
+    static func createResultProcessor() -> SurveyResultProcessor {
+        return FamilyHistoryResultProcessor()
+    }
+    
     
     static let familyMembers = ["Father", "Mother", "Brother", "Sister", "Son", "Daughter", "Maternal Grandmother", "Maternal Grandfather", "Maternal Aunt", "Maternal Uncle", "Paternal Aunt", "Paternal Uncle", "Half Brother", "Half Sister", "Cousin"]
     
-    init(viewController: UIViewController, patient: Patient, server: Server) {
-        let steps = FamilyHistorySurvey.createSteps()
-        
-        let familyHistoryTask = ORKFamilyHistoryTask(identifier: "familyHistoryTask", steps: steps)
-        familyHistoryTask.familyMembers = FamilyHistorySurvey.familyMembers
-        
-        FamilyHistorySurvey.createNavigationRule(for: familyHistoryTask)
-        super.init(task: familyHistoryTask, viewController: viewController, delegate: FamilyHistoryTaskResultProcessor(patient: patient, server: server))
-    }
-    
-    private static func createSteps() -> [ORKStep]{
+    static func createSteps() -> [ORKStep]{
         var steps: [ORKStep] = []
         
         let instructionStep = ORKInstructionStep(identifier: "instructionStep")
@@ -41,8 +35,7 @@ class FamilyHistorySurvey: PatientSurvey {
             steps.append(createPassAwayAgeStep(for: familyMember))
             steps.append(createCurrentAgeStep(for: familyMember))
         }
- 
-        PatientSurvey.appendReviewStep(steps: &steps)
+
         return steps
     }
     
@@ -99,7 +92,14 @@ class FamilyHistorySurvey: PatientSurvey {
         return ORKQuestionStep(identifier: id, title: "What is your \(familyMember) current age?", answer: ageAnswerFormat)
     }
     
-    private static func createNavigationRule(for familyTask: ORKNavigableOrderedTask) {
+    static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask {
+        let orkTask = ORKFamilyHistoryTask(identifier: identifier, steps: steps)
+        createNavigationRule(for: orkTask)
+        
+        return orkTask
+    }
+    
+    static func createNavigationRule(for familyTask: ORKNavigableOrderedTask) {
         
         createHaveAnyCancerStepRule(for: familyTask)
         createIsPassAwayStepRule(for: familyTask)
@@ -112,12 +112,13 @@ class FamilyHistorySurvey: PatientSurvey {
         task.setNavigationRule(predicateNoForAnyCancerRule, forTriggerStepIdentifier: "haveAnyCancerStep")
     }
     
-    private static func createIsPassAwayStepRule(for task: ORKNavigableOrderedTask) {
+   private static func createIsPassAwayStepRule(for task: ORKNavigableOrderedTask) {
         for familyMember in familyMembers {
             let isPassAwayResult = ORKResultSelector(resultIdentifier: familyMember.lowercased() + "_" + "IsPassAwayStep")
             let predicateNoForIsPassAway = ORKResultPredicate.predicateForBooleanQuestionResult(with: isPassAwayResult, expectedAnswer: false)
             let predicateNoForIsPassAwayRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForIsPassAway, familyMember.lowercased() + "_" + "CurrentAgeStep")])
             task.setNavigationRule(predicateNoForIsPassAwayRule, forTriggerStepIdentifier: familyMember.lowercased() + "_" + "IsPassAwayStep")
         }
+    
     }
 }

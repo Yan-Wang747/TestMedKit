@@ -9,9 +9,9 @@
 import Foundation
 import ResearchKit
 
-class GynecologicTaskResultProcessor: TaskResultProcessor {
+class GynecologyResultProcessor: SurveyResultProcessor {
     
-    override func startProcessResult(with result: ORKTaskResult) -> SurveyResult {
+    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
         return processHaveEverBeenPregnantResult(with: result)
     }
     

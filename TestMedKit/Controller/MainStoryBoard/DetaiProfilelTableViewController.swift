@@ -34,6 +34,8 @@ class DetailProfileTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         firstNameLabel.text = patient.basicInfo.firstName
         lastNameLabel.text = patient.basicInfo.lastName
         genderLabel.text = patient.basicInfo.gender
@@ -118,13 +120,14 @@ class DetailProfileTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let segueID = segue.identifier{
-            guard let destination = segue.destination as? BasicInfoEditViewController else {
-                return
-            }
-            destination.editingField = segueID
-            destination.patient = patient
-            destination.server = server
+        guard let segueID = segue.identifier else { fatalError() }
+        
+        guard let destination = segue.destination as? BasicInfoEditViewController else {
+            fatalError()
         }
+        
+        destination.editingField = segueID
+        destination.patient = patient
+        destination.server = server
     }
 }

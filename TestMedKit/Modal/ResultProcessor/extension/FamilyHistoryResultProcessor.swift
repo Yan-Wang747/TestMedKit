@@ -9,9 +9,9 @@
 import Foundation
 import ResearchKit
 
-class FamilyHistoryTaskResultProcessor: TaskResultProcessor {
+class FamilyHistoryResultProcessor: SurveyResultProcessor {
     
-    override func startProcessResult(with result: ORKTaskResult) -> SurveyResult? {
+    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
         return processHaveAnyCancerResult(with: result)
     }
     

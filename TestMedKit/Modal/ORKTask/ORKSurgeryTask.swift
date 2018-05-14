@@ -9,7 +9,7 @@
 import Foundation
 import ResearchKit
 
-class ORKSurgicalTask: ORKNavigableOrderedTask {
+class ORKSurgeryTask: ORKNavigableOrderedTask {
     var surgeryTypes: [String]!
     
     override func step(after step: ORKStep?, with result: ORKTaskResult) -> ORKStep? {

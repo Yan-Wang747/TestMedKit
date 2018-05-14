@@ -9,22 +9,15 @@
 import Foundation
 import ResearchKit
 
-class GynecologySurvey: PatientSurvey {
+class GynecologyFactory: SurveyFactory {
+    static func createResultProcessor() -> SurveyResultProcessor {
+        return GynecologyResultProcessor()
+    }
+    
     static let hormoneTypeStrings = ["Contraceptive", "Post Menopause Use", "Other Hormone Use"]
     static let menopauseStatuses = ["Premenopausal", "Perimenopause", "Postmenopausal", "Unknown"]
     
-    init(viewController: UIViewController, patient: Patient, server: Server) {
-        let steps = GynecologySurvey.createSteps()
-        
-        let gynecologyTask = ORKGynecologyTask(identifier: "gynecologyTask", steps: steps)
-        gynecologyTask.hormoneTypeStrings = GynecologySurvey.hormoneTypeStrings
-        
-        GynecologySurvey.createNavigationRule(for: gynecologyTask)
-        
-        super.init(task: gynecologyTask, viewController: viewController, delegate: GynecologicTaskResultProcessor(patient: patient, server: server))
-    }
-    
-    private static func createSteps() -> [ORKStep] {
+    static func createSteps() -> [ORKStep] {
         var steps: [ORKStep] = []
         
         let instructionStep = ORKInstructionStep(identifier: "instructionStep")
@@ -56,8 +49,6 @@ class GynecologySurvey: PatientSurvey {
         
         steps.append(createLastPAPSmearDateStep())
         steps.append(createLastMammogramDateStep())
-        
-        self.appendReviewStep(steps: &steps)
         
         return steps
     }
@@ -246,7 +237,14 @@ class GynecologySurvey: PatientSurvey {
         return lastMammogramDateStep
     }
     
-    private static func createNavigationRule(for gynecologicTask: ORKNavigableOrderedTask) {
+    static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask {
+        let orkTask = ORKGynecologyTask(identifier: identifier, steps: steps)
+        createNavigationRule(for: orkTask)
+        
+        return orkTask
+    }
+    
+    static func createNavigationRule(for gynecologicTask: ORKNavigableOrderedTask) {
         let haveEverBeenPregnantResultSelector = ORKResultSelector(resultIdentifier: "haveEverBeenPregnantStep")
         
         let predicateNoForHaveEverBeenPregnant = ORKResultPredicate.predicateForBooleanQuestionResult(with: haveEverBeenPregnantResultSelector, expectedAnswer: false)

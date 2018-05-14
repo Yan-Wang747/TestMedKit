@@ -9,10 +9,10 @@
 import Foundation
 import ResearchKit
 
-class PersonalTaskResultProcessor: TaskResultProcessor {
+class PersonalResultProcessor: SurveyResultProcessor{
     
-    override func startProcessResult(with result: ORKTaskResult) -> SurveyResult? {
-        return personalResult = processIsMarriedResult(with: result)
+    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
+        return processIsMarriedResult(with: result)
     }
     
     func processIsMarriedResult(with result: ORKTaskResult) -> PersonalResult? {

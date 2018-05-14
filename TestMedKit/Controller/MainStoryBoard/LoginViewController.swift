@@ -16,13 +16,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var serverIPText: UITextField!
     
+    var patient: Patient!
+    var server: Server!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        signInButton.layer.cornerRadius = 8
-
         // Do any additional setup after loading the view.
-        
+        signInButton.layer.cornerRadius = 8
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,49 +47,51 @@ class LoginViewController: UIViewController {
             serverIP = serverIPText.text!
         }
         
-        let server = Server(serverIP: serverIP, serverPort: 8084)
+        server = Server(serverIP: serverIP, serverPort: 8084)
         
         server.asyncAuthenticate(endpoint: Endpoints.appLogin.rawValue, userID: ID, password: pswd) {_, response, _ in
             
-            let loginURL = URL(string: "\(server.base)/\(Endpoints.appLogin)")!
+            guard let loginURL = URL(string: "\(self.server.base)/\(Endpoints.appLogin)") else { fatalError() }
+            
             guard let response = response as? HTTPURLResponse, response.statusCode == 200,  let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
                 fatalError()
             }
             
-            for cookie in cookies {
-                if cookie.name == "JSESSIONID" {
-                    server.sessionID = cookie.value
-                    //closure
-                    server.asyncGetJsonData(endpoint: Endpoints.getBasicInfo.rawValue) {data, response, _ in
-                        guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200, let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else {
-                            return
-                        }
-                        
-                        let jsonDecoder = JSONDecoder()
-                        let basicInfo = try! jsonDecoder.decode(BasicInfo.self, from: data)
-                        let patient = Patient(basicInfo: basicInfo)
-                        
-                        tabBarController.patient = patient
-                        tabBarController.server = server
-                        
-                        DispatchQueue.main.async {
-                            self.present(tabBarController, animated: true, completion: nil)
-                        }
-                    } //end of closure
-                    
-                    break
-                } //if
-            } //for
+            let cookieOp = cookies.filter { $0.name == "JSESSIONID" }.first
+            guard let cookie = cookieOp else { fatalError() }
+            
+            self.server.sessionID = cookie.value
+            
+            self.server.asyncGetJsonData(endpoint: Endpoints.getBasicInfo.rawValue) {data, response, _ in
+                guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    return
+                }
+                
+                let jsonDecoder = JSONDecoder()
+                guard let basicInfo = try? jsonDecoder.decode(BasicInfo.self, from: data) else { fatalError() }
+                
+                self.patient = Patient(basicInfo: basicInfo)
+                
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "ShowMyProfile", sender: sender)
+                }
+                
+            }//asyncGetJsonData closure
         } //auth closure
     } //loginAction
     
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        guard let myProfileViewController = ((segue.destination as? UITabBarController)?.viewControllers?.filter { $0 is UINavigationController }.first as? UINavigationController)?.topViewController as? MyProfileTableViewController else { fatalError() }
+        
+        myProfileViewController.patient = patient
+        myProfileViewController.server = server
     }
-    */
+
 }

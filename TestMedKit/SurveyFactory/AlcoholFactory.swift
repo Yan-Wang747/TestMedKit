@@ -10,21 +10,15 @@ import Foundation
 import UIKit
 import ResearchKit
 
-class AlcoholSurvey: PatientSurvey {
+class AlcoholFactory: SurveyFactory {
+    static func createResultProcessor() -> SurveyResultProcessor {
+        return AlcoholResultProcessor()
+    }
+    
     static let hazardousInstances = ["Asbestors", "Benzene", "Lead", "Mercury", "Radiation", "Other Petroleum Products"]
     static let products = ["Cigarettes", "Cigars", "Chewing Tobacco", "Snuff", "Recreational Drug Use", "Illicit Drug Use"]
     
-    init(viewController: UIViewController, patient: Patient, server: Server){
-
-        let steps = AlcoholSurvey.createAlcoholSteps()
-        
-        let alcoholTask = ORKNavigableOrderedTask(identifier: "alcoholTask", steps: steps)
-
-        AlcoholSurvey.createNavigationRule(for: alcoholTask)
-        super.init(task: alcoholTask, viewController: viewController, delegate: AlcoholTaskResultProcessor(patient: patient, server: server))
-    }
-    
-    private static func createAlcoholSteps() -> [ORKStep]{
+    static func createSteps() -> [ORKStep]{
         var steps: [ORKStep] = []
         
         let instructionStep = ORKInstructionStep(identifier: "instructionStep")
@@ -42,11 +36,9 @@ class AlcoholSurvey: PatientSurvey {
         steps.append(createUsedProductsStep())
         steps.append(createUsedProductsSelectionStep())
         
-        PatientSurvey.appendReviewStep(steps: &steps)
-        
         return steps
     }
-    
+
     private static func createDrinkAlcoholStep() -> ORKStep {
         let booleanAnswer = ORKBooleanAnswerFormat(yesString: "Yes", noString: "No")
         
@@ -111,7 +103,7 @@ class AlcoholSurvey: PatientSurvey {
         return ORKQuestionStep(identifier: "productSelectionStep", title: "Select all that apply", answer: productSelectionAnswerFormat)
     }
     
-    private static func createNavigationRule(for alcoholTask: ORKNavigableOrderedTask){
+    static func createNavigationRule(for alcoholTask: ORKNavigableOrderedTask){
         
         createAlcoholUseStepRule(for: alcoholTask)
         createEverDrinkAlcoholStepRule(for: alcoholTask)
@@ -141,7 +133,7 @@ class AlcoholSurvey: PatientSurvey {
         alcoholTask.setNavigationRule(predicateNoForexposeToHazardousInstancesRule, forTriggerStepIdentifier: "exposeToHazardousInstancesStep")
     }
     
-    private static func createUsedProductStepRule(for alcoholTask: ORKNavigableOrderedTask) {
+    static func createUsedProductStepRule(for alcoholTask: ORKNavigableOrderedTask) {
         let usedProductResult = ORKResultSelector(resultIdentifier: "usedProductsStep")
         
         let predicateNoForUsedProduct = ORKResultPredicate.predicateForBooleanQuestionResult(with: usedProductResult, expectedAnswer: false)

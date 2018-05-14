@@ -10,17 +10,12 @@ import Foundation
 import UIKit
 import ResearchKit
 
-class PersonalSurvey: PatientSurvey {
-    init(viewController: UIViewController, patient: Patient, server: Server) {
-        let steps = PersonalSurvey.createPersonalSteps()
-        
-        let personalTask = ORKNavigableOrderedTask(identifier: "personalTask", steps: steps)
-        
-        PersonalSurvey.createPersonalNavigationRule(for: personalTask)
-        super.init(task: personalTask, viewController: viewController, delegate: PersonalTaskResultProcessor(patient: patient, server: server))
+class PersonalFactory: SurveyFactory {
+    static func createResultProcessor() -> SurveyResultProcessor {
+        return PersonalResultProcessor()
     }
-
-    private static func createPersonalSteps() -> [ORKStep]{
+    
+    static func createSteps() -> [ORKStep]{
         var steps: [ORKStep] = []
         
         let instructionStep = ORKInstructionStep(identifier: "instructionStep")
@@ -39,8 +34,6 @@ class PersonalSurvey: PatientSurvey {
         steps.append(createRegularMealStep())
         steps.append(createNutritionSupplementsStep())
         steps.append(createLiquidDietStep())
-        
-        PatientSurvey.appendReviewStep(steps: &steps)
         
         return steps
     }
@@ -128,7 +121,7 @@ class PersonalSurvey: PatientSurvey {
         return ORKQuestionStep(identifier: "liquidDietStep", title: "Do you require a liquid diet?", answer: booleanAnswer)
     }
     
-    private static func createPersonalNavigationRule(for personalTask: ORKNavigableOrderedTask){
+    static func createNavigationRule(for personalTask: ORKNavigableOrderedTask){
         
         createIsMarriedStepRule(for: personalTask)
         createIsActivePersonStepRule(for: personalTask)
@@ -141,7 +134,7 @@ class PersonalSurvey: PatientSurvey {
         task.setNavigationRule(predicateNoForIsMarriedRule, forTriggerStepIdentifier: "isMarriedStep")
     }
     
-    private static func createIsActivePersonStepRule(for task: ORKNavigableOrderedTask) {
+    static func createIsActivePersonStepRule(for task: ORKNavigableOrderedTask) {
         let isActiveResult = ORKResultSelector(resultIdentifier: "isActivePersonStep")
         let predicateNoForIsActive = ORKResultPredicate.predicateForBooleanQuestionResult(with: isActiveResult, expectedAnswer: false)
         let predicateNoForIsActiveRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForIsActive, "regularMealStep")])

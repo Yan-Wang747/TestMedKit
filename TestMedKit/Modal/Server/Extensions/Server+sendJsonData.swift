@@ -11,7 +11,7 @@ import ResearchKit
 
 extension Server {
     func asyncSendJsonData(endpoint: String, jsonData: Data, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        let endpointURL = URL(string: "\(base)/\(endpoint)")!
+        guard let endpointURL = URL(string: "\(base)/\(endpoint)") else { fatalError() }
         
         var request = URLRequest(url: endpointURL)
         request.httpMethod = "PUT"

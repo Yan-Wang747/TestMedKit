@@ -9,22 +9,15 @@
 import Foundation
 import ResearchKit
 
-class AllergySurvey: PatientSurvey {
+class AllergyFactory: SurveyFactory {
+    static func createResultProcessor() -> SurveyResultProcessor {
+        return AllergyResultProcessor()
+    }
+    
     static let allergyTypes = ["Drug", "Drugclass", "Food", "Other", "Unknown"]
     static let allergyReactions = ["Skin Rashes/Hives", "Shock/Unconsciousness", "Asthma/Shortness of Breath", "Nausea/Vomiting/Diarrhea", "Anemia/Blood Disorders", "Photosensitivity", "Swollen‐lips", "Chest Pains/Irregular Heart Rate", "Other"]
     
-    init(viewController: UIViewController, patient: Patient, server: Server) {
-        let steps = AllergySurvey.createSteps()
-        
-        let allergyTask = ORKAllergyTask(identifier: "allergyTask", steps: steps)
-        allergyTask.allergyTypes = AllergySurvey.allergyTypes
-        allergyTask.allergyReactions = AllergySurvey.allergyReactions
-        AllergySurvey.createNavigationRule(for: allergyTask)
-        
-        super.init(task: allergyTask, viewController: viewController, delegate: AllergyTaskResultProcessor(patient: patient, server: server))
-    }
-    
-    private static func createSteps() -> [ORKStep] {
+    static func createSteps() -> [ORKStep] {
         var steps: [ORKStep] = []
         
         let instructionStep = ORKInstructionStep(identifier: "instructionStep")
@@ -45,8 +38,6 @@ class AllergySurvey: PatientSurvey {
             }
 
         }
-        
-        self.appendReviewStep(steps: &steps)
         
         return steps
     }
@@ -122,11 +113,14 @@ class AllergySurvey: PatientSurvey {
         return dateOfOccurrenceStep
     }
     
-    private static func createNavigationRule(for allergyTask: ORKNavigableOrderedTask) {
-        createHaveAnyAllergyStepRule(for: allergyTask)
+    static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask {
+        let orkTask = ORKAllergyTask(identifier: identifier, steps: steps)
+        createNavigationRule(for: orkTask)
+        
+        return orkTask
     }
     
-    private static func createHaveAnyAllergyStepRule(for task: ORKNavigableOrderedTask) {
+    static func createNavigationRule(for task: ORKNavigableOrderedTask) {
         let haveAnyAllergyResult = ORKResultSelector(resultIdentifier: "haveAnyAllergyStep")
         let predicateNoForHaveAnyAllergy = ORKResultPredicate.predicateForBooleanQuestionResult(with: haveAnyAllergyResult, expectedAnswer: false)
         let predicateNoForHaveAnyAllergyRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [(predicateNoForHaveAnyAllergy, "reviewStep")])

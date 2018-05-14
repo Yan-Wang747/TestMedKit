@@ -9,23 +9,17 @@
 import Foundation
 import ResearchKit
 
-class MedicationSurvey: PatientSurvey {
-    static let medTypes = ["Prescription", "Over-the-Counter", "Herbal"]
-    
-    init(viewController: UIViewController, patient: Patient, server: Server) {
-        let steps = MedicationSurvey.createSteps()
+class MedicationFactory: SurveyFactory {
+    static func createResultProcessor() -> SurveyResultProcessor {
+        let resultProcessor = MedicationResultProcessor()
+        resultProcessor.medTypes = medTypes
         
-        let medicationTask = ORKNavigableOrderedTask(identifier: "medicationTask", steps: steps)
-        MedicationSurvey.createNavigationRule(for: medicationTask)
-        
-        let delegate = MedicationTaskResultProcessor(patient: patient, server: server)
-        delegate.medTypes = MedicationSurvey.medTypes
-        super.init(task: medicationTask, viewController: viewController, delegate: delegate)
+        return resultProcessor
     }
     
-    
-    
-    private static func createSteps() -> [ORKStep] {
+    static let medTypes = ["Prescription", "Over-the-Counter", "Herbal"]
+
+    static func createSteps() -> [ORKStep] {
         var steps: [ORKStep] = []
         
         let instructionStep = ORKInstructionStep(identifier: "instructionStep")
@@ -41,8 +35,6 @@ class MedicationSurvey: PatientSurvey {
             steps.append(createMedicationFrequencyStep(medType: medType))
             steps.append(createMedicationStartDateStep(medType: medType))
         }
-
-        self.appendReviewStep(steps: &steps)
         
         return steps
     }
@@ -122,13 +114,13 @@ class MedicationSurvey: PatientSurvey {
         return ORKQuestionStep(identifier: medType.lowercased() + "_" + "StartDateStep", title: "When did you start?", answer: dateAnswerFormat)
     }
     
-    private static func createNavigationRule(for task: ORKNavigableOrderedTask) {
+    static func createNavigationRule(for task: ORKNavigableOrderedTask) {
         for medType in medTypes {
             createTakeAnyMedicationStepRule(for: task, medType: medType)
         }
     }
     
-    static func createTakeAnyMedicationStepRule(for task: ORKNavigableOrderedTask, medType: String) {
+    private static func createTakeAnyMedicationStepRule(for task: ORKNavigableOrderedTask, medType: String) {
 
         let id = medType.lowercased() + "_" + "TakeAnyMedicationStep"
         let index = medTypes.index(of: medType)!
