@@ -15,7 +15,7 @@ extension TextFieldEditViewController {
         
         guard let jsonData = try? encoder.encode(BasicInfoField(field: field, newValue: newValue)) else { fatalError() }
         
-        server.asyncSendJsonData(endpoint: Endpoints.updateBasicInfo.rawValue, jsonData: jsonData) { (_, response, _) in
+        server.asyncSendJsonData(httpMethod: "PUT", endpoint: Server.Endpoints.updateBasicInfo.rawValue, jsonData: jsonData) { (_, response, _) in
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
             
             switch field {

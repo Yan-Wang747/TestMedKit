@@ -15,30 +15,30 @@ class SurgeryResultProcessor: SurveyResultProcessor {
         return processHaveAnySurgeryResult(with: result)
     }
     
-    func processHaveAnySurgeryResult(with result: ORKTaskResult) -> SurgicalResult? {
+    func processHaveAnySurgeryResult(with result: ORKTaskResult) -> SurgeryResult? {
         guard let haveAnyMedicalConditionResult = ((result.result(forIdentifier: "haveAnySurgeryStep") as? ORKStepResult)?.result(forIdentifier: "haveAnySurgeryStep") as? ORKBooleanQuestionResult)?.booleanAnswer else { return nil }
         
-        var surgicalInfo: SurgicalResult?
+        var surgeryInfo: SurgeryResult?
         if haveAnyMedicalConditionResult == 1 {
-            surgicalInfo = processSurgerySelectionResult(with: result)
-            surgicalInfo?.takeSurgical = true
+            surgeryInfo = processSurgerySelectionResult(with: result)
+            surgeryInfo?.takeSurgery = true
         } else {
-            surgicalInfo = SurgicalResult()
+            surgeryInfo = SurgeryResult()
         }
         
-        return surgicalInfo
+        return surgeryInfo
     }
     
-    func processSurgerySelectionResult(with result: ORKTaskResult) -> SurgicalResult? {
+    func processSurgerySelectionResult(with result: ORKTaskResult) -> SurgeryResult? {
         guard let selectedSurgeries = ((result.result(forIdentifier: "surgerySelectionStep") as? ORKStepResult)?.result(forIdentifier: "surgerySelectionStep") as? ORKChoiceQuestionResult)?.choiceAnswers as? [String] else { return nil }
         
-        let surgicalInfo = processOnsetDateResult(with: result, selectedSurgeries: selectedSurgeries)
-        surgicalInfo?.surgeries = selectedSurgeries
+        let surgeryInfo = processOnsetDateResult(with: result, selectedSurgeries: selectedSurgeries)
+        surgeryInfo?.surgeries = selectedSurgeries
         
-        return surgicalInfo
+        return surgeryInfo
     }
         
-    func processOnsetDateResult(with result: ORKTaskResult, selectedSurgeries: [String]) -> SurgicalResult? {
+    func processOnsetDateResult(with result: ORKTaskResult, selectedSurgeries: [String]) -> SurgeryResult? {
         
         var dates: [Date] = []
         for surgery in selectedSurgeries {
@@ -48,9 +48,9 @@ class SurgeryResultProcessor: SurveyResultProcessor {
             dates.append(date)
         }
         
-        let surgicalInfo = SurgicalResult()
-        surgicalInfo.dates = dates
+        let surgeryInfo = SurgeryResult()
+        surgeryInfo.dates = dates
         
-        return surgicalInfo
+        return surgeryInfo
     }
 }

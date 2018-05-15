@@ -68,31 +68,31 @@ class MyProfileTableViewController: UITableViewController {
         switch row{
         case 0:
             id = "TobaccoSurvey"
-            surveyViewController = TobaccoFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateTobacco.rawValue)
+            surveyViewController = TobaccoFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateTobacco.rawValue)
         case 1:
             id = "AlcoholSurvey"
-            surveyViewController = AlcoholFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateAlcohol.rawValue)
+            surveyViewController = AlcoholFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateAlcohol.rawValue)
         case 2:
             id = "PersonalSurvey"
-            surveyViewController = PersonalFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updatePersonal.rawValue)
+            surveyViewController = PersonalFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updatePersonal.rawValue)
         case 3:
             id = "FamilyHistorySurvey"
-            surveyViewController = FamilyHistoryFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateFamily.rawValue)
+            surveyViewController = FamilyHistoryFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateFamily.rawValue)
         case 4:
             id = "AllergySurvey"
-            surveyViewController = AllergyFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateAllergy.rawValue)
+            surveyViewController = AllergyFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateAllergy.rawValue)
         case 5:
             id = "MedicationSurvey"
-            surveyViewController = MedicationFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateMedication.rawValue)
+            surveyViewController = MedicationFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateMedication.rawValue)
         case 6:
             id = "MedicalConditionSurvey"
-            surveyViewController = MedicalConditionFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateMedicationCondition.rawValue)
+            surveyViewController = MedicalConditionFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateMedicationCondition.rawValue)
         case 7:
             id = "SurgerySurvey"
-            surveyViewController = SurgeryFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateSurgery.rawValue)
+            surveyViewController = SurgeryFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateSurgery.rawValue)
         case 8:
             id = "GynecologySurvey"
-            surveyViewController = GynecologyFactory.create(with: id, delegate: self, uploadEndpoint: Endpoints.updateGynecology.rawValue)
+            surveyViewController = GynecologyFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateGynecology.rawValue)
         default:
             fatalError()
         }
@@ -104,7 +104,8 @@ class MyProfileTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            performSurvey(forRow: indexPath.row)
+            selectedSurveyIndex = indexPath.row
+            performSurvey(forRow: selectedSurveyIndex!)
         }
 
         tableView.deselectRow(at: indexPath, animated: true)

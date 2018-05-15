@@ -10,7 +10,6 @@
 		3F12D067209B8E7F008DF849 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D066209B8E7F008DF849 /* Server.swift */; };
 		3F12D071209BA477008DF849 /* Server+getJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D070209BA477008DF849 /* Server+getJsonData.swift */; };
 		3F2D5EC1206969FE0074EB2D /* ORKMedicalConditionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */; };
-		3F4649B7209B603E00F640FD /* BasicInfoKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */; };
 		3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5161E720596601003C7E19 /* ORKAllergyTask.swift */; };
 		3F5321B920A9E95700DF8539 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5321B820A9E95700DF8539 /* SurveyViewController.swift */; };
 		3F538043203F2A750045A492 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F538042203F2A750045A492 /* Patient.swift */; };
@@ -32,7 +31,7 @@
 		3F5795CA207FED3600A2C3E7 /* MedicationResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5795C9207FED3600A2C3E7 /* MedicationResultProcessor.swift */; };
 		3F58EA8E205AB526002A83D0 /* MedicationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58EA8D205AB526002A83D0 /* MedicationFactory.swift */; };
 		3F58EA9D205B094C002A83D0 /* AllergyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58EA9C205B094C002A83D0 /* AllergyFactory.swift */; };
-		3F5931CA208799CC007A3829 /* SurgicalResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931C9208799CC007A3829 /* SurgicalResult.swift */; };
+		3F5931CA208799CC007A3829 /* SurgeryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931C9208799CC007A3829 /* SurgeryResult.swift */; };
 		3F5931CE20879FA4007A3829 /* SurgeryResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931CD20879FA4007A3829 /* SurgeryResultProcessor.swift */; };
 		3F5931D12087B4E8007A3829 /* GynecologyResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5931D02087B4E8007A3829 /* GynecologyResultProcessor.swift */; };
 		3F5A0EE720A6321400DFF3F5 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5A0EE420A6321100DFF3F5 /* ResearchKit.framework */; };
@@ -64,7 +63,7 @@
 		3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */; };
 		3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */; };
 		3FBE995720A4B3140021D865 /* Server+sendJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE995620A4B3140021D865 /* Server+sendJsonData.swift */; };
-		3FBE995920A4C0C20021D865 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE995820A4C0C20021D865 /* Endpoints.swift */; };
+		3FBE995920A4C0C20021D865 /* Server+Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE995820A4C0C20021D865 /* Server+Endpoints.swift */; };
 		3FBE995C20A4CFCA0021D865 /* SurveyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE995B20A4CFCA0021D865 /* SurveyResult.swift */; };
 		3FC0F73B2088F2240007FEBD /* GynecologyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0F73A2088F2240007FEBD /* GynecologyResult.swift */; };
 		3FDFF8E1203CBC64008ED2A2 /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */; };
@@ -142,7 +141,6 @@
 		3F12D066209B8E7F008DF849 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		3F12D070209BA477008DF849 /* Server+getJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+getJsonData.swift"; sourceTree = "<group>"; };
 		3F2D5EC0206969FE0074EB2D /* ORKMedicalConditionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKMedicalConditionTask.swift; sourceTree = "<group>"; };
-		3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoKeys.swift; sourceTree = "<group>"; };
 		3F5161E720596601003C7E19 /* ORKAllergyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORKAllergyTask.swift; sourceTree = "<group>"; };
 		3F5321B820A9E95700DF8539 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		3F538042203F2A750045A492 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Patient.swift; path = TestMedKit/Modal/PatientInfo/Patient.swift; sourceTree = SOURCE_ROOT; };
@@ -164,7 +162,7 @@
 		3F5795C9207FED3600A2C3E7 /* MedicationResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationResultProcessor.swift; sourceTree = "<group>"; };
 		3F58EA8D205AB526002A83D0 /* MedicationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationFactory.swift; sourceTree = "<group>"; };
 		3F58EA9C205B094C002A83D0 /* AllergyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyFactory.swift; sourceTree = "<group>"; };
-		3F5931C9208799CC007A3829 /* SurgicalResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgicalResult.swift; sourceTree = "<group>"; };
+		3F5931C9208799CC007A3829 /* SurgeryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryResult.swift; sourceTree = "<group>"; };
 		3F5931CD20879FA4007A3829 /* SurgeryResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryResultProcessor.swift; sourceTree = "<group>"; };
 		3F5931D02087B4E8007A3829 /* GynecologyResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologyResultProcessor.swift; sourceTree = "<group>"; };
 		3F5A0A4820A631DE00DFF3F5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -1265,7 +1263,7 @@
 		3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoEditViewController.swift; sourceTree = "<group>"; };
 		3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfo.swift; sourceTree = "<group>"; };
 		3FBE995620A4B3140021D865 /* Server+sendJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+sendJsonData.swift"; sourceTree = "<group>"; };
-		3FBE995820A4C0C20021D865 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		3FBE995820A4C0C20021D865 /* Server+Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+Endpoints.swift"; sourceTree = "<group>"; };
 		3FBE995B20A4CFCA0021D865 /* SurveyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyResult.swift; sourceTree = "<group>"; };
 		3FC0F73A2088F2240007FEBD /* GynecologyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GynecologyResult.swift; sourceTree = "<group>"; };
 		3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -1289,7 +1287,7 @@
 		3F12D06B209B8E8C008DF849 /* Server */ = {
 			isa = PBXGroup;
 			children = (
-				3FBE995820A4C0C20021D865 /* Endpoints.swift */,
+				3FBE995820A4C0C20021D865 /* Server+Endpoints.swift */,
 				3F12D066209B8E7F008DF849 /* Server.swift */,
 				3F12D072209BA61C008DF849 /* Extensions */,
 			);
@@ -1309,7 +1307,6 @@
 			isa = PBXGroup;
 			children = (
 				3F985AE4209CBA3A007C290C /* BasicInfoField.swift */,
-				3F4649B6209B603E00F640FD /* BasicInfoKeys.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -3058,7 +3055,7 @@
 				3F5795C1207FA24B00A2C3E7 /* AllergyResult.swift */,
 				3F5795C7207FE57600A2C3E7 /* MedicationResult.swift */,
 				3F5CF5BD2086378300478678 /* MedicalConditionResult.swift */,
-				3F5931C9208799CC007A3829 /* SurgicalResult.swift */,
+				3F5931C9208799CC007A3829 /* SurgeryResult.swift */,
 				3FC0F73A2088F2240007FEBD /* GynecologyResult.swift */,
 			);
 			path = PatientInfo;
@@ -3272,7 +3269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FBE995920A4C0C20021D865 /* Endpoints.swift in Sources */,
+				3FBE995920A4C0C20021D865 /* Server+Endpoints.swift in Sources */,
 				3F5795C8207FE57600A2C3E7 /* MedicationResult.swift in Sources */,
 				3F5795C6207FA8A500A2C3E7 /* AllergyResultProcessor.swift in Sources */,
 				3FC0F73B2088F2240007FEBD /* GynecologyResult.swift in Sources */,
@@ -3280,7 +3277,7 @@
 				3F55935A207D1A9700A8C9DE /* PersonalResultProcessor.swift in Sources */,
 				3F5795CA207FED3600A2C3E7 /* MedicationResultProcessor.swift in Sources */,
 				3F627076207E5755004E35AF /* FamilyResult.swift in Sources */,
-				3F5931CA208799CC007A3829 /* SurgicalResult.swift in Sources */,
+				3F5931CA208799CC007A3829 /* SurgeryResult.swift in Sources */,
 				3F627078207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift in Sources */,
 				3F568F06206595B2002255A6 /* ORKSurgeryTask.swift in Sources */,
 				3F73F6D82073FC1900E75498 /* TobaccoResult.swift in Sources */,
@@ -3309,7 +3306,6 @@
 				3F5931CE20879FA4007A3829 /* SurgeryResultProcessor.swift in Sources */,
 				3F55CD7D2045AA7200668C7A /* TobaccoFactory.swift in Sources */,
 				3F5CF5BE2086378300478678 /* MedicalConditionResult.swift in Sources */,
-				3F4649B7209B603E00F640FD /* BasicInfoKeys.swift in Sources */,
 				3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */,
 				3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */,
 				3F7A1E1F2056CA5200310D51 /* FamilyHistoryFactory.swift in Sources */,

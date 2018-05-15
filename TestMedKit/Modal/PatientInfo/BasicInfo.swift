@@ -17,6 +17,15 @@ class BasicInfo: Decodable {
     var phone: String?
     var email: String
     
+    enum BasicInfoKeys: String, CodingKey {
+        case firstName
+        case lastName
+        case gender
+        case dateOfBirth
+        case phone
+        case email
+    }
+    
     private let dateFormatter = DateFormatter()
     init(firstName: String, lastName: String, gender: String, dateOfBirth: String,phone: String?, email: String) {
         self.firstName = firstName

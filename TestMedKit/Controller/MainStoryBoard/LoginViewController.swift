@@ -49,9 +49,9 @@ class LoginViewController: UIViewController {
         
         server = Server(serverIP: serverIP, serverPort: 8084)
         
-        server.asyncAuthenticate(endpoint: Endpoints.appLogin.rawValue, userID: ID, password: pswd) {_, response, _ in
+        server.asyncAuthenticate(endpoint: Server.Endpoints.appLogin.rawValue, userID: ID, password: pswd) {_, response, _ in
             
-            guard let loginURL = URL(string: "\(self.server.base)/\(Endpoints.appLogin)") else { fatalError() }
+            guard let loginURL = URL(string: "\(self.server.base)/\(Server.Endpoints.appLogin)") else { fatalError() }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200,  let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
                 fatalError()
@@ -62,7 +62,7 @@ class LoginViewController: UIViewController {
             
             self.server.sessionID = cookie.value
             
-            self.server.asyncGetJsonData(endpoint: Endpoints.getBasicInfo.rawValue) {data, response, _ in
+            self.server.asyncGetJsonData(endpoint: Server.Endpoints.getBasicInfo.rawValue) {data, response, _ in
                 guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     return
                 }
