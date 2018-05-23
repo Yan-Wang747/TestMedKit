@@ -9,10 +9,15 @@
 import Foundation
 import ResearchKit
 
-class MedicationConditionResultProcessor: SurveyResultProcessor{
+class MedicationConditionResultProcessor: SurveyResultProcessor {
     
-    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
-        return processHaveAnyMedicalConditionResult(with: result)
+    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
+        guard let result = processHaveAnyMedicalConditionResult(with: result) else { return nil }
+        
+        let jsonEncoder = JSONEncoder()
+        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        
+        return (result, jsonData)
     }
     
     func processHaveAnyMedicalConditionResult(with result: ORKTaskResult) -> MedicalConditionResult? {

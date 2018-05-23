@@ -11,18 +11,20 @@ import Foundation
 extension Server {
 
     enum Endpoints: String {
-        case appLogin = "AppLogin"
-        case getBasicInfo = "GetBasicInfo"
-        case updateBasicInfo = "UpdateBasicInfo"
-        case updateTobacco = "UpdateTobacco"
-        case updateAlcohol = "UpdateAlcohol"
-        case updatePersonal = "UpdatePersonal"
-        case updateFamily = "UpdateFamily"
-        case updateAllergy = "UpdateAllergy"
-        case updateMedication = "UpdateMedication"
-        case updateMedicationCondition = "UpdateMedicationCondition"
-        case updateSurgery = "UpdateSurgery"
-        case updateGynecology = "UpdateGynecology"
+        
+        case AccessTobaccoInfo
+        case UpdateAlcohol
+        case UpdatePersonal
+        case UpdateFamily
+        case UpdateAllergy
+        case UpdateMedication
+        case UpdateMedicationCondition
+        case UpdateSurgery
+        case UpdateGynecology
+        case Login
+        case BasicInfo
+        case UpdateBasicInfo
+        
     }
     
 }

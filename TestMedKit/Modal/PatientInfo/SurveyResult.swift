@@ -8,6 +8,6 @@
 
 import Foundation
 
-class SurveyResult: Codable {
+class SurveyResult {
     var isUploaded: Bool = false
 }

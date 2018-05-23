@@ -11,8 +11,13 @@ import ResearchKit
 
 class AllergyResultProcessor: SurveyResultProcessor {
     
-    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
-        return processHaveAnyAllergyResult(with: result)
+    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
+        guard let result = processHaveAnyAllergyResult(with: result) else { return nil }
+        
+        let jsonEncoder = JSONEncoder()
+        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        
+        return (result, jsonData)
     }
     
     func processHaveAnyAllergyResult(with result: ORKTaskResult) -> AllergyResult? {

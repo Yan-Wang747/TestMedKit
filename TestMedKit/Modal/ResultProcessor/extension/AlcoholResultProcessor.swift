@@ -11,8 +11,13 @@ import ResearchKit
 
 class AlcoholResultProcessor: SurveyResultProcessor {
     
-    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
-        return processDrinkAlcoholResult(with: result)
+    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
+        guard let result = processDrinkAlcoholResult(with: result) else { return nil }
+        
+        let jsonEncoder = JSONEncoder()
+        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        
+        return (result, jsonData)
     }
     
     func processDrinkAlcoholResult(with result: ORKTaskResult) -> AlcoholResult? {

@@ -11,8 +11,13 @@ import ResearchKit
 
 class SurgeryResultProcessor: SurveyResultProcessor {
     
-    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
-        return processHaveAnySurgeryResult(with: result)
+    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
+        guard let result = processHaveAnySurgeryResult(with: result) else { return nil }
+        
+        let jsonEncoder = JSONEncoder()
+        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        
+        return (result, jsonData)
     }
     
     func processHaveAnySurgeryResult(with result: ORKTaskResult) -> SurgeryResult? {

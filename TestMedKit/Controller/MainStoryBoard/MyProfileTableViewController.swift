@@ -28,6 +28,28 @@ class MyProfileTableViewController: UITableViewController {
         let footerView = UIView()
         self.tableView.tableFooterView = footerView
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
+        
+        retriveSurveyStatus()
+    }
+    
+    private func retriveSurveyStatus() {
+        let numberOfSurvey = self.tableView.numberOfRows(inSection: 1)
+        
+        //self has to be weak since the controller may be unloaded from the memory
+        server.asyncGetJsonData(endpoint: Server.Endpoints.AccessTobaccoInfo.rawValue) { [weak self] data, response, error in
+            guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
+            
+            if error != nil {
+                fatalError()
+            }
+            
+            DispatchQueue.main.async {
+                let testString = String(data: data, encoding: .utf8)
+                print(testString)
+                let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 1))
+                cell?.accessoryType = .checkmark
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,31 +90,31 @@ class MyProfileTableViewController: UITableViewController {
         switch row{
         case 0:
             id = "TobaccoSurvey"
-            surveyViewController = TobaccoFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateTobacco.rawValue)
+            surveyViewController = TobaccoFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.AccessTobaccoInfo.rawValue)
         case 1:
             id = "AlcoholSurvey"
-            surveyViewController = AlcoholFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateAlcohol.rawValue)
+            surveyViewController = AlcoholFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateAlcohol.rawValue)
         case 2:
             id = "PersonalSurvey"
-            surveyViewController = PersonalFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updatePersonal.rawValue)
+            surveyViewController = PersonalFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdatePersonal.rawValue)
         case 3:
             id = "FamilyHistorySurvey"
-            surveyViewController = FamilyHistoryFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateFamily.rawValue)
+            surveyViewController = FamilyHistoryFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateFamily.rawValue)
         case 4:
             id = "AllergySurvey"
-            surveyViewController = AllergyFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateAllergy.rawValue)
+            surveyViewController = AllergyFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateAllergy.rawValue)
         case 5:
             id = "MedicationSurvey"
-            surveyViewController = MedicationFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateMedication.rawValue)
+            surveyViewController = MedicationFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedication.rawValue)
         case 6:
             id = "MedicalConditionSurvey"
-            surveyViewController = MedicalConditionFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateMedicationCondition.rawValue)
+            surveyViewController = MedicalConditionFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedicationCondition.rawValue)
         case 7:
             id = "SurgerySurvey"
-            surveyViewController = SurgeryFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateSurgery.rawValue)
+            surveyViewController = SurgeryFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateSurgery.rawValue)
         case 8:
             id = "GynecologySurvey"
-            surveyViewController = GynecologyFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.updateGynecology.rawValue)
+            surveyViewController = GynecologyFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateGynecology.rawValue)
         default:
             fatalError()
         }

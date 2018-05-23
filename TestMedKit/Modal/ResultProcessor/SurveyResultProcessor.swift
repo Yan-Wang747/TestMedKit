@@ -10,5 +10,5 @@ import Foundation
 import ResearchKit
 
 protocol SurveyResultProcessor{
-    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult?
+    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)?
 }

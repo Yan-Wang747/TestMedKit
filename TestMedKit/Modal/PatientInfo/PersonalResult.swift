@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PersonalResult: SurveyResult{
+class PersonalResult: SurveyResult, Codable {
     var isMarried: Bool = false
     var livingWith: [String]? = nil
     var supportFamilies: [String]? = nil
@@ -21,32 +21,32 @@ class PersonalResult: SurveyResult{
     var nutritionalSupplement: Bool = false
     var liquidDiet: Bool = false
     
-    enum PersonalResultKeys: String, CodingKey {
-        case isMarried
-        case livingWith
-        case supportFamilies
-        case accessToTransportation
-        case resideLocations
-        case occupation
-        case isActivePerson
-        case activies
-        case regularMeal
-        case nutritionalSupplement
-        case liquidDiet
-    }
+//    enum PersonalResultKeys: String, CodingKey {
+//        case isMarried
+//        case livingWith
+//        case supportFamilies
+//        case accessToTransportation
+//        case resideLocations
+//        case occupation
+//        case isActivePerson
+//        case activies
+//        case regularMeal
+//        case nutritionalSupplement
+//        case liquidDiet
+//    }
     
-    override func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: PersonalResultKeys.self)
-        try container.encode(isMarried, forKey: PersonalResultKeys.isMarried)
-        try container.encode(livingWith, forKey: PersonalResultKeys.livingWith)
-        try container.encode(supportFamilies, forKey: PersonalResultKeys.supportFamilies)
-        try container.encode(accessToTransportation, forKey: PersonalResultKeys.accessToTransportation)
-        try container.encode(resideLocations, forKey: PersonalResultKeys.resideLocations)
-        try container.encode(occupation, forKey: PersonalResultKeys.occupation)
-        try container.encode(isActivePerson, forKey: PersonalResultKeys.isActivePerson)
-        try container.encode(activies, forKey: PersonalResultKeys.activies)
-        try container.encode(regularMeal, forKey: PersonalResultKeys.regularMeal)
-        try container.encode(nutritionalSupplement, forKey: PersonalResultKeys.nutritionalSupplement)
-        try container.encode(liquidDiet, forKey: PersonalResultKeys.liquidDiet)
-    }
+//    override func encode(to encoder: Encoder) throws {
+//        var container = encoder.container(keyedBy: PersonalResultKeys.self)
+//        try container.encode(isMarried, forKey: PersonalResultKeys.isMarried)
+//        try container.encode(livingWith, forKey: PersonalResultKeys.livingWith)
+//        try container.encode(supportFamilies, forKey: PersonalResultKeys.supportFamilies)
+//        try container.encode(accessToTransportation, forKey: PersonalResultKeys.accessToTransportation)
+//        try container.encode(resideLocations, forKey: PersonalResultKeys.resideLocations)
+//        try container.encode(occupation, forKey: PersonalResultKeys.occupation)
+//        try container.encode(isActivePerson, forKey: PersonalResultKeys.isActivePerson)
+//        try container.encode(activies, forKey: PersonalResultKeys.activies)
+//        try container.encode(regularMeal, forKey: PersonalResultKeys.regularMeal)
+//        try container.encode(nutritionalSupplement, forKey: PersonalResultKeys.nutritionalSupplement)
+//        try container.encode(liquidDiet, forKey: PersonalResultKeys.liquidDiet)
+//    }
 }

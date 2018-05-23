@@ -58,8 +58,6 @@
 		3F7A1E1F2056CA5200310D51 /* FamilyHistoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7A1E1E2056CA5200310D51 /* FamilyHistoryFactory.swift */; };
 		3F95CE18203DF9EC0096A896 /* DetaiProfilelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */; };
 		3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */; };
-		3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateField.swift */; };
-		3F985AE5209CBA3A007C290C /* BasicInfoField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985AE4209CBA3A007C290C /* BasicInfoField.swift */; };
 		3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */; };
 		3F9D09FB2073C46F004E19C8 /* BasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */; };
 		3FBE995720A4B3140021D865 /* Server+sendJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE995620A4B3140021D865 /* Server+sendJsonData.swift */; };
@@ -1258,8 +1256,6 @@
 		3F7A1E1E2056CA5200310D51 /* FamilyHistoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryFactory.swift; sourceTree = "<group>"; };
 		3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiProfilelTableViewController.swift; sourceTree = "<group>"; };
 		3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPickerViewController.swift; sourceTree = "<group>"; };
-		3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldEditViewController+updateField.swift"; sourceTree = "<group>"; };
-		3F985AE4209CBA3A007C290C /* BasicInfoField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoField.swift; sourceTree = "<group>"; };
 		3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoEditViewController.swift; sourceTree = "<group>"; };
 		3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfo.swift; sourceTree = "<group>"; };
 		3FBE995620A4B3140021D865 /* Server+sendJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+sendJsonData.swift"; sourceTree = "<group>"; };
@@ -1301,14 +1297,6 @@
 				3FBE995620A4B3140021D865 /* Server+sendJsonData.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		3F4649BB209B625A00F640FD /* Supporting */ = {
-			isa = PBXGroup;
-			children = (
-				3F985AE4209CBA3A007C290C /* BasicInfoField.swift */,
-			);
-			path = Supporting;
 			sourceTree = "<group>";
 		};
 		3F49128C2040638700E21D9E /* StroyBoard */ = {
@@ -3016,7 +3004,7 @@
 		3F985ADD209CAB3B007C290C /* BasicInfoEditViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3F985ADE209CABDF007C290C /* TextFieldEditVeiwController */,
+				3F538046203F2EF10045A492 /* TextFieldEditViewController.swift */,
 				3F9CC1A4209775F400B5883D /* BasicInfoEditViewController.swift */,
 				3F95CE1A203E0ADB0096A896 /* BirthdayPickerViewController.swift */,
 				3F538049203F467D0045A492 /* GenderPickerViewController.swift */,
@@ -3024,18 +3012,9 @@
 			path = BasicInfoEditViewControllers;
 			sourceTree = "<group>";
 		};
-		3F985ADE209CABDF007C290C /* TextFieldEditVeiwController */ = {
-			isa = PBXGroup;
-			children = (
-				3F538046203F2EF10045A492 /* TextFieldEditViewController.swift */,
-			);
-			path = TextFieldEditVeiwController;
-			sourceTree = "<group>";
-		};
 		3F985ADF209CAC02007C290C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3F985AE0209CAC6C007C290C /* TextFieldEditViewController+updateField.swift */,
 				3F6DA3D020A62397009A8C29 /* MyProfileTableViewController+ORKTaskViewControllerDelegate.swift */,
 			);
 			path = Extensions;
@@ -3044,7 +3023,6 @@
 		3F9D09F72073C403004E19C8 /* PatientInfo */ = {
 			isa = PBXGroup;
 			children = (
-				3F4649BB209B625A00F640FD /* Supporting */,
 				3F538042203F2A750045A492 /* Patient.swift */,
 				3F9D09FA2073C46F004E19C8 /* BasicInfo.swift */,
 				3FBE995B20A4CFCA0021D865 /* SurveyResult.swift */,
@@ -3310,9 +3288,7 @@
 				3F9CC1A5209775F400B5883D /* BasicInfoEditViewController.swift in Sources */,
 				3F7A1E1F2056CA5200310D51 /* FamilyHistoryFactory.swift in Sources */,
 				3F568F0320658AC9002255A6 /* ORKGynecologyTask.swift in Sources */,
-				3F985AE1209CAC6C007C290C /* TextFieldEditViewController+updateField.swift in Sources */,
 				3F6DA3D120A62397009A8C29 /* MyProfileTableViewController+ORKTaskViewControllerDelegate.swift in Sources */,
-				3F985AE5209CBA3A007C290C /* BasicInfoField.swift in Sources */,
 				3F5321B920A9E95700DF8539 /* SurveyViewController.swift in Sources */,
 				3F538047203F2EF10045A492 /* TextFieldEditViewController.swift in Sources */,
 				3F12D071209BA477008DF849 /* Server+getJsonData.swift in Sources */,

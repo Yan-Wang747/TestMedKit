@@ -11,14 +11,20 @@ import ResearchKit
 
 class TobaccoResultProcessor: SurveyResultProcessor {
     
-    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
-        return processTobaccoUseResult(with: result)
+    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
+        guard let result = processTobaccoUseResult(with: result) else { return nil }
+        
+        let jsonEncoder = JSONEncoder()
+        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        
+        return (result, jsonData)
     }
     
-    func processTobaccoUseResult(with result: ORKTaskResult) -> TobaccoResult?{
+    func processTobaccoUseResult(with result: ORKTaskResult) -> TobaccoResult? {
         guard let tobaccoUseAnswer = ((result.result(forIdentifier: "tobaccoUseStep") as? ORKStepResult)?.result(forIdentifier: "tobaccoUseStep") as? ORKBooleanQuestionResult)?.booleanAnswer else { return nil }
         
         var tobaccoInfo: TobaccoResult?
+        
         if tobaccoUseAnswer == 1 {
             tobaccoInfo = processTobaccoProductsSelectionResult(with: result, nth: 1)
             tobaccoInfo?.useTobacco = true
@@ -95,7 +101,6 @@ class TobaccoResultProcessor: SurveyResultProcessor {
             tobaccoInfo = processTobaccoProductsSelectionResult(with: result, nth: 2)
         }else {
             tobaccoInfo = TobaccoResult()
-            tobaccoInfo?.everUseTobacco = false
         }
         
         return tobaccoInfo

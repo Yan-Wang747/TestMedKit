@@ -8,14 +8,14 @@
 
 import Foundation
 
-class BasicInfo: Decodable {
+struct BasicInfo: Codable {
     var firstName: String
-    
     var lastName: String
     var gender: String
     var dateOfBirth: String
     var phone: String?
     var email: String
+    private let dateFormatter = DateFormatter()
     
     enum BasicInfoKeys: String, CodingKey {
         case firstName
@@ -26,7 +26,6 @@ class BasicInfo: Decodable {
         case email
     }
     
-    private let dateFormatter = DateFormatter()
     init(firstName: String, lastName: String, gender: String, dateOfBirth: String,phone: String?, email: String) {
         self.firstName = firstName
         self.lastName = lastName
@@ -37,7 +36,17 @@ class BasicInfo: Decodable {
         dateFormatter.dateFormat = "mm-dd-yyyy"
     }
     
-    required init(from: Decoder) throws {
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: BasicInfoKeys.self)
+        try container.encode(firstName, forKey: .firstName)
+        try container.encode(lastName, forKey: .lastName)
+        try container.encode(gender, forKey: .gender)
+        try container.encode(dateOfBirth, forKey: .dateOfBirth)
+        try container.encode(phone, forKey: .phone)
+        try container.encode(email, forKey: .email)
+    }
+    
+    init(from: Decoder) throws {
         let container = try from.container(keyedBy: BasicInfoKeys.self)
         firstName = try container.decode(String.self, forKey: .firstName)
         lastName = try container.decode(String.self, forKey: .lastName)

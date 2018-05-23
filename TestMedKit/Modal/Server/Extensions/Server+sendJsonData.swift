@@ -10,11 +10,11 @@ import Foundation
 import ResearchKit
 
 extension Server {
-    func asyncSendJsonData(httpMethod: String, endpoint: String, jsonData: Data, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func asyncSendJsonData(endpoint: String, jsonData: Data, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         guard let endpointURL = URL(string: "\(base)/\(endpoint)") else { fatalError() }
         
         var request = URLRequest(url: endpointURL)
-        request.httpMethod = httpMethod
+        request.httpMethod = "POST"
         request.addValue("Bear \(sessionID)", forHTTPHeaderField: "Authorization")
         request.httpBody = jsonData
         

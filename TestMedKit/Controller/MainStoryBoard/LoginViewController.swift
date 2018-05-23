@@ -42,6 +42,8 @@ class LoginViewController: UIViewController {
             return
         }
         
+        //diable the back button and enable the activity indicator(NOT IMPLEMENTED)
+        
         var serverIP = "localhost"
         if serverIPText.text != "" {
             serverIP = serverIPText.text!
@@ -49,11 +51,14 @@ class LoginViewController: UIViewController {
         
         server = Server(serverIP: serverIP, serverPort: 8084)
         
-        server.asyncAuthenticate(endpoint: Server.Endpoints.appLogin.rawValue, userID: ID, password: pswd) {_, response, _ in
+        //self will not be unloaded from the memory since the back button is diabled
+        server.asyncAuthenticate(endpoint: Server.Endpoints.Login.rawValue, userID: ID, password: pswd) { _, response, _ in
             
-            guard let loginURL = URL(string: "\(self.server.base)/\(Server.Endpoints.appLogin)") else { fatalError() }
+            guard let loginURL = URL(string: "\(self.server.base)/\(Server.Endpoints.Login)") else { fatalError() }
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200,  let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
+            
+            guard let cookies = HTTPCookieStorage.shared.cookies(for: loginURL) else {
                 fatalError()
             }
             
@@ -62,7 +67,7 @@ class LoginViewController: UIViewController {
             
             self.server.sessionID = cookie.value
             
-            self.server.asyncGetJsonData(endpoint: Server.Endpoints.getBasicInfo.rawValue) {data, response, _ in
+            self.server.asyncGetJsonData(endpoint: Server.Endpoints.BasicInfo.rawValue) {data, response, _ in
                 guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     return
                 }

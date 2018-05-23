@@ -13,28 +13,24 @@ extension MyProfileTableViewController: ORKTaskViewControllerDelegate {
     
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         
-        guard let surveyViewController = taskViewController as? SurveyViewController, error == nil, reason == .completed, let result = surveyViewController.resultProcessor.startProcessResult(surveyViewController.result) else { return }
+        guard let surveyViewController = taskViewController as? SurveyViewController, error == nil, reason == .completed, let (result, jsonData) = surveyViewController.resultProcessor.startProcessResult(surveyViewController.result) else { return }
         
         self.patient.surveyResults.append(result)
         
-        let encoder = JSONEncoder()
-        guard let jsonData = try? encoder.encode(result) else { fatalError() }
-        
-        server.asyncSendJsonData(httpMethod: "POST", endpoint: surveyViewController.uploadEndpoint, jsonData: jsonData) { _, response, _ in
+        server.asyncSendJsonData(endpoint: surveyViewController.uploadEndpoint, jsonData: jsonData) { _, response, _ in
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
 
             result.isUploaded = true
 
             DispatchQueue.main.async {
                 guard let selectedSurveyIndex = self.selectedSurveyIndex else { fatalError() }
-                
+
                 let indexPath = IndexPath(row: selectedSurveyIndex, section: 1)
                 let cell = self.tableView.cellForRow(at: indexPath)
                 cell?.accessoryType = .checkmark
 
                 taskViewController.dismiss(animated: true, completion: nil)
             }
-        
         } //closure
     } //func
 }

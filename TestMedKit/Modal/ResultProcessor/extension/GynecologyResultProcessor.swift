@@ -11,8 +11,13 @@ import ResearchKit
 
 class GynecologyResultProcessor: SurveyResultProcessor {
     
-    func startProcessResult(_ result: ORKTaskResult) -> SurveyResult? {
-        return processHaveEverBeenPregnantResult(with: result)
+    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
+        guard let result = processHaveEverBeenPregnantResult(with: result) else { return nil }
+        
+        let jsonEncoder = JSONEncoder()
+        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        
+        return (result, jsonData)
     }
     
     func processHaveEverBeenPregnantResult(with result: ORKTaskResult) -> GynecologyResult? {

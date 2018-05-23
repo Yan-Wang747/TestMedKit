@@ -42,9 +42,41 @@ class TextFieldEditViewController: BasicInfoEditViewController {
     }
 
     @objc func doneButtonAction(_ sender: UIBarButtonItem){
-        if let newValue = newValueTextField.text{
-            updateField(field: editingField, newValue: newValue)
-
+        var newBasicInfo = patient.basicInfo
+        
+        guard let newValue = newValueTextField.text else { fatalError() }
+        
+        if newValue == "" {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        switch editingField {
+        case "FirstName":
+            newBasicInfo.firstName = newValue
+        case "LastName":
+            newBasicInfo.lastName = newValue
+        case "Phone":
+            newBasicInfo.phone = newValue
+        case "Email":
+            newBasicInfo.email = newValue
+        default:
+            fatalError()
+        }
+        
+        let encoder = JSONEncoder()
+        
+        guard let jsonData = try? encoder.encode(newBasicInfo) else { fatalError() }
+        
+        //self will not be unloaded from the memory
+        server.asyncSendJsonData(endpoint: Server.Endpoints.BasicInfo.rawValue, jsonData: jsonData) { (_, response, _) in
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
+            
+            self.patient.basicInfo = newBasicInfo
+            
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
+            
         }
     }
     
