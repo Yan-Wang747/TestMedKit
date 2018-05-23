@@ -48,6 +48,8 @@ class TextFieldEditViewController: BasicInfoEditViewController {
         
         if newValue == "" {
             self.navigationController?.popViewController(animated: true)
+            
+            return
         }
         
         switch editingField {
