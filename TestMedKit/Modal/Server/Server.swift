@@ -15,13 +15,14 @@ class Server {
     let httpProtocol = "http"
     let conf = URLSessionConfiguration.default
     let session: URLSession
-    var sessionID: String!
+    var sessionID: String?
     
     init(serverIP: String, serverPort: Int) {
         self.serverIP = serverIP
         self.serverPort = serverPort
         conf.allowsCellularAccess = true
         conf.waitsForConnectivity = true
+        conf.timeoutIntervalForResource = 10
         session = URLSession(configuration: conf)
     }
     
@@ -31,8 +32,9 @@ class Server {
         }
     }
     
-    func asyncAuthenticate(endpoint: String, userID: String, password: String, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func asyncAuthenticate(userID: String, password: String, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         
+        let endpoint = Server.Endpoints.Login.rawValue
         let loginString = "\(userID):\(password)"
         let loginBase64 = loginString.data(using: .utf8)!.base64EncodedString()
         let loginURL = URL(string: "\(base)/\(endpoint)")!
@@ -41,5 +43,20 @@ class Server {
         loginRequest.addValue("Basic \(loginBase64)", forHTTPHeaderField: "Authorization")
         
         session.dataTask(with: loginRequest, completionHandler: responseHandler).resume()
+    }
+    
+    func asyncSignOut(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        guard let sessionID = sessionID else {
+            
+            //responseHandler(nil, nil, error)
+            return
+        }
+        
+        let endpoint = Server.Endpoints.Logout.rawValue
+        let endpointURL = URL(string: "\(base)/\(endpoint)")!
+        
+        var request = URLRequest(url: endpointURL)
+        request.addValue("Bear \(sessionID)", forHTTPHeaderField: "Authorization")
+        session.dataTask(with: request, completionHandler: completionHandler).resume()
     }
 }

@@ -13,7 +13,6 @@ class GenderPickerViewController: BasicInfoEditViewController, UIPickerViewDataS
     private let genders = ["Male", "Female", "Unspecified"]
     
     private var genderSelected: String!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +22,7 @@ class GenderPickerViewController: BasicInfoEditViewController, UIPickerViewDataS
         
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = doneBarButton
-        genderSelected = genders.first!
+        genderSelected = genders.first
     }
 
     override func didReceiveMemoryWarning() {

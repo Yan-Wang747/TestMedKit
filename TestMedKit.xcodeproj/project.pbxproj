@@ -48,6 +48,9 @@
 		3F620E5A203754F000655AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E58203754F000655AA4 /* LaunchScreen.storyboard */; };
 		3F627076207E5755004E35AF /* FamilyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627075207E5755004E35AF /* FamilyResult.swift */; };
 		3F627078207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627077207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift */; };
+		3F684D2020B75A5F00AB1BE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */; };
+		3F684D2820B76E3E00AB1BE0 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */; };
+		3F6A9AD920B71D3400CF6FBE /* Server+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A9AD820B71D3400CF6FBE /* Server+Errors.swift */; };
 		3F6DA3CA20A5FE9F009A8C29 /* SurveyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6DA3C920A5FE9F009A8C29 /* SurveyFactory.swift */; };
 		3F6DA3CE20A60FF6009A8C29 /* SurveyResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6DA3CD20A60FF6009A8C29 /* SurveyResultProcessor.swift */; };
 		3F6DA3D120A62397009A8C29 /* MyProfileTableViewController+ORKTaskViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6DA3D020A62397009A8C29 /* MyProfileTableViewController+ORKTaskViewControllerDelegate.swift */; };
@@ -1245,6 +1248,9 @@
 		3F620E5B203754F000655AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F627075207E5755004E35AF /* FamilyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyResult.swift; sourceTree = "<group>"; };
 		3F627077207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryResultProcessor.swift; sourceTree = "<group>"; };
+		3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		3F6A9AD820B71D3400CF6FBE /* Server+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+Errors.swift"; sourceTree = "<group>"; };
 		3F6DA3C920A5FE9F009A8C29 /* SurveyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyFactory.swift; sourceTree = "<group>"; };
 		3F6DA3CD20A60FF6009A8C29 /* SurveyResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyResultProcessor.swift; sourceTree = "<group>"; };
 		3F6DA3D020A62397009A8C29 /* MyProfileTableViewController+ORKTaskViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyProfileTableViewController+ORKTaskViewControllerDelegate.swift"; sourceTree = "<group>"; };
@@ -1283,7 +1289,6 @@
 		3F12D06B209B8E8C008DF849 /* Server */ = {
 			isa = PBXGroup;
 			children = (
-				3FBE995820A4C0C20021D865 /* Server+Endpoints.swift */,
 				3F12D066209B8E7F008DF849 /* Server.swift */,
 				3F12D072209BA61C008DF849 /* Extensions */,
 			);
@@ -1293,6 +1298,8 @@
 		3F12D072209BA61C008DF849 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3F6A9AD820B71D3400CF6FBE /* Server+Errors.swift */,
+				3FBE995820A4C0C20021D865 /* Server+Endpoints.swift */,
 				3F12D070209BA477008DF849 /* Server+getJsonData.swift */,
 				3FBE995620A4B3140021D865 /* Server+sendJsonData.swift */,
 			);
@@ -1317,6 +1324,8 @@
 				3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */,
 				3FF9CFFB20936FDB000370FA /* LoginViewController.swift */,
 				56C1B69A20996F6F004F54F1 /* WelcomeViewController.swift */,
+				3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */,
+				3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */,
 			);
 			path = MainStoryBoard;
 			sourceTree = "<group>";
@@ -3257,6 +3266,7 @@
 				3F627076207E5755004E35AF /* FamilyResult.swift in Sources */,
 				3F5931CA208799CC007A3829 /* SurgeryResult.swift in Sources */,
 				3F627078207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift in Sources */,
+				3F684D2020B75A5F00AB1BE0 /* SettingTableViewController.swift in Sources */,
 				3F568F06206595B2002255A6 /* ORKSurgeryTask.swift in Sources */,
 				3F73F6D82073FC1900E75498 /* TobaccoResult.swift in Sources */,
 				3FF9CFFC20936FDB000370FA /* LoginViewController.swift in Sources */,
@@ -3266,6 +3276,7 @@
 				3F73F6DC20740A6300E75498 /* ORKTobaccoTask.swift in Sources */,
 				3F5BC04F206195CC007FBE0A /* SurgeryFactory.swift in Sources */,
 				3F95CE1B203E0ADB0096A896 /* BirthdayPickerViewController.swift in Sources */,
+				3F684D2820B76E3E00AB1BE0 /* MyTabBarController.swift in Sources */,
 				3F5BC04D20615CB5007FBE0A /* MedicalConditionFactory.swift in Sources */,
 				3F5931D12087B4E8007A3829 /* GynecologyResultProcessor.swift in Sources */,
 				3F5795C2207FA24B00A2C3E7 /* AllergyResult.swift in Sources */,
@@ -3273,6 +3284,7 @@
 				3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */,
 				3FBE995C20A4CFCA0021D865 /* SurveyResult.swift in Sources */,
 				3F6DA3CE20A60FF6009A8C29 /* SurveyResultProcessor.swift in Sources */,
+				3F6A9AD920B71D3400CF6FBE /* Server+Errors.swift in Sources */,
 				3F55632E2062A2550010566C /* GynecologySurvey.swift in Sources */,
 				3F54C1A9206AD078002316FE /* ORKFamilyHistoryTask.swift in Sources */,
 				3F58EA8E205AB526002A83D0 /* MedicationFactory.swift in Sources */,

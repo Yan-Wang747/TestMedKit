@@ -23,17 +23,20 @@ class TextFieldEditViewController: BasicInfoEditViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        promptMessageLabel.text = defaultPromptMessage + editingField
-        
+
         switch editingField{
-        case "FirstName":
+        case "EditFirstName":
             newValueTextField.text = patient.basicInfo.firstName
-        case "LastName":
+            promptMessageLabel.text = defaultPromptMessage + "first name"
+        case "EditLastName":
             newValueTextField.text = patient.basicInfo.lastName
-        case "Phone":
+            promptMessageLabel.text = defaultPromptMessage + "last name"
+        case "EditPhone":
             newValueTextField.text = patient.basicInfo.phone
-        case "Email":
+            promptMessageLabel.text = defaultPromptMessage + "phone number"
+        case "EditEmail":
             newValueTextField.text = patient.basicInfo.email
+            promptMessageLabel.text = defaultPromptMessage + "email address"
         default:
             fatalError()
         }
@@ -44,7 +47,7 @@ class TextFieldEditViewController: BasicInfoEditViewController {
     @objc func doneButtonAction(_ sender: UIBarButtonItem){
         var newBasicInfo = patient.basicInfo
         
-        guard let newValue = newValueTextField.text else { fatalError() }
+        let newValue = newValueTextField.text!
         
         if newValue == "" {
             self.navigationController?.popViewController(animated: true)
@@ -53,13 +56,13 @@ class TextFieldEditViewController: BasicInfoEditViewController {
         }
         
         switch editingField {
-        case "FirstName":
+        case "EditFirstName":
             newBasicInfo.firstName = newValue
-        case "LastName":
+        case "EditLastName":
             newBasicInfo.lastName = newValue
-        case "Phone":
+        case "EditPhone":
             newBasicInfo.phone = newValue
-        case "Email":
+        case "EditEmail":
             newBasicInfo.email = newValue
         default:
             fatalError()
@@ -67,16 +70,18 @@ class TextFieldEditViewController: BasicInfoEditViewController {
         
         let encoder = JSONEncoder()
         
-        guard let jsonData = try? encoder.encode(newBasicInfo) else { fatalError() }
+        let jsonData = try! encoder.encode(newBasicInfo)
         
-        //self will not be unloaded from the memory
-        server.asyncSendJsonData(endpoint: Server.Endpoints.BasicInfo.rawValue, jsonData: jsonData) { (_, response, _) in
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
+        server.asyncSendJsonData(endpoint: Server.Endpoints.BasicInfo.rawValue, jsonData: jsonData) { [weak self] _, response, error in
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                //prompt server error: server returned error code
+                return
+            }
             
-            self.patient.basicInfo = newBasicInfo
+            self?.patient.basicInfo = newBasicInfo
             
             DispatchQueue.main.async {
-                self.navigationController?.popViewController(animated: true)
+                self?.navigationController?.popViewController(animated: true)
             }
             
         }

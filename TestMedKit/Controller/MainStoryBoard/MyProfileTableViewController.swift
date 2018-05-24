@@ -10,11 +10,12 @@ import UIKit
 import ResearchKit
 
 class MyProfileTableViewController: UITableViewController {
-    var patient: Patient!
-    var server: Server!
-    var selectedSurveyIndex: Int? = nil
+    var selectedSurveyIndex: Int?
     
     @IBOutlet weak var nameLabel: UILabel!
+    
+    var patient: Patient!
+    var server: Server!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +30,12 @@ class MyProfileTableViewController: UITableViewController {
         self.tableView.tableFooterView = footerView
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
         
-        retriveSurveyStatus()
+        patient = (self.navigationController!.tabBarController! as! MyTabBarController).patient
+        server = (self.navigationController!.tabBarController! as! MyTabBarController).server
     }
     
-    private func retriveSurveyStatus() {
-        let numberOfSurvey = self.tableView.numberOfRows(inSection: 1)
+    private func retrieveSurveyStatus() {
         
-        //self has to be weak since the controller may be unloaded from the memory
-        server.asyncGetJsonData(endpoint: Server.Endpoints.AccessTobaccoInfo.rawValue) { [weak self] data, response, error in
-            guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
-            
-            if error != nil {
-                fatalError()
-            }
-            
-            DispatchQueue.main.async {
-                let testString = String(data: data, encoding: .utf8)
-                print(testString)
-                let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 1))
-                cell?.accessoryType = .checkmark
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,45 +69,33 @@ class MyProfileTableViewController: UITableViewController {
         
     }
  */
-    func performSurvey(forRow row: Int){
-        var id: String = ""
+    func performSurvey(forRow row: Int) {
         
         var surveyViewController: SurveyViewController?
         switch row{
         case 0:
-            id = "TobaccoSurvey"
-            surveyViewController = TobaccoFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.AccessTobaccoInfo.rawValue)
+            surveyViewController = TobaccoFactory.create(with: "TobaccoSurvey", delegate: self, uploadEndpoint: Server.Endpoints.AccessTobaccoInfo.rawValue)
         case 1:
-            id = "AlcoholSurvey"
-            surveyViewController = AlcoholFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateAlcohol.rawValue)
+            surveyViewController = AlcoholFactory.create(with: "AlcoholSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateAlcohol.rawValue)
         case 2:
-            id = "PersonalSurvey"
-            surveyViewController = PersonalFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdatePersonal.rawValue)
+            surveyViewController = PersonalFactory.create(with: "PersonalSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdatePersonal.rawValue)
         case 3:
-            id = "FamilyHistorySurvey"
-            surveyViewController = FamilyHistoryFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateFamily.rawValue)
+            surveyViewController = FamilyHistoryFactory.create(with: "FamilyHistorySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateFamily.rawValue)
         case 4:
-            id = "AllergySurvey"
-            surveyViewController = AllergyFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateAllergy.rawValue)
+            surveyViewController = AllergyFactory.create(with: "AllergySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateAllergy.rawValue)
         case 5:
-            id = "MedicationSurvey"
-            surveyViewController = MedicationFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedication.rawValue)
+            surveyViewController = MedicationFactory.create(with: "MedicationSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedication.rawValue)
         case 6:
-            id = "MedicalConditionSurvey"
-            surveyViewController = MedicalConditionFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedicationCondition.rawValue)
+            surveyViewController = MedicalConditionFactory.create(with: "MedicalConditionSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedicationCondition.rawValue)
         case 7:
-            id = "SurgerySurvey"
-            surveyViewController = SurgeryFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateSurgery.rawValue)
+            surveyViewController = SurgeryFactory.create(with: "SurgerySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateSurgery.rawValue)
         case 8:
-            id = "GynecologySurvey"
-            surveyViewController = GynecologyFactory.create(with: id, delegate: self, uploadEndpoint: Server.Endpoints.UpdateGynecology.rawValue)
+            surveyViewController = GynecologyFactory.create(with: "GynecologySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateGynecology.rawValue)
         default:
             fatalError()
         }
-        
-        if surveyViewController != nil {
-            present(surveyViewController!, animated: true, completion: nil)
-        }
+    
+        present(surveyViewController!, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -167,19 +141,18 @@ class MyProfileTableViewController: UITableViewController {
     }
     */
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        return CGFloat(20)
-    }
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let segueID = segue.identifier, segueID == "showDetailInfo" else { fatalError() }
-        
-        guard let destination = segue.destination as? DetailProfileTableViewController else { fatalError() }
-        
-        destination.patient = self.patient
-        destination.server = server
+        switch segue.identifier {
+        case "showDetailInfo":
+            let destination = segue.destination as! DetailProfileTableViewController
+            
+            destination.patient = self.patient
+            destination.server = server
+        default:
+            fatalError()
+        }
     }
 }

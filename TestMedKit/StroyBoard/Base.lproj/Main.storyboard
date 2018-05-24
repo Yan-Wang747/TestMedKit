@@ -88,7 +88,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="sGn-Yx-xx9" kind="show" identifier="FirstName" id="bcg-CP-8JJ"/>
+                                            <segue destination="sGn-Yx-xx9" kind="show" identifier="EditFirstName" id="bcg-CP-8JJ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gNW-Lj-MCP">
@@ -123,7 +123,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="sGn-Yx-xx9" kind="show" identifier="LastName" id="OO9-6m-aHV"/>
+                                            <segue destination="sGn-Yx-xx9" kind="show" identifier="EditLastName" id="OO9-6m-aHV"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8dx-FA-YTD">
@@ -265,7 +265,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="sGn-Yx-xx9" kind="show" identifier="Phone" id="2jp-rX-7n3"/>
+                                            <segue destination="sGn-Yx-xx9" kind="show" identifier="EditPhone" id="2jp-rX-7n3"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="amy-9a-daH">
@@ -300,7 +300,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="sGn-Yx-xx9" kind="show" identifier="Email" id="HJZ-Vh-mtQ"/>
+                                            <segue destination="sGn-Yx-xx9" kind="show" identifier="EditEmail" id="HJZ-Vh-mtQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -933,13 +933,26 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Uw-8E-8eh">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kkP-bE-1ws">
+                                <rect key="frame" x="169" y="414.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="xb5-pY-Etp" firstAttribute="bottom" secondItem="2Uw-8E-8eh" secondAttribute="bottom" id="3eH-V2-QWz"/>
                             <constraint firstItem="xb5-pY-Etp" firstAttribute="trailing" secondItem="hJu-xQ-TdS" secondAttribute="trailing" constant="20" id="6OR-0k-dKZ"/>
+                            <constraint firstItem="kkP-bE-1ws" firstAttribute="centerX" secondItem="2Uw-8E-8eh" secondAttribute="centerX" id="U5z-fa-IQM"/>
                             <constraint firstItem="hJu-xQ-TdS" firstAttribute="leading" secondItem="xb5-pY-Etp" secondAttribute="leading" constant="20" id="WRv-fw-Qkx"/>
+                            <constraint firstItem="kkP-bE-1ws" firstAttribute="centerY" secondItem="2Uw-8E-8eh" secondAttribute="centerY" id="aCF-p3-yq5"/>
                             <constraint firstItem="hJu-xQ-TdS" firstAttribute="top" secondItem="xb5-pY-Etp" secondAttribute="top" constant="50" id="bNg-hI-w73"/>
+                            <constraint firstItem="2Uw-8E-8eh" firstAttribute="top" secondItem="xb5-pY-Etp" secondAttribute="top" id="bhg-3s-O1x"/>
+                            <constraint firstItem="2Uw-8E-8eh" firstAttribute="leading" secondItem="xb5-pY-Etp" secondAttribute="leading" id="kTa-GG-Dgh"/>
+                            <constraint firstItem="xb5-pY-Etp" firstAttribute="trailing" secondItem="2Uw-8E-8eh" secondAttribute="trailing" id="vdJ-Jp-QnB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xb5-pY-Etp"/>
                         <connections>
@@ -949,6 +962,8 @@
                     <navigationItem key="navigationItem" id="Ad9-oi-j6W"/>
                     <connections>
                         <outlet property="IDText" destination="Tmp-Rb-KJ7" id="bDL-oD-TBZ"/>
+                        <outlet property="activityIndicator" destination="kkP-bE-1ws" id="b21-SH-2O4"/>
+                        <outlet property="coverView" destination="2Uw-8E-8eh" id="yZr-Bi-ngA"/>
                         <outlet property="pswdText" destination="JuR-eN-4Xr" id="E4v-9l-HgF"/>
                         <outlet property="serverIPText" destination="Byf-k0-ou3" id="Au7-QY-Ig6"/>
                         <outlet property="signInButton" destination="K7W-6h-YXO" id="qeO-Xf-pPz"/>
@@ -964,10 +979,10 @@
             </objects>
             <point key="canvasLocation" x="-591.20000000000005" y="54.679802955665025"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--My Tab Bar Controller-->
         <scene sceneID="ouI-xH-L4m">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="AO2-OX-DWh" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="AO2-OX-DWh" customClass="MyTabBarController" customModule="TestMedKit" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xN2-lR-tkv">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -975,11 +990,71 @@
                     </tabBar>
                     <connections>
                         <segue destination="oo1-hp-FLd" kind="relationship" relationship="viewControllers" id="oIv-n0-Q7z"/>
+                        <segue destination="aB3-re-8X7" kind="relationship" relationship="viewControllers" id="vqp-Yd-H66"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzB-wg-c8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="448.80000000000001" y="53.940886699507388"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Pbr-wD-2eV">
+            <objects>
+                <navigationController id="aB3-re-8X7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="fmb-CD-73Q"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zPe-8g-RSS">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HG0-iL-ire" kind="relationship" relationship="rootViewController" id="B0A-96-bc2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iNv-Do-osm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="449" y="1151"/>
+        </scene>
+        <!--Setting Table View Controller-->
+        <scene sceneID="85C-4y-WaS">
+            <objects>
+                <tableViewController id="HG0-iL-ire" customClass="SettingTableViewController" customModule="TestMedKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gKp-Dz-14a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="zcl-w4-M4Q">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Bsa-dJ-76N" style="IBUITableViewCellStyleDefault" id="D5A-QJ-qez">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D5A-QJ-qez" id="68a-dy-uyX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bsa-dJ-76N">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.666666666666664"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="HG0-iL-ire" id="1Xw-Ph-qcY"/>
+                            <outlet property="delegate" destination="HG0-iL-ire" id="lSQ-cj-nug"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="JWV-MX-ziv"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lt-dL-tMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1361" y="1150"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gS0-tS-uMu">
@@ -1005,6 +1080,6 @@
         <image name="survey icon" width="720" height="720"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OO9-6m-aHV"/>
+        <segue reference="bcg-CP-8JJ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -22,6 +22,7 @@ extension Server {
         case UpdateSurgery
         case UpdateGynecology
         case Login
+        case Logout
         case BasicInfo
         case UpdateBasicInfo
         
