@@ -10,4 +10,5 @@ import Foundation
 
 class SurveyResult {
     var isUploaded: Bool = false
+    var identifier: String = ""
 }

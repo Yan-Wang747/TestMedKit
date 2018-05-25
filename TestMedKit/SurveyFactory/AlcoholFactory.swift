@@ -11,6 +11,7 @@ import UIKit
 import ResearchKit
 
 class AlcoholFactory: SurveyFactory {
+    
     static func getEndpoint() -> String {
         return Server.Endpoints.Alcohol.rawValue
     }

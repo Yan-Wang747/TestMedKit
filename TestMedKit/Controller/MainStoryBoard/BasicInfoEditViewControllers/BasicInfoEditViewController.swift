@@ -10,13 +10,15 @@ import UIKit
 
 class BasicInfoEditViewController: UIViewController {
     var patient: Patient!
-    var server: Server!
     var editingField: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneButtonAction(_:)))
+        self.navigationItem.rightBarButtonItem = doneBarButton
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,5 +36,21 @@ class BasicInfoEditViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @objc func doneButtonAction(_ sender: UIBarButtonItem){
+        
+        let newBasicInfo = getNewBasicInfo()
+        
+        if newBasicInfo != nil {
+            patient.basicInfo = newBasicInfo!
+        }
+            
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
 
+    func getNewBasicInfo() -> BasicInfo? {
+        return nil
+    }
 }

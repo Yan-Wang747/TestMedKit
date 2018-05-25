@@ -128,6 +128,5 @@ class DetailProfileTableViewController: UITableViewController {
         
         destination.editingField = segueID
         destination.patient = patient
-        destination.server = server
     }
 }

@@ -11,52 +11,52 @@ import ResearchKit
 
 extension MyProfileTableViewController: ORKTaskViewControllerDelegate {
     
-    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
-        if error != nil {
-            //prompt error
-            
-            taskViewController.dismiss(animated: true, completion: nil)
-            
+    func taskViewController( _ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        
+        taskViewController.dismiss(animated: true, completion: nil)
+        
+        guard reason == .completed, let surveyViewController = taskViewController as? SurveyViewController, let jsonData = surveyViewController.resultProcessor.startProcessResult(surveyViewController.result) else {
             return
         }
         
-        guard reason == .completed, let surveyViewController = taskViewController as? SurveyViewController, let (result, jsonData) = surveyViewController.resultProcessor.startProcessResult(surveyViewController.result) else {
-            
-            taskViewController.dismiss(animated: true, completion: nil)
-            
-            return }
+        self.patient.surveyResults[selectedSurveyIndex!] = jsonData
+        activityIndicators[selectedSurveyIndex!].startAnimating()
         
-        self.patient.surveyResults.append(result)
-        
-        server.asyncSendJsonData(endpoint: surveyViewController.uploadEndpoint, jsonData: jsonData) { _, response, error in
+        server.asyncSendJsonData(endpoint: surveyViewController.uploadEndpoint, jsonData: jsonData) { [weak self] _, response, error in
             
-            if error != nil {
-                //prompt error
-                taskViewController.dismiss(animated: true, completion: nil)
-                return
-            }
+            guard let selectedSurveyIndex = self?.selectedSurveyIndex else { return }
             
-            guard let response = response as? HTTPURLResponse else {
-                //prompt server error: server didn't return correct response
-                taskViewController.dismiss(animated: true, completion: nil)
-                return
-            }
+            let indexPath = IndexPath(row: selectedSurveyIndex, section: 1)
+            let cell = self?.tableView.cellForRow(at: indexPath)
+            
+            do {
+                if error != nil {
+                    throw error!
+                }
                 
-            if response.statusCode != 200 {
-                //prompt server error: server returned error code
+                guard let response = response as? HTTPURLResponse else {
+                    throw Server.Errors.invalidResponse
+                }
+                
+                if response.statusCode != 200 {
+                    throw Server.Errors.errorCode(response.statusCode)
+                }
+            } catch let e {
+                print(e.localizedDescription)
+                
+                DispatchQueue.main.async {
+                    self?.activityIndicators[selectedSurveyIndex].stopAnimating()
+                    
+                    cell?.accessoryType = .detailButton
+                }
+                    
                 return
             }
-
-            result.isUploaded = true
-
+            
             DispatchQueue.main.async {
-                guard let selectedSurveyIndex = self.selectedSurveyIndex else { fatalError() }
-
-                let indexPath = IndexPath(row: selectedSurveyIndex, section: 1)
-                let cell = self.tableView.cellForRow(at: indexPath)
+                self?.activityIndicators[selectedSurveyIndex].stopAnimating()
+                
                 cell?.accessoryType = .checkmark
-
-                taskViewController.dismiss(animated: true, completion: nil)
             }
         } //closure
     } //func

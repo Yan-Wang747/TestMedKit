@@ -46,9 +46,11 @@ class GenderPickerViewController: BasicInfoEditViewController, UIPickerViewDataS
         genderSelected = genders[row]
     }
     
-    @objc func doneButtonAction(_ sender: UIBarButtonItem){
-        patient.basicInfo.gender = genderSelected
-        self.navigationController?.popViewController(animated: true)
+    override func getNewBasicInfo() -> BasicInfo? {
+        var newBasicInfo = patient.basicInfo
+        newBasicInfo.gender = genderSelected
+        
+        return newBasicInfo
     }
 
     /*

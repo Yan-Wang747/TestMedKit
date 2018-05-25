@@ -12,18 +12,21 @@ import ResearchKit
 class MyProfileTableViewController: UITableViewController {
     var selectedSurveyIndex: Int?
     
+    @IBOutlet var activityIndicators: [UIActivityIndicatorView]!
     @IBOutlet weak var nameLabel: UILabel!
     
     var patient: Patient!
     var server: Server!
     
-    var rowToFactoryDict: [Int: SurveyFactory.Type] = [0: TobaccoFactory.self,
-                            1: AlcoholFactory.self,
-                            2: PersonalFactory.self,
-                            3: FamilyHistoryFactory.self,
-                            ]
-                             
-    
+    let rowToFactoryDict: [Int: SurveyFactory.Type] = [0: TobaccoFactory.self,
+                                                       1: AlcoholFactory.self,
+                                                       2: PersonalFactory.self,
+                                                       3: FamilyHistoryFactory.self,
+                                                       4: AllergyFactory.self,
+                                                       5: MedicationFactory.self,
+                                                       6: MedicalConditionFactory.self,
+                                                       7: SurgeryFactory.self,
+                                                       8: GynecologyFactory.self]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +41,35 @@ class MyProfileTableViewController: UITableViewController {
         self.tableView.tableFooterView = footerView
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
         
-        patient = (self.navigationController!.tabBarController! as! MyTabBarController).patient
+        let basicInfo = (self.navigationController!.tabBarController! as! MyTabBarController).basicInfo!
+        
+        let surveyResults = [Data?](repeatElement(nil, count: self.tableView.numberOfRows(inSection: 1)))
+        
         server = (self.navigationController!.tabBarController! as! MyTabBarController).server
+        
+        patient = Patient(basicInfo: basicInfo, surveyResults: surveyResults)
+        
+        retrieveSurveyStatus()
     }
     
     private func retrieveSurveyStatus() {
-        
+        patient.surveyResults.enumerated().forEach { index, res in
+            
+            //self doens't maintain a reference to the closure but may be unloaded from the memory
+            server.asyncGetJsonData(endpoint: rowToFactoryDict[index]!.getEndpoint()) { [weak self] data, response, error in
+                
+                guard error == nil, let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
+                
+                self?.patient.surveyResults[index] = data
+                
+                let indexPath = IndexPath(row: index, section: 1)
+                
+                DispatchQueue.main.async {
+                    let cell = self?.tableView.cellForRow(at: indexPath)
+                    cell?.accessoryType = .checkmark
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +105,7 @@ class MyProfileTableViewController: UITableViewController {
  */
     func performSurvey(forRow row: Int) {
         
-        let surveyViewController = rowToFactoryDict[0]?.create(delegate: self)
+        let surveyViewController = rowToFactoryDict[row]?.create(delegate: self)
 //        switch row{
 //        case 0:
 //            surveyViewController = TobaccoFactory.create(with: "TobaccoSurvey", delegate: self, uploadEndpoint: Server.Endpoints.AccessTobaccoInfo.rawValue)

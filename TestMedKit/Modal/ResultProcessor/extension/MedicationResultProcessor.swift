@@ -12,13 +12,14 @@ import ResearchKit
 class MedicationResultProcessor: SurveyResultProcessor {
     var medTypes: [String]!
     
-    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
-        guard let result = processTakeAnyMedicationResult(with: result, for: medTypes.first!) else { return nil }
+    func startProcessResult(_ result: ORKTaskResult) -> Data? {
+        guard let res = processTakeAnyMedicationResult(with: result, for: medTypes.first!) else { return nil }
         
-        let jsonEncoder = JSONEncoder()
-        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        let encoder = JSONEncoder()
         
-        return (result, jsonData)
+        let jsonData = try! encoder.encode(res)
+        
+        return jsonData
     }
     
     func processTakeAnyMedicationResult(with result: ORKTaskResult, for medType: String) -> MedicationResult? {

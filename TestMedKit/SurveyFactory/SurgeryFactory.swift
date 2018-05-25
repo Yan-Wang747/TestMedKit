@@ -10,6 +10,7 @@ import Foundation
 import ResearchKit
 
 class SurgeryFactory: SurveyFactory {
+    
     static func getEndpoint() -> String {
         return Server.Endpoints.Surgery.rawValue
     }

@@ -11,13 +11,13 @@ import ResearchKit
 
 class PersonalResultProcessor: SurveyResultProcessor {
     
-    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
-        guard let result = processIsMarriedResult(with: result) else { return nil }
+    func startProcessResult(_ result: ORKTaskResult) -> Data? {
+        guard let res = processIsMarriedResult(with: result) else { return nil }
         
         let jsonEncoder = JSONEncoder()
-        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        let jsonData = try! jsonEncoder.encode(res)
         
-        return (result, jsonData)
+        return jsonData
     }
     
     func processIsMarriedResult(with result: ORKTaskResult) -> PersonalResult? {

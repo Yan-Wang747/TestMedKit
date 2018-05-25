@@ -10,6 +10,7 @@ import Foundation
 import ResearchKit
 
 class GynecologyFactory: SurveyFactory {
+    
     static func getEndpoint() -> String {
         return Server.Endpoints.Gynecology.rawValue
     }

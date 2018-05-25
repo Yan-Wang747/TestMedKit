@@ -10,7 +10,7 @@ import UIKit
 
 class MyTabBarController: UITabBarController {
     
-    var patient: Patient!
+    var basicInfo: BasicInfo!
     var server: Server!
     
     override func viewDidLoad() {

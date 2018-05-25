@@ -323,7 +323,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uia-zd-6Ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3458.4000000000001" y="54.679802955665025"/>
+            <point key="canvasLocation" x="3378" y="54"/>
         </scene>
         <!--Gender Picker View Controller-->
         <scene sceneID="lUn-5b-RK7">
@@ -529,11 +529,14 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tobacco History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec5-yN-Ncc">
-                                                            <rect key="frame" x="40" y="0.0" width="295" height="30"/>
+                                                            <rect key="frame" x="40" y="0.0" width="265" height="30"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qjZ-wQ-QIn">
+                                                            <rect key="frame" x="315" y="0.0" width="20" height="30"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -562,11 +565,14 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alcohol History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tt9-Pq-4b0">
-                                                            <rect key="frame" x="40" y="0.0" width="295" height="30"/>
+                                                            <rect key="frame" x="40" y="0.0" width="265" height="30"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nqc-Yy-Caq">
+                                                            <rect key="frame" x="315" y="0.0" width="20" height="30"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -602,6 +608,10 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yXJ-Iu-E8k">
+                                                    <rect key="frame" x="335" y="11" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fd7-5I-Equ" firstAttribute="centerY" secondItem="4ud-kW-p8a" secondAttribute="centerY" id="Ihx-ff-2PW"/>
@@ -635,6 +645,10 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mNC-hT-5hh">
+                                                    <rect key="frame" x="335" y="16" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Fv0-Iq-spz" firstAttribute="centerY" secondItem="9Oc-ld-1mg" secondAttribute="centerY" id="PP5-Mn-XU3"/>
@@ -661,11 +675,14 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allergy History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uce-fJ-dRh" userLabel="Allergy History">
-                                                            <rect key="frame" x="40" y="0.0" width="295" height="30"/>
+                                                            <rect key="frame" x="40" y="0.0" width="265" height="30"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Yx4-1a-zz2">
+                                                            <rect key="frame" x="315" y="0.0" width="20" height="30"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -701,6 +718,10 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rhR-5m-XEV">
+                                                    <rect key="frame" x="335" y="11" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ua9-zn-t7I" secondAttribute="trailing" constant="20" id="Fvo-BD-4xH"/>
@@ -734,6 +755,10 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JJu-Tt-yGV">
+                                                    <rect key="frame" x="335" y="11" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yYx-rE-47g" firstAttribute="centerY" secondItem="9aR-Q1-Yjh" secondAttribute="centerY" id="DvI-Md-JBC"/>
@@ -760,11 +785,14 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surgery History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBZ-iN-eyL" userLabel="Allergy History">
-                                                            <rect key="frame" x="40" y="0.0" width="295" height="30"/>
+                                                            <rect key="frame" x="40" y="0.0" width="265" height="30"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XNo-Ww-f4z">
+                                                            <rect key="frame" x="315" y="0.0" width="20" height="30"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -793,11 +821,14 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gynecologic History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZh-RB-s6A" userLabel="Allergy History">
-                                                            <rect key="frame" x="40" y="0.0" width="295" height="30"/>
+                                                            <rect key="frame" x="40" y="0.0" width="265" height="30"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vXx-z0-Hpp">
+                                                            <rect key="frame" x="315" y="0.0" width="20" height="30"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -819,6 +850,15 @@
                     <navigationItem key="navigationItem" title="My Profile" id="hBl-fm-Bfb"/>
                     <connections>
                         <outlet property="nameLabel" destination="fYu-oQ-2yI" id="UaW-VA-KvT"/>
+                        <outletCollection property="activityIndicators" destination="qjZ-wQ-QIn" collectionClass="NSMutableArray" id="mRg-2M-ZlW"/>
+                        <outletCollection property="activityIndicators" destination="Nqc-Yy-Caq" collectionClass="NSMutableArray" id="FOC-zO-6OB"/>
+                        <outletCollection property="activityIndicators" destination="yXJ-Iu-E8k" collectionClass="NSMutableArray" id="OPb-rc-gxz"/>
+                        <outletCollection property="activityIndicators" destination="mNC-hT-5hh" collectionClass="NSMutableArray" id="tFu-xf-R3A"/>
+                        <outletCollection property="activityIndicators" destination="Yx4-1a-zz2" collectionClass="NSMutableArray" id="Uay-6V-M7u"/>
+                        <outletCollection property="activityIndicators" destination="rhR-5m-XEV" collectionClass="NSMutableArray" id="fCw-Qk-ms0"/>
+                        <outletCollection property="activityIndicators" destination="JJu-Tt-yGV" collectionClass="NSMutableArray" id="khq-JL-HYN"/>
+                        <outletCollection property="activityIndicators" destination="XNo-Ww-f4z" collectionClass="NSMutableArray" id="o73-dB-i8B"/>
+                        <outletCollection property="activityIndicators" destination="vXx-z0-Hpp" collectionClass="NSMutableArray" id="Si8-Fg-VIK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ck3-NP-Juh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1012,7 +1052,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNv-Do-osm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="449" y="1151"/>
+            <point key="canvasLocation" x="449" y="910"/>
         </scene>
         <!--Settings-->
         <scene sceneID="85C-4y-WaS">
@@ -1069,7 +1109,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5lt-dL-tMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361" y="1150"/>
+            <point key="canvasLocation" x="1314" y="910"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gS0-tS-uMu">

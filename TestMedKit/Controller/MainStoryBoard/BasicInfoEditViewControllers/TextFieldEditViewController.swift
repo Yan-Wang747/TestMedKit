@@ -18,8 +18,7 @@ class TextFieldEditViewController: BasicInfoEditViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneButtonAction(_:)))
-        self.navigationItem.rightBarButtonItem = doneBarButton
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,48 +43,7 @@ class TextFieldEditViewController: BasicInfoEditViewController {
         newValueTextField.becomeFirstResponder()
     }
 
-    @objc func doneButtonAction(_ sender: UIBarButtonItem){
-        var newBasicInfo = patient.basicInfo
-        
-        let newValue = newValueTextField.text!
-        
-        if newValue == "" {
-            self.navigationController?.popViewController(animated: true)
-            
-            return
-        }
-        
-        switch editingField {
-        case "EditFirstName":
-            newBasicInfo.firstName = newValue
-        case "EditLastName":
-            newBasicInfo.lastName = newValue
-        case "EditPhone":
-            newBasicInfo.phone = newValue
-        case "EditEmail":
-            newBasicInfo.email = newValue
-        default:
-            fatalError()
-        }
-        
-        let encoder = JSONEncoder()
-        
-        let jsonData = try! encoder.encode(newBasicInfo)
-        
-        server.asyncSendJsonData(endpoint: Server.Endpoints.BasicInfo.rawValue, jsonData: jsonData) { [weak self] _, response, error in
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                //prompt server error: server returned error code
-                return
-            }
-            
-            self?.patient.basicInfo = newBasicInfo
-            
-            DispatchQueue.main.async {
-                self?.navigationController?.popViewController(animated: true)
-            }
-            
-        }
-    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -102,5 +60,29 @@ class TextFieldEditViewController: BasicInfoEditViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    override func getNewBasicInfo() -> BasicInfo? {
+        var newBasicInfo = patient.basicInfo
+        
+        let newValue = newValueTextField.text!
+        
+        if newValue == "" {
+            return nil
+        }
+        
+        switch editingField {
+        case "EditFirstName":
+            newBasicInfo.firstName = newValue
+        case "EditLastName":
+            newBasicInfo.lastName = newValue
+        case "EditPhone":
+            newBasicInfo.phone = newValue
+        case "EditEmail":
+            newBasicInfo.email = newValue
+        default:
+            fatalError()
+        }
+        
+        return newBasicInfo
+    }
 }

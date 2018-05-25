@@ -46,7 +46,7 @@
 		3F620E55203754F000655AA4 /* TestMedKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F620E53203754F000655AA4 /* TestMedKit.xcdatamodeld */; };
 		3F620E57203754F000655AA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E56203754F000655AA4 /* Assets.xcassets */; };
 		3F620E5A203754F000655AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E58203754F000655AA4 /* LaunchScreen.storyboard */; };
-		3F627076207E5755004E35AF /* FamilyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627075207E5755004E35AF /* FamilyResult.swift */; };
+		3F627076207E5755004E35AF /* FamilyHistoryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627075207E5755004E35AF /* FamilyHistoryResult.swift */; };
 		3F627078207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627077207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift */; };
 		3F684D2020B75A5F00AB1BE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */; };
 		3F684D2820B76E3E00AB1BE0 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */; };
@@ -1246,7 +1246,7 @@
 		3F620E56203754F000655AA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F620E59203754F000655AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F620E5B203754F000655AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F627075207E5755004E35AF /* FamilyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyResult.swift; sourceTree = "<group>"; };
+		3F627075207E5755004E35AF /* FamilyHistoryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryResult.swift; sourceTree = "<group>"; };
 		3F627077207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryResultProcessor.swift; sourceTree = "<group>"; };
 		3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
@@ -1318,14 +1318,15 @@
 		3F538048203F461B0045A492 /* MainStoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				3F5321B820A9E95700DF8539 /* SurveyViewController.swift */,
 				3F985ADF209CAC02007C290C /* Extensions */,
 				3F985ADD209CAB3B007C290C /* BasicInfoEditViewControllers */,
+				3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */,
 				3F95CE17203DF9EC0096A896 /* DetaiProfilelTableViewController.swift */,
+				3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */,
 				3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */,
 				3FF9CFFB20936FDB000370FA /* LoginViewController.swift */,
 				56C1B69A20996F6F004F54F1 /* WelcomeViewController.swift */,
-				3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */,
-				3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */,
 			);
 			path = MainStoryBoard;
 			sourceTree = "<group>";
@@ -2963,7 +2964,6 @@
 		3F6DA3C620A5FE73009A8C29 /* SurveyFactory */ = {
 			isa = PBXGroup;
 			children = (
-				3F5321B820A9E95700DF8539 /* SurveyViewController.swift */,
 				3F6DA3C920A5FE9F009A8C29 /* SurveyFactory.swift */,
 				3F55CD7C2045AA7200668C7A /* TobaccoFactory.swift */,
 				3F55CD7E2045B33100668C7A /* AlcoholFactory.swift */,
@@ -2986,9 +2986,9 @@
 				3F559359207D1A9700A8C9DE /* PersonalResultProcessor.swift */,
 				3F627077207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift */,
 				3F5795C5207FA8A500A2C3E7 /* AllergyResultProcessor.swift */,
+				3F5931CD20879FA4007A3829 /* SurgeryResultProcessor.swift */,
 				3F5795C9207FED3600A2C3E7 /* MedicationResultProcessor.swift */,
 				3F5CF5C120864CCD00478678 /* MedicalConditionResultProcessor.swift */,
-				3F5931CD20879FA4007A3829 /* SurgeryResultProcessor.swift */,
 				3F5931D02087B4E8007A3829 /* GynecologyResultProcessor.swift */,
 			);
 			path = extension;
@@ -3038,7 +3038,7 @@
 				3F73F6D72073FC1900E75498 /* TobaccoResult.swift */,
 				3F719ECF207BC4430070A986 /* AlcoholResult.swift */,
 				3F55935D207D1BDD00A8C9DE /* PersonalResult.swift */,
-				3F627075207E5755004E35AF /* FamilyResult.swift */,
+				3F627075207E5755004E35AF /* FamilyHistoryResult.swift */,
 				3F5795C1207FA24B00A2C3E7 /* AllergyResult.swift */,
 				3F5795C7207FE57600A2C3E7 /* MedicationResult.swift */,
 				3F5CF5BD2086378300478678 /* MedicalConditionResult.swift */,
@@ -3263,7 +3263,7 @@
 				3F6DA3CA20A5FE9F009A8C29 /* SurveyFactory.swift in Sources */,
 				3F55935A207D1A9700A8C9DE /* PersonalResultProcessor.swift in Sources */,
 				3F5795CA207FED3600A2C3E7 /* MedicationResultProcessor.swift in Sources */,
-				3F627076207E5755004E35AF /* FamilyResult.swift in Sources */,
+				3F627076207E5755004E35AF /* FamilyHistoryResult.swift in Sources */,
 				3F5931CA208799CC007A3829 /* SurgeryResult.swift in Sources */,
 				3F627078207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift in Sources */,
 				3F684D2020B75A5F00AB1BE0 /* SettingTableViewController.swift in Sources */,

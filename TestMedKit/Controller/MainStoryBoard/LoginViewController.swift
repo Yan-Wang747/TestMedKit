@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var serverIPText: UITextField!
     var server: Server!
-    var patient: Patient!
+    var basicInfo: BasicInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
         
         server = Server(serverIP: serverIP, serverPort: 8084)
         
-        //self could be removed from the memory and cause memory cycle
+        //self could be removed from the memory
         server.asyncAuthenticate(userID: ID, password: pswd) { [weak self] _, response, error in
             do {
                 if error != nil {
@@ -127,7 +127,7 @@ class LoginViewController: UIViewController {
                         throw Server.Errors.invalidData
                     }
                     
-                    self?.patient = Patient(basicInfo: basicInfo)
+                    self?.basicInfo = basicInfo
                 } catch let e {
                     
                     alertController.message = e.localizedDescription
@@ -160,7 +160,7 @@ class LoginViewController: UIViewController {
         
         let myTabBarController = segue.destination as! MyTabBarController
         
-        myTabBarController.patient = patient
+        myTabBarController.basicInfo = basicInfo
         myTabBarController.server = server
     }
     

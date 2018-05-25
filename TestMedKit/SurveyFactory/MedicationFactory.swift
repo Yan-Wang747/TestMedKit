@@ -10,6 +10,7 @@ import Foundation
 import ResearchKit
 
 class MedicationFactory: SurveyFactory {
+
     static func getEndpoint() -> String {
         return Server.Endpoints.Allergy.rawValue
     }

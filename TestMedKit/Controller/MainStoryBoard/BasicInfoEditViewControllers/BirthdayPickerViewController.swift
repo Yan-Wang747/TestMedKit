@@ -29,9 +29,11 @@ class BirthdayPickerViewController: BasicInfoEditViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func doneButtonAction(_ sender: UIBarButtonItem){
-        patient.basicInfo.dateOfBirthInDate = birthdayPicker.date
-        self.navigationController?.popViewController(animated: true)
+    override func getNewBasicInfo() -> BasicInfo? {
+        var newBasicInfo = patient.basicInfo
+        newBasicInfo.dateOfBirthInDate = birthdayPicker.date
+        
+        return newBasicInfo
     }
 
     /*

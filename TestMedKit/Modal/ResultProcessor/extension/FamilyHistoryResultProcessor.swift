@@ -11,30 +11,31 @@ import ResearchKit
 
 class FamilyHistoryResultProcessor: SurveyResultProcessor {
     
-    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
-        guard let result = processHaveAnyCancerResult(with: result) else { return nil }
+    func startProcessResult(_ result: ORKTaskResult) -> Data? {
+        guard let res = processHaveAnyCancerResult(with: result) else { return nil }
         
-        let jsonEncoder = JSONEncoder()
-        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        let encoder = JSONEncoder()
         
-        return (result, jsonData)
+        let jsonData = try! encoder.encode(res)
+        
+        return jsonData
     }
     
-    func processHaveAnyCancerResult(with result: ORKTaskResult) -> FamilyResult? {
+    func processHaveAnyCancerResult(with result: ORKTaskResult) -> FamilyHistoryResult? {
         guard let haveCancerAnswer = ((result.result(forIdentifier: "haveAnyCancerStep") as? ORKStepResult)?.result(forIdentifier: "haveAnyCancerStep") as? ORKBooleanQuestionResult)?.booleanAnswer else { return nil }
         
-        var familyInfo: FamilyResult?
+        var familyInfo: FamilyHistoryResult?
         if haveCancerAnswer == 1 {
             familyInfo = processFamiliyMemberSelectionResult(with: result)
             
         } else {
-            familyInfo = FamilyResult()
+            familyInfo = FamilyHistoryResult()
         }
         
         return familyInfo
     }
     
-    func processFamiliyMemberSelectionResult(with result: ORKTaskResult) -> FamilyResult? {
+    func processFamiliyMemberSelectionResult(with result: ORKTaskResult) -> FamilyHistoryResult? {
         guard let selectedFamilies = ((result.result(forIdentifier: "familiyMemberSelectionStep") as? ORKStepResult)?.result(forIdentifier: "familiyMemberSelectionStep") as? ORKChoiceQuestionResult)?.choiceAnswers as? [String] else { return nil }
         
         let familyInfo = processDiagnosisResult(with: result, selectedFamilies: selectedFamilies)
@@ -43,7 +44,7 @@ class FamilyHistoryResultProcessor: SurveyResultProcessor {
         return familyInfo
     }
     
-    func processDiagnosisResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyResult? {
+    func processDiagnosisResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyHistoryResult? {
         
         var diagnosedCancers: [String] = []
         for familyMember in selectedFamilies {
@@ -59,7 +60,7 @@ class FamilyHistoryResultProcessor: SurveyResultProcessor {
         return familyInfo
     }
     
-    func processDiagnosisAgeResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyResult? {
+    func processDiagnosisAgeResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyHistoryResult? {
         
         var diagnosisAges: [Int] = []
         for familyMember in selectedFamilies {
@@ -75,7 +76,7 @@ class FamilyHistoryResultProcessor: SurveyResultProcessor {
         return familyInfo
     }
     
-    func processIsPassAwayResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyResult? {
+    func processIsPassAwayResult(with result: ORKTaskResult, selectedFamilies: [String]) -> FamilyHistoryResult? {
         
         var isPassedAway: [Bool] = []
         for familyMember in selectedFamilies {
@@ -91,7 +92,7 @@ class FamilyHistoryResultProcessor: SurveyResultProcessor {
         return familyInfo
     }
     
-    func processPassAwayAgeResult(with result: ORKTaskResult, selectedFamilies: [String], isPassedAway: [Bool]) -> FamilyResult? {
+    func processPassAwayAgeResult(with result: ORKTaskResult, selectedFamilies: [String], isPassedAway: [Bool]) -> FamilyHistoryResult? {
         
         var passAwayAges: [Int] = []
         for i in 0..<selectedFamilies.count {
@@ -109,7 +110,7 @@ class FamilyHistoryResultProcessor: SurveyResultProcessor {
         return familyInfo
     }
     
-    func processCurrentAgeResult(with result: ORKTaskResult, selectedFamilies: [String], isPassedAway: [Bool]) -> FamilyResult? {
+    func processCurrentAgeResult(with result: ORKTaskResult, selectedFamilies: [String], isPassedAway: [Bool]) -> FamilyHistoryResult? {
         
         var currentAges: [Int] = []
         for i in 0..<selectedFamilies.count {
@@ -121,7 +122,7 @@ class FamilyHistoryResultProcessor: SurveyResultProcessor {
             }
         }
         
-        let familyInfo = FamilyResult()
+        let familyInfo = FamilyHistoryResult()
         familyInfo.currentAges = currentAges
         
         return familyInfo

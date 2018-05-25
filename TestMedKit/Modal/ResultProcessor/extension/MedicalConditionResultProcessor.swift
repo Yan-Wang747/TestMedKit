@@ -11,13 +11,14 @@ import ResearchKit
 
 class MedicationConditionResultProcessor: SurveyResultProcessor {
     
-    func startProcessResult(_ result: ORKTaskResult) -> (SurveyResult, Data)? {
-        guard let result = processHaveAnyMedicalConditionResult(with: result) else { return nil }
+    func startProcessResult(_ result: ORKTaskResult) -> Data? {
+        guard let res = processHaveAnyMedicalConditionResult(with: result) else { return nil }
         
-        let jsonEncoder = JSONEncoder()
-        guard let jsonData = try? jsonEncoder.encode(result) else { fatalError() }
+        let encoder = JSONEncoder()
         
-        return (result, jsonData)
+        let jsonData = try! encoder.encode(res)
+        
+        return jsonData
     }
     
     func processHaveAnyMedicalConditionResult(with result: ORKTaskResult) -> MedicalConditionResult? {

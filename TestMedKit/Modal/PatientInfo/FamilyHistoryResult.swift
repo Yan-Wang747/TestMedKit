@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FamilyResult: SurveyResult, Codable {
+class FamilyHistoryResult: SurveyResult, Codable {
     var haveAnyCancer: Bool = false
     var familiesWithCancer: [String]? = nil
     var diagnosedCancers: [String]? = nil
