@@ -94,10 +94,6 @@ class SettingTableViewController: UITableViewController {
     }
     
     func signOut() {
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-            self.tableView.backgroundColor = UIColor.black
-            self.tableView.color
-            })
         
         let alertController = UIAlertController(title: "Oops", message: nil, preferredStyle: .alert)
         
