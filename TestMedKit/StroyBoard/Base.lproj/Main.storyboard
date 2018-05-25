@@ -967,7 +967,7 @@
                         <outlet property="pswdText" destination="JuR-eN-4Xr" id="E4v-9l-HgF"/>
                         <outlet property="serverIPText" destination="Byf-k0-ou3" id="Au7-QY-Ig6"/>
                         <outlet property="signInButton" destination="K7W-6h-YXO" id="qeO-Xf-pPz"/>
-                        <segue destination="AO2-OX-DWh" kind="presentation" identifier="ShowMyProfile" id="L7k-7A-Jll"/>
+                        <segue destination="AO2-OX-DWh" kind="show" identifier="ShowMyProfile" id="n6m-IA-0g9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDl-N1-JAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1002,7 +1002,7 @@
             <objects>
                 <navigationController id="aB3-re-8X7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="fmb-CD-73Q"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zPe-8g-RSS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="zPe-8g-RSS">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1014,7 +1014,7 @@
             </objects>
             <point key="canvasLocation" x="449" y="1151"/>
         </scene>
-        <!--Setting Table View Controller-->
+        <!--Settings-->
         <scene sceneID="85C-4y-WaS">
             <objects>
                 <tableViewController id="HG0-iL-ire" customClass="SettingTableViewController" customModule="TestMedKit" customModuleProvider="target" sceneMemberID="viewController">
@@ -1025,21 +1025,33 @@
                         <sections>
                             <tableViewSection id="zcl-w4-M4Q">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Bsa-dJ-76N" style="IBUITableViewCellStyleDefault" id="D5A-QJ-qez">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="D5A-QJ-qez">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D5A-QJ-qez" id="68a-dy-uyX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bsa-dJ-76N">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.666666666666664"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4KN-Xt-70a">
+                                                    <rect key="frame" x="10" y="11" width="355" height="20"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peO-lT-e1H">
+                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jyZ-o2-z69">
+                                                            <rect key="frame" x="335" y="0.0" width="20" height="20"/>
+                                                        </activityIndicatorView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4KN-Xt-70a" firstAttribute="leading" secondItem="68a-dy-uyX" secondAttribute="leading" constant="10" id="JKV-Cd-kqF"/>
+                                                <constraint firstItem="4KN-Xt-70a" firstAttribute="centerY" secondItem="68a-dy-uyX" secondAttribute="centerY" id="UqR-pN-WJG"/>
+                                                <constraint firstAttribute="trailing" secondItem="4KN-Xt-70a" secondAttribute="trailing" constant="10" id="b81-yC-JqP"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1050,7 +1062,10 @@
                             <outlet property="delegate" destination="HG0-iL-ire" id="lSQ-cj-nug"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="JWV-MX-ziv"/>
+                    <navigationItem key="navigationItem" title="Settings" id="JWV-MX-ziv"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="jyZ-o2-z69" id="889-47-b8d"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5lt-dL-tMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

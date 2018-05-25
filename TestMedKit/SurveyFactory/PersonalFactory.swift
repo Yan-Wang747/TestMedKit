@@ -11,6 +11,10 @@ import UIKit
 import ResearchKit
 
 class PersonalFactory: SurveyFactory {
+    static func getEndpoint() -> String {
+        return Server.Endpoints.Personal.rawValue
+    }
+    
     static func createResultProcessor() -> SurveyResultProcessor {
         return PersonalResultProcessor()
     }

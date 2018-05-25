@@ -10,6 +10,10 @@ import Foundation
 import ResearchKit
 
 class FamilyHistoryFactory: SurveyFactory {
+    static func getEndpoint() -> String {
+        return Server.Endpoints.Family.rawValue
+    }
+    
     static func createResultProcessor() -> SurveyResultProcessor {
         return FamilyHistoryResultProcessor()
     }

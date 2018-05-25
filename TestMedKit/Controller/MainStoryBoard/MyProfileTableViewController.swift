@@ -17,6 +17,14 @@ class MyProfileTableViewController: UITableViewController {
     var patient: Patient!
     var server: Server!
     
+    var rowToFactoryDict: [Int: SurveyFactory.Type] = [0: TobaccoFactory.self,
+                            1: AlcoholFactory.self,
+                            2: PersonalFactory.self,
+                            3: FamilyHistoryFactory.self,
+                            ]
+                             
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,29 +79,29 @@ class MyProfileTableViewController: UITableViewController {
  */
     func performSurvey(forRow row: Int) {
         
-        var surveyViewController: SurveyViewController?
-        switch row{
-        case 0:
-            surveyViewController = TobaccoFactory.create(with: "TobaccoSurvey", delegate: self, uploadEndpoint: Server.Endpoints.AccessTobaccoInfo.rawValue)
-        case 1:
-            surveyViewController = AlcoholFactory.create(with: "AlcoholSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateAlcohol.rawValue)
-        case 2:
-            surveyViewController = PersonalFactory.create(with: "PersonalSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdatePersonal.rawValue)
-        case 3:
-            surveyViewController = FamilyHistoryFactory.create(with: "FamilyHistorySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateFamily.rawValue)
-        case 4:
-            surveyViewController = AllergyFactory.create(with: "AllergySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateAllergy.rawValue)
-        case 5:
-            surveyViewController = MedicationFactory.create(with: "MedicationSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedication.rawValue)
-        case 6:
-            surveyViewController = MedicalConditionFactory.create(with: "MedicalConditionSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedicationCondition.rawValue)
-        case 7:
-            surveyViewController = SurgeryFactory.create(with: "SurgerySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateSurgery.rawValue)
-        case 8:
-            surveyViewController = GynecologyFactory.create(with: "GynecologySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateGynecology.rawValue)
-        default:
-            fatalError()
-        }
+        let surveyViewController = rowToFactoryDict[0]?.create(delegate: self)
+//        switch row{
+//        case 0:
+//            surveyViewController = TobaccoFactory.create(with: "TobaccoSurvey", delegate: self, uploadEndpoint: Server.Endpoints.AccessTobaccoInfo.rawValue)
+//        case 1:
+//            surveyViewController = AlcoholFactory.create(with: "AlcoholSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateAlcohol.rawValue)
+//        case 2:
+//            surveyViewController = PersonalFactory.create(with: "PersonalSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdatePersonal.rawValue)
+//        case 3:
+//            surveyViewController = FamilyHistoryFactory.create(with: "FamilyHistorySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateFamily.rawValue)
+//        case 4:
+//            surveyViewController = AllergyFactory.create(with: "AllergySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateAllergy.rawValue)
+//        case 5:
+//            surveyViewController = MedicationFactory.create(with: "MedicationSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedication.rawValue)
+//        case 6:
+//            surveyViewController = MedicalConditionFactory.create(with: "MedicalConditionSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedicationCondition.rawValue)
+//        case 7:
+//            surveyViewController = SurgeryFactory.create(with: "SurgerySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateSurgery.rawValue)
+//        case 8:
+//            surveyViewController = GynecologyFactory.create(with: "GynecologySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateGynecology.rawValue)
+//        default:
+//            fatalError()
+//        }
     
         present(surveyViewController!, animated: true, completion: nil)
     }

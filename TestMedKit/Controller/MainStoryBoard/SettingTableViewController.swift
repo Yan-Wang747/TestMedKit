@@ -12,6 +12,8 @@ class SettingTableViewController: UITableViewController {
     
     var server: Server!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,35 +97,14 @@ class SettingTableViewController: UITableViewController {
     
     func signOut() {
         
-        let alertController = UIAlertController(title: "Oops", message: nil, preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        signOutStart()
         
         server.asyncSignOut() { [weak self] _, response, error in
-            do {
-                if error != nil{
-                    throw error!
-                }
-                
-                guard let response = response as? HTTPURLResponse else {
-                    throw Server.Errors.invalidResponse
-                }
-                
-                if response.statusCode != 200 {
-                    throw Server.Errors.errorCode(response.statusCode)
-                }
-            } catch let e {
-                alertController.message = e.localizedDescription
-                
-                DispatchQueue.main.async {
-                    self?.present(alertController, animated: true, completion: nil)
-                }
-                
-                return
-            }
+            //clear cookie - not complete
             
+            //go back to start screen, regardless of server's response
             DispatchQueue.main.async {
-                self?.navigationController!.tabBarController!.dismiss(animated: true)
+                self?.navigationController!.tabBarController!.navigationController!.popToRootViewController(animated: true)
             }
         }
         
@@ -138,5 +119,9 @@ class SettingTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func signOutStart() {
+        self.tableView.allowsSelection = false
+        activityIndicator.startAnimating()
+    }
 }

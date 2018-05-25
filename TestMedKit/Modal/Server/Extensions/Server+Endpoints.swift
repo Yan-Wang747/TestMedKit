@@ -12,15 +12,15 @@ extension Server {
 
     enum Endpoints: String {
         
-        case AccessTobaccoInfo
-        case UpdateAlcohol
-        case UpdatePersonal
-        case UpdateFamily
-        case UpdateAllergy
-        case UpdateMedication
-        case UpdateMedicationCondition
-        case UpdateSurgery
-        case UpdateGynecology
+        case Tobacco
+        case Alcohol
+        case Personal
+        case Family
+        case Allergy
+        case Medication
+        case MedicalCondition
+        case Surgery
+        case Gynecology
         case Login
         case Logout
         case BasicInfo

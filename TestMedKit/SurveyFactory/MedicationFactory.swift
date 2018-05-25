@@ -10,6 +10,10 @@ import Foundation
 import ResearchKit
 
 class MedicationFactory: SurveyFactory {
+    static func getEndpoint() -> String {
+        return Server.Endpoints.Allergy.rawValue
+    }
+    
     static func createResultProcessor() -> SurveyResultProcessor {
         let resultProcessor = MedicationResultProcessor()
         resultProcessor.medTypes = medTypes

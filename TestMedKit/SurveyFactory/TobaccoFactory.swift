@@ -11,6 +11,10 @@ import ResearchKit
 import UIKit
 
 class TobaccoFactory: SurveyFactory {
+    static func getEndpoint() -> String {
+        return Server.Endpoints.Tobacco.rawValue
+    }
+    
     static func createResultProcessor() -> SurveyResultProcessor {
         return TobaccoResultProcessor()
     }

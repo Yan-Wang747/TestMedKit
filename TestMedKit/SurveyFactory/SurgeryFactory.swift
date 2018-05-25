@@ -10,6 +10,10 @@ import Foundation
 import ResearchKit
 
 class SurgeryFactory: SurveyFactory {
+    static func getEndpoint() -> String {
+        return Server.Endpoints.Surgery.rawValue
+    }
+    
     
     private static let surgeryTypes = ["Amputation", "Appendectomy", "Biopsy", "Bone Marrow Biopsy", "Bone Marrow Transplant", "Cholecystectomy", "Colon Resection", "Colposcopy", "Cystectomy", "Heart By‐pass", "Hernia Repair", "Hysterectomy", "Liver Biopsy", "Mastectomy", "Melanoma Removal", "Ovarian Tumor Removal", "Plastic Surgery", "Prostate Gland Removal", "Tonsillectomy", "Tubal Ligation", "Vasectomy", "Breast Fine Needle Aspiration", "Breast Core Biopsy", "Breast Lumpectomy", "Breast Mastectomy", "Breast Sentinel Node Lymph Biopsy", "Breast Axillary Lymph Node Dissection", "Other"]
     

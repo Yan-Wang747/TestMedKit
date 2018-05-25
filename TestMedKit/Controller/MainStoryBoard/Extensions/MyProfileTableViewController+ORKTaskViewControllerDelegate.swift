@@ -14,10 +14,17 @@ extension MyProfileTableViewController: ORKTaskViewControllerDelegate {
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         if error != nil {
             //prompt error
+            
             taskViewController.dismiss(animated: true, completion: nil)
+            
+            return
         }
         
-        guard let surveyViewController = taskViewController as? SurveyViewController, error == nil, reason == .completed, let (result, jsonData) = surveyViewController.resultProcessor.startProcessResult(surveyViewController.result) else { return }
+        guard reason == .completed, let surveyViewController = taskViewController as? SurveyViewController, let (result, jsonData) = surveyViewController.resultProcessor.startProcessResult(surveyViewController.result) else {
+            
+            taskViewController.dismiss(animated: true, completion: nil)
+            
+            return }
         
         self.patient.surveyResults.append(result)
         
