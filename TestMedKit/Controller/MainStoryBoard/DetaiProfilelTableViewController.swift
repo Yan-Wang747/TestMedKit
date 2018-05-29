@@ -53,6 +53,7 @@ class DetailProfileTableViewController: UITableViewController {
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
@@ -120,13 +121,14 @@ class DetailProfileTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        guard let segueID = segue.identifier else { fatalError() }
+        let segueID = segue.identifier!
         
-        guard let destination = segue.destination as? BasicInfoEditViewController else {
-            fatalError()
-        }
+       let destination = segue.destination as! BasicInfoEditViewController
         
         destination.editingField = segueID
         destination.patient = patient
+        destination.completion = { newBasicInfo in
+    
+        }
     }
 }

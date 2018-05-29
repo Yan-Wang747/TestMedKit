@@ -14,7 +14,7 @@ class Server {
     let rootURL = "MyCCMB"
     let httpProtocol = "http"
     let conf = URLSessionConfiguration.default
-    let session: URLSession
+    var session: URLSession
     var sessionID: String?
     
     init(serverIP: String, serverPort: Int) {
@@ -58,5 +58,16 @@ class Server {
         var request = URLRequest(url: endpointURL)
         request.addValue("Bear \(sessionID)", forHTTPHeaderField: "Authorization")
         session.dataTask(with: request, completionHandler: completionHandler).resume()
+    }
+    
+    var maxConnections: Int {
+        get {
+            return session.configuration.httpMaximumConnectionsPerHost
+        }
+        set {
+            let conf = session.configuration
+            conf.httpMaximumConnectionsPerHost = newValue
+            session = URLSession(configuration: conf)
+        }
     }
 }

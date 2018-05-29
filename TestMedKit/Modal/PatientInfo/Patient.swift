@@ -9,20 +9,13 @@
 import Foundation
 
 class Patient{
-    var basicInfo: BasicInfo {
-        didSet {
-            
-        }
-    }
+    var basicInfo: BasicInfo
     
-    var surveyResults: [Data?] {
-        didSet {
-            
-        }
-    }
+    var surveyResults: [Data?]
     
     init(basicInfo: BasicInfo, surveyResults: [Data?]) {
         self.basicInfo = basicInfo
         self.surveyResults = surveyResults
     }
+    
 }

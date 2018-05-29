@@ -96,17 +96,12 @@ class SettingTableViewController: UITableViewController {
     }
     
     func signOut() {
-        
-        signOutStart()
-        
-        server.asyncSignOut() { [weak self] _, response, error in
-            //clear cookie - not complete
-            
-            //go back to start screen, regardless of server's response
-            DispatchQueue.main.async {
-                self?.navigationController!.tabBarController!.navigationController!.popToRootViewController(animated: true)
-            }
+
+        server.asyncSignOut() { _, _, _ in
+            return //ignore server's response for now
         }
+        
+        navigationController!.tabBarController!.navigationController!.popToRootViewController(animated: true) // go back to the welcome screen regardless of the network status
         
     }
 
@@ -119,9 +114,4 @@ class SettingTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func signOutStart() {
-        self.tableView.allowsSelection = false
-        activityIndicator.startAnimating()
-    }
 }

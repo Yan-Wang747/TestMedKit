@@ -28,6 +28,8 @@ class MyProfileTableViewController: UITableViewController {
                                                        7: SurgeryFactory.self,
                                                        8: GynecologyFactory.self]
     
+    var locks: [Bool]! //global survey result lock, is it thread safe?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,30 +43,56 @@ class MyProfileTableViewController: UITableViewController {
         self.tableView.tableFooterView = footerView
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
         
-        let basicInfo = (self.navigationController!.tabBarController! as! MyTabBarController).basicInfo!
+        locks = [Bool](repeating: false, count: self.tableView.numberOfRows(inSection: 1))
         
-        let surveyResults = [Data?](repeatElement(nil, count: self.tableView.numberOfRows(inSection: 1)))
+        let basicInfo = (self.navigationController!.tabBarController! as! MyTabBarController).basicInfo!
+        let surveyResults = [Data?](repeating: nil, count: self.tableView.numberOfRows(inSection: 1))
         
         server = (self.navigationController!.tabBarController! as! MyTabBarController).server
-        
         patient = Patient(basicInfo: basicInfo, surveyResults: surveyResults)
         
         retrieveSurveyStatus()
     }
     
     private func retrieveSurveyStatus() {
+
+        server.maxConnections = self.tableView.numberOfRows(inSection: 1)
+            
         patient.surveyResults.enumerated().forEach { index, res in
+            
+            //check the lock status
+            if locks[index] {
+                return //don't lock, allows user to perform this survey
+            }
+            
+            activityIndicators[index].startAnimating()
             
             //self doens't maintain a reference to the closure but may be unloaded from the memory
             server.asyncGetJsonData(endpoint: rowToFactoryDict[index]!.getEndpoint()) { [weak self] data, response, error in
                 
-                guard error == nil, let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
-                
-                self?.patient.surveyResults[index] = data
+                guard error == nil, let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    DispatchQueue.main.async {
+                        self?.activityIndicators[index].stopAnimating()
+                    }
+                    
+                    return
+                }
                 
                 let indexPath = IndexPath(row: index, section: 1)
                 
+                guard let isLocked = self?.locks[index], isLocked == false else {
+                    DispatchQueue.main.async {
+                        self?.activityIndicators[index].stopAnimating()
+                    }
+                    
+                    return //discard the result
+                }
+                
+                self?.patient.surveyResults[index] = data
+                
                 DispatchQueue.main.async {
+                    self?.activityIndicators[index].stopAnimating()
+                    
                     let cell = self?.tableView.cellForRow(at: indexPath)
                     cell?.accessoryType = .checkmark
                 }
@@ -106,29 +134,8 @@ class MyProfileTableViewController: UITableViewController {
     func performSurvey(forRow row: Int) {
         
         let surveyViewController = rowToFactoryDict[row]?.create(delegate: self)
-//        switch row{
-//        case 0:
-//            surveyViewController = TobaccoFactory.create(with: "TobaccoSurvey", delegate: self, uploadEndpoint: Server.Endpoints.AccessTobaccoInfo.rawValue)
-//        case 1:
-//            surveyViewController = AlcoholFactory.create(with: "AlcoholSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateAlcohol.rawValue)
-//        case 2:
-//            surveyViewController = PersonalFactory.create(with: "PersonalSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdatePersonal.rawValue)
-//        case 3:
-//            surveyViewController = FamilyHistoryFactory.create(with: "FamilyHistorySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateFamily.rawValue)
-//        case 4:
-//            surveyViewController = AllergyFactory.create(with: "AllergySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateAllergy.rawValue)
-//        case 5:
-//            surveyViewController = MedicationFactory.create(with: "MedicationSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedication.rawValue)
-//        case 6:
-//            surveyViewController = MedicalConditionFactory.create(with: "MedicalConditionSurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateMedicationCondition.rawValue)
-//        case 7:
-//            surveyViewController = SurgeryFactory.create(with: "SurgerySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateSurgery.rawValue)
-//        case 8:
-//            surveyViewController = GynecologyFactory.create(with: "GynecologySurvey", delegate: self, uploadEndpoint: Server.Endpoints.UpdateGynecology.rawValue)
-//        default:
-//            fatalError()
-//        }
-    
+        locks[selectedSurveyIndex!] = true //lock the result to prevent being updated by the retrieveSurveyStatus()
+        
         present(surveyViewController!, animated: true, completion: nil)
     }
     

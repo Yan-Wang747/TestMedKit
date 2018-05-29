@@ -24,7 +24,6 @@ extension Server {
         case Login
         case Logout
         case BasicInfo
-        case UpdateBasicInfo
         
     }
 }

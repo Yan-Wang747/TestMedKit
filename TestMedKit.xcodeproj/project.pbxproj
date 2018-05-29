@@ -1335,7 +1335,7 @@
 			isa = PBXGroup;
 			children = (
 				3F6DA3CD20A60FF6009A8C29 /* SurveyResultProcessor.swift */,
-				3F6DA3CF20A610B1009A8C29 /* extension */,
+				3F6DA3CF20A610B1009A8C29 /* solid */,
 			);
 			path = ResultProcessor;
 			sourceTree = "<group>";
@@ -2978,7 +2978,7 @@
 			path = SurveyFactory;
 			sourceTree = "<group>";
 		};
-		3F6DA3CF20A610B1009A8C29 /* extension */ = {
+		3F6DA3CF20A610B1009A8C29 /* solid */ = {
 			isa = PBXGroup;
 			children = (
 				3F575CB820766E39005F8D48 /* TobaccoResultProcessor.swift */,
@@ -2991,7 +2991,7 @@
 				3F5CF5C120864CCD00478678 /* MedicalConditionResultProcessor.swift */,
 				3F5931D02087B4E8007A3829 /* GynecologyResultProcessor.swift */,
 			);
-			path = extension;
+			path = solid;
 			sourceTree = "<group>";
 		};
 		3F789BA7209A0DC900B1B28E /* Products */ = {

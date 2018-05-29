@@ -16,18 +16,22 @@ extension MyProfileTableViewController: ORKTaskViewControllerDelegate {
         taskViewController.dismiss(animated: true, completion: nil)
         
         guard reason == .completed, let surveyViewController = taskViewController as? SurveyViewController, let jsonData = surveyViewController.resultProcessor.startProcessResult(surveyViewController.result) else {
+            //if the survey is not completed, release the lock
+            locks[selectedSurveyIndex!] = false
+            
             return
         }
         
+        self.locks[selectedSurveyIndex!] = true
         self.patient.surveyResults[selectedSurveyIndex!] = jsonData
         activityIndicators[selectedSurveyIndex!].startAnimating()
+        
+        let indexPath = IndexPath(row: selectedSurveyIndex!, section: 1)
+        let cell = tableView.cellForRow(at: indexPath)
         
         server.asyncSendJsonData(endpoint: surveyViewController.uploadEndpoint, jsonData: jsonData) { [weak self] _, response, error in
             
             guard let selectedSurveyIndex = self?.selectedSurveyIndex else { return }
-            
-            let indexPath = IndexPath(row: selectedSurveyIndex, section: 1)
-            let cell = self?.tableView.cellForRow(at: indexPath)
             
             do {
                 if error != nil {
@@ -48,7 +52,7 @@ extension MyProfileTableViewController: ORKTaskViewControllerDelegate {
                     self?.activityIndicators[selectedSurveyIndex].stopAnimating()
                     
                     cell?.accessoryType = .detailButton
-                }
+                } 
                     
                 return
             }

@@ -11,6 +11,7 @@ import UIKit
 class BasicInfoEditViewController: UIViewController {
     var patient: Patient!
     var editingField: String!
+    var completion: ((BasicInfo?) -> Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,6 @@ class BasicInfoEditViewController: UIViewController {
         // Do any additional setup after loading the view.
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = doneBarButton
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,13 +41,8 @@ class BasicInfoEditViewController: UIViewController {
         
         let newBasicInfo = getNewBasicInfo()
         
-        if newBasicInfo != nil {
-            patient.basicInfo = newBasicInfo!
-        }
-            
-        DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)
-        }
+        completion(newBasicInfo)
+        navigationController?.popViewController(animated: true)
     }
 
     func getNewBasicInfo() -> BasicInfo? {
