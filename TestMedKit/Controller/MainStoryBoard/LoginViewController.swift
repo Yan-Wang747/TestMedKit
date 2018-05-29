@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var serverIPText: UITextField!
+    @IBOutlet weak var serverAddrText: UITextField!
     var server: Server!
     var basicInfo: BasicInfo!
     
@@ -56,13 +56,13 @@ class LoginViewController: UIViewController {
         
         loginStart()
         
-        var serverIP = serverIPText.text!
+        var serverAddr = serverAddrText.text!
         
-        if serverIP == "" {
-            serverIP = "localhost"
+        if serverAddr == "" {
+            serverAddr = "localhost"
         }
         
-        server = Server(serverIP: serverIP, serverPort: 8084)
+        server = Server(serverAddr: serverAddr, serverPort: nil)
         
         //self could be removed from the memory
         server.asyncAuthenticate(userID: ID, password: pswd) { [weak self] _, response, error in
@@ -152,7 +152,6 @@ class LoginViewController: UIViewController {
     
 
     // MARK: - Navigation
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.

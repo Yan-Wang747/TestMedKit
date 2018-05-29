@@ -9,16 +9,15 @@
 import Foundation
 
 class Server {
-    let serverIP: String
-    let serverPort: Int
+    let serverAddr: String
+    let serverPort: Int?
     let rootURL = "MyCCMB"
-    let httpProtocol = "http"
     let conf = URLSessionConfiguration.default
     var session: URLSession
     var sessionID: String?
     
-    init(serverIP: String, serverPort: Int) {
-        self.serverIP = serverIP
+    init(serverAddr: String, serverPort: Int?) {
+        self.serverAddr = serverAddr
         self.serverPort = serverPort
         conf.allowsCellularAccess = true
         conf.waitsForConnectivity = true
@@ -28,7 +27,11 @@ class Server {
     
     var base: String {
         get {
-            return "\(httpProtocol)://\(serverIP):\(serverPort)/\(rootURL)"
+            if serverPort == nil {
+                return "\(serverAddr)/\(rootURL)"
+            } else {
+                return "\(serverAddr):\(serverPort!)/\(rootURL)"
+            }
         }
     }
     

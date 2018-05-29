@@ -85,4 +85,16 @@ class TextFieldEditViewController: BasicInfoEditViewController {
         
         return newBasicInfo
     }
+    
+    override func updateStart() {
+        super.updateStart()
+        
+        newValueTextField.isEnabled = false
+    }
+    
+    override func updateComplete() {
+        super.updateComplete()
+        
+        newValueTextField.isEnabled = true
+    }
 }

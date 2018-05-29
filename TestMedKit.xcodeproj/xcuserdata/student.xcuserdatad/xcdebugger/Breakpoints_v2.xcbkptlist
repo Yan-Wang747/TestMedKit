@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestMedKit/Modal/Server/Server.swift"
-            timestampString = "549239311.378314"
+            timestampString = "549305777.947342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "asyncSignOut(completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -52,13 +52,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestMedKit/Controller/MainStoryBoard/DetaiProfilelTableViewController.swift"
-            timestampString = "549239311.379159"
+            timestampString = "549305777.947675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
             endingLineNumber = "120"
             landmarkName = "DetailProfileTableViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestMedKit/Controller/MainStoryBoard/LoginViewController.swift"
+            timestampString = "549305777.947741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

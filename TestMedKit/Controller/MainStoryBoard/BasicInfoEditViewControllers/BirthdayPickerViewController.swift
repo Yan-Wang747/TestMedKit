@@ -46,4 +46,15 @@ class BirthdayPickerViewController: BasicInfoEditViewController {
     }
     */
 
+    override func updateStart() {
+        super.updateStart()
+        
+        birthdayPicker.isUserInteractionEnabled = false
+    }
+    
+    override func updateComplete() {
+        super.updateComplete()
+        
+        birthdayPicker.isUserInteractionEnabled = true
+    }
 }

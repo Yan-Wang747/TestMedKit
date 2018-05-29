@@ -127,8 +127,6 @@ class DetailProfileTableViewController: UITableViewController {
         
         destination.editingField = segueID
         destination.patient = patient
-        destination.completion = { newBasicInfo in
-    
-        }
+        destination.server = server
     }
 }

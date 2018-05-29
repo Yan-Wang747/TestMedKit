@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="7eT-wR-rIt">
-                                                    <rect key="frame" x="10" y="10.333333333333332" width="355" height="50.333333333333343"/>
+                                                    <rect key="frame" x="10" y="10.333333333333329" width="355" height="50.333333333333343"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzE-PE-Ohd">
                                                             <rect key="frame" x="0.0" y="0.0" width="45.333333333333336" height="50.333333333333336"/>
@@ -362,6 +362,8 @@
                         <viewLayoutGuide key="safeArea" id="P78-8b-NvZ"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="b2d-nw-2ya" id="7Th-E6-2Yp"/>
+                        <outlet property="coverView" destination="v6V-xw-NYc" id="tfP-qj-XGW"/>
                         <outlet property="genderPicker" destination="a4u-we-dIk" id="K4p-48-0Io"/>
                     </connections>
                 </viewController>
@@ -428,6 +430,8 @@
                         <viewLayoutGuide key="safeArea" id="3dg-q1-NWf"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="McL-k5-h1z" id="UDh-Er-76v"/>
+                        <outlet property="coverView" destination="nGa-33-AlH" id="DAc-LR-MB0"/>
                         <outlet property="newValueTextField" destination="bx5-bJ-Lv7" id="u8n-ol-K8A"/>
                         <outlet property="promptMessageLabel" destination="iEK-qF-jcj" id="hnj-jp-wCY"/>
                     </connections>
@@ -473,7 +477,9 @@
                         <viewLayoutGuide key="safeArea" id="qZj-CN-ELP"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="xkE-We-NF9" id="s0B-Sv-MiD"/>
                         <outlet property="birthdayPicker" destination="4Fd-ff-RrF" id="y7v-0M-04N"/>
+                        <outlet property="coverView" destination="BQ3-Jc-1Pf" id="Rjc-X4-UhF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aa3-aN-wPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1044,7 +1050,7 @@
                         <outlet property="activityIndicator" destination="kkP-bE-1ws" id="b21-SH-2O4"/>
                         <outlet property="coverView" destination="2Uw-8E-8eh" id="yZr-Bi-ngA"/>
                         <outlet property="pswdText" destination="JuR-eN-4Xr" id="E4v-9l-HgF"/>
-                        <outlet property="serverIPText" destination="Byf-k0-ou3" id="Au7-QY-Ig6"/>
+                        <outlet property="serverAddrText" destination="Byf-k0-ou3" id="Au7-QY-Ig6"/>
                         <outlet property="signInButton" destination="K7W-6h-YXO" id="qeO-Xf-pPz"/>
                         <segue destination="AO2-OX-DWh" kind="show" identifier="ShowMyProfile" id="n6m-IA-0g9"/>
                     </connections>
@@ -1112,24 +1118,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4KN-Xt-70a">
-                                                    <rect key="frame" x="10" y="10.999999999999998" width="355" height="20.333333333333329"/>
+                                                    <rect key="frame" x="10" y="11" width="355" height="20"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peO-lT-e1H">
-                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jyZ-o2-z69">
-                                                            <rect key="frame" x="335" y="0.0" width="20" height="20.333333333333332"/>
+                                                            <rect key="frame" x="335" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4KN-Xt-70a" firstAttribute="leading" secondItem="68a-dy-uyX" secondAttribute="leading" constant="10" id="JKV-Cd-kqF"/>
-                                                <constraint firstItem="4KN-Xt-70a" firstAttribute="centerY" secondItem="68a-dy-uyX" secondAttribute="centerY" id="UqR-pN-WJG"/>
-                                                <constraint firstAttribute="trailing" secondItem="4KN-Xt-70a" secondAttribute="trailing" constant="10" id="b81-yC-JqP"/>
+                                                <constraint firstItem="4KN-Xt-70a" firstAttribute="leading" secondItem="68a-dy-uyX" secondAttribute="leading" constant="10" id="Bkx-vX-4XC"/>
+                                                <constraint firstItem="4KN-Xt-70a" firstAttribute="centerY" secondItem="68a-dy-uyX" secondAttribute="centerY" id="DP7-pY-k7M"/>
+                                                <constraint firstAttribute="trailing" secondItem="4KN-Xt-70a" secondAttribute="trailing" constant="10" id="FVN-gK-UaM"/>
+                                                <constraint firstItem="4KN-Xt-70a" firstAttribute="centerX" secondItem="68a-dy-uyX" secondAttribute="centerX" id="bSr-nu-0si"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

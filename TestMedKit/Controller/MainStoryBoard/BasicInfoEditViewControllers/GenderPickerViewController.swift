@@ -63,4 +63,15 @@ class GenderPickerViewController: BasicInfoEditViewController, UIPickerViewDataS
     }
     */
 
+    override func updateStart() {
+        super.updateStart()
+        
+        genderPicker.isUserInteractionEnabled = false
+    }
+    
+    override func updateComplete() {
+        super.updateComplete()
+        
+        genderPicker.isUserInteractionEnabled = true
+    }
 }
