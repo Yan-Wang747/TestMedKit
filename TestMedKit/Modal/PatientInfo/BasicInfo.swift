@@ -15,55 +15,28 @@ struct BasicInfo: Codable {
     var dateOfBirth: String
     var phone: String?
     var email: String
-    private let dateFormatter = DateFormatter()
+    var dateFormatterString: String
     
-    enum BasicInfoKeys: String, CodingKey {
-        case firstName
-        case lastName
-        case gender
-        case dateOfBirth
-        case phone
-        case email
-    }
-    
-    init(firstName: String, lastName: String, gender: String, dateOfBirth: String,phone: String?, email: String) {
+    init(firstName: String, lastName: String, gender: String, dateOfBirth: String, dateFormatterString: String, phone: String?, email: String) {
         self.firstName = firstName
         self.lastName = lastName
         self.gender = gender
         self.dateOfBirth = dateOfBirth
         self.phone = phone
         self.email = email
-        dateFormatter.dateFormat = "mm-dd-yyyy"
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: BasicInfoKeys.self)
-        try container.encode(firstName, forKey: .firstName)
-        try container.encode(lastName, forKey: .lastName)
-        try container.encode(gender, forKey: .gender)
-        try container.encode(dateOfBirth, forKey: .dateOfBirth)
-        try container.encode(phone, forKey: .phone)
-        try container.encode(email, forKey: .email)
-    }
-    
-    init(from: Decoder) throws {
-        let container = try from.container(keyedBy: BasicInfoKeys.self)
-        firstName = try container.decode(String.self, forKey: .firstName)
-        lastName = try container.decode(String.self, forKey: .lastName)
-        gender = try container.decode(String.self, forKey: .gender)
-        dateOfBirth = try container.decode(String.self, forKey: .dateOfBirth)
-        phone = try container.decode(String.self, forKey: .phone)
-        email = try container.decode(String.self, forKey: .email)
-        
-        dateFormatter.dateFormat = "mm-dd-yyyy"
+        self.dateFormatterString = dateFormatterString
     }
     
     var dateOfBirthInDate: Date {
         
         get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = dateFormatterString
             return dateFormatter.date(from: dateOfBirth)!
         }
         set {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = dateFormatterString
             dateOfBirth = dateFormatter.string(from: newValue)
         }
     }

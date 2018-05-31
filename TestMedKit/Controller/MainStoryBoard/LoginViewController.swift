@@ -59,10 +59,10 @@ class LoginViewController: UIViewController {
         var serverAddr = serverAddrText.text!
         
         if serverAddr == "" {
-            serverAddr = "localhost"
+            serverAddr = "http://localhost"
         }
         
-        server = Server(serverAddr: serverAddr, serverPort: nil)
+        server = Server(serverAddr: serverAddr, serverPort: 8084)
         
         //self could be removed from the memory
         server.asyncAuthenticate(userID: ID, password: pswd) { [weak self] _, response, error in
@@ -78,6 +78,7 @@ class LoginViewController: UIViewController {
                 if response.statusCode != 200 {
                     throw Server.Errors.errorCode(response.statusCode)
                 }
+                
                 let loginURL = URL(string: "\(self?.server.base ?? "")/\(Server.Endpoints.Login)") //if the self is unloaded, intensionally set loginURL to nil
 
                 //if the self is unloaded, the loginURL will be invalid and no cookies could be found. A server error will be thrown and result is ignored

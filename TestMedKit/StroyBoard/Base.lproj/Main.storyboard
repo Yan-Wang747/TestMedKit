@@ -928,6 +928,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="signUpAction:" destination="7Xr-hH-oGl" eventType="touchUpInside" id="VoO-sB-mhV"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLM-SM-6yg">
                                         <rect key="frame" x="177.66666666666663" y="0.0" width="157.33333333333337" height="50"/>

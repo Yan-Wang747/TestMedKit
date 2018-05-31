@@ -10,7 +10,7 @@ import Foundation
 import ResearchKit
 
 protocol SurveyFactory {
-    static func create(delegate: ORKTaskViewControllerDelegate) -> SurveyViewController
+    static func create(delegate: ORKTaskViewControllerDelegate, createReviewStep: Bool) -> SurveyViewController
     static func createSteps() -> [ORKStep]
     static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask
     static func createNavigationRule(for orkTask: ORKNavigableOrderedTask)
@@ -20,7 +20,7 @@ protocol SurveyFactory {
 
 extension SurveyFactory {
     
-    static func create(delegate: ORKTaskViewControllerDelegate) -> SurveyViewController {
+    static func create(delegate: ORKTaskViewControllerDelegate, createReviewStep: Bool) -> SurveyViewController {
         
         func appendReviewStep(steps: inout [ORKStep]) {
             let reviewStep = ORKReviewStep(identifier: "reviewStep")
@@ -30,7 +30,11 @@ extension SurveyFactory {
         }
         
         var steps = createSteps()
-        appendReviewStep(steps: &steps)
+        
+        if createReviewStep {
+            appendReviewStep(steps: &steps)
+        }
+        
         let uploadEndpoint = getEndpoint()
         
         let orkTask = createORKTask(identifier: uploadEndpoint, steps: steps)

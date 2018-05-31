@@ -133,7 +133,7 @@ class MyProfileTableViewController: UITableViewController {
  */
     func performSurvey(forRow row: Int) {
         
-        let surveyViewController = rowToFactoryDict[row]?.create(delegate: self)
+        let surveyViewController = rowToFactoryDict[row]?.create(delegate: self, createReviewStep: true)
         locks[selectedSurveyIndex!] = true //lock the result to prevent being updated by the retrieveSurveyStatus()
         
         present(surveyViewController!, animated: true, completion: nil)

@@ -12,6 +12,7 @@ extension Server {
 
     enum Endpoints: String {
         
+        case BasicInfo
         case Tobacco
         case Alcohol
         case Personal
@@ -23,7 +24,7 @@ extension Server {
         case Gynecology
         case Login
         case Logout
-        case BasicInfo
+        case SignUp
         
     }
 }
