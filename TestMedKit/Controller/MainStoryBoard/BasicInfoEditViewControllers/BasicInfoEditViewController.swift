@@ -74,7 +74,7 @@ class BasicInfoEditViewController: UIViewController {
                 }
                 
                 if response.statusCode != 200 {
-                    throw Server.Errors.errorCode(response.statusCode)
+                    throw Server.Errors.httpErrorCode(response.statusCode)
                 }
                 
                 DispatchQueue.main.async {
@@ -83,8 +83,7 @@ class BasicInfoEditViewController: UIViewController {
                 }
                 
             } catch let e {
-                let alertController = UIAlertController(title: "Oops", message: e.localizedDescription, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                alertController.message = e.localizedDescription
                 
                 DispatchQueue.main.async {
                     self?.present(alertController, animated: true, completion: nil)

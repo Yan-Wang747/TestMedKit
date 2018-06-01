@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F063A9420C05A6300A1034E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F063A9320C05A6300A1034E /* SignUpViewController.swift */; };
+		3F063A9620C07C4C00A1034E /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F063A9520C07C4C00A1034E /* AccountInfo.swift */; };
+		3F063A9820C09CFB00A1034E /* LoginViewController+ORKTaskViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F063A9720C09CFB00A1034E /* LoginViewController+ORKTaskViewDelegate.swift */; };
 		3F12D067209B8E7F008DF849 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D066209B8E7F008DF849 /* Server.swift */; };
 		3F12D071209BA477008DF849 /* Server+getJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12D070209BA477008DF849 /* Server+getJsonData.swift */; };
 		3F161E0E20BF15F1009334FD /* BasicInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F161E0D20BF15F1009334FD /* BasicInfoFactory.swift */; };
@@ -47,6 +50,7 @@
 		3F620E5A203754F000655AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F620E58203754F000655AA4 /* LaunchScreen.storyboard */; };
 		3F627076207E5755004E35AF /* FamilyHistoryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627075207E5755004E35AF /* FamilyHistoryResult.swift */; };
 		3F627078207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627077207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift */; };
+		3F652FBC20C0441200A492CD /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F652FBB20C0441200A492CD /* Global.swift */; };
 		3F684D2020B75A5F00AB1BE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */; };
 		3F684D2820B76E3E00AB1BE0 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */; };
 		3F6A9AD920B71D3400CF6FBE /* Server+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A9AD820B71D3400CF6FBE /* Server+Errors.swift */; };
@@ -140,6 +144,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F063A9320C05A6300A1034E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3F063A9520C07C4C00A1034E /* AccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
+		3F063A9720C09CFB00A1034E /* LoginViewController+ORKTaskViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+ORKTaskViewDelegate.swift"; sourceTree = "<group>"; };
 		3F12D066209B8E7F008DF849 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		3F12D070209BA477008DF849 /* Server+getJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+getJsonData.swift"; sourceTree = "<group>"; };
 		3F161E0D20BF15F1009334FD /* BasicInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoFactory.swift; sourceTree = "<group>"; };
@@ -1251,6 +1258,7 @@
 		3F620E5B203754F000655AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F627075207E5755004E35AF /* FamilyHistoryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryResult.swift; sourceTree = "<group>"; };
 		3F627077207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryResultProcessor.swift; sourceTree = "<group>"; };
+		3F652FBB20C0441200A492CD /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		3F6A9AD820B71D3400CF6FBE /* Server+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+Errors.swift"; sourceTree = "<group>"; };
@@ -1320,7 +1328,6 @@
 		3F538048203F461B0045A492 /* MainStoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				3F5321B820A9E95700DF8539 /* SurveyViewController.swift */,
 				3F985ADF209CAC02007C290C /* Extensions */,
 				3F985ADD209CAB3B007C290C /* BasicInfoEditViewControllers */,
 				3F684D1F20B75A5F00AB1BE0 /* SettingTableViewController.swift */,
@@ -1328,6 +1335,7 @@
 				3F684D2720B76E3E00AB1BE0 /* MyTabBarController.swift */,
 				3FDFF8E0203CBC64008ED2A2 /* MyProfileTableViewController.swift */,
 				3FF9CFFB20936FDB000370FA /* LoginViewController.swift */,
+				3F063A9320C05A6300A1034E /* SignUpViewController.swift */,
 				56C1B69A20996F6F004F54F1 /* WelcomeViewController.swift */,
 			);
 			path = MainStoryBoard;
@@ -1337,7 +1345,16 @@
 			isa = PBXGroup;
 			children = (
 				3F6DA3CD20A60FF6009A8C29 /* SurveyResultProcessor.swift */,
-				3F6DA3CF20A610B1009A8C29 /* solid */,
+				3F575CB820766E39005F8D48 /* TobaccoResultProcessor.swift */,
+				3F719ECA207BC1D40070A986 /* AlcoholResultProcessor.swift */,
+				3F559359207D1A9700A8C9DE /* PersonalResultProcessor.swift */,
+				3F627077207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift */,
+				3F5795C5207FA8A500A2C3E7 /* AllergyResultProcessor.swift */,
+				3F5931CD20879FA4007A3829 /* SurgeryResultProcessor.swift */,
+				3F5795C9207FED3600A2C3E7 /* MedicationResultProcessor.swift */,
+				3F5CF5C120864CCD00478678 /* MedicalConditionResultProcessor.swift */,
+				3F5931D02087B4E8007A3829 /* GynecologyResultProcessor.swift */,
+				3F161E1520BF2E47009334FD /* BasicResultProcessor.swift */,
 			);
 			path = ResultProcessor;
 			sourceTree = "<group>";
@@ -2957,6 +2974,7 @@
 				3FDFF8DD203CBC1B008ED2A2 /* Controller */,
 				3F620E56203754F000655AA4 /* Assets.xcassets */,
 				3F620E5B203754F000655AA4 /* Info.plist */,
+				3F652FBB20C0441200A492CD /* Global.swift */,
 				3F620E4C203754F000655AA4 /* AppDelegate.swift */,
 				3F620E53203754F000655AA4 /* TestMedKit.xcdatamodeld */,
 			);
@@ -2981,23 +2999,6 @@
 			path = SurveyFactory;
 			sourceTree = "<group>";
 		};
-		3F6DA3CF20A610B1009A8C29 /* solid */ = {
-			isa = PBXGroup;
-			children = (
-				3F575CB820766E39005F8D48 /* TobaccoResultProcessor.swift */,
-				3F719ECA207BC1D40070A986 /* AlcoholResultProcessor.swift */,
-				3F559359207D1A9700A8C9DE /* PersonalResultProcessor.swift */,
-				3F627077207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift */,
-				3F5795C5207FA8A500A2C3E7 /* AllergyResultProcessor.swift */,
-				3F5931CD20879FA4007A3829 /* SurgeryResultProcessor.swift */,
-				3F5795C9207FED3600A2C3E7 /* MedicationResultProcessor.swift */,
-				3F5CF5C120864CCD00478678 /* MedicalConditionResultProcessor.swift */,
-				3F5931D02087B4E8007A3829 /* GynecologyResultProcessor.swift */,
-				3F161E1520BF2E47009334FD /* BasicResultProcessor.swift */,
-			);
-			path = solid;
-			sourceTree = "<group>";
-		};
 		3F789BA7209A0DC900B1B28E /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -3006,6 +3007,7 @@
 		3F95CE1E203E158A0096A896 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				3F063A9520C07C4C00A1034E /* AccountInfo.swift */,
 				3F12D06B209B8E8C008DF849 /* Server */,
 				3F575CB3207668C9005F8D48 /* ResultProcessor */,
 				3F9D09F72073C403004E19C8 /* PatientInfo */,
@@ -3029,6 +3031,7 @@
 			isa = PBXGroup;
 			children = (
 				3F6DA3D020A62397009A8C29 /* MyProfileTableViewController+ORKTaskViewControllerDelegate.swift */,
+				3F063A9720C09CFB00A1034E /* LoginViewController+ORKTaskViewDelegate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3055,6 +3058,7 @@
 		3FDFF8DD203CBC1B008ED2A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3F5321B820A9E95700DF8539 /* SurveyViewController.swift */,
 				3F538048203F461B0045A492 /* MainStoryBoard */,
 			);
 			path = Controller;
@@ -3266,11 +3270,14 @@
 				3FC0F73B2088F2240007FEBD /* GynecologyResult.swift in Sources */,
 				3F6DA3CA20A5FE9F009A8C29 /* SurveyFactory.swift in Sources */,
 				3F55935A207D1A9700A8C9DE /* PersonalResultProcessor.swift in Sources */,
+				3F063A9420C05A6300A1034E /* SignUpViewController.swift in Sources */,
 				3F5795CA207FED3600A2C3E7 /* MedicationResultProcessor.swift in Sources */,
 				3F627076207E5755004E35AF /* FamilyHistoryResult.swift in Sources */,
+				3F652FBC20C0441200A492CD /* Global.swift in Sources */,
 				3F5931CA208799CC007A3829 /* SurgeryResult.swift in Sources */,
 				3F627078207E5CB4004E35AF /* FamilyHistoryResultProcessor.swift in Sources */,
 				3F161E1620BF2E47009334FD /* BasicResultProcessor.swift in Sources */,
+				3F063A9620C07C4C00A1034E /* AccountInfo.swift in Sources */,
 				3F684D2020B75A5F00AB1BE0 /* SettingTableViewController.swift in Sources */,
 				3F568F06206595B2002255A6 /* ORKSurgeryTask.swift in Sources */,
 				3F73F6D82073FC1900E75498 /* TobaccoResult.swift in Sources */,
@@ -3286,6 +3293,7 @@
 				3F5931D12087B4E8007A3829 /* GynecologyResultProcessor.swift in Sources */,
 				3F5795C2207FA24B00A2C3E7 /* AllergyResult.swift in Sources */,
 				3F55CD812045B45600668C7A /* PersonalFactory.swift in Sources */,
+				3F063A9820C09CFB00A1034E /* LoginViewController+ORKTaskViewDelegate.swift in Sources */,
 				3F5161E820596601003C7E19 /* ORKAllergyTask.swift in Sources */,
 				3FBE995C20A4CFCA0021D865 /* SurveyResult.swift in Sources */,
 				3F6DA3CE20A60FF6009A8C29 /* SurveyResultProcessor.swift in Sources */,

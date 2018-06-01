@@ -24,7 +24,7 @@ extension Server {
         case Gynecology
         case Login
         case Logout
-        case SignUp
+        case RegisterNewUser
         
     }
 }

@@ -14,11 +14,12 @@ class SurveyViewController: ORKTaskViewController {
     var uploadEndpoint: String!
     var resultProcessor: SurveyResultProcessor!
     
-    static func createSurveyViewController(orkTask: ORKTask, uploadEndpoint: String, resultProcessor: SurveyResultProcessor) -> SurveyViewController {
+    static func createSurveyViewController(orkTask: ORKTask, uploadEndpoint: String, resultProcessor: SurveyResultProcessor, delegate: ORKTaskViewControllerDelegate?) -> SurveyViewController {
         
         let selfInstance = SurveyViewController(task: orkTask, taskRun: nil)
         selfInstance.uploadEndpoint = uploadEndpoint
         selfInstance.resultProcessor = resultProcessor
+        selfInstance.delegate = delegate
         
         return selfInstance
     }

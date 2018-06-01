@@ -35,7 +35,7 @@ class BasicInfoFactory: SurveyFactory {
     }
     
     static func getEndpoint() -> String {
-        return Server.Endpoints.SignUp.rawValue
+        return Server.Endpoints.RegisterNewUser.rawValue
     }
     
     static func createFirstNameItem() -> ORKFormItem {

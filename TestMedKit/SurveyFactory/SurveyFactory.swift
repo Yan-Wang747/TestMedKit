@@ -10,7 +10,7 @@ import Foundation
 import ResearchKit
 
 protocol SurveyFactory {
-    static func create(delegate: ORKTaskViewControllerDelegate, createReviewStep: Bool) -> SurveyViewController
+    static func create(delegate: ORKTaskViewControllerDelegate?, createReviewStep: Bool) -> SurveyViewController
     static func createSteps() -> [ORKStep]
     static func createORKTask(identifier: String, steps: [ORKStep]) -> ORKNavigableOrderedTask
     static func createNavigationRule(for orkTask: ORKNavigableOrderedTask)
@@ -20,7 +20,7 @@ protocol SurveyFactory {
 
 extension SurveyFactory {
     
-    static func create(delegate: ORKTaskViewControllerDelegate, createReviewStep: Bool) -> SurveyViewController {
+    static func create(delegate: ORKTaskViewControllerDelegate?, createReviewStep: Bool) -> SurveyViewController {
         
         func appendReviewStep(steps: inout [ORKStep]) {
             let reviewStep = ORKReviewStep(identifier: "reviewStep")
@@ -38,8 +38,8 @@ extension SurveyFactory {
         let uploadEndpoint = getEndpoint()
         
         let orkTask = createORKTask(identifier: uploadEndpoint, steps: steps)
-        let surveyViewController = SurveyViewController.createSurveyViewController(orkTask: orkTask, uploadEndpoint: uploadEndpoint, resultProcessor: createResultProcessor())
-        surveyViewController.delegate = delegate
+        let surveyViewController = SurveyViewController.createSurveyViewController(orkTask: orkTask, uploadEndpoint: uploadEndpoint, resultProcessor: createResultProcessor(), delegate: delegate)
+        
         surveyViewController.navigationBar.tintColor = UIColor.darkText
         
         return surveyViewController

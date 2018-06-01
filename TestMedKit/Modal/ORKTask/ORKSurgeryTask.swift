@@ -12,9 +12,10 @@ import ResearchKit
 class ORKSurgeryTask: ORKNavigableOrderedTask {
     var surgeryTypes: [String]!
     
+    
     override func step(after step: ORKStep?, with result: ORKTaskResult) -> ORKStep? {
         
-        guard let thisStep = step else { return super.step(after: step, with: result)}
+        guard let thisStep = step else { return super.step(after: step, with: result) }
         
         if thisStep.identifier == "surgerySelectionStep" {
             return surgerySelectionStepRule(step: thisStep, with: result)

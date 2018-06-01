@@ -43,7 +43,7 @@ extension MyProfileTableViewController: ORKTaskViewControllerDelegate {
                 }
                 
                 if response.statusCode != 200 {
-                    throw Server.Errors.errorCode(response.statusCode)
+                    throw Server.Errors.httpErrorCode(response.statusCode)
                 }
             } catch let e {
                 print(e.localizedDescription)

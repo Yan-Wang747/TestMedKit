@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = UIColor.white
         
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
         return true
     }
 

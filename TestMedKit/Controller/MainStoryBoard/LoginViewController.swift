@@ -7,30 +7,38 @@
 //
 
 import UIKit
+import ResearchKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var IDText: UITextField!
-    @IBOutlet weak var pswdText: UITextField!
+    @IBOutlet weak var userIDTextField: UITextField!
+    @IBOutlet weak var pswdTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var serverAddrText: UITextField!
     var server: Server!
     var basicInfo: BasicInfo!
+    
+    var userID: String? = nil
+    var password: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         signInButton.layer.cornerRadius = 8
+        userIDTextField.text! = userID ?? ""
+        pswdTextField.text! = password ?? ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        IDText.becomeFirstResponder()
-        IDText.selectAll(nil)
+        if (userID != nil && password != nil) && (userID != "" && password != "") {
+            loginAction(self)
+        } else {
+            userIDTextField.becomeFirstResponder()
+        }
     }
 
     @IBAction func swipeRightBack(_ sender: UISwipeGestureRecognizer) {
@@ -40,13 +48,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginAction(_ sender: Any) {
-        let alertController = UIAlertController(title: "Oops", message: nil, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        userID = userIDTextField.text!
+        password = pswdTextField.text!
         
-        let ID = IDText.text!
-        let pswd = pswdText.text!
-        
-        if ID == "" || pswd == "" {
+        if userID == "" || password == "" {
             alertController.message = "Please enter your ID and password"
             
             present(alertController, animated: true, completion: nil)
@@ -56,16 +62,10 @@ class LoginViewController: UIViewController {
         
         loginStart()
         
-        var serverAddr = serverAddrText.text!
-        
-        if serverAddr == "" {
-            serverAddr = "http://localhost"
-        }
-        
-        server = Server(serverAddr: serverAddr, serverPort: 8084)
+        server = server ?? Server()
         
         //self could be removed from the memory
-        server.asyncAuthenticate(userID: ID, password: pswd) { [weak self] _, response, error in
+        server.asyncAuthenticate(userID: userID!, password: password!) { [weak self] _, response, error in
             do {
                 if error != nil {
                     throw error!
@@ -75,23 +75,24 @@ class LoginViewController: UIViewController {
                     throw Server.Errors.invalidResponse
                 }
                 
-                if response.statusCode != 200 {
-                    throw Server.Errors.errorCode(response.statusCode)
-                }
+                let loginURL = URL(string: "\(self?.server.base ?? "")/\(Server.Endpoints.Login)") //if the self is unloaded, intensionally set loginURL to an invalid url
                 
-                let loginURL = URL(string: "\(self?.server.base ?? "")/\(Server.Endpoints.Login)") //if the self is unloaded, intensionally set loginURL to nil
-
                 //if the self is unloaded, the loginURL will be invalid and no cookies could be found. A server error will be thrown and result is ignored
                 guard let cookies = HTTPCookieStorage.shared.cookies(for: loginURL!) else {
                     throw Server.Errors.noCookieReturned
                 }
                 
-                let cookieOp = cookies.filter() { cookie in cookie.name == "JSESSIONID" }.first
-                guard let cookie = cookieOp else {
+                let cookie = cookies.filter() { cookie in cookie.name == "JSESSIONID" }.first
+                if cookie == nil {
                     throw Server.Errors.invalidCookie
                 }
                 
-                self?.server.sessionID = cookie.value
+                self?.server.sessionID = cookie!.value
+                
+                if response.statusCode != 200 {
+                    throw Server.Errors.httpErrorCode(response.statusCode)
+                }
+                
             } catch let e {
                 
                 alertController.message = e.localizedDescription
@@ -116,7 +117,16 @@ class LoginViewController: UIViewController {
                     }
                     
                     if response.statusCode != 200 {
-                        throw Server.Errors.errorCode(response.statusCode)
+                        if response.statusCode == 404 {
+                            let surveyViewController = BasicInfoFactory.create(delegate: self, createReviewStep: false)
+                            
+                            self?.present(surveyViewController, animated: true, completion: nil)
+                            
+                            self?.loginComplete()
+                            return //dont go further
+                        } else {
+                            throw Server.Errors.httpErrorCode(response.statusCode)
+                        }
                     }
                     
                     guard let data = data else {
@@ -129,6 +139,11 @@ class LoginViewController: UIViewController {
                     }
                     
                     self?.basicInfo = basicInfo
+                    DispatchQueue.main.async {
+                        self?.loginComplete()
+                        self?.performSegue(withIdentifier: "ShowMyProfile", sender: sender)
+                    }
+                    
                 } catch let e {
                     
                     alertController.message = e.localizedDescription
@@ -136,16 +151,8 @@ class LoginViewController: UIViewController {
                     DispatchQueue.main.async {
                         self?.present(alertController, animated: true, completion: nil)
                         
-                        
                         self?.loginComplete()
                     }
-                    
-                    return
-                }
-
-                DispatchQueue.main.async {
-                    self?.loginComplete()
-                    self?.performSegue(withIdentifier: "ShowMyProfile", sender: sender)
                 }
             }//asyncGetJsonData closure
         } //auth closure
@@ -169,8 +176,8 @@ class LoginViewController: UIViewController {
             self.coverView.alpha = 0.5
             }, completion: nil)
         
-        IDText.isEnabled = false
-        pswdText.isEnabled = false
+        userIDTextField.isEnabled = false
+        pswdTextField.isEnabled = false
         signInButton.isEnabled = false
         activityIndicator.startAnimating()
     }
@@ -180,8 +187,8 @@ class LoginViewController: UIViewController {
             self.coverView.alpha = 0
         }, completion: nil)
         
-        IDText.isEnabled = true
-        pswdText.isEnabled = true
+        userIDTextField.isEnabled = true
+        pswdTextField.isEnabled = true
         signInButton.isEnabled = true
         activityIndicator.stopAnimating()
     }
