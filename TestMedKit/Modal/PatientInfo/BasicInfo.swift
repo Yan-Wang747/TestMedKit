@@ -14,10 +14,10 @@ struct BasicInfo: Codable {
     var gender: String
     var dateOfBirth: String
     var phone: String?
-    var email: String
+    var email: String?
     var dateFormatterString: String
     
-    init(firstName: String, lastName: String, gender: String, dateOfBirth: String, dateFormatterString: String, phone: String?, email: String) {
+    init(firstName: String, lastName: String, gender: String, dateOfBirth: String, dateFormatterString: String, phone: String?, email: String?) {
         self.firstName = firstName
         self.lastName = lastName
         self.gender = gender

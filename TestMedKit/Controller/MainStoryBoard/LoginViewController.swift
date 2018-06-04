@@ -29,10 +29,6 @@ class LoginViewController: UIViewController {
         signInButton.layer.cornerRadius = 8
         userIDTextField.text! = userID ?? ""
         pswdTextField.text! = password ?? ""
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         if (userID != nil && password != nil) && (userID != "" && password != "") {
             loginAction(self)
@@ -106,7 +102,7 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            self?.server.asyncGetJsonData(endpoint: Server.Endpoints.BasicInfo.rawValue) {data, response, error in
+            self?.server.asyncGetJsonData(endpoint: Server.Endpoints.BasicInfo.rawValue) { data, response, error in
                 do {
                     if error != nil {
                         throw error!
@@ -122,7 +118,6 @@ class LoginViewController: UIViewController {
                             
                             self?.present(surveyViewController, animated: true, completion: nil)
                             
-                            self?.loginComplete()
                             return //dont go further
                         } else {
                             throw Server.Errors.httpErrorCode(response.statusCode)

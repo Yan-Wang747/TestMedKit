@@ -14,6 +14,14 @@ extension LoginViewController: ORKTaskViewControllerDelegate {
         taskViewController.dismiss(animated: true, completion: nil)
         
         if reason != .completed || error != nil {
+            //logout current session, ignore the server response
+            server.asyncSignOut { _, _, _ in
+                
+            }
+            
+            DispatchQueue.main.async {
+                self.loginComplete()
+            }
             
             return
         }
@@ -39,6 +47,7 @@ extension LoginViewController: ORKTaskViewControllerDelegate {
                 
                 DispatchQueue.main.async {
                     self?.performSegue(withIdentifier: "ShowMyProfile", sender: nil)
+                    self?.loginComplete()
                 }
                 
             } catch let e {
@@ -46,7 +55,9 @@ extension LoginViewController: ORKTaskViewControllerDelegate {
                 alertController.message = e.localizedDescription
                 
                 DispatchQueue.main.async {
-                    self?.present(alertController, animated: true, completion: nil)
+                    self?.present(alertController, animated: true) {
+                        self?.loginComplete()
+                    }
                 }
                 
                 return

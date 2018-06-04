@@ -19,8 +19,9 @@ class BasicResultProcessor: SurveyResultProcessor {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyy-MM-dd"
         let dateString = dateFormatter.string(from: DOB)
+        let email = getEmail(result)
         
-        let basicInfo = BasicInfo(firstName: firstName, lastName: lastName, gender: gender, dateOfBirth: dateString, dateFormatterString: dateFormatter.dateFormat, phone: phoneNumber, email: "test@test2.com")
+        let basicInfo = BasicInfo(firstName: firstName, lastName: lastName, gender: gender, dateOfBirth: dateString, dateFormatterString: dateFormatter.dateFormat, phone: phoneNumber, email: email)
         
         let jsonData = try! JSONEncoder().encode(basicInfo)
         
@@ -44,6 +45,10 @@ class BasicResultProcessor: SurveyResultProcessor {
     }
     
     func getPhoneNumber(_ result: ORKTaskResult) -> String? {
+        return (result.stepResult(forStepIdentifier: "SignUpStep")!.result(forIdentifier: "PhoneItem") as? ORKTextQuestionResult)?.textAnswer
+    }
+    
+    func getEmail(_ result: ORKTaskResult) -> String? {
         return (result.stepResult(forStepIdentifier: "SignUpStep")!.result(forIdentifier: "PhoneItem") as? ORKTextQuestionResult)?.textAnswer
     }
 }

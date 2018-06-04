@@ -20,8 +20,10 @@ class BasicInfoFactory: SurveyFactory {
         formItems.append(createGenderItem())
         formItems.append(createDataOfBirthItem())
         formItems.append(createPhoneItem())
+        formItems.append(createEmailItem())
         
         formStep.formItems = formItems
+        formStep.isOptional = false
         
         return [formStep]
     }
@@ -40,12 +42,16 @@ class BasicInfoFactory: SurveyFactory {
     
     static func createFirstNameItem() -> ORKFormItem {
         let answerFormat = ORKTextAnswerFormat()
+        answerFormat.keyboardType = .alphabet
+        answerFormat.autocorrectionType = .no
         
         return ORKFormItem(identifier: "FirstNameItem", text: "First Name", answerFormat: answerFormat, optional: false)
     }
     
     static func createLastNameItem() -> ORKFormItem {
         let answerFormat = ORKTextAnswerFormat()
+        answerFormat.keyboardType = .alphabet
+        answerFormat.autocorrectionType = .no
         
         return ORKFormItem(identifier: "LastNameItem", text: "Last Name", answerFormat: answerFormat, optional: false)
     }
@@ -77,7 +83,17 @@ class BasicInfoFactory: SurveyFactory {
     
     static func createPhoneItem() -> ORKFormItem {
         let answerFormat = ORKTextAnswerFormat()
+        answerFormat.keyboardType = .numberPad
+        answerFormat.autocorrectionType = .no
         
         return ORKFormItem(identifier: "PhoneItem", text: "Phone Number", answerFormat: answerFormat, optional: true)
+    }
+    
+    static func createEmailItem() -> ORKFormItem {
+        let answerFormat = ORKTextAnswerFormat()
+        answerFormat.keyboardType = .emailAddress
+        answerFormat.autocorrectionType = .no
+        
+        return ORKFormItem(identifier: "EmailItem", text: "Email Number", answerFormat: answerFormat, optional: true)
     }
 }

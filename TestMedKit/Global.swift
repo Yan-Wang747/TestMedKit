@@ -15,4 +15,5 @@ struct Configure {
     static let httpProtocol: String? = "http"
     static let port: Int? = 8084
     static let rootURL: String? = "MyCCMB"
+    static let timeout: Double? = nil
 }

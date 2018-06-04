@@ -21,6 +21,10 @@ class Server {
         conf.allowsCellularAccess = true
         conf.waitsForConnectivity = true
         
+        if Configure.timeout != nil {
+            conf.timeoutIntervalForResource = Configure.timeout!
+        }
+        
         session = URLSession(configuration: conf)
     }
     
@@ -75,7 +79,7 @@ class Server {
         let registrationURL = URL(string: "\(base)/\(endpoint)")!
         
         var request = URLRequest(url: registrationURL)
-        request.addValue("Basic \(registrationBase64)", forHTTPHeaderField: "Authorization")
+        request.addValue("\(registrationBase64)", forHTTPHeaderField: "NewUser")
         
         session.dataTask(with: request, completionHandler: completionHandler).resume()
     }
