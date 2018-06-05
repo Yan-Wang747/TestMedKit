@@ -79,7 +79,7 @@ class Server {
         let registrationURL = URL(string: "\(base)/\(endpoint)")!
         
         var request = URLRequest(url: registrationURL)
-        request.addValue("\(registrationBase64)", forHTTPHeaderField: "NewUser")
+        request.addValue("\(registrationBase64)", forHTTPHeaderField: "Registration")
         
         session.dataTask(with: request, completionHandler: completionHandler).resume()
     }

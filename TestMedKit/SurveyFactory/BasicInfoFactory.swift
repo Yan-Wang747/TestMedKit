@@ -12,7 +12,7 @@ import ResearchKit
 class BasicInfoFactory: SurveyFactory {
     
     static func createSteps() -> [ORKStep] {
-        let formStep = ORKFormStep(identifier: "SignUpStep", title: "Please enter your basic information", text: nil)
+        let formStep = ORKFormStep(identifier: "SignUpStep", title: "New Patient, please enter your basic information", text: nil)
         
         var formItems: [ORKFormItem] = []
         formItems.append(createFirstNameItem())
