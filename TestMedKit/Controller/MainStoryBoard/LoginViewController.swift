@@ -114,9 +114,10 @@ class LoginViewController: UIViewController {
                     
                     if response.statusCode != 200 {
                         if response.statusCode == 404 {
-                            let surveyViewController = BasicInfoFactory.create(delegate: self, createReviewStep: false)
+                            
                             
                             DispatchQueue.main.async {
+                                let surveyViewController = BasicInfoFactory.create(delegate: self, createReviewStep: false)
                                 self?.present(surveyViewController, animated: true, completion: nil)
                             }
                             
