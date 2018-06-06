@@ -936,7 +936,7 @@
                                         <rect key="frame" x="177.66666666666663" y="0.0" width="157.33333333333337" height="50"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <state key="normal" title="Sign In">
+                                        <state key="normal" title="Log In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -945,12 +945,22 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CCMB Logo" translatesAutoresizingMaskIntoConstraints="NO" id="uVd-Vw-gqR">
+                                <rect key="frame" x="18" y="207" width="339" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="339" id="1jb-ju-2eh"/>
+                                    <constraint firstAttribute="height" constant="160" id="h7M-g6-zBR"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="uVd-Vw-gqR" firstAttribute="top" secondItem="VaT-sq-bI9" secondAttribute="top" constant="119" id="CpX-FC-hkb"/>
+                            <constraint firstItem="uVd-Vw-gqR" firstAttribute="centerX" secondItem="VaT-sq-bI9" secondAttribute="centerX" id="NZL-Cs-HNq"/>
                             <constraint firstItem="J0E-h9-Afa" firstAttribute="leading" secondItem="VaT-sq-bI9" secondAttribute="leading" constant="20" id="Osx-Qx-6pb"/>
                             <constraint firstItem="VaT-sq-bI9" firstAttribute="trailing" secondItem="J0E-h9-Afa" secondAttribute="trailing" constant="20" id="TqU-sR-80D"/>
                             <constraint firstItem="VaT-sq-bI9" firstAttribute="bottom" secondItem="J0E-h9-Afa" secondAttribute="bottom" constant="50" id="rsZ-GB-JYs"/>
+                            <constraint firstItem="uVd-Vw-gqR" firstAttribute="width" secondItem="VaT-sq-bI9" secondAttribute="height" multiplier="113:230" id="vnt-BM-nEt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VaT-sq-bI9"/>
                     </view>
@@ -964,9 +974,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F8i-1u-Svu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1623" y="54"/>
+            <point key="canvasLocation" x="-1623.2" y="53.940886699507388"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Sign Up-->
         <scene sceneID="WvR-Am-NDY">
             <objects>
                 <viewController id="1Cy-Ux-9TJ" customClass="SignUpViewController" customModule="TestMedKit" customModuleProvider="target" sceneMemberID="viewController">
@@ -1055,6 +1065,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DJr-ic-vvL"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Sign Up" id="aYf-DY-EKe"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Kbo-Lp-MVe" id="Rpd-ZE-4o8"/>
                         <outlet property="coverView" destination="Ppy-qD-xIE" id="LNP-vm-4Ma"/>
@@ -1068,7 +1079,7 @@
             </objects>
             <point key="canvasLocation" x="-1623" y="927"/>
         </scene>
-        <!--Sign In-->
+        <!--Log In-->
         <scene sceneID="QaW-gy-yOX">
             <objects>
                 <viewController storyboardIdentifier="loginScreen" id="VN0-HM-PYX" customClass="LoginViewController" customModule="TestMedKit" customModuleProvider="target" sceneMemberID="viewController">
@@ -1108,7 +1119,7 @@
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
-                                        <state key="normal" title="Sign In">
+                                        <state key="normal" title="Log In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -1143,7 +1154,7 @@
                             <outletCollection property="gestureRecognizers" destination="uQB-dp-TAx" appends="YES" id="z58-6j-xWe"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign In" id="Ad9-oi-j6W"/>
+                    <navigationItem key="navigationItem" title="Log In" id="Ad9-oi-j6W"/>
                     <connections>
                         <outlet property="activityIndicator" destination="kkP-bE-1ws" id="b21-SH-2O4"/>
                         <outlet property="coverView" destination="2Uw-8E-8eh" id="yZr-Bi-ngA"/>
@@ -1218,7 +1229,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4KN-Xt-70a">
                                                     <rect key="frame" x="10" y="11" width="355" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peO-lT-e1H">
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Log out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peO-lT-e1H">
                                                             <rect key="frame" x="0.0" y="0.0" width="335" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -1275,6 +1286,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CCMB Logo" width="2921" height="587"/>
         <image name="fake patient" width="471" height="471"/>
         <image name="survey icon" width="720" height="720"/>
     </resources>
