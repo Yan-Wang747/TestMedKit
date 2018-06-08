@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail Profile Table View Controller-->
+        <!--Basic Info Table View Controller-->
         <scene sceneID="MIv-Xa-1A6">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="Bkv-QJ-TwZ" customClass="DetailProfileTableViewController" customModule="TestMedKit" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="Bkv-QJ-TwZ" customClass="BasicInfoTableViewController" customModule="TestMedKit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="YTf-rx-YZj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +64,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YuL-QK-AIn">
-                                                    <rect key="frame" x="10" y="11.666666666666666" width="355" height="20.333333333333336"/>
+                                                    <rect key="frame" x="10" y="11.666666666666668" width="355" height="20.333333333333332"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoz-p0-UMN">
                                                             <rect key="frame" x="0.0" y="0.0" width="270.33333333333331" height="20.333333333333332"/>
@@ -99,7 +99,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Ll-O7-uuq">
-                                                    <rect key="frame" x="10" y="11.666666666666666" width="355" height="20.333333333333336"/>
+                                                    <rect key="frame" x="10" y="11.666666666666668" width="355" height="20.333333333333332"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhz-3F-f6A">
                                                             <rect key="frame" x="0.0" y="0.0" width="305.66666666666669" height="20.333333333333332"/>
@@ -134,7 +134,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hnG-ww-6nE">
-                                                    <rect key="frame" x="10" y="11.666666666666666" width="355" height="20.333333333333336"/>
+                                                    <rect key="frame" x="10" y="11.666666666666668" width="355" height="20.333333333333332"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pF-7f-hto">
                                                             <rect key="frame" x="0.0" y="0.0" width="355" height="20.333333333333332"/>
@@ -174,7 +174,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5v-zV-Tme">
-                                                    <rect key="frame" x="10" y="11.666666666666666" width="355" height="20.333333333333336"/>
+                                                    <rect key="frame" x="10" y="11.666666666666668" width="355" height="20.333333333333332"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bag-Ni-Hdf">
                                                             <rect key="frame" x="0.0" y="0.0" width="262" height="20.333333333333332"/>
@@ -209,7 +209,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgK-59-VoM">
-                                                    <rect key="frame" x="10" y="11.666666666666666" width="355" height="20.333333333333336"/>
+                                                    <rect key="frame" x="10" y="11.666666666666668" width="355" height="20.333333333333332"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcq-Gl-csm">
                                                             <rect key="frame" x="0.0" y="0.0" width="334" height="20.333333333333332"/>
@@ -241,7 +241,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDK-ua-Gmh">
-                                                    <rect key="frame" x="10" y="11.666666666666666" width="355" height="20.333333333333336"/>
+                                                    <rect key="frame" x="10" y="11.666666666666668" width="355" height="20.333333333333332"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7k-0W-UPf">
                                                             <rect key="frame" x="0.0" y="0.0" width="313.33333333333331" height="20.333333333333332"/>
@@ -276,7 +276,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ije-yJ-RfB">
-                                                    <rect key="frame" x="10" y="11.666666666666666" width="355" height="20.333333333333336"/>
+                                                    <rect key="frame" x="10" y="11.666666666666668" width="355" height="20.333333333333332"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfT-Vx-eHJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="313.33333333333331" height="20.333333333333332"/>
@@ -1090,7 +1090,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hJu-xQ-TdS">
                                 <rect key="frame" x="20" y="123.99999999999999" width="335" height="241.66666666666663"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name (Email)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhJ-bt-ttv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User ID (Email)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhJ-bt-ttv">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>

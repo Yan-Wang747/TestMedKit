@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailProfileTableViewController: UITableViewController {
+class BasicInfoTableViewController: UITableViewController {
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!

@@ -188,7 +188,7 @@ class MyProfileTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showDetailInfo":
-            let destination = segue.destination as! DetailProfileTableViewController
+            let destination = segue.destination as! BasicInfoTableViewController
             
             destination.patient = self.patient
             destination.server = server
